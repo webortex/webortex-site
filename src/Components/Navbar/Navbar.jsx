@@ -44,8 +44,8 @@ const Navbar = () => {
     { id: 1, text: "Services", path: "#services", type: "section" },
     { id: 2, text: "Works", path: "#works", type: "section" },
     { id: 3, text: "Pricing", path: "#pricing", type: "section" },
-    { id: 4, text: "Recruit", path: "/recruit", type: "page" },
     { id: 5, text: "FAQ", path: "#faq", type: "section" },
+    { id: 4, text: "Recruit", path: "/recruit", type: "page" },
   ];
 
   const handleDrawerToggle = () => {
