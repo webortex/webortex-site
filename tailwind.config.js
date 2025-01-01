@@ -12,7 +12,7 @@ export default {
       "2xl": { min: "1536px" },
     },
     fontFamily: {
-      poppins: ["Poppins", "regular"],
+      outlet: ["Outfit Variable", "regular"],
     },
     extend: {
       colors: {
@@ -31,4 +31,5 @@ export default {
     },
   },
   plugins: [],
+  important: "#root",
 };
