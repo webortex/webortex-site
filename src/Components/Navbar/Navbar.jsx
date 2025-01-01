@@ -40,7 +40,6 @@ const Navbar = () => {
 
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
-  // Updated navItems with type property to distinguish between pages and sections
   const navItems = [
     { id: 1, text: "Services", path: "#services", type: "section" },
     { id: 2, text: "Works", path: "#works", type: "section" },
