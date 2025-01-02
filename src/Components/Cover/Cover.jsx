@@ -3,16 +3,28 @@ import { Container } from "@mui/material";
 import starImg from "../../assets/Star.png";
 import teamGarudaIcon from "../../assets/teamgaruda.png";
 import { Link } from "react-router-dom";
+import { MorphingText } from "./MorphingText";
+
 const Cover = () => {
   return (
     <div className="flex justify-center items-center h-screen">
-      <Container maxWidth="lg" className="px-10">
+      <Container maxWidth="lg" className="">
         <div>
           <div className="flex justify-center items-center">
             <h1 className="text-[110px] leading-[118px] font-outlet font-bold text-center">
-              <span className="text-coverMainTextColor">We Design.</span> <br />
+              <div className="text-coverMainTextColor flex justify-center items-center">
+                <span className="relative transition-all duration-100">
+                  We&nbsp;
+                </span>
+                <span>Design.</span>
+              </div>
               <span className="text-coverMainTextColor">Amazing</span>
-              <span className="text-logoGreenColor italic">Websites</span>
+              <span className="text-logoGreenColor italic">
+                <MorphingText
+                  texts={["Web", "App", "UI/UX"]}
+                  className="inline-block"
+                />
+              </span>
               <br />
               <span className="text-greenWhite">For You</span>
             </h1>
