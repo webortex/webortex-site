@@ -12,21 +12,16 @@ const Cover = () => {
         <div>
           <div className="flex justify-center items-center">
             <h1 className="text-[110px] leading-[118px] font-outlet font-bold text-center">
-              <div className="text-coverMainTextColor flex justify-center items-center">
-                <span className="relative transition-all duration-100">
-                  We&nbsp;
-                </span>
-                <span>Design.</span>
+              <div className="text-coverMainTextColor whitespace-nowrap">
+                <span className="ml-[-200px]">We</span>
+                <MorphingText
+                  texts={["Design.", "Develop.", "Dominate."]}
+                  className="ml-4"
+                />
               </div>
               <span className="text-coverMainTextColor">Amazing</span>
-              <span className="text-logoGreenColor italic">
-                <MorphingText
-                  texts={["Web", "App", "UI/UX"]}
-                  className="inline-block"
-                />
-              </span>
-              <br />
-              <span className="text-greenWhite">For You</span>
+              <span className="text-logoGreenColor italic">Websites</span>
+              <span className="text-greenWhite block">For You</span>
             </h1>
 
             <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
