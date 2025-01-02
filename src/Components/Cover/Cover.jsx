@@ -5,26 +5,27 @@ import teamGarudaIcon from "../../assets/teamgaruda.png";
 import { Link } from "react-router-dom";
 import { MorphingText } from "./MorphingText";
 import { WordRotate } from "./WordRotate";
+import { CoverBgTile } from "./CoverBgTile";
 
 const Cover = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <Container maxWidth="lg" className="">
-        <div>
-          <div className="flex justify-center items-center">
-            <h1 className="text-[110px] leading-[118px] font-outlet font-bold text-center">
-              <div className="text-coverMainTextColor whitespace-nowrap">
-                <span className="ml-[-200px]">We</span>
+        <div className="pl-24">
+          <div className="flex justify-start items-center">
+            <h1 className="text-[110px] leading-[118px] font-outlet font-bold ">
+              <div className="text-coverMainTextColor">
+                <span>We</span>
                 <MorphingText
                   texts={["Design.", "Develop.", "Dominate."]}
                   className="ml-4"
                 />
               </div>
-              <div className="flex">
-                <span className="text-coverMainTextColor ">Amazing</span>
+              <div className="flex justify-start items-center mx-auto">
+                <div className="text-coverMainTextColor ">Amazing</div>
                 <span className="text-logoGreenColor ml-4">
                   <WordRotate
-                    words={["Web", "App", "UI/UX"]}
+                    words={["Websites", "DevApps"]}
                     duration={2000}
                     className="custom-class"
                     framerProps={{
@@ -42,13 +43,13 @@ const Cover = () => {
             </h1>
 
             <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
-            <span className="absolute top-[190px] left-[605px] z-[-90]">
+            <span className="absolute top-[190px] left-[410px] z-[-90]">
               <img src={starImg} alt="starIcon" className="" />
             </span>
-            <span className="absolute top-[570px] left-[650px] z-[-90] w-[16px] h-[16px]">
+            <span className="absolute top-[600px] left-[600px] z-[-90] w-[16px] h-[16px] rotate-3">
               <img src={starImg} alt="starIcon" className="" />
             </span>
-            <span className="absolute top-[580px] left-[1200px] z-[-90] w-[24px] h-[24px]">
+            <span className="absolute top-[540px] left-[1100px] z-[-90] w-[24px] h-[24px]">
               <img src={starImg} alt="starIcon" className="" />
             </span>
           </div>
@@ -80,6 +81,12 @@ const Cover = () => {
           </div>
         </div>
       </Container>
+      {/* <CoverBgTile
+        rows={50}
+        cols={8}
+        tileSize="md"
+        className="absolute top-0 left-0"
+      /> */}
     </div>
   );
 };
