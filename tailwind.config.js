@@ -27,6 +27,8 @@ export default {
         navlinkColor: "#ffffff",
         navlinkHoverColor: "#bcd195",
         viewProfileBtnBgColor: "#3b3b3b",
+        coverMainTextColor: "#c5c5c5",
+        brandsBgColor: "#222222",
       },
     },
   },

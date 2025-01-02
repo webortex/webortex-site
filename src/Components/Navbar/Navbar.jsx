@@ -44,16 +44,15 @@ const Navbar = () => {
     { id: 1, text: "Services", path: "#services", type: "section" },
     { id: 2, text: "Works", path: "#works", type: "section" },
     { id: 3, text: "Pricing", path: "#pricing", type: "section" },
-    { id: 4, text: "Recruit", path: "/recruit", type: "page" },
-    { id: 5, text: "FAQ", path: "#faq", type: "section" },
+    { id: 4, text: "Recruiting", path: "/recruiting", type: "page" },
   ];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleContact = () => {
-    navigate("/contact");
+  const handleLetsTalk = () => {
+    navigate("/lets-talk");
   };
 
   const handleLogo = () => {
@@ -155,9 +154,9 @@ const Navbar = () => {
               <Button
                 variant="contained"
                 className="text-buttonTextColor bg-buttonBgColor font-outlet font-medium text-[16px] leading-[22px] capitalize md:py-3 md:px-6 rounded-lg md:ml-7 text-nowrap"
-                onClick={handleContact}
+                onClick={handleLetsTalk}
               >
-                Contact Us
+                Let's Talk
               </Button>
             </div>
           ) : (
@@ -220,9 +219,9 @@ const Navbar = () => {
             lineHeight: "24px",
             textTransform: "capitalize",
           }}
-          onClick={handleContact}
+          onClick={handleLetsTalk}
         >
-          Contact Us
+          Let's Talk
         </Button>
       </Drawer>
     </Container>
