@@ -4,6 +4,7 @@ import starImg from "../../assets/Star.png";
 import teamGarudaIcon from "../../assets/teamgaruda.png";
 import { Link } from "react-router-dom";
 import { MorphingText } from "./MorphingText";
+import { WordRotate } from "./WordRotate";
 
 const Cover = () => {
   return (
@@ -19,9 +20,25 @@ const Cover = () => {
                   className="ml-4"
                 />
               </div>
-              <span className="text-coverMainTextColor">Amazing</span>
-              <span className="text-logoGreenColor italic">Websites</span>
-              <span className="text-greenWhite block">For You</span>
+              <div className="flex">
+                <span className="text-coverMainTextColor ">Amazing</span>
+                <span className="text-logoGreenColor ml-4">
+                  <WordRotate
+                    words={["Web", "App", "UI/UX"]}
+                    duration={2000}
+                    className="custom-class"
+                    framerProps={{
+                      initial: { opacity: 0 },
+                      animate: { opacity: 1 },
+                      exit: { opacity: 0 },
+                      transition: { duration: 0.5 },
+                    }}
+                  />
+                </span>
+              </div>
+              <div>
+                <span className="text-greenWhite block">For You</span>
+              </div>
             </h1>
 
             <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
