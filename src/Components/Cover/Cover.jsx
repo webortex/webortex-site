@@ -75,10 +75,10 @@ const Cover = () => {
                 className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
-            <Link to="https://teamgaruda.com/">
+            <Link to="https://www.64framez.com/">
               <img
                 src={FramezIcon}
-                alt="Team Garuda"
+                alt="64Framez"
                 className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
