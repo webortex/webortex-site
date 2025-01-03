@@ -1,11 +1,13 @@
 import React from "react";
 import { Container } from "@mui/material";
 import starImg from "../../assets/Star.png";
-import teamGarudaIcon from "../../assets/teamgaruda.png";
 import { Link } from "react-router-dom";
 import { MorphingText } from "./MorphingText";
 import { WordRotate } from "./WordRotate";
 import { CoverBgTile } from "./CoverBgTile";
+
+import teamGarudaIcon from "../../assets/teamgaruda.png";
+import FramezIcon from "../../assets/64FramezLogo.svg";
 
 const Cover = () => {
   return (
@@ -42,7 +44,7 @@ const Cover = () => {
               </div>
             </h1>
 
-            {/* <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
+            <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
             <span className="absolute top-[190px] left-[410px] z-[-90]">
               <img src={starImg} alt="starIcon" className="" />
             </span>
@@ -51,12 +53,12 @@ const Cover = () => {
             </span>
             <span className="absolute top-[540px] left-[1100px] z-[-90] w-[24px] h-[24px]">
               <img src={starImg} alt="starIcon" className="" />
-            </span> */}
+            </span>
           </div>
           <div></div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 xs:gap-4 sm:gap-6 lg:gap-8 mt-[40px] xs:mt-[50px] sm:mt-[60px] md:mt-[80px] lg:mt-[100px] xl:mt-[100px] w-full">
+        <div className="flex items-center justify-center gap-2 xs:gap-4 sm:gap-6 lg:gap-8 mt-[40px] xs:mt-[50px] sm:mt-[60px] md:mt-[80px] lg:mt-[100px] xl:mt-[120px] w-full">
           <div className="h-[1px] sm:h-[2px] w-[50px] bg-logoGreenColor"></div>
           <h2 className="text-textColor text-[10px] xs:text-[12px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[16px] xs:leading-[18px] md:leading-[22px] lg:leading-[24px] font-semibold text-center uppercase tracking-wider sm:tracking-widest">
             Trusted by Amazing Brands
@@ -64,34 +66,34 @@ const Cover = () => {
           <div className="h-[1px] sm:h-[2px] w-[50px] bg-logoGreenColor"></div>
         </div>
 
-        <div className="bg-brandsBgColor w-full rounded-[22px] h-auto mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16 mb-4 sm:mb-6 md:mb-8 xl:mb-12 mx-auto">
-          <div className="flex justify-center items-center gap-2 sm:gap-6 lg:gap-10 xl:gap-12 py-3 sm:py-4 lg:py-5 mx-8 xs:mx-9 sm:mx-10">
+        <div className="bg-brandsBgColor w-full rounded-[22px] h-auto mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-14 mb-4 sm:mb-6 md:mb-8 xl:mb-12 mx-auto">
+          <div className="flex justify-center items-center gap-2 sm:gap-6 lg:gap-10 xl:gap-12 py-2 sm:py-2 lg:py-0 mx-8 xs:mx-9 sm:mx-10">
             <Link to="https://teamgaruda.com/">
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-full"
+                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
+              />
+            </Link>
+            <Link to="https://teamgaruda.com/">
+              <img
+                src={FramezIcon}
+                alt="Team Garuda"
+                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://teamgaruda.com/">
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-full"
+                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://teamgaruda.com/">
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-full"
-              />
-            </Link>
-            <Link to="https://teamgaruda.com/">
-              <img
-                src={teamGarudaIcon}
-                alt="Team Garuda"
-                className="w-[80%] lg:w-full"
+                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
           </div>
