@@ -11,11 +11,14 @@ import FramezIcon from "../../assets/64FramezLogo.svg";
 
 const Cover = () => {
   return (
-    <div className="flex justify-center items-center h-auto py-6 xs:py-10 md:py-10 2xl:py-20">
+    <div className="flex justify-center items-center h-auto py-6 xs:py-10 md:py-10 lg:py-5 xl:py-10 2xl:py-20">
       <Container maxWidth="lg" className="py-4 sm:py-6 lg:py-10">
         <div className="pl-7 xs:pl-10 sm:pl-12 lg:pl-20 xl:pl-24">
           <div className="flex justify-start items-center">
-            <h1 className="text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[95px] xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] xl:leading-[118px] font-outlet font-bold ">
+            <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-30px] sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-50 sm:scale-75 md:scale-90 lg:scale-100">
+              <img src={starImg} alt="starIcon" className="" />
+            </span>
+            <h1 className="text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[95px] xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] xl:leading-[118px] font-outlet font-bold ml-[-10px] sm:ml-[0]">
               <div className="text-coverMainTextColor">
                 <span>We</span>
                 <MorphingText
@@ -43,7 +46,7 @@ const Cover = () => {
                 <span className="text-greenWhite block">For You</span>
               </div>
             </h1>
-
+{/* 
             <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
             <span className="absolute top-[190px] left-[410px] z-[-90]">
               <img src={starImg} alt="starIcon" className="" />
@@ -53,7 +56,7 @@ const Cover = () => {
             </span>
             <span className="absolute top-[540px] left-[1100px] z-[-90] w-[24px] h-[24px]">
               <img src={starImg} alt="starIcon" className="" />
-            </span>
+            </span> */}
           </div>
           <div></div>
         </div>
