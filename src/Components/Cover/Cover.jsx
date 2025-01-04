@@ -46,11 +46,8 @@ const Cover = () => {
                 <span className="text-greenWhite block">For You</span>
               </div>
             </h1>
-            {/* 
-            <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
-            <span className="absolute top-[190px] left-[410px] z-[-90]">
-              <img src={starImg} alt="starIcon" className="" />
-            </span>
+
+            {/* <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
             <span className="absolute top-[600px] left-[600px] z-[-90] w-[16px] h-[16px] rotate-3">
               <img src={starImg} alt="starIcon" className="" />
             </span>
