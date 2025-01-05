@@ -11,6 +11,7 @@ import OnboardingBanner from "../OnboardingBanner/OnboardingBanner";
 const Homepage = () => {
   return (
     <>
+    <div className="flex flex-col gap-1">
       <Cover />
       <Services />
       <Works />
@@ -19,6 +20,7 @@ const Homepage = () => {
       <Testimonials />
       <Founders />
       <OnboardingBanner />
+    </div>
     </>
   );
 };
