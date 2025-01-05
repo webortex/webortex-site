@@ -50,10 +50,10 @@ const Cover = () => {
             {/* <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
             <span className="absolute top-[600px] left-[600px] z-[-90] w-[16px] h-[16px] rotate-3">
               <img src={starImg} alt="starIcon" className="" />
-            </span>
-            <span className="absolute top-[540px] left-[1100px] z-[-90] w-[24px] h-[24px]">
-              <img src={starImg} alt="starIcon" className="" />
             </span> */}
+            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[220px] xs:top-[260px] sm:top-[330px] md:top-[370px] lg:top-[420px] xl:top-[480px] 2xl:top-[540px] left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px] xl:left-[850px] 2xl:left-[1100px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]">
+              <img src={starImg} alt="starIcon" className="" />
+            </span>
           </div>
           <div></div>
         </div>
