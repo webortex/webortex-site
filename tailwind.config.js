@@ -10,7 +10,7 @@ export default {
       lg: { min: "1024px" },
       xl: { min: "1280px" },
       "2xl": { min: "1536px" },
-      "3xl": { min: "1836px" },
+      "3xl": { min: "1936px" },
     },
     fontFamily: {
       outlet: ["Outfit Variable", "regular"],

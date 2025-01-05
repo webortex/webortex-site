@@ -47,11 +47,11 @@ const Cover = () => {
               </div>
             </h1>
 
-            {/* <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span>
-            <span className="absolute top-[600px] left-[600px] z-[-90] w-[16px] h-[16px] rotate-3">
+            {/* <span className="absolute bg-logoGreenColor w-[250px] h-[250px] rotate-6 blur-[250px] opacity-[100%] rounded-full left-[1000px] top-[230px] z-[-99]"></span> */}
+            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[250px] xs:top-[300px] sm:top-[370px] md:top-[420px] lg:top-[480px] xl:top-[550px] 2xl:top-[600px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px] lg:left-[270px] xl:left-[400px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px] h-[16px] rotate-3">
               <img src={starImg} alt="starIcon" className="" />
-            </span> */}
-            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[220px] xs:top-[260px] sm:top-[330px] md:top-[370px] lg:top-[420px] xl:top-[480px] 2xl:top-[540px] left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px] xl:left-[850px] 2xl:left-[1100px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]">
+            </span>
+            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[220px] xs:top-[260px] sm:top-[330px] md:top-[370px] lg:top-[420px] xl:top-[480px] 2xl:top-[540px] left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px] xl:left-[850px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]">
               <img src={starImg} alt="starIcon" className="" />
             </span>
           </div>
