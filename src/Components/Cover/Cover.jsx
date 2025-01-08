@@ -11,8 +11,8 @@ import FramezIcon from "../../assets/64FramezLogo.svg";
 
 const Cover = () => {
   return (
-    <div className="flex justify-center items-center h-auto py-6 xs:py-10 md:py-10 lg:py-5 xl:py-10 2xl:py-20">
-      <Container maxWidth="lg" className="py-4 sm:py-6 lg:py-10">
+    <div className="flex justify-center items-center py-6 xs:py-10 md:py-10 lg:py-5 xl:py-10 2xl:py-20 w-full h-full mt-[-100px] grid-pattern xs:grid-pattern-xs sm:grid-pattern-sm md:grid-pattern-md xl:grid-pattern-xl">
+      <Container maxWidth="lg" className="py-4 sm:py-6 lg:py-10 mt-[100px]">
         <div className="pl-7 xs:pl-10 sm:pl-12 lg:pl-20 xl:pl-24">
           <div className="flex justify-start items-center">
             <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-30px] sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100">
@@ -47,7 +47,7 @@ const Cover = () => {
               </div>
             </h1>
 
-            <span className="absolute overflow-hidden bg-logoGreenColor size-[100px] xs:size-[150px] sm:size-[200px] lg:size-[250px] rotate-6 blur-[80px] xs:blur-[100px] sm:blur-[150px] lg:blur-[200px] 2xl:blur-[250px] opacity-[100%] rounded-full left-[180px] xs:left-[240px] sm:left-[400px] lg:left-[700px] 2xl:left-[1000px] 3xl:left-[1200px] sm:top-[140px] lg:top-[170px] xl:top-[190px] 2xl:top-[230px] z-[-99]"></span>
+            <span className="absolute overflow-hidden bg-logoGreenColor size-[100px] xs:size-[150px] sm:size-[200px] lg:size-[250px] rotate-6 blur-[80px] xs:blur-[100px] sm:blur-[150px] lg:blur-[200px] 2xl:blur-[250px] opacity-[100%] rounded-full left-[180px] xs:left-[240px] sm:left-[400px] lg:left-[700px] 2xl:left-[1000px] 3xl:left-[1200px] sm:top-[140px] lg:top-[170px] xl:top-[190px] 2xl:top-[230px] z-[-9]"></span>
             <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[250px] xs:top-[300px] sm:top-[370px] md:top-[420px] lg:top-[480px] xl:top-[550px] 2xl:top-[600px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px] lg:left-[270px] xl:left-[400px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px] h-[16px] rotate-3">
               <img src={starImg} alt="starIcon" className="" />
             </span>
