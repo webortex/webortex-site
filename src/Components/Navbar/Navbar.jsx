@@ -186,7 +186,7 @@ const Navbar = () => {
         sx={{
           "& .css-rizt0-MuiTypography-root": {
             fontFamily: "Outfit Variable",
-            fontSize: "16px",
+            fontSize: "14px",
             lineHeight: "26px",
             textTransform: "capitalize",
             fontWeight: "medium",
@@ -196,7 +196,7 @@ const Navbar = () => {
             paddingTop: "50px",
             paddingLeft: "20px",
             boxSizing: "border-box",
-            width: 280,
+            width: 250,
             backgroundColor: "#121212",
           },
         }}
@@ -215,7 +215,7 @@ const Navbar = () => {
             marginTop: "15px",
             fontWeight: "medium",
             fontFamily: "Outfit Variable",
-            fontSize: "16px",
+            fontSize: "14px",
             lineHeight: "24px",
             textTransform: "capitalize",
           }}
