@@ -15,10 +15,10 @@ const Cover = () => {
       <Container maxWidth="lg" className="py-4 sm:py-6 lg:py-10 mt-[100px]">
         <div className="pl-7 xs:pl-10 sm:pl-12 lg:pl-20 xl:pl-24">
           <div className="flex justify-start items-center">
-            <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-30px] sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100">
+            <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-35px]  sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-[85%] xl:scale-[95%] 2xl:scale-100">
               <img src={starImg} alt="starIcon" className="" />
             </span>
-            <h1 className="text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[95px] xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] xl:leading-[118px] font-outlet font-bold ml-[-10px] sm:ml-[0]">
+            <h1 className="text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[95px] xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] xl:leading-[118px] font-outlet font-bold ml-[-23px] xs:ml-[-18px] sm:ml-[-10px] md:ml-[0]">
               <div className="text-coverMainTextColor">
                 <span>We</span>
                 <MorphingText
