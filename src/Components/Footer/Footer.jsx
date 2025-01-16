@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "@mui/material";
 import {
   Email,
@@ -61,7 +60,7 @@ const Footer = () => {
                 className="mb-3 md:mb-4 mx-auto md:mx-0 md:ml-[30px]"
                 style={{ width: "60%" }}
               />
-              <p className="font-outlet text-center md:text-left mb-4 md:ml-12 md:text-left font-light text-[14px] md:text-[14px] md:text-[16px] leading-[26px]">
+              <p className="font-outlet text-center mb-4 md:ml-12 md:text-left font-light text-[14px] md:text-[16px] leading-[26px]">
                 the leading digital agency based in India, working with top-tier
                 clients from start-ups to enterprises.
               </p>
@@ -89,9 +88,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="w-fulls border-t border-gray-500 mb-4 "></div>
-          <div className="flex flex-col md:flex-row justify-between w-full items-center font-outlet font-normal text-[14px] md:text-[16px] leading-[26px] gap-y-4 md:gap-y-0 text-center mt-8 md:mt-0">
-            <div className="flex md:ml-8 flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5">
+          <div className="w-full border-t border-gray-500 md:mb-4 "></div>
+          <div className="flex flex-col md:flex-row justify-between w-full items-center font-outlet font-normal text-[14px] md:text-[16px] leading-[26px] gap-y-4 md:gap-y-0 text-center mt-2 md:mt-0">
+            <div className="hidden md:flex md:ml-8 flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5">
               <a
                 href="#"
                 className="hover:text-navlinkHoverColor cursor-pointer"
@@ -123,7 +122,7 @@ const Footer = () => {
                 Contact
               </a>
             </div>
-            <div className="text-center md:text-right mt-4 md:mr-5 md:mt-0">
+            <div className="text-center md:text-right md:mr-5 md:mt-0">
               <p>webortex © 2025 - All Right Reserved</p>
             </div>
           </div>
