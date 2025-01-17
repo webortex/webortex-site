@@ -9,6 +9,35 @@ import {
 import Webortexlogo2 from "../../assets/Webortexlogo2.png";
 import bgVideo from "../../assets/bgcta.mp4";
 import arrow from "../../assets/arrow.png";
+import { Link } from "react-router-dom";
+
+const footerLinks = [
+  {
+    id: 1,
+    title: "Services",
+    link: "#services",
+  },
+  {
+    id: 2,
+    title: "Works",
+    link: "#works",
+  },
+  {
+    id: 3,
+    title: "Pricing",
+    link: "#pricing",
+  },
+  {
+    id: 4,
+    title: "FAQ",
+    link: "#faq",
+  },
+  {
+    id: 5,
+    title: "Contact",
+    link: "#contact",
+  },
+];
 
 const Footer = () => {
   return (
@@ -91,36 +120,15 @@ const Footer = () => {
           <div className="w-full border-t border-gray-500 md:mb-4 "></div>
           <div className="flex flex-col md:flex-row justify-between w-full items-center font-outlet font-normal text-[14px] md:text-[16px] leading-[26px] gap-y-4 md:gap-y-0 text-center mt-2 md:mt-0">
             <div className="hidden md:flex md:ml-8 flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5">
-              <a
-                href="#"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Services
-              </a>
-              <a
-                href="#"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Works
-              </a>
-              <a
-                href="#"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Pricing
-              </a>
-              <a
-                href="#"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                FAQ
-              </a>
-              <a
-                href="#"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Contact
-              </a>
+              {footerLinks.map((footerLink) => (
+                <Link
+                  key={footerLink.id}
+                  to={footerLink.link}
+                  className="hover:text-navlinkHoverColor cursor-pointer"
+                >
+                  {footerLink.title}
+                </Link>
+              ))}
             </div>
             <div className="text-center md:text-right md:mr-5 md:mt-0">
               <p>webortex © 2025 - All Right Reserved</p>
