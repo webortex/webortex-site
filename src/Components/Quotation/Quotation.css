@@ -1,0 +1,60 @@
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --text-color: #1f2937;
+  --border-color: #e5e7eb;
+  --background-color: #ffffff;
+  --heading-color: #111827;
+}
+
+.webortex-document {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.webortex-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.webortex-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.webortex-subtitle {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.webortex-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.webortex-table th,
+.webortex-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+}
+
+.webortex-table th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.webortex-section {
+  margin: 1.5rem 0;
+}
+
+.webortex-section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
