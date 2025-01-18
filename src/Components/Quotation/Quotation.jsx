@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Trash2, Plus } from "lucide-react";
+import { html2pdf } from "html2pdf.js";
 import "./Quotation.css";
 
 const Quotation = () => {
@@ -156,6 +157,28 @@ const Quotation = () => {
       (sum, service) => sum + (service.cost || 0),
       0
     );
+  };
+
+  const downloadPDF = () => {
+    const element = document.getElementById("quotation-preview");
+
+    const opt = {
+      margin: [10, 10],
+      filename: `${formData.clientDetails.id}_quotation.pdf`,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        letterRendering: true,
+      },
+      jsPDF: {
+        unit: "mm",
+        format: "a4",
+        orientation: "portrait",
+      },
+    };
+
+    html2pdf().set(opt).from(element).save();
   };
 
   return (
@@ -503,7 +526,6 @@ const Quotation = () => {
                 </div>
               </div>
 
-       
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <p className="font-bold text-base text-black">To:</p>
@@ -673,11 +695,8 @@ const Quotation = () => {
             {/* Export Buttons */}
             <div className="flex justify-center gap-4 mt-6">
               <button
-                onClick={() => {
-                  // Implementation for PDF export would go here
-                  // using html2pdf or similar library
-                }}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                onClick={downloadPDF}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-2"
               >
                 Download PDF
               </button>
