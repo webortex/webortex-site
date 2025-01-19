@@ -11,7 +11,7 @@
 
 :root {
   font-family: "Outfit Variable", sans-serif;
-  background: #060606;
+  background: #060606 !important;
   box-sizing: border-box;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
@@ -53,9 +53,6 @@
   background-clip: text;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer components {
   .grid-pattern {
@@ -208,11 +205,11 @@
   }
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
+} */

@@ -1,12 +1,69 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trash2, Plus } from "lucide-react";
-import { html2pdf } from "html2pdf.js";
-import "./Quotation.css";
+import { Trash2, Plus, Printer } from "lucide-react";
 
 const Quotation = () => {
+  const handlePrint = () => {
+    const printContents =
+      document.getElementById("quotation-preview").innerHTML;
+    const printWindow = window.open("", "_blank");
+    printWindow.document.open();
+    printWindow.document.write(`
+     <html>
+        <head>
+          <title>Print Quotation</title>
+          <style>
+            @page {
+              size: A4;
+              margin: 20mm;
+            }
+            body {
+              font-family: Gill Sans MT, sans-serif;
+              padding: 20px;
+              max-width: 210mm;
+              margin: 0 auto;
+            }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 10px 0;
+            }
+            th, td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: left;
+            }
+            th {
+              background-color: #f5f5f5;
+            }
+            .preview-container {
+              background: white;
+              padding: 20px;
+            }
+            .signature-image {
+              max-width: 200px;
+              max-height: 100px;
+              margin-bottom: 10px;
+            }
+            @media print {
+              .no-print {
+                display: none;
+              }
+            }
+          </style>
+          <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        </head>
+        <body>
+          <div class="preview-container">
+            ${printContents}
+          </div>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+  };
+
   const [formData, setFormData] = useState({
-    // Company Details (Fixed)
     companyDetails: {
       name: "Webortex Web Designing Agency",
       tagline: "Design. Develop. Dominate.",
@@ -14,7 +71,6 @@ const Quotation = () => {
       email: "webortex@gmail.com",
     },
 
-    // Client Details
     clientDetails: {
       id: `WE${new Date().toISOString().slice(2, 4)}${new Date()
         .toISOString()
@@ -26,7 +82,6 @@ const Quotation = () => {
       phone: "",
     },
 
-    // Project Details
     projectDetails: {
       title: "",
       description: "",
@@ -43,7 +98,6 @@ const Quotation = () => {
       ],
     },
 
-    // Services and Costs
     services: [
       {
         category: "Consultation & Planning",
@@ -52,7 +106,6 @@ const Quotation = () => {
       },
     ],
 
-    // Timeline Phases
     timelinePhases: [
       {
         name: "Consultation and Planning",
@@ -62,14 +115,12 @@ const Quotation = () => {
       },
     ],
 
-    // Payment Terms
     paymentTerms: [
       "45% upfront payment upon agreement",
       "35% upon completion of development phase",
       "20% upon final delivery and launch",
     ],
 
-    // Terms and Conditions
     termsAndConditions: [
       {
         title: "Revisions",
@@ -78,8 +129,89 @@ const Quotation = () => {
           "Additional revisions will be billed at ₹399 per round",
         ],
       },
+      {
+        title: "Scope Changes",
+        points: [
+          "Includes tasks in the scope of work section",
+          "Changes/additions are extra and may affect the timeline",
+          "Any changes to the project scope after the agreement and before starting will require a new quotation",
+        ],
+      },
+      {
+        title: "Project Timeline",
+        points: [
+          "Delivery dates agreed during planning.",
+          "Client delays extend the timeline.",
+        ],
+      },
+      {
+        title: "Payment",
+        points: [
+          "All payments are non-refundable.",
+          "Invoices are due within 2 days of receipt.",
+        ],
+      },
+      {
+        title: "Content and Materials",
+        points: [
+          "Client provides all content and images.",
+          "Client ensures no copyright infringement.",
+        ],
+      },
+      {
+        title: "Confidentiality",
+        points: [
+          "Project information is kept confidential.",
+          "Client data used only for this project.",
+        ],
+      },
+      {
+        title: "Post-Launch Support",
+        points: [
+          "6 months free support for bug fixes and minor adjustments.",
+          "Yearly maintenance available at additional cost.",
+        ],
+      },
+      {
+        title: "Termination",
+        points: [
+          "14 days' written notice for cancellation by either party.",
+          "Payments made up to termination are non-refundable.",
+        ],
+      },
+      {
+        title: "Ownership",
+        points: [
+          "The project’s full rights will be transferred to the client only upon completion of the final payment.",
+        ],
+      },
+      {
+        title: "Dispute Resolution",
+        points: ["Any disputes will be resolved through arbitration."],
+      },
+      {
+        title: "Agreement",
+        points: [
+          "Both parties agree to the terms and conditions outlined in this quotation.",
+        ],
+      },
     ],
+    signature: null,
   });
+
+  const handleSignatureUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setFormData((prev) => ({
+          ...prev,
+          signature: e.target.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const addService = () => {
     setFormData((prev) => ({
@@ -159,32 +291,9 @@ const Quotation = () => {
     );
   };
 
-  const downloadPDF = () => {
-    const element = document.getElementById("quotation-preview");
-
-    const opt = {
-      margin: [10, 10],
-      filename: `${formData.clientDetails.id}_quotation.pdf`,
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        letterRendering: true,
-      },
-      jsPDF: {
-        unit: "mm",
-        format: "a4",
-        orientation: "portrait",
-      },
-    };
-
-    html2pdf().set(opt).from(element).save();
-  };
-
   return (
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Form Section */}
         <Card>
           <CardHeader>
             <CardTitle>Quotation Details</CardTitle>
@@ -193,6 +302,21 @@ const Quotation = () => {
             <div className="space-y-4">
               <h3 className="font-semibold text-lg">Client Details</h3>
               <div className="grid gap-3">
+                <input
+                  type="text"
+                  placeholder="Client ID"
+                  className="w-full p-2 border rounded"
+                  value={formData.clientDetails.id}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      clientDetails: {
+                        ...formData.clientDetails,
+                        id: e.target.value,
+                      },
+                    })
+                  }
+                />
                 <input
                   type="text"
                   placeholder="Client Name"
@@ -238,6 +362,17 @@ const Quotation = () => {
                     })
                   }
                 />
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Digital Signature
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleSignatureUpload}
+                    className="w-full p-2 border rounded"
+                  />
+                </div>
               </div>
             </div>
 
@@ -484,7 +619,7 @@ const Quotation = () => {
             <CardTitle>Preview</CardTitle>
           </CardHeader>
           <CardContent>
-            <div id="quotation-preview" className="p-6 space-y-6">
+            <div id="quotation-preview" className="p-6 my-6">
               <div className="flex justify-between items-start">
                 <div className="text-left">
                   <h1 className="text-xl font-bold text-[#0f3f6e] ">
@@ -494,19 +629,17 @@ const Quotation = () => {
                     {formData.companyDetails.tagline}
                   </p>
                   <div className="mt-4">
-                    <pre className="font-gillsans">
-                      {formData.companyDetails.address}
-                    </pre>
+                    <p>{formData.companyDetails.address}</p>
                     <p>Email: {formData.companyDetails.email}</p>
                   </div>
                 </div>
                 <div className="flex flex-col text-right">
-                  <h1 className="text-2xl font-gillsans font-bold text-[#0e7169]">
+                  <h1 className="text-2xl font-bold text-[#0e7169]">
                     QUOTATION
                   </h1>
                   <div className="text-sm mt-5">
                     <p>
-                      <span className="uppercase font-gillsans text-[#06203a] font-semibold">
+                      <span className="uppercase text-[#06203a] font-semibold">
                         client id:
                       </span>{" "}
                       <span className="font-medium">
@@ -514,7 +647,7 @@ const Quotation = () => {
                       </span>
                     </p>
                     <p>
-                      <span className="uppercase font-gillsans text-[#06203a] font-semibold">
+                      <span className="uppercase text-[#06203a] font-semibold">
                         DATE:
                       </span>{" "}
                       <span className="font-medium">
@@ -526,30 +659,33 @@ const Quotation = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-8 mt-6">
                 <div>
                   <p className="font-bold text-base text-black">To:</p>
                   <p>{formData.clientDetails.name}</p>
                   <p>{formData.clientDetails.email}</p>
                   <p>{formData.clientDetails.phone}</p>
                 </div>
+                <div className="text-right">
+                  <p className="font-bold text-base text-black">For:</p>
+                  <p>{formData.projectDetails.title}</p>
+                </div>
               </div>
 
-              {/* Project Overview */}
-              <div className="space-y-4">
-                {/* <p className="font-bold">FOR:</p>
-                <p>{formData.projectDetails.title}</p> */}
-
-                <h2 className="text-xl font-bold mt-6">PROJECT OVERVIEW</h2>
-                <p className="font-bold">
-                  Project Title: {formData.projectDetails.title}
+              <div className="my-4">
+                <h2 className="text-lg font-bold mt-8">PROJECT OVERVIEW</h2>
+                <p className="font-bold mt-2">
+                  Project Title:{" "}
+                  <span className="font-normal pl-1">
+                    {formData.projectDetails.title}
+                  </span>
                 </p>
-                <p className="font-bold mt-4">Project Description:</p>
+                <p className="font-bold mt-2">Project Description:</p>
                 <p>{formData.projectDetails.description}</p>
 
-                <h2 className="text-xl font-bold mt-6">Scope of Work</h2>
+                <h2 className="font-bold mt-6">Scope of Work</h2>
                 {formData.projectDetails.scopeOfWork.map((scope, index) => (
-                  <div key={index} className="mt-4">
+                  <div key={index} className="mt-2 px-6">
                     <p className="font-bold">
                       {index + 1}. {scope.title}:
                     </p>
@@ -562,7 +698,6 @@ const Quotation = () => {
                 ))}
               </div>
 
-              {/* Services Table */}
               <div className="mt-6">
                 <table className="w-full border-collapse">
                   <thead>
@@ -579,7 +714,7 @@ const Quotation = () => {
                         <td className="border p-2">{service.description}</td>
                         <td className="border p-2 text-right">
                           {service.cost > 0
-                            ? `₹${service.cost.toLocaleString("en-IN")}`
+                            ? `$${service.cost.toLocaleString("en-IN")}`
                             : "Free"}
                         </td>
                       </tr>
@@ -589,16 +724,15 @@ const Quotation = () => {
                         TOTAL
                       </td>
                       <td className="border p-2 text-right">
-                        ₹{calculateTotal().toLocaleString("en-IN")}
+                        ${calculateTotal().toLocaleString("en-IN")}
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-              {/* Payment Terms */}
               <div className="mt-6">
-                <h2 className="text-xl font-bold">Payment Terms</h2>
+                <h2 className="text-lg font-bold">Payment Terms</h2>
                 <ul className="list-disc pl-8 mt-2">
                   {formData.paymentTerms.map((term, index) => (
                     <li key={index}>{term}</li>
@@ -606,12 +740,11 @@ const Quotation = () => {
                 </ul>
               </div>
 
-              {/* Project Timeline */}
               <div className="mt-6">
-                <h2 className="text-xl font-bold">Project Timeline</h2>
+                <h2 className="text-lg font-bold">Project Timeline</h2>
                 <table className="w-full border-collapse mt-2">
                   <thead>
-                    <tr className="bg-gray-100">
+                    <tr className="bg-gray-100 text-left">
                       <th className="border p-2">Phase</th>
                       <th className="border p-2">Duration</th>
                       <th className="border p-2">Start Date</th>
@@ -641,11 +774,10 @@ const Quotation = () => {
                 </table>
               </div>
 
-              {/* Terms and Conditions */}
               <div className="mt-6">
-                <h2 className="text-xl font-bold">Terms and Conditions</h2>
+                <h2 className="text-lg font-bold">Terms and Conditions</h2>
                 {formData.termsAndConditions.map((section, index) => (
-                  <div key={index} className="mt-4">
+                  <div key={index} className="mt-2 px-6">
                     <p className="font-bold">
                       {index + 1}. {section.title}:
                     </p>
@@ -658,22 +790,29 @@ const Quotation = () => {
                 ))}
               </div>
 
-              {/* Approval Section */}
               <div className="mt-12">
-                <h2 className="text-xl font-bold">Approval</h2>
-                <p className="mt-2">
+                <h2 className="text-lg font-bold">Approval</h2>
+                <p className="mt-2 text-sm italic text-black/90">
                   By signing below, you agree to the terms and conditions
                   outlined in this quotation.
                 </p>
-                <div className="mt-8 space-y-4">
-                  <div className="border-t border-black pt-2">
-                    Client Signature
+                <div className="mt-6">
+                  {formData.signature && (
+                    <div className="">
+                      <img
+                        src={formData.signature}
+                        alt="Digital Signature"
+                        className="max-w-[200px] max-h-[100px]"
+                      />
+                    </div>
+                  )}
+                  <div className="pt-2">Client Signature:</div>
+                  <div className="mt-1">
+                    Date: {new Date().toLocaleDateString("en-IN")}
                   </div>
-                  <div>Date: {new Date().toLocaleDateString("en-IN")}</div>
                 </div>
               </div>
 
-              {/* Footer */}
               <div className="mt-8 text-sm">
                 <p>
                   If you have any questions or need further clarification,
@@ -684,21 +823,21 @@ const Quotation = () => {
                   Thank you for considering {formData.companyDetails.name} for
                   your website design needs!
                 </p>
-                <p className="mt-4">
-                  Best regards,
+                <p className="mt-8">
+                  <span className="italic">Best regards,</span>
                   <br />
-                  Team Webortex
+                  <span className="text-[15px]">Team Webortex</span>
                 </p>
               </div>
             </div>
 
-            {/* Export Buttons */}
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex justify-center gap-4 mt-10 mb-3">
               <button
-                onClick={downloadPDF}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-2"
+                onClick={handlePrint}
+                className="px-4 py-2 bg-buttonBgColor text-buttonTextColor rounded hover:bg-buttonBgColor/80 transition-all duration-300 ease-in-out flex items-center gap-2"
               >
-                Download PDF
+                <Printer className="w-5 h-5" />
+                Print Quotation
               </button>
             </div>
           </CardContent>
