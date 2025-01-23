@@ -4,7 +4,6 @@ import starImg from "../../assets/Star.png";
 import { Link } from "react-router-dom";
 import { MorphingText } from "./MorphingText";
 import { WordRotate } from "./WordRotate";
-import { CoverBgTile } from "./CoverBgTile";
 
 import teamGarudaIcon from "../../assets/teamgaruda.png";
 import FramezIcon from "../../assets/64FramezLogo.svg";
@@ -15,10 +14,10 @@ const Cover = () => {
       <Container maxWidth="lg" className="py-4 sm:py-6 lg:py-10 mt-[100px]">
         <div className="pl-7 xs:pl-10 sm:pl-12 lg:pl-20 xl:pl-24">
           <div className="flex justify-start items-center">
-            <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-35px]  sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-[85%] xl:scale-[95%] 2xl:scale-100">
+            <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-35px]  sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-[85%] xl:scale-[90%] 2xl:scale-100">
               <img src={starImg} alt="starIcon" className="" />
             </span>
-            <h1 className="text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[95px] xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] xl:leading-[118px] font-outlet font-bold ml-[-23px] xs:ml-[-18px] sm:ml-[-10px] md:ml-[0]">
+            <h1 className="text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[88px] 2xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] 2xl:leading-[118px] font-outlet font-bold ml-[-23px] xs:ml-[-18px] sm:ml-[-10px] md:ml-[0]">
               <div className="text-coverMainTextColor">
                 <span>We</span>
                 <MorphingText
@@ -47,11 +46,11 @@ const Cover = () => {
               </div>
             </h1>
 
-            <span className="absolute overflow-hidden bg-logoGreenColor size-[100px] xs:size-[150px] sm:size-[200px] lg:size-[250px] rotate-6 blur-[80px] xs:blur-[100px] sm:blur-[150px] lg:blur-[200px] 2xl:blur-[250px] opacity-[100%] rounded-full left-[180px] xs:left-[240px] sm:left-[400px] lg:left-[700px] 2xl:left-[1000px] 3xl:left-[1200px] sm:top-[140px] lg:top-[170px] xl:top-[190px] 2xl:top-[230px] z-[-9]"></span>
-            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[250px] xs:top-[300px] sm:top-[370px] md:top-[420px] lg:top-[480px] xl:top-[550px] 2xl:top-[600px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px] lg:left-[270px] xl:left-[400px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px] h-[16px] rotate-3">
+            <span className="absolute overflow-hidden bg-logoGreenColor size-[100px] xs:size-[150px] sm:size-[200px] lg:size-[250px] rotate-6 blur-[80px] xs:blur-[100px] sm:blur-[150px] lg:blur-[200px] 2xl:blur-[250px] opacity-[100%] rounded-full left-[180px] xs:left-[240px] sm:left-[400px] lg:left-[700px] 2xl:left-[1000px] 3xl:left-[1200px] sm:top-[120px] lg:top-[130px] xl:top-[190px] 2xl:top-[230px] z-[-9]"></span>
+            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[250px] xs:top-[300px] sm:top-[370px] md:top-[420px] lg:top-[480px] xl:top-[500px] 2xl:top-[600px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px] lg:left-[270px] xl:left-[320px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px] h-[16px] rotate-3">
               <img src={starImg} alt="starIcon" className="" />
             </span>
-            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[220px] xs:top-[260px] sm:top-[330px] md:top-[370px] lg:top-[420px] xl:top-[480px] 2xl:top-[540px] left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px] xl:left-[850px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]">
+            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[220px] xs:top-[260px] sm:top-[330px] md:top-[370px] lg:top-[420px] xl:top-[430px] 2xl:top-[540px] left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px] xl:left-[750px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]">
               <img src={starImg} alt="starIcon" className="" />
             </span>
           </div>
@@ -72,28 +71,28 @@ const Cover = () => {
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://www.64framez.com/">
               <img
                 src={FramezIcon}
                 alt="64Framez"
-                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://teamgaruda.com/">
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://teamgaruda.com/">
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
           </div>
