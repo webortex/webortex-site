@@ -5,6 +5,7 @@ import tharun from "../../assets/Founders/Tharun.svg";
 import jaya from "../../assets/Founders/jayadeep.svg";
 import ashok from "../../assets/Founders/Ashok.svg";
 import sandeep from "../../assets/Founders/Sandeep.svg";
+import { Link } from "react-router-dom";
 
 const Scroll = () => {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -24,8 +25,8 @@ const Scroll = () => {
       name: "Sisindri Singamsetti",
       title: "COO of webortex",
       quote:
-        "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-      src: "https://sisindrisingamsetti.com",
+        "A passionate web developer and the co-founder of Webortex. With expertise in frontend and backend technologies like React, Tailwind CSS, Node.js, and Express.js, I focus on creating innovative, user-friendly solutions. My goal is to bridge the gap between education and industry by mentoring aspiring developers through real-time projects. Dedicated to learning and growth, I strive to deliver impactful digital experiences.",
+      src: "https://www.sisindrisingamsetti.com",
     },
     {
       image: tharun,
@@ -89,7 +90,7 @@ const Scroll = () => {
   return (
     <div className=" w-full  bg-gray-100">
       <div className="sticky top-0 z-50 bg-gray-100 text-center pt-3 pb-8">
-        <div className="container mx-auto">
+        <div className="container mx-auto mt-5">
           <h1 className="text-9xl text-center  font-medium text-gry tracking-tighter">
             Founders
           </h1>
@@ -128,38 +129,36 @@ const Scroll = () => {
                       : " opacity-0 translate-y-full"
                   }`}
                 >
-                  <div className=" max-w-full ">
-                    <div className="inline-flex items-center ">
-                      <h2 className="text-9xl text-center pt-40 pr-6 font-bold text-gray-800 mb-4">
+                  <div className="flex flex-col justify-center items-center max-w-full ">
+                    <div className="inline-flex items-center">
+                      <div className="group duration-500 hover:-skew-x-0  skew-x-6 hover:translate-x-2 order-2">
+                        <div className="group-hover:duration-400 relative rounded-2xl w-32 h-20 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-3 before:top-0 before:w-32 before:h-16 before:-z-10">
+                          <span className="text-2xl font-semibold pr-16">
+                            Co
+                          </span>
+                          <p className="text-2xl font-semibold  ">Founder</p>
+                        </div>
+                      </div>
+                      <h2 className="order-1 text-[85px] text-center pt-40 font-bold text-gray-800 mb-1">
                         {founder.name}
                         {/* <span className="inline-block px-4 py-2 absolute  top-0 bg-gray-800 text-white rounded-lg text-sm">
                       Co Founder
                     </span> */}
                       </h2>
-
-                      <div className="group duration-500 hover:-skew-x-0  skew-x-6 hover:translate-x-2">
-                        <div className="group-hover:duration-400 relative rounded-2xl w-72 h-36 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center gap-1 before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-3 before:top-0 before:w-72 before:h-32 before:-z-10">
-                          <span className="text-5xl font-semibold pr-32">
-                            Co
-                          </span>
-                          <p className="text-5xl font-semibold  ">Founder</p>
-                        </div>
-                      </div>
                     </div>
 
-                    <h3 className="text-2xl text-center text-gray-600 mb-4">
+                    <h3 className="text-2xl text-center text-gray-600 mb-8">
                       {founder.title}
                     </h3>
-                    <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                    <p className="text-lg text-center text-gray-600 leading-relaxed mb-8">
                       {founder.quote}
                     </p>
                     <div className="flex justify-center ">
-                      <button
-                        className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-lg"
-                        onClick={() => window.open(founder.src, "_blank")}
-                      >
-                        View Profile
-                      </button>
+                      <Link to={founder.src}>
+                        <button className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-lg">
+                          View Profile
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -5,7 +5,7 @@ import Scroll from "./scroll";
 const Founders = () => {
   return (
     <div className="bg-gray-100 ">
-      <Container maxWidth=" " className="w-screen">
+      <Container maxWidth=" " className="w-full">
         <Scroll />
       </Container>
     </div>
