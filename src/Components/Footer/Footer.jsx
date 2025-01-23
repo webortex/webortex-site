@@ -13,7 +13,7 @@ import arrow from "../../assets/arrow.png";
 
 const Footer = () => {
   return (
-    <div className="bg-backgroundColor text-white pt-14">
+    <div className="bg-backgroundColor text-white">
       <Container maxWidth="xl" className="px-2 md:px-8 lg:px-24">
         <div className="flex flex-col items-center px-4 md:px-8 lg:px-12">
           <div className="relative w-full overflow-hidden p-4 sm:p-8 mb-10 sm:mb-20 rounded-lg sm:rounded-xl lg:rounded-3xl">

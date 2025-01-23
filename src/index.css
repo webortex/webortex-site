@@ -38,9 +38,6 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.text-gry {
-  color: #666666;
-}
 
 .text-greenWhite {
   background: linear-gradient(to right, #65b744 0%, #ffffff 100%);
