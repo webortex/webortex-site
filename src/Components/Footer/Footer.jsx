@@ -53,31 +53,31 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between w-full items-center font-outlet font-normal text-[14px] md:text-[16px] leading-[26px] gap-y-4 md:gap-y-0 text-center mt-2 md:mt-0">
             <div className="hidden md:flex md:ml-8 flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5">
               <a
-                href="#"
+                href="#services"
                 className="hover:text-navlinkHoverColor cursor-pointer"
               >
                 Services
               </a>
               <a
-                href="#"
+                href="#works"
                 className="hover:text-navlinkHoverColor cursor-pointer"
               >
                 Works
               </a>
               <a
-                href="#"
+                href="#pricing"
                 className="hover:text-navlinkHoverColor cursor-pointer"
               >
                 Pricing
               </a>
               <a
-                href="#"
+                href="#faq"
                 className="hover:text-navlinkHoverColor cursor-pointer"
               >
                 FAQ
               </a>
               <a
-                href="#"
+                href="/contact"
                 className="hover:text-navlinkHoverColor cursor-pointer"
               >
                 Contact
