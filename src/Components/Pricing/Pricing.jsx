@@ -2,22 +2,22 @@ import React from "react";
 import { Container } from "@mui/material";
 const Pricing = () => {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="md">
       <section id="pricing">
-        <h1 className="text-center text-3xl xs:text-4xl md:text-5xl xl:text-6xl text-white font-bold mt-5">
+        <h1 className="text-center text-3xl xs:text-4xl md:text-5xl xl:text-6xl text-white tracking-tight font-bold mt-5">
           Elevate Your Brand
         </h1>
         <p className="text-center text-sm md:text-base xl:text-lg text-gray-700 mt-2">
           We offer tailored solutions to help you establish a strong online
           presence, whether it’s stunning website or powerful app{" "}
         </p>
-        <div className="bg-black text-white p-8 rounded-2xl shadow-lg border border-blue-500 max-w-4xl mx-auto mt-6 mb-6">
+        <div className="bg-brandsBgColor text-white p-8 rounded-2xl shadow-lg border border-pricingBorderColor/50 max-w-4xl mx-auto mt-6 mb-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-between  text-center sm:text-left">
             <div>
               <h2 className="text-base md:text-lg font-light mb-4">
                 Contact us today for
               </h2>
-              <h1 className="text-4xl xs:text-5xl md:text-6xl xl:text-7xl font-bold mb-6">
+              <h1 className="text-3xl xs:text-4xl md:text-5xl xl:text-6xl font-normal mb-6 tracking-wider">
                 FREE
               </h1>
             </div>
@@ -52,11 +52,11 @@ const Pricing = () => {
                 <span className="text-2xl text-gray-400">★</span>
               </div>
               <div>
-                <p className="text-base md:text-xl font-light uppercase">
-                  From
-                </p>
-                <h3 className="text-2xl md:text-3xl font-bold">IDEA</h3>
-                <p className="text-base md:text-xl">to Production</p>
+                <p className="text-xs md:text-sm font-light uppercase">From</p>
+                <h3 className="text-3xl md:text-4xl xl:text-5xl tracking-widest">
+                  IDEA
+                </h3>
+                <p className="text-xs md:text-sm">to Production</p>
                 <p className="text-xs md:text-sm text-gray-400">
                   Have a Vision? We bring it to your Life!
                 </p>
