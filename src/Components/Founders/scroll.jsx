@@ -91,7 +91,7 @@ const Scroll = () => {
     <div className=" w-full  bg-gray-100">
       <div className="sticky top-0 z-50 bg-gray-100 text-center pt-3 pb-8">
         <div className="container mx-auto mt-5">
-          <h1 className="text-9xl text-center  font-medium text-gry tracking-tighter">
+          <h1 className="text-7xl md:text-8xl xl:text-9xl text-center  font-medium text-gry tracking-tighter">
             Founders
           </h1>
         </div>
@@ -99,8 +99,8 @@ const Scroll = () => {
 
       <div className="sticky top-48 h-[calc(100vh-12rem)]   ">
         <div className="container  h-full">
-          <div className="flex h-full">
-            <div className="w-1/2 relative  ">
+          <div className="flex flex-col md:flex-row h-full">
+            <div className="w-1/2 relative h-full ">
               {founders.map((founder, index) => (
                 <div
                   key={index}
@@ -113,13 +113,13 @@ const Scroll = () => {
                   <img
                     src={founder.image}
                     alt={founder.name}
-                    className="h-full   object-contain filter grayscale"
+                    className="h-full object-contain filter grayscale"
                   />
                 </div>
               ))}
             </div>
 
-            <div className="w-1/2 absolute left-1/3   items-center">
+            <div className="w-1/2 xl:w-2/3 absolute right-[1%] sm:right-[2.5%] lg:right-[5%] xl:right-[3%] 2xl:right-[6%] items-center">
               {founders.map((founder, index) => (
                 <div
                   key={index}
@@ -132,14 +132,16 @@ const Scroll = () => {
                   <div className="flex flex-col justify-center items-center max-w-full ">
                     <div className="inline-flex items-center">
                       <div className="group duration-500 hover:-skew-x-0  skew-x-6 hover:translate-x-2 order-2">
-                        <div className="group-hover:duration-400 relative rounded-2xl w-32 h-20 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-3 before:top-0 before:w-32 before:h-16 before:-z-10">
-                          <span className="text-2xl font-semibold pr-16">
+                        <div className="group-hover:duration-400 relative rounded-2xl xl:w-32 xl:h-20 md:w-28 md:h-16 xs:w-24 xs:h-14 h-10 w-16 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-2 md:before:right-3 before:top-0 xl:before:w-32 xl:before:h-16 md:before:h-14 md:before:w-28 xs:before:h-12 xs:before:w-24 before:h-8 before:w-16  before:-z-10">
+                          <span className="text-xs sm:text-sm md:text-lg xl:text-2xl font-semibold pr-16">
                             Co
                           </span>
-                          <p className="text-2xl font-semibold  ">Founder</p>
+                          <p className="text-xs sm:text-sm md:text-lg xl:text-2xl font-semibold  ">
+                            Founder
+                          </p>
                         </div>
                       </div>
-                      <h2 className="order-1 text-[85px] text-center pt-40 font-bold text-gray-800 mb-1">
+                      <h2 className="order-1 text-[18px] sm:text-[22px] md:text-[30px] lg:text-[41px] xl:text-[70px] 3xl:text-[85px] text-center pt-40 font-bold text-gray-800 mb-1">
                         {founder.name}
                         {/* <span className="inline-block px-4 py-2 absolute  top-0 bg-gray-800 text-white rounded-lg text-sm">
                       Co Founder
@@ -147,15 +149,15 @@ const Scroll = () => {
                       </h2>
                     </div>
 
-                    <h3 className="text-2xl text-center text-gray-600 mb-8">
+                    <h3 className="text-lg md:text-xl xl:text-2xl text-center text-gray-600 mb-8">
                       {founder.title}
                     </h3>
-                    <p className="text-lg text-center text-gray-600 leading-relaxed mb-8">
+                    <p className="text-xs sm:text-sm md:text-base xl:text-lg text-center text-gray-600 px-[8%] lg:px-[8%] xl:px-[12%] leading-relaxed mb-8">
                       {founder.quote}
                     </p>
                     <div className="flex justify-center ">
                       <Link to={founder.src}>
-                        <button className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-lg">
+                        <button className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg">
                           View Profile
                         </button>
                       </Link>
