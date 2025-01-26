@@ -1,4 +1,5 @@
-import { Container } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Container, Button } from "@mui/material";
 import {
   Email,
   Phone,
@@ -7,42 +8,95 @@ import {
   LinkedIn,
 } from "@mui/icons-material";
 import Webortexlogo2 from "../../assets/Webortexlogo2.png";
-<<<<<<< HEAD
-=======
-import bgVideo from "../../assets/bgcta.mp4";
-import arrow from "../../assets/arrow.png";
-import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const footerLinks = [
   {
     id: 1,
     title: "Services",
     link: "#services",
+    type: "section",
   },
   {
     id: 2,
     title: "Works",
     link: "#works",
+    type: "section",
   },
   {
     id: 3,
     title: "Pricing",
     link: "#pricing",
+    type: "section",
   },
   {
     id: 4,
     title: "FAQ",
     link: "#faq",
+    type: "section",
   },
   {
     id: 5,
     title: "Contact",
-    link: "#contact",
+    link: "/lets-talk",
+    type: "page",
   },
 ];
->>>>>>> ca81d86f553b6217384bbecf90d45ace3d94c462
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const scrollToSection = async (sectionId) => {
+    const targetId = sectionId.replace("#", "");
+
+    if (location.pathname !== "/") {
+      await navigate("/");
+
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const handleNavigation = async (footerLink) => {
+    if (footerLink.type === "section") {
+      await scrollToSection(footerLink.link);
+    } else {
+      navigate(footerLink.link);
+    }
+  };
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace("#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="bg-backgroundColor text-white">
       <div className="w-full bg-[#0A0E10] py-8">
@@ -86,48 +140,15 @@ const Footer = () => {
           <div className="w-full border-t border-gray-500 md:mb-4 "></div>
           <div className="flex flex-col md:flex-row justify-between w-full items-center font-outlet font-normal text-[14px] md:text-[16px] leading-[26px] gap-y-4 md:gap-y-0 text-center mt-2 md:mt-0">
             <div className="hidden md:flex md:ml-8 flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5">
-<<<<<<< HEAD
-              <a
-                href="#services"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Services
-              </a>
-              <a
-                href="#works"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Works
-              </a>
-              <a
-                href="#pricing"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Pricing
-              </a>
-              <a
-                href="#faq"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                FAQ
-              </a>
-              <a
-                href="/contact"
-                className="hover:text-navlinkHoverColor cursor-pointer"
-              >
-                Contact
-              </a>
-=======
               {footerLinks.map((footerLink) => (
-                <Link
+                <Button
                   key={footerLink.id}
-                  to={footerLink.link}
-                  className="hover:text-navlinkHoverColor cursor-pointer"
+                  onClick={() => handleNavigation(footerLink.link)}
+                  className="capitalize text-white font-normal font-outlet text-[16px] leading-[26px] hover:text-navlinkHoverColor transition-all duration-300 ease-in-out mx-2 "
                 >
                   {footerLink.title}
-                </Link>
+                </Button>
               ))}
->>>>>>> ca81d86f553b6217384bbecf90d45ace3d94c462
             </div>
             <div className="text-center md:text-right md:mr-5 md:mt-0">
               <p>webortex © 2025 - All Right Reserved</p>

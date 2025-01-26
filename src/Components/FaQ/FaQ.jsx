@@ -3,7 +3,9 @@ import { Container } from "@mui/material";
 const FaQ = () => {
   return (
     <Container maxWidth="lg">
-      <h1 className="text-3xl text-white font-bold">FaQ!!</h1>
+      <section id="pricing">
+        <h1 className="text-3xl text-white font-bold">FaQ!!</h1>
+      </section>
     </Container>
   );
 };

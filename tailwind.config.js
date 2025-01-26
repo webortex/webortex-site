@@ -31,7 +31,6 @@ export default {
     },
     fontFamily: {
       outlet: ["Outfit Variable", "regular"],
-      gillsans: ["Gill Sans MT", "regular"],
     },
     extend: {
       colors: {
