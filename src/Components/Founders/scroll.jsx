@@ -91,16 +91,16 @@ const Scroll = () => {
     <div className=" w-full  bg-gray-100">
       <div className="sticky top-0 z-50 bg-gray-100 text-center pt-3 pb-8">
         <div className="container mx-auto mt-5">
-          <h1 className="text-7xl md:text-8xl xl:text-9xl text-center  font-medium text-gry tracking-tighter">
+          <h1 className="text-6xl xs:text-7xl md:text-8xl xl:text-9xl text-center  font-medium text-gry tracking-tighter">
             Founders
           </h1>
         </div>
       </div>
 
-      <div className="sticky top-48 h-[calc(100vh-12rem)]   ">
-        <div className="container  h-full">
+      <div className="sticky top-48 h-[calc(100vh-12rem)] ">
+        <div className="h-full">
           <div className="flex flex-col md:flex-row h-full">
-            <div className="w-1/2 relative h-full ">
+            <div className="w-full md:w-1/2 relative h-full order-2 md:order-1 ">
               {founders.map((founder, index) => (
                 <div
                   key={index}
@@ -119,7 +119,7 @@ const Scroll = () => {
               ))}
             </div>
 
-            <div className="w-1/2 xl:w-2/3 absolute right-[1%] sm:right-[2.5%] lg:right-[5%] xl:right-[3%] 2xl:right-[6%] items-center">
+            <div className="w-full md:w-1/2 xl:w-2/3 md:absolute right-[1%] sm:right-[2.5%] lg:right-[5%] xl:right-[3%] 2xl:right-[6%] items-center order-1 md:order-2">
               {founders.map((founder, index) => (
                 <div
                   key={index}
