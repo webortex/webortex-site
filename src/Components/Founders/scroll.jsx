@@ -88,7 +88,7 @@ const Scroll = () => {
   }, []);
 
   return (
-    <div className=" w-full  bg-gray-100">
+    <div className="  w-full  bg-gray-100">
       <div className="sticky top-0 z-50 bg-gray-100 text-center pt-3 pb-8">
         <div className="container mx-auto mt-5">
           <h1 className="text-9xl text-center  font-medium text-gry tracking-tighter">
