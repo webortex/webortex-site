@@ -2,9 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Gill Sans MT", sans-serif;
+  src: url("./assets/fonts/gill-sans-mt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family: "Outfit Variable", sans-serif;
-  background: #060606;
+  background: #060606 !important;
   box-sizing: border-box;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
@@ -38,6 +45,13 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.text-gry{
+  
+  color: #999999;
+}
+.backgry{
+  background-color: #999999;
+}
 
 .text-greenWhite {
   background: linear-gradient(to right, #65b744 0%, #ffffff 100%);
@@ -45,6 +59,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 
 /* From Uiverse.io by Erasmus001 */ 
 #wifi-loader {
@@ -254,3 +269,165 @@
     margin-left: 30px;
     
   }
+=======
+
+@layer components {
+  .grid-pattern {
+    z-index: -999;
+    background-image: linear-gradient(
+        -90deg,
+        transparent calc(2em - 1px),
+        rgba(255, 255, 255, 0.07) calc(2em - 1px + 1px),
+        rgba(255, 255, 255, 0.07) 2em
+      ),
+      linear-gradient(
+        0deg,
+        transparent calc(2em - 1px),
+        rgba(255, 255, 255, 0.07) calc(2em - 1px + 1px),
+        rgba(255, 255, 255, 0.07) 2em
+      );
+    background-size: 2em 2em;
+  }
+
+  @screen xl {
+    .grid-pattern-xl {
+      z-index: -999;
+      background-image: linear-gradient(
+          -90deg,
+          transparent calc(4em - 1px),
+          rgba(255, 255, 255, 0.07) calc(4em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 4em
+        ),
+        linear-gradient(
+          0deg,
+          transparent calc(4em - 1px),
+          rgba(255, 255, 255, 0.07) calc(4em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 4em
+        );
+      background-size: 4em 4em;
+    }
+  }
+
+  @screen md {
+    .grid-pattern-md {
+      z-index: -999;
+      background-image: linear-gradient(
+          -90deg,
+          transparent calc(3.5em - 1px),
+          rgba(255, 255, 255, 0.07) calc(3.5em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 3.5em
+        ),
+        linear-gradient(
+          0deg,
+          transparent calc(3.5em - 1px),
+          rgba(255, 255, 255, 0.07) calc(3.5em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 3.5em
+        );
+      background-size: 3.5em 3.5em;
+    }
+  }
+
+  @screen sm {
+    .grid-pattern-sm {
+      z-index: -999;
+      background-image: linear-gradient(
+          -90deg,
+          transparent calc(3em - 1px),
+          rgba(255, 255, 255, 0.07) calc(3em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 3em
+        ),
+        linear-gradient(
+          0deg,
+          transparent calc(3em - 1px),
+          rgba(255, 255, 255, 0.07) calc(3em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 3em
+        );
+      background-size: 3em 3em;
+    }
+  }
+
+  @screen xs {
+    .grid-pattern-xs {
+      z-index: -999;
+      background-image: linear-gradient(
+          -90deg,
+          transparent calc(2.5em - 1px),
+          rgba(255, 255, 255, 0.07) calc(2.5em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 2.5em
+        ),
+        linear-gradient(
+          0deg,
+          transparent calc(2.5em - 1px),
+          rgba(255, 255, 255, 0.07) calc(2.5em - 1px + 1px),
+          rgba(255, 255, 255, 0.07) 2.5em
+        );
+      background-size: 2.5em 2.5em;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+/* @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+

@@ -9,7 +9,9 @@ import Smedia from "./compo/Smedia"
 
 const Services = () => {
   return (
-    <Container maxWidth="lg" className="">
+
+    <Container maxWidth="lg" className="h-screen py-24">
+
       <section id="services">
         <h1 className="text-6xl text-headColor text-center font-bold tracking-tighter mt-12">
           Services

@@ -17,6 +17,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import logoImg from "../../assets/Webortexlogo2.png";
+import { Consumer } from "../ContextAPI/ContextAPI";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,13 +40,6 @@ const Navbar = () => {
   });
 
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
-
-  const navItems = [
-    { id: 1, text: "Services", path: "#services", type: "section" },
-    { id: 2, text: "Works", path: "#works", type: "section" },
-    { id: 3, text: "Pricing", path: "#pricing", type: "section" },
-    { id: 4, text: "Recruiting", path: "/recruiting", type: "page" },
-  ];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -110,121 +104,140 @@ const Navbar = () => {
   }, []);
 
   const drawer = (
-    <List>
-      {navItems.map((item) => (
-        <ListItem key={item.id} disablePadding>
-          <ListItemButton onClick={() => handleNavigation(item)}>
-            <ListItemText primary={item.text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+    <Consumer>
+      {(value) => {
+        const { navItems } = value;
+        return (
+          <List>
+            {navItems.map((item) => (
+              <ListItem key={item.id} disablePadding>
+                <ListItemButton onClick={() => handleNavigation(item)}>
+                  <ListItemText primary={item.text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        );
+      }}
+    </Consumer>
   );
 
   return (
-    <Container
-      maxWidth="lg"
-      className="md:flex md:justify-center relative z-30 md:z-999 mt-9"
-      sx={{ flexGrow: 1 }}
-    >
-      <AppBar position="static" color="transparent" elevation={0}>
-        <Toolbar className="flex justify-center items-center scroll-smooth transition-all duration-300 ease-in-out">
-          <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-              <img
-                src={logoImg}
-                alt="Webortex"
-                onClick={() => handleLogo()}
-                className="w-[40%] h-auto"
-              />
-            </Link>
-          </Box>
-
-          {!isMobile ? (
-            <div className="flex items-center text-textColor">
-              {navItems.map((item) => (
-                <Button
-                  key={item.id}
-                  onClick={() => handleNavigation(item)}
-                  className="capitalize text-white font-normal font-outlet text-[16px] leading-[26px] hover:text-navlinkHoverColor transition-all duration-300 ease-in-out mx-2 "
+    <Consumer>
+      {(value) => {
+        const { navItems } = value;
+        return (
+          <Container
+            maxWidth="lg"
+            className="md:flex md:justify-center relative z-30 md:z-999 mt-9"
+            sx={{ flexGrow: 1 }}
+          >
+            <AppBar position="static" color="transparent" elevation={0}>
+              <Toolbar className="flex justify-center items-center scroll-smooth transition-all duration-300 ease-in-out">
+                <Box
+                  sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}
                 >
-                  {item.text}
-                </Button>
-              ))}
+                  <Link
+                    to="/"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <img
+                      src={logoImg}
+                      alt="Webortex"
+                      onClick={() => handleLogo()}
+                      className="w-[40%] h-auto"
+                    />
+                  </Link>
+                </Box>
+
+                {!isMobile ? (
+                  <div className="flex items-center text-textColor">
+                    {navItems.map((item) => (
+                      <Button
+                        key={item.id}
+                        onClick={() => handleNavigation(item)}
+                        className="capitalize text-white font-normal font-outlet text-[16px] leading-[26px] hover:text-navlinkHoverColor transition-all duration-300 ease-in-out mx-2 "
+                      >
+                        {item.text}
+                      </Button>
+                    ))}
+                    <Button
+                      variant="contained"
+                      className="text-buttonTextColor bg-buttonBgColor font-outlet font-medium text-[16px] leading-[22px] capitalize md:py-3 md:px-6 rounded-lg md:ml-7 text-nowrap"
+                      onClick={handleLetsTalk}
+                    >
+                      Let's Talk
+                    </Button>
+                  </div>
+                ) : (
+                  <IconButton
+                    sx={{
+                      color: "#ffffff",
+                    }}
+                    aria-label="open drawer"
+                    edge="end"
+                    onClick={handleDrawerToggle}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                )}
+              </Toolbar>
+            </AppBar>
+
+            <Drawer
+              variant="temporary"
+              anchor="right"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              ModalProps={{
+                keepMounted: true,
+              }}
+              className="text-textColor"
+              sx={{
+                "& .css-rizt0-MuiTypography-root": {
+                  fontFamily: "Outfit Variable",
+                  fontSize: "14px",
+                  lineHeight: "26px",
+                  textTransform: "capitalize",
+                  fontWeight: "medium",
+                },
+                "& .MuiDrawer-paper": {
+                  color: "#efefef",
+                  paddingTop: "50px",
+                  paddingLeft: "20px",
+                  boxSizing: "border-box",
+                  width: 250,
+                  backgroundColor: "#121212",
+                },
+              }}
+            >
+              {drawer}
               <Button
                 variant="contained"
-                className="text-buttonTextColor bg-buttonBgColor font-outlet font-medium text-[16px] leading-[22px] capitalize md:py-3 md:px-6 rounded-lg md:ml-7 text-nowrap"
+                sx={{
+                  color: "#060606",
+                  backgroundColor: "#62ba47",
+                  width: "80%",
+                  marginX: "auto",
+                  paddingY: "10px",
+                  paddingX: "16px",
+                  borderRadius: "8px",
+                  marginTop: "15px",
+                  fontWeight: "medium",
+                  fontFamily: "Outfit Variable",
+                  fontSize: "14px",
+                  lineHeight: "24px",
+                  textTransform: "capitalize",
+                }}
                 onClick={handleLetsTalk}
               >
                 Let's Talk
               </Button>
-            </div>
-          ) : (
-            <IconButton
-              sx={{
-                color: "#ffffff",
-              }}
-              aria-label="open drawer"
-              edge="end"
-              onClick={handleDrawerToggle}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-        </Toolbar>
-      </AppBar>
-
-      <Drawer
-        variant="temporary"
-        anchor="right"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-        className="text-textColor"
-        sx={{
-          "& .css-rizt0-MuiTypography-root": {
-            fontFamily: "Outfit Variable",
-            fontSize: "16px",
-            lineHeight: "26px",
-            textTransform: "capitalize",
-            fontWeight: "medium",
-          },
-          "& .MuiDrawer-paper": {
-            color: "#efefef",
-            paddingTop: "50px",
-            paddingLeft: "20px",
-            boxSizing: "border-box",
-            width: 280,
-            backgroundColor: "#121212",
-          },
-        }}
-      >
-        {drawer}
-        <Button
-          variant="contained"
-          sx={{
-            color: "#060606",
-            backgroundColor: "#62ba47",
-            width: "80%",
-            marginX: "auto",
-            paddingY: "10px",
-            paddingX: "16px",
-            borderRadius: "8px",
-            marginTop: "15px",
-            fontWeight: "medium",
-            fontFamily: "Outfit Variable",
-            fontSize: "16px",
-            lineHeight: "24px",
-            textTransform: "capitalize",
-          }}
-          onClick={handleLetsTalk}
-        >
-          Let's Talk
-        </Button>
-      </Drawer>
-    </Container>
+            </Drawer>
+          </Container>
+        );
+      }}
+    </Consumer>
   );
 };
 

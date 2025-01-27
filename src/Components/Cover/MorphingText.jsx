@@ -122,7 +122,7 @@ function SvgFilters() {
 
 function MorphingText({ texts, className }) {
   const combinedClassName = [
-    "relative inline-block h-16 text-left text-[110px] leading-[118px] font-outlet font-bold [filter:url(#threshold)_blur(0.6px)]",
+    "relative inline-block  text-left text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[88px] 2xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] 2xl:leading-[118px] font-outlet font-bold [filter:url(#threshold)_blur(0.6px)]",
     className,
   ]
     .filter(Boolean)
