@@ -1,29 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Consumer } from "../ContextAPI/ContextAPI";
 import { Link } from "react-router-dom";
-
-const ProfileButton = ({ url }) => {
-  const isExternal = url.startsWith("http");
-
-  if (isExternal) {
-    return (
-      <button
-        onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
-        className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg"
-      >
-        View Profile
-      </button>
-    );
-  }
-
-  return (
-    <Link to={url}>
-      <button className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg">
-        View Profile
-      </button>
-    </Link>
-  );
-};
+import { Button } from "@mui/material";
 
 const Scroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -55,7 +33,6 @@ const Scroll = () => {
   }, []);
 
   return (
-
     <Consumer>
       {(value) => {
         const { founders } = value;
@@ -128,7 +105,18 @@ const Scroll = () => {
                             {founder.quote}
                           </p>
                           <div className="flex justify-center z-999">
-                            <ProfileButton url={founder.src} />
+                            <Button
+                              onClick={() =>
+                                window.open(
+                                  url,
+                                  "_blank",
+                                  "noopener,noreferrer"
+                                )
+                              }
+                              className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg"
+                            >
+                              View Profile
+                            </Button>
                           </div>
                         </div>
                       </div>
