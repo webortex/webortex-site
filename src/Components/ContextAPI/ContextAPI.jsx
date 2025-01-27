@@ -37,6 +37,28 @@ export class Provider extends Component {
         type: "page",
       },
     ],
+    faqs: [
+      {
+        question: "What features does GenClip offer for video editing?",
+        answer:
+          "GenClip offers smart trimming, scene detection, color correction, background music suggestions, and automatic captions. It simplifies editing with easy transitions and voiceovers.",
+      },
+      {
+        question: "How does GenClip's AI improve the editing process?",
+        answer:
+          "GenClip's AI automates repetitive tasks, making video editing faster and more efficient, while maintaining high quality.",
+      },
+      {
+        question: "Can GenClip work with all video formats?",
+        answer:
+          "Yes, GenClip supports a wide range of video formats, ensuring compatibility with most cameras and devices.",
+      },
+      {
+        question: "What are the subscription plans and pricing for GenClip?",
+        answer:
+          "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
+      },
+    ],
     founders: [
       {
         id: 1,
