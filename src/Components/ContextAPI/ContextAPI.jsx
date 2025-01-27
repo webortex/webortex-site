@@ -39,6 +39,7 @@ export class Provider extends Component {
     ],
     founders: [
       {
+        id: 1,
         image: gnana,
         name: "K Gnana Sekhar",
         title: "CEO of webortex",
@@ -47,6 +48,7 @@ export class Provider extends Component {
         src: "https://youtube.com",
       },
       {
+        id: 2,
         image: sisi,
         name: "Sisindri Singamsetti",
         title: "COO of webortex",
@@ -55,6 +57,7 @@ export class Provider extends Component {
         src: "https://www.sisindrisingamsetti.com",
       },
       {
+        id: 3,
         image: tharun,
         name: "A Tharun",
         title: "CPO of webortex",
@@ -63,6 +66,7 @@ export class Provider extends Component {
         src: "https://x.com",
       },
       {
+        id: 4,
         image: jaya,
         name: "P Jayadeep Reddy",
         title: "CTO of webortex",
@@ -71,6 +75,7 @@ export class Provider extends Component {
         src: "https://instagram.com",
       },
       {
+        id: 5,
         image: ashok,
         name: "P Ashok",
         title: "CIO of webortex",
@@ -79,6 +84,7 @@ export class Provider extends Component {
         src: "https://linkedin.com",
       },
       {
+        id: 6,
         image: sandeep,
         name: "K Sai Sandeep",
         title: "CLO of webortex",

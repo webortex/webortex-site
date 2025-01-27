@@ -1,6 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { Consumer } from "../ContextAPI/ContextAPI";
+import { Link } from "react-router-dom";
+
+const ProfileButton = ({ url }) => {
+  const isExternal = url.startsWith("http");
+
+  if (isExternal) {
+    return (
+      <button
+        onClick={() => window.open(url, "_blank", "noopener,noreferrer")}
+        className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg"
+      >
+        View Profile
+      </button>
+    );
+  }
+
+  return (
+    <Link to={url}>
+      <button className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg">
+        View Profile
+      </button>
+    </Link>
+  );
+};
 
 const Scroll = () => {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -48,7 +71,7 @@ const Scroll = () => {
             <div className="sticky top-48 h-[calc(100vh-12rem)] ">
               <div className="h-full">
                 <div className="flex flex-col md:flex-row h-full">
-                  <div className="w-full md:w-1/2 relative h-full order-2 md:order-1 ">
+                  <div className="w-full md:w-1/2 relative h-full">
                     {founders.map((founder, index) => (
                       <div
                         key={index}
@@ -70,7 +93,7 @@ const Scroll = () => {
                   <div className="w-full md:w-1/2 xl:w-2/3 md:absolute right-[1%] sm:right-[2.5%] lg:right-[5%] xl:right-[3%] 2xl:right-[6%] items-center order-1 md:order-2">
                     {founders.map((founder, index) => (
                       <div
-                        key={index}
+                        key={founder.id}
                         className={`  absolute   inset-0 transition-all duration-700 ${
                           index === activeIndex
                             ? "  opacity-100 translate-y-0"
@@ -103,12 +126,8 @@ const Scroll = () => {
                           <p className="text-xs sm:text-sm md:text-base xl:text-lg text-center text-gray-600 px-[8%] lg:px-[8%] xl:px-[12%] leading-relaxed mb-8">
                             {founder.quote}
                           </p>
-                          <div className="flex justify-center ">
-                            <Link to={founder.src}>
-                              <button className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg">
-                                View Profile
-                              </button>
-                            </Link>
+                          <div className="flex justify-center z-999">
+                            <ProfileButton url={founder.src} />
                           </div>
                         </div>
                       </div>
