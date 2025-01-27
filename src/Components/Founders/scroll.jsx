@@ -26,7 +26,7 @@ const ProfileButton = ({ url }) => {
 };
 
 const Scroll = () => {
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
 
   useEffect(() => {
