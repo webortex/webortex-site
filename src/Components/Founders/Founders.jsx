@@ -1,10 +1,12 @@
 import React from "react";
+
 import { Container } from "@mui/material";
+import Scroll from "./scroll";
 const Founders = () => {
   return (
-    <div className="">
-      <Container maxWidth="lg" className="">
-        <h1 className="text-3xl text-white font-bold">Founders!!</h1>
+    <div className="bg-gray-100 ">
+      <Container maxWidth=" " className="w-full">
+        <Scroll />
       </Container>
     </div>
   );

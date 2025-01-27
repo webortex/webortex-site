@@ -46,6 +46,7 @@ export default {
         viewProfileBtnBgColor: "#3b3b3b",
         coverMainTextColor: "#c5c5c5",
         brandsBgColor: "#222222",
+        pricingBorderColor: "#d9d9d9",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
