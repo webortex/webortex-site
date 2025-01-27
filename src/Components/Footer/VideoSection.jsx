@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 
 const VideoSection = () => {
   return (
-    <Container maxWidth="lg" className="px-2 text-white">
+    <Container maxWidth="lg" className="px-2 mt-16 text-white">
       <div className="flex flex-col items-center px-4 md:px-8 lg:px-12">
         <div className="relative w-full overflow-hidden p-4 sm:p-8 mb-10 sm:mb-20 rounded-lg sm:rounded-xl lg:rounded-3xl">
           <video

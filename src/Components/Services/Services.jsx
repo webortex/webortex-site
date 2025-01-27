@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 
 const Services = () => {
   return (
-    <Container maxWidth="lg" className="h-screen">
+    <Container maxWidth="lg" className="h-screen py-24">
       <section id="services">
         <h1 className="text-7xl text-headColor font-bold tracking-tighter">
           Services
