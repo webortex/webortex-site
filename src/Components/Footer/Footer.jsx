@@ -1,4 +1,5 @@
-import { Container } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Container, Button } from "@mui/material";
 import {
   Email,
   Phone,
@@ -7,78 +8,97 @@ import {
   LinkedIn,
 } from "@mui/icons-material";
 import Webortexlogo2 from "../../assets/Webortexlogo2.png";
-import bgVideo from "../../assets/bgcta.mp4";
-import arrow from "../../assets/arrow.png";
-import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const footerLinks = [
   {
     id: 1,
     title: "Services",
     link: "#services",
+    type: "section",
   },
   {
     id: 2,
     title: "Works",
     link: "#works",
+    type: "section",
   },
   {
     id: 3,
     title: "Pricing",
     link: "#pricing",
+    type: "section",
   },
   {
     id: 4,
     title: "FAQ",
     link: "#faq",
+    type: "section",
   },
   {
     id: 5,
     title: "Contact",
-    link: "#contact",
+    link: "/lets-talk",
+    type: "page",
   },
 ];
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const scrollToSection = async (sectionId) => {
+    const targetId = sectionId.replace("#", "");
+
+    if (location.pathname !== "/") {
+      await navigate("/");
+
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const handleNavigation = async (footerLink) => {
+    if (footerLink.type === "section") {
+      await scrollToSection(footerLink.link);
+    } else {
+      navigate(footerLink.link);
+    }
+  };
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace("#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="bg-backgroundColor text-white">
-      <Container maxWidth="xl" className="px-2 md:px-8 lg:px-24">
-        <div className="flex flex-col items-center px-4 md:px-8 lg:px-12">
-          <div className="relative w-full overflow-hidden p-4 sm:p-8 mb-10 sm:mb-20 rounded-lg sm:rounded-xl lg:rounded-3xl">
-            <video
-              className="absolute top-0 left-0 w-full h-full"
-              style={{ objectFit: "cover", mixBlendMode: "hard-light" }}
-              src={bgVideo}
-              autoPlay
-              loop
-              muted
-            />
-            <div className="relative z-10 text-center">
-              <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mx-auto">
-                <h2 className="font-outlet text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2">
-                  Become part of Webortex
-                </h2>
-              </div>
-              <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/3 mx-auto">
-                <p className="font-outlet font-normal text-sm sm:text-md lg:text-lg mb-6 sm:mb-12">
-                  Jump on a membership and start requesting designs right away!
-                </p>
-              </div>
-              <button
-                className="bg-white text-backgroundColor text-sm sm:text-md md:text-lg lg:text-xl font-outlet font-medium text-[14px] md:text-[16px] leading-[26px] py-2 sm:py-3 md:py-4 px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 rounded-md hover:bg-white/80 transition-colors duration-300 flex items-center justify-center mx-auto capitalize"
-                onClick={() => (window.location.href = "/contact")}
-              >
-                join
-                <img
-                  src={arrow}
-                  alt="arrow"
-                  className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 ml-2 sm:ml-3 md:ml-4"
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-      </Container>
       <div className="w-full bg-[#0A0E10] py-8">
         <Container maxWidth="xl">
           <div className="flex flex-col md:flex-row justify-center text-center md:justify-between w-full mb-8 md:items-start gap-y-3 md:gap-y-0">
@@ -121,13 +141,13 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between w-full items-center font-outlet font-normal text-[14px] md:text-[16px] leading-[26px] gap-y-4 md:gap-y-0 text-center mt-2 md:mt-0">
             <div className="hidden md:flex md:ml-8 flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5">
               {footerLinks.map((footerLink) => (
-                <Link
+                <Button
                   key={footerLink.id}
-                  to={footerLink.link}
-                  className="hover:text-navlinkHoverColor cursor-pointer"
+                  onClick={() => handleNavigation(footerLink.link)}
+                  className="capitalize text-white font-normal font-outlet text-[16px] leading-[26px] hover:text-navlinkHoverColor transition-all duration-300 ease-in-out mx-2 "
                 >
                   {footerLink.title}
-                </Link>
+                </Button>
               ))}
             </div>
             <div className="text-center md:text-right md:mr-5 md:mt-0">
