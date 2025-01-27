@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Button } from "@mui/material";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Email,
   Phone,
@@ -8,7 +9,6 @@ import {
   LinkedIn,
 } from "@mui/icons-material";
 import Webortexlogo2 from "../../assets/Webortexlogo2.png";
-import { useNavigate, useLocation } from "react-router-dom";
 
 const footerLinks = [
   {
@@ -52,8 +52,10 @@ const Footer = () => {
     const targetId = sectionId.replace("#", "");
 
     if (location.pathname !== "/") {
+      // First navigate to home page if we're not there
       await navigate("/");
 
+      // Wait for navigation to complete then scroll
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
@@ -61,6 +63,7 @@ const Footer = () => {
         }
       }, 100);
     } else {
+      // If already on home page, just scroll
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -68,14 +71,15 @@ const Footer = () => {
     }
   };
 
-  const handleNavigation = async (footerLink) => {
+  const handleNavigation = (footerLink) => {
     if (footerLink.type === "section") {
-      await scrollToSection(footerLink.link);
+      scrollToSection(footerLink.link);
     } else {
       navigate(footerLink.link);
     }
   };
 
+  // Handle initial navigation if URL has a hash
   useEffect(() => {
     if (location.hash) {
       const targetId = location.hash.replace("#", "");
@@ -124,11 +128,19 @@ const Footer = () => {
                   contact@webortex.com
                 </a>
               </div>
-              <div className="flex items-center mb-4">
-                <Phone className="md:mr-2" />
-                <a href="tel:+918688281821" className="hover:underline">
-                  +91 8688281821
-                </a>
+              <div className="flex flex-col items-center mb-8 gap-y-2">
+                <div>
+                  <Phone className="md:mr-2" />
+                  <a href="tel:+918688281821" className="hover:underline">
+                    +91 8688281821
+                  </a>
+                </div>
+                <div>
+                  <Phone className="md:mr-2" />
+                  <a href="tel:+919502414128" className="hover:underline">
+                    +91 9502414128
+                  </a>
+                </div>
               </div>
               <div className="flex space-x-2 md:space-x-4">
                 <Facebook className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
@@ -139,18 +151,18 @@ const Footer = () => {
           </div>
           <div className="w-full border-t border-gray-500 md:mb-4 "></div>
           <div className="flex flex-col md:flex-row justify-between w-full items-center font-outlet font-normal text-[14px] md:text-[16px] leading-[26px] gap-y-4 md:gap-y-0 text-center mt-2 md:mt-0">
-            <div className="hidden md:flex md:ml-8 flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5">
+            <div className="hidden md:flex md:ml-8 flex-col md:flex-row">
               {footerLinks.map((footerLink) => (
                 <Button
                   key={footerLink.id}
-                  onClick={() => handleNavigation(footerLink.link)}
+                  onClick={() => handleNavigation(footerLink)}
                   className="capitalize text-white font-normal font-outlet text-[16px] leading-[26px] hover:text-navlinkHoverColor transition-all duration-300 ease-in-out mx-2 "
                 >
                   {footerLink.title}
                 </Button>
               ))}
             </div>
-            <div className="text-center md:text-right md:mr-5 md:mt-0">
+            <div className="text-center md:text-right md:mr-5">
               <p>webortex © 2025 - All Right Reserved</p>
             </div>
           </div>

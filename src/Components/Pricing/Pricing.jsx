@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 const Pricing = () => {
   return (
     <Container maxWidth="md">
-      <section id="pricing" className="py-24">
+      <section id="pricing" className="pt-24">
         <h1 className="text-center text-3xl xs:text-4xl md:text-5xl xl:text-6xl text-white tracking-tight font-bold mt-5">
           Elevate Your Brand
         </h1>
