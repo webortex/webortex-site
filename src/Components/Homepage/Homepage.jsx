@@ -10,6 +10,7 @@ import VideoSection from "../Footer/VideoSection";
 const Homepage = () => {
   return (
     <>
+    <div className="flex flex-col gap-1">
       <Cover />
       <Services />
       <Works />
@@ -17,7 +18,9 @@ const Homepage = () => {
       <FaQ />
       <Testimonials />
       <Founders />
+
       <VideoSection />
+
     </>
   );
 };
