@@ -115,6 +115,38 @@ export class Provider extends Component {
         src: "https://linkedin.com",
       },
     ],
+    footerLinks: [
+      {
+        id: 1,
+        title: "Services",
+        link: "#services",
+        type: "section",
+      },
+      {
+        id: 2,
+        title: "Works",
+        link: "#works",
+        type: "section",
+      },
+      {
+        id: 3,
+        title: "Pricing",
+        link: "#pricing",
+        type: "section",
+      },
+      {
+        id: 4,
+        title: "FAQ",
+        link: "#faq",
+        type: "section",
+      },
+      {
+        id: 5,
+        title: "Contact",
+        link: "/lets-talk",
+        type: "page",
+      },
+    ],
   };
 
   render() {

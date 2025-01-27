@@ -16,7 +16,7 @@ const FaQ = () => {
         return (
           <Container maxWidth="lg">
             <section id="faq" className="pt-5">
-              <div className="flex flex-col justify-start items-center my-20 lg:flex-row h-full text-white px-2 py-8 gap-x-5">
+              <div className="flex flex-col justify-start lg:items-center my-20 lg:flex-row h-full text-white px-2 py-8 gap-x-5">
                 <div className="lg:w-1/2 space-y-6">
                   <div className="inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-medium border border-white">
                     FAQ
