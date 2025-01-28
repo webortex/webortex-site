@@ -7,6 +7,13 @@ import jaya from "../../assets/Founders/jayadeep.svg";
 import ashok from "../../assets/Founders/Ashok.svg";
 import sandeep from "../../assets/Founders/Sandeep.svg";
 
+import Webdev from "../Services/compo/Webdev";
+import Appdev from "../Services/compo/Appdev";
+import UiUx from "../Services/compo/UiUx";
+import Mvp from "../Services/compo/Mvp";
+import Seo from "../Services/compo/Seo";
+import Smedia from "../Services/compo/Smedia";
+
 const Context = React.createContext();
 
 export class Provider extends Component {
@@ -37,6 +44,52 @@ export class Provider extends Component {
         type: "page",
       },
     ],
+
+    services: [
+      {
+        id: 1,
+        title: "Web Development",
+        description:
+          "We increase revenue and ensure sustainable long-term growth",
+        component: <Webdev />,
+      },
+      {
+        id: 2,
+        title: "App Development",
+        description:
+          "We increase revenue and ensure sustainable long-term growth",
+        component: <Appdev />,
+      },
+      {
+        id: 3,
+        title: "UI/UX Design",
+        description:
+          "We increase revenue and ensure sustainable long-term growth",
+        component: <UiUx />,
+      },
+      {
+        id: 4,
+        title: "Minimum Viable Product (MVP)",
+        description:
+          "We increase revenue and ensure sustainable long-term growth",
+        component: <Mvp />,
+      },
+      {
+        id: 5,
+        title: "Search Engine Optimization (SEO)",
+        description:
+          "We increase revenue and ensure sustainable long-term growth",
+        component: <Seo />,
+      },
+      {
+        id: 6,
+        title: "Social Media Marketing",
+        description:
+          "We increase revenue and ensure sustainable long-term growth",
+        component: <Smedia />,
+      },
+    ],
+
     faqs: [
       {
         question: "What features does GenClip offer for video editing?",
