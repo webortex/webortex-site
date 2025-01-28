@@ -24,7 +24,7 @@ const Services = () => {
                   {services.map((service) => (
                     <div
                       key={service.id}
-                      className="p-8 flex items-center flex-col text-white w-auto max-w-[300px] h-[390px] border-2 rounded-3xl border-[#939393]/60"
+                      className="p-8 flex items-center flex-col bg-[#111111]/70 text-white w-auto max-w-[320px] h-[410px] border-2 rounded-3xl border-[#939393]/60"
                     >
                       <p className="text-2xl font-semibold">{service.title}</p>
                       <p className="text-xs text-smallcolor font-medium mt-2 mb-5">
