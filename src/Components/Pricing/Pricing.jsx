@@ -4,7 +4,7 @@ const Pricing = () => {
   return (
     <Container maxWidth="md">
       <section id="pricing" className="pt-24">
-        <h1 className="text-center text-3xl xs:text-4xl md:text-5xl xl:text-6xl text-white tracking-tight font-bold mt-5">
+        <h1 className="text-center text-3xl xs:text-4xl md:text-5xl xl:text-6xl text-headColor tracking-tight font-bold mt-5">
           Elevate Your Brand
         </h1>
         <p className="text-center text-sm md:text-base xl:text-lg text-gray-700 mt-2">

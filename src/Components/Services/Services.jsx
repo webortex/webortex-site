@@ -10,7 +10,7 @@ const Services = () => {
         return (
           <Container maxWidth="lg" className="h-full w-full">
             <section id="services">
-              <h1 className="text-6xl text-headColor text-left font-bold tracking-tighter">
+              <h1 className="text-6xl text-center text-headColor font-bold tracking-tighter">
                 Services
               </h1>
 

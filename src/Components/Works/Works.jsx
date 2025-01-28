@@ -3,8 +3,10 @@ import { Container } from "@mui/material";
 const Works = () => {
   return (
     <Container maxWidth="lg">
-      <section id="works">
-        <h1 className="text-3xl text-white font-bold">Works!!</h1>
+      <section id="works" className="my-10 py-10">
+        <h1 className="text-6xl text-center text-headColor font-bold tracking-tighter">
+          Works
+        </h1>
       </section>
     </Container>
   );
