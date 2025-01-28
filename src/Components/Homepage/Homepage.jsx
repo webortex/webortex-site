@@ -10,17 +10,14 @@ import VideoSection from "../Footer/VideoSection";
 const Homepage = () => {
   return (
     <>
-      <div className="flex flex-col gap-1">
-        <Cover />
-        <Services />
-        <Works />
-        <Pricing />
-        <FaQ />
-        <Testimonials />
-        <Founders />
-
-        <VideoSection />
-      </div>
+      <Cover />
+      <Services />
+      <Works />
+      <Pricing />
+      <FaQ />
+      <Testimonials />
+      <Founders />
+      <VideoSection />
     </>
   );
 };

@@ -5,22 +5,51 @@ import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
 import Recruit from "./Components/Recruit/Recruit";
 import { Provider } from "./Components/ContextAPI/ContextAPI";
+import NotFound from "./Components/NotFound/NotFound";
+
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+    </>
+  );
+};
 
 function App() {
   return (
-    <>
-      <Provider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route exact path="/" element={<Homepage />} />
-            <Route exact path="/lets-talk" element={<Contact />} />
-            <Route exact path="/recruiting" element={<Recruit />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </Provider>
-    </>
+    <Provider>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <Homepage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/lets-talk"
+            element={
+              <Layout>
+                <Contact />
+              </Layout>
+            }
+          />
+          <Route
+            path="/recruiting"
+            element={
+              <Layout>
+                <Recruit />
+              </Layout>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 
