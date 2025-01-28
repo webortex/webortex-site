@@ -22,7 +22,13 @@ const Services = () => {
 
         <div className="flex justify-center items-center">
           <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-12">
-            <Webdev />
+            <div className="p-8 flex items-center flex-col text-white w-auto max-w-[300px] h-[390px] border-2 rounded-3xl border-[#939393]/60  ">
+              <p className="text-2xl font-semibold">Web Development</p>
+              <p className="text-xs text-smallcolor font-medium mt-2 mb-5">
+                We increase revenue and ensure sustainable long-term growth{" "}
+              </p>
+              <Webdev />
+            </div>
             <Appdev />
             <UiUx />
             <Mvp />
