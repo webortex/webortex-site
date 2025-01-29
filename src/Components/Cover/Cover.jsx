@@ -103,29 +103,41 @@ const Cover = () => {
         </div>
 
         <div className="bg-brandsBgColor w-full rounded-[22px] h-auto mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-14 mb-4 sm:mb-6 md:mb-8 xl:mb-12 mx-auto">
-          <div className="flex justify-center items-center gap-1 sm:gap-6 lg:gap-10 xl:gap-12 mx-10 xs:mx-12 sm:mx-14 lg:mx-auto">
-            <Link to="https://teamgaruda.com/">
+          <div className="flex justify-center items-center text-center gap-1 sm:gap-6 lg:gap-10 xl:gap-12 mx-10 xs:mx-12 sm:mx-14 lg:mx-20">
+            <Link
+              to="https://teamgaruda.com/"
+              className="flex justify-center items-center"
+            >
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
                 className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
-            <Link to="https://www.64framez.com/">
+            <Link
+              to="https://www.64framez.com/"
+              className="flex justify-center items-center"
+            >
               <img
                 src={FramezIcon}
                 alt="64Framez"
                 className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
-            <Link to="https://teamgaruda.com/">
+            <Link
+              to="https://teamgaruda.com/"
+              className="flex justify-center items-center"
+            >
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
                 className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
-            <Link to="https://teamgaruda.com/">
+            <Link
+              to="https://teamgaruda.com/"
+              className="flex justify-center items-center"
+            >
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
