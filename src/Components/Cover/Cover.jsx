@@ -11,13 +11,26 @@ import FramezIcon from "../../assets/64FramezLogo.svg";
 const Cover = () => {
   return (
     <div className="flex justify-center items-center py-6 xs:py-10 md:py-10 lg:py-5 xl:py-10 2xl:py-20 w-full h-full mt-[-100px] grid-pattern xs:grid-pattern-xs sm:grid-pattern-sm md:grid-pattern-md xl:grid-pattern-xl">
-      <Container maxWidth="lg" className="py-4 sm:py-6 lg:py-10 mt-[100px]">
-        <div className="pl-7 xs:pl-10 sm:pl-12 lg:pl-20 xl:pl-24">
+      <Container
+        maxWidth="lg"
+        className="pt-[200px] pb-[100px] xs:pt-[130px] sm:pt-[120px] md:pt-[130px] lg:pt-[140px] 2xl:pt-[100px] 3xl:pt-[200px]"
+      >
+        <div className="pl-7 xs:pl-10 sm:pl-12 lg:pl-20 xl:pl-24 md:h-svh 2xl:h-full">
           <div className="flex justify-start items-center">
             <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-35px]  sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-[85%] xl:scale-[90%] 2xl:scale-100">
-              <img src={starImg} alt="starIcon" className="" />
+              <img
+                src={starImg}
+                alt="starIcon"
+                className=""
+              />
             </span>
-            <h1 className="text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[88px] 2xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] 2xl:leading-[118px] font-outlet font-bold ml-[-23px] xs:ml-[-18px] sm:ml-[-10px] md:ml-[0]">
+            <h1
+              className="text-[35px] xs:text-[45px] sm:text-[65px] md:text-[75px] 
+              lg:text-[98px] 2xl:text-[110px] leading-[45px] xs:leading-[55px] 
+              sm:leading-[75px] md:leading-[85px] lg:leading-[108px] 
+              2xl:leading-[118px] font-outlet font-bold ml-[-23px]
+            xs:ml-[-18px] sm:ml-[-10px] md:ml-[0]"
+            >
               <div className="text-coverMainTextColor">
                 <span>We</span>
                 <MorphingText
@@ -46,18 +59,42 @@ const Cover = () => {
               </div>
             </h1>
 
-            <span className="absolute overflow-hidden bg-logoGreenColor size-[100px] xs:size-[150px] sm:size-[200px] lg:size-[250px] rotate-6 blur-[80px] xs:blur-[100px] sm:blur-[150px] lg:blur-[200px] 2xl:blur-[250px] opacity-[100%] rounded-full left-[180px] xs:left-[240px] sm:left-[400px] lg:left-[700px] 2xl:left-[1000px] 3xl:left-[1200px] sm:top-[120px] lg:top-[130px] xl:top-[190px] 2xl:top-[230px] z-[-9]"></span>
-            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[250px] xs:top-[300px] sm:top-[370px] md:top-[420px] lg:top-[480px] xl:top-[500px] 2xl:top-[600px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px] lg:left-[270px] xl:left-[320px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px] h-[16px] rotate-3">
-              <img src={starImg} alt="starIcon" className="" />
+            <span className="absolute overflow-hidden bg-logoGreenColor size-[100px] xs:size-[150px] sm:size-[200px] lg:size-[250px] rotate-6 blur-[80px] xs:blur-[100px] sm:blur-[150px] lg:blur-[200px] 2xl:blur-[250px] opacity-[100%] rounded-full left-[180px] xs:left-[240px] sm:left-[400px] lg:left-[700px] 2xl:left-[1000px] 3xl:left-[1200px] top-[200px] xs:top-[140px] sm:top-[120px] lg:top-[130px] xl:top-[190px] 2xl:top-[230px] z-[-9]"></span>
+            <span
+              className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 
+            lg:scale-100 top-[380px] xs:top-[330px] sm:top-[400px] md:top-[450px] lg:top-[560px]
+            2xl:top-[630px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px]
+            lg:left-[270px] xl:left-[320px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px]
+            h-[16px] rotate-3"
+            >
+              <img
+                src={starImg}
+                alt="starIcon"
+                className=""
+              />
             </span>
-            <span className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 lg:scale-100 top-[220px] xs:top-[260px] sm:top-[330px] md:top-[370px] lg:top-[420px] xl:top-[430px] 2xl:top-[540px] left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px] xl:left-[750px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]">
-              <img src={starImg} alt="starIcon" className="" />
+            <span
+              className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] 
+            md:scale-90 lg:scale-100 top-[320px] xs:top-[290px]
+            sm:top-[360px] md:top-[400px] lg:top-[475px] 2xl:top-[570px]
+            left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px]
+            xl:left-[750px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]"
+            >
+              <img
+                src={starImg}
+                alt="starIcon"
+                className=""
+              />
             </span>
           </div>
           <div></div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 xs:gap-4 sm:gap-6 lg:gap-8 mt-[40px] xs:mt-[50px] sm:mt-[60px] md:mt-[80px] lg:mt-[100px] xl:mt-[120px] w-full">
+        <div
+          className="flex items-center justify-center gap-2 xs:gap-4 sm:gap-6 
+        lg:gap-8 mt-[100px] xs:mt-[100px] sm:mt-[60px]
+        md:mt-[-125px] 2xl:mt-[150px] 3xl:mt-[220px] w-full"
+        >
           <div className="h-[1px] sm:h-[2px] w-[50px] bg-logoGreenColor"></div>
           <h2 className="text-textColor text-[10px] xs:text-[12px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[16px] xs:leading-[18px] md:leading-[22px] lg:leading-[24px] font-semibold text-center uppercase tracking-wider sm:tracking-widest">
             Trusted by Amazing Brands
@@ -71,28 +108,28 @@ const Cover = () => {
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://www.64framez.com/">
               <img
                 src={FramezIcon}
                 alt="64Framez"
-                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://teamgaruda.com/">
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
             <Link to="https://teamgaruda.com/">
               <img
                 src={teamGarudaIcon}
                 alt="Team Garuda"
-                className="w-[80%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
+                className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
               />
             </Link>
           </div>

@@ -27,7 +27,12 @@ export function WordRotate({
   const finalClassName = className ? className : "";
 
   return (
-    <div className="relative inline-block text-left text-[30px] xs:text-[40px] sm:text-[60px] md:text-[75px] lg:text-[88px] 2xl:text-[110px] leading-[36px] xs:leading-[46px] sm:leading-[66px] md:leading-[78px] lg:leading-[98px] 2xl:leading-[118px] font-outlet font-bold">
+    <div
+      className="relative inline-block text-left text-[35px] xs:text-[45px] sm:text-[65px] md:text-[75px] 
+              lg:text-[98px] 2xl:text-[110px] leading-[45px] xs:leading-[55px] 
+              sm:leading-[75px] md:leading-[85px] lg:leading-[108px] 
+              2xl:leading-[118px] font-outlet font-bold"
+    >
       <AnimatePresence mode="wait">
         <motion.h1
           key={words[index]}
