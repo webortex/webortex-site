@@ -79,6 +79,7 @@ export class Provider extends Component {
       {
         id: 1,
         title: "Web Development",
+        slug: "web-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Webdev />,
@@ -86,6 +87,7 @@ export class Provider extends Component {
       {
         id: 2,
         title: "App Development",
+        slug: "app-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Appdev />,
@@ -93,27 +95,31 @@ export class Provider extends Component {
       {
         id: 3,
         title: "UI/UX Design",
+        slug: "uiux-design",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <UiUx />,
       },
       {
         id: 4,
-        title: "Minimum Viable Product (MVP)",
+        title: "MVP Product",
+        slug: "minimum-viable-product",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Mvp />,
       },
       {
         id: 5,
-        title: "Search Engine Optimization (SEO)",
+        title: "SEO Services",
+        slug: "search-engine-optimization",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Seo />,
       },
       {
         id: 6,
-        title: "Social Media Marketing",
+        title: "Marketing",
+        slug: "social-media-marketing",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Smedia />,
