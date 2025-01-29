@@ -43,7 +43,7 @@ const Cover = () => {
                 <span className="text-logoGreenColor ml-[2%]">
                   <WordRotate
                     words={["Websites", "DevApps"]}
-                    duration={2000}
+                    duration={9000}
                     className="custom-class"
                     framerProps={{
                       initial: { opacity: 0 },
