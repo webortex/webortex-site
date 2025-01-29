@@ -14,6 +14,9 @@ import Mvp from "../Services/compo/Mvp";
 import Seo from "../Services/compo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
+import teamGarudaIcon from "../../assets/teamgaruda.png";
+import FramezIcon from "../../assets/64FramezLogo.svg";
+
 const Context = React.createContext();
 
 export class Provider extends Component {
@@ -42,6 +45,33 @@ export class Provider extends Component {
         text: "Recruiting",
         path: "/recruiting",
         type: "page",
+      },
+    ],
+
+    brands: [
+      {
+        id: 1,
+        title: "Team Garuda",
+        link: "https://teamgaruda.com/",
+        image: teamGarudaIcon,
+      },
+      {
+        id: 2,
+        title: "64Framez",
+        link: "https://www.64framez.com/",
+        image: FramezIcon,
+      },
+      {
+        id: 3,
+        title: "Team Garuda",
+        link: "https://teamgaruda.com/",
+        image: teamGarudaIcon,
+      },
+      {
+        id: 4,
+        title: "Team Garuda",
+        link: "https://teamgaruda.com/",
+        image: teamGarudaIcon,
       },
     ],
 
@@ -107,7 +137,8 @@ export class Provider extends Component {
           "Yes, GenClip supports a wide range of video formats, ensuring compatibility with most cameras and devices.",
       },
       {
-        question: "What are the subscription plans and pricing for GenClip?",
+        question:
+          "What are the subscription plans and pricing for GenClip?",
         answer:
           "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
       },
