@@ -15,8 +15,8 @@ const ServicePage = () => {
           <Container maxWidth="lg">
             {service ? (
               <div className="flex justify-center items-center h-screen">
-                <h1 className="text-headColor text-5xl">
-                  Wecolme to {service.title}
+                <h1 className="text-headColor text-5xl leading-relaxed">
+                  {service.title}
                 </h1>
               </div>
             ) : (
