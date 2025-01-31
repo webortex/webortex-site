@@ -49,11 +49,7 @@ function App() {
           />
           <Route
             path="/services/:slug"
-            element={
-              <Layout>
-                <ServicePage />
-              </Layout>
-            }
+            element={<ServicePage />}
           />
           <Route
             path="*"
