@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 const Pricing = () => {
   return (
     <Container maxWidth="md">
-      <section id="pricing" className="pt-24">
+      <section id="pricing">
         <h1 className="text-center text-3xl xs:text-4xl md:text-5xl xl:text-6xl text-headColor tracking-tight font-bold mt-5">
           Elevate Your Brand
         </h1>
@@ -11,21 +11,21 @@ const Pricing = () => {
           We offer tailored solutions to help you establish a strong online
           presence, whether it’s stunning website or powerful app{" "}
         </p>
-        <div className="bg-brandsBgColor text-white p-8 rounded-2xl shadow-lg border border-pricingBorderColor/50 max-w-4xl mx-auto mt-6 mb-6">
+        <div className="bg-brandsBgColor text-white p-8 rounded-2xl shadow-lg border border-pricingBorderColor/50 max-w-3xl mx-auto mt-6 mb-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-between  text-center sm:text-left">
             <div>
-              <h2 className="text-base md:text-lg font-light mb-4">
+              <h2 className="text-base md:text-lg font-light">
                 Contact us today for
               </h2>
-              <h1 className="text-3xl xs:text-4xl md:text-5xl xl:text-6xl font-normal mb-6 tracking-wider">
+              <h1 className="text-6xl xs:text-7xl md:text-7xl xl:text-8xl font-normal mb-6 tracking-wider">
                 FREE
               </h1>
             </div>
             <div className="flex flex-col gap-4 mb-8">
-              <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg">
+              <button className="bg-gray-700 hover:bg-gray-600 text-white py-4 px-10 rounded-lg">
                 Book a Call
               </button>
-              <button className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded-lg">
+              <button className="bg-gray-500 hover:bg-gray-400 text-white py-4 px-10 rounded-lg">
                 Get a Quote
               </button>
             </div>
@@ -47,26 +47,29 @@ const Pricing = () => {
             ))}
           </ul>
           <div className="flex flex-col sm:flex-row justify-between">
-            <div className="flex items-center gap-6">
-              <div className="w-24 h-24 rounded-xl bg-gradient-to-br from-gray-700 via-gray-600 to-gray-800 flex justify-center items-center">
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div className="w-36 h-36 rounded-xl bg-gradient-to-br from-gray-700 via-gray-600 to-gray-800 flex justify-center items-center">
                 <span className="text-2xl text-gray-400">★</span>
               </div>
-              <div>
+              <div className="ml-5">
                 <p className="text-xs md:text-sm font-light uppercase">From</p>
-                <h3 className="text-3xl md:text-4xl xl:text-5xl tracking-widest">
+                <div className="flex items-baseline">
+                <h3 className="text-5xl md:text-6xl xl:text-7xl tracking-widest">
                   IDEA
                 </h3>
-                <p className="text-xs md:text-sm">to Production</p>
+                <p className="text-xs md:text-sm text-gry">to Production</p>
+                </div>
+                
                 <p className="text-xs md:text-sm text-gray-400">
                   Have a Vision? We bring it to your Life!
                 </p>
               </div>
             </div>
             <div className="flex flex-col gap-4 mt-8">
-              <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg sm:w-xl">
+              <button className="bg-gray-700 hover:bg-gray-600 text-white py-4 px-10 rounded-lg sm:w-xl">
                 Call us
               </button>
-              <button className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded-lg">
+              <button className="bg-gray-500 hover:bg-gray-400 text-white py-4 px-10 rounded-lg">
                 Message us
               </button>
             </div>
