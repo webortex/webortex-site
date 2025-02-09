@@ -17,6 +17,9 @@ import Smedia from "../Services/compo/Smedia";
 import teamGarudaIcon from "../../assets/teamgaruda.png";
 import FramezIcon from "../../assets/64FramezLogo.svg";
 
+import serviceImg from "../../assets/ServicePage/frame.png";
+import serviceBannerImg from "../../assets/ServicePage/we.png";
+
 const Context = React.createContext();
 
 export class Provider extends Component {
@@ -79,44 +82,84 @@ export class Provider extends Component {
       {
         id: 1,
         title: "Web Development",
+        slug: "web-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Webdev />,
+        frame: serviceImg,
+        frameText:
+          "We increase revenue and ensure sustainable long-term growth for your business through powerful apps and websites.",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          
+        ],
       },
       {
         id: 2,
         title: "App Development",
+        slug: "app-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Appdev />,
+        frame: serviceImg,
+        frameText: "",
       },
       {
         id: 3,
         title: "UI/UX Design",
+        slug: "uiux-design",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <UiUx />,
+        frame: serviceImg,
+        frameText: "",
       },
       {
         id: 4,
-        title: "Minimum Viable Product (MVP)",
+        title: "MVP Product",
+        slug: "minimum-viable-product",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Mvp />,
+        frame: serviceImg,
+        frameText: "",
       },
       {
         id: 5,
-        title: "Search Engine Optimization (SEO)",
+        title: "SEO Services",
+        slug: "search-engine-optimization",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Seo />,
+        frame: serviceImg,
+        frameText: "",
       },
       {
         id: 6,
-        title: "Social Media Marketing",
+        title: "Marketing",
+        slug: "social-media-marketing",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Smedia />,
+        frame: serviceImg,
+        frameText: "",
       },
     ],
 
