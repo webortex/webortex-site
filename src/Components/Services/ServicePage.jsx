@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Consumer } from "../ContextAPI/ContextAPI";
 
 const ServicePage = () => {
@@ -15,55 +15,72 @@ const ServicePage = () => {
           <Container maxWidth="lg">
             {service ? (
               <div>
-                <div className="flex justify-center my-10">
-                  <img
-                    src={service.frame}
-                    alt={service.title}
-                    className="size-[90%]"
-                  />
-                  <div className="absolute h-full w-full">
-                    <div className="pt-[21%] flex flex-col justify-center items-center">
-                      <h1 className="text-headColor text-6xl font-bold leading-relaxed">
-                        {service.title}
+                <div className="flex justify-center my-10 relative">
+                  {service.frameImg ? (
+                    <img
+                      src={service.frameImg}
+                      alt={service.title}
+                      className="w-full md:max-w-[80%] h-auto rounded-2xl opacity-40"
+                    />
+                  ) : (
+                    <video
+                      src={service.frameVideo}
+                      className="w-full md:max-w-[80%] h-auto rounded-2xl opacity-40"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  )}
+
+                  <div className="absolute inset-0 w-full h-full">
+                    <div className="flex flex-col justify-center items-center h-full">
+                      <h1 className="text-textColor text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-relaxed">
+                        {service.frameTitle}
                       </h1>
-                      <p className="text-center text-sm text-secondaryTextColor px-[30%]">
+                      <p className="text-center text-xs md:text-sm text-secondaryTextColor px-[4%] xs:px-[8%] sm:px-[16%] lg:px-[22%] 2xl:px-[28%]">
                         {service.frameText}
                       </p>
                     </div>
                   </div>
                 </div>
-                {/* {resource.buttons &&
-                          resource.buttons.map((button, index) => ( */}
+
                 {service.banners &&
                   service.banners.map((banner, index) => (
                     <div
                       key={index}
-                      className={`relative flex flex-col md:flex-row justify-center items-center w-full my-20 ${
-                        index % 2 === 0
-                          ? "md:flex-row"
-                          : "md:flex-row-reverse"
+                      className={`relative flex flex-col-reverse md:flex-row justify-center items-center w-full my-8 md:my-20 ${
+                        index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                       }`}
                     >
-                      <div className="flex flex-col justify-center items-center px-20">
-                        <h2 className="text-5xl text-white">
+                      <div className="flex flex-col justify-center items-center align-middle text-center md:text-left px-3 xs:px-14 sm:px-24 md:px-10 2xl:px-20">
+                        <h2 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl text-white">
                           {banner.title}
                         </h2>
-                        <p className="text-sm text-secondaryTextColor mt-8">
+                        <p className="text-xs md:text-sm text-secondaryTextColor mt-2 md:mt-8">
                           {banner.description}
                         </p>
                       </div>
-                      <div className="px-20">
-                        <img
-                          src={banner.image}
-                          alt=""
-                        />
+                      <div className="px-3 xs:px-10 sm:px-20 md:px-10 2xl:px-20 mb-5 md:mb-0">
+                        <img src={banner.image} alt="" />
                       </div>
                     </div>
                   ))}
               </div>
             ) : (
-              <div className="flex justify-center items-center h-screen">
-                <h1 className="text-white text-5xl">Service Not Found</h1>
+              <div className="flex flex-col justify-center items-center text-center mx-auto h-screen h-dvh">
+                <h1 className="text-white tracking-wider md:tracking-widest font-medium text-4xl md:text-5xl">
+                  Service Not Found
+                </h1>
+                <p className="mt-4 text-secondaryTextColor text-sm md:text-base px-7 xs:px-0">
+                  The requested service does not exist.{" "}
+                  <Link
+                    to="/"
+                    className="text-navlinkHoverColor/80 hover:text-navlinkHoverColor transition-all duration-300 ease-in-out"
+                  >
+                    Back to Home
+                  </Link>
+                </p>
               </div>
             )}
           </Container>
