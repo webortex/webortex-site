@@ -110,7 +110,10 @@ const Navbar = () => {
         return (
           <List>
             {navItems.map((item) => (
-              <ListItem key={item.id} disablePadding>
+              <ListItem
+                key={item.id}
+                disablePadding
+              >
                 <ListItemButton onClick={() => handleNavigation(item)}>
                   <ListItemText primary={item.text} />
                 </ListItemButton>
@@ -132,10 +135,18 @@ const Navbar = () => {
             className="md:flex md:justify-center relative z-30 md:z-999 mt-9"
             sx={{ flexGrow: 1 }}
           >
-            <AppBar position="static" color="transparent" elevation={0}>
+            <AppBar
+              position="static"
+              color="transparent"
+              elevation={0}
+            >
               <Toolbar className="flex justify-center items-center scroll-smooth transition-all duration-300 ease-in-out">
                 <Box
-                  sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}
+                  sx={{
+                    flexGrow: 1,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   <Link
                     to="/"
