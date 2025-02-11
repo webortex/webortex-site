@@ -9,36 +9,35 @@ const Services = () => {
       {(value) => {
         const { services } = value;
         return (
-          <Container
-            maxWidth="lg"
-            className="h-full w-full"
-          >
+          <Container maxWidth="lg" className="h-full w-full">
             <section id="services">
-              <h1 className="text-6xl text-center text-headColor font-bold tracking-tighter">
-                Services
-              </h1>
+              <div className="mb-8">
+                <h1 className="text-6xl text-center text-headColor font-bold tracking-tighter">
+                  Services
+                </h1>
 
-              <p className=" text-smallcolor mt-5 text-sm w-1/2 text-center m-auto">
-                Risus commodo id odio turpis pharetra elementum. Pulihora
-                porta porta feugiat scelerisque in elit. Morbi rhoncus,
-                tellus,
-              </p>
+                <p className="text-secondaryTextColor text-smallcolor mt-5 text-xs sm:text-sm xl:text-base  xs:w-2/3 md:w-3/5 text-center m-auto">
+                  Risus commodo id odio turpis pharetra elementum. Pulihora
+                  porta porta feugiat scelerisque in elit. Morbi rhoncus,
+                  tellus,
+                </p>
+              </div>
 
               <div className="flex justify-center items-center">
-                <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-12">
+                <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-12 gap-x-6 md:gap-x-10">
                   {services.map((service) => (
                     <Link
                       to={`/services/${service.slug}`}
                       key={service.id}
-                      className="p-8 flex items-center flex-col bg-[#111111]/70 text-white w-auto max-w-[320px] h-[410px] border-2 rounded-3xl border-[#939393]/60"
+                      className="p-8 flex items-center flex-col bg-[#111111]/70 text-white w-auto max-w-[377px] h-[420px] border-2 rounded-3xl border-[#939393]/60"
                     >
-                      <p className="text-2xl font-semibold">
+                      <p className="text-2xl xl:text-3xl text-textColor tracking-wide font-semibold text-center">
                         {service.title}
                       </p>
-                      <p className="text-xs text-smallcolor font-medium mt-2 mb-5">
+                      <p className="text-xs sm:text-sm xl:text-base text-center text-secondaryTextColor text-smallcolor font-medium mt-2">
                         {service.description}
                       </p>
-                      {service.component}
+                      <div className="">{service.component}</div>
                     </Link>
                   ))}
                 </div>
