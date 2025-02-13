@@ -27,21 +27,18 @@ const Works = () => {
   };
 
   return (
-    <Container maxWidth="lg" className="perspective-1000">
-      <section
-        id="works"
-        className="my-4 md:my-6 lg:my-10 py-4 md:py-6 lg:py-10"
-      >
-        <h1 className="text-3xl md:text-4xl lg:text-6xl text-center text-headColor font-bold tracking-tighter">
+    <Container maxWidth="lg" className="perspective-1000 my-28">
+      <section id="works" className="mb-8">
+        <h1 className="text-6xl text-center text-headColor font-bold tracking-tighter">
           Our Works
         </h1>
-        <p className="text-base sm:text-lg text-gray-400 text-center">
-          We increase revenue and ensure sustainable long-term growth <br />
-          for your business through powerful apps and websites.
+        <p className="text-secondaryTextColor text-smallcolor mt-5 text-xs sm:text-sm xl:text-base  xs:w-2/3 md:w-3/5 text-center m-auto">
+          We increase revenue and ensure sustainable long-term growth for your
+          business through powerful apps and websites.
         </p>
       </section>
 
-      <div className="relative  h-64 md:h-96 flex items-center justify-center overflow-hidden">
+      <div className="relative h-64 md:h-96 flex items-center justify-center overflow-hidden">
         {slides.map((slide, index) => {
           const position = getSlidePosition(index);
 
