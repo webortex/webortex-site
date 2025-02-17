@@ -6,6 +6,7 @@ import Footer from "./Components/Footer/Footer";
 import Recruit from "./Components/Recruit/Recruit";
 import { Provider } from "./Components/ContextAPI/ContextAPI";
 import NotFound from "./Components/NotFound/NotFound";
+import ServicePage from "./Components/Services/ServicePage";
 
 const Layout = ({ children }) => {
   return (
@@ -46,7 +47,14 @@ function App() {
               </Layout>
             }
           />
-          <Route path="*" element={<NotFound />} />
+          <Route
+            path="/services/:slug"
+            element={<ServicePage />}
+          />
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
         </Routes>
       </Router>
     </Provider>

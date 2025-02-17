@@ -17,6 +17,12 @@ import Smedia from "../Services/compo/Smedia";
 import teamGarudaIcon from "../../assets/teamgaruda.png";
 import FramezIcon from "../../assets/64FramezLogo.svg";
 
+import webImg from "../../assets/ServicePage/web.gif";
+import uiuxImg from "../../assets/ServicePage/ui.mp4";
+import mvpImg from "../../assets/ServicePage/mvp.mp4";
+import socialImg from "../../assets/ServicePage/social.mp4";
+import serviceBannerImg from "../../assets/ServicePage/we.png";
+
 const Context = React.createContext();
 
 export class Provider extends Component {
@@ -79,44 +85,193 @@ export class Provider extends Component {
       {
         id: 1,
         title: "Web Development",
+        slug: "web-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Webdev />,
+        frameImg: webImg,
+        frameVideo: "",
+        frameTitle: "Web Development",
+        frameText:
+          "We increase revenue and ensure sustainable long-term growth for your business through powerful apps and websites.",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 2,
         title: "App Development",
+        slug: "app-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Appdev />,
+        frameVideo: "",
+        frameTitle: "App Development",
+        frameText: "",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 3,
         title: "UI/UX Design",
+        slug: "uiux-design",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <UiUx />,
+        frameVideo: uiuxImg,
+        frameTitle: "UI/UX",
+        frameText:
+          "Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta feugiat scelerisque in elit. Morbi rhoncus, tellus, ",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 4,
-        title: "Minimum Viable Product (MVP)",
+        title: "MVP Product",
+        slug: "minimum-viable-product",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Mvp />,
+        frameVideo: mvpImg,
+        frameTitle: "MVP",
+        frameText:
+          "Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta feugiat scelerisque in elit. Morbi rhoncus, tellus, ",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 5,
-        title: "Search Engine Optimization (SEO)",
+        title: "SEO Services",
+        slug: "search-engine-optimization",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Seo />,
+        frameVideo: "",
+        frameTitle: "Search Engine Optimization",
+        frameText: "",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 6,
-        title: "Social Media Marketing",
+        title: "Marketing",
+        slug: "social-media-marketing",
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Smedia />,
+        frameVideo: socialImg,
+        frameTitle: "Social Media Marketing",
+        frameText:
+          "We increase revenue and ensure sustainable long-term growth for your business through powerful  apps and  websites.",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
     ],
 
@@ -137,8 +292,7 @@ export class Provider extends Component {
           "Yes, GenClip supports a wide range of video formats, ensuring compatibility with most cameras and devices.",
       },
       {
-        question:
-          "What are the subscription plans and pricing for GenClip?",
+        question: "What are the subscription plans and pricing for GenClip?",
         answer:
           "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
       },

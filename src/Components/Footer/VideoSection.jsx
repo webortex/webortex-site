@@ -1,6 +1,7 @@
+import { Container } from "@mui/material";
+import { Link } from "react-router-dom";
 import bgVideo from "../../assets/bgcta.mp4";
 import arrow from "../../assets/arrow.png";
-import { Container } from "@mui/material";
 
 const VideoSection = () => {
   return (
@@ -26,9 +27,9 @@ const VideoSection = () => {
                 Jump on a membership and start requesting designs right away!
               </p>
             </div>
-            <button
-              className="bg-white text-backgroundColor text-sm sm:text-md md:text-lg lg:text-xl font-outlet font-medium text-[14px] md:text-[16px] leading-[26px] py-2 sm:py-3 md:py-4 px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 rounded-md hover:bg-white/80 transition-colors duration-300 flex items-center justify-center mx-auto capitalize"
-              onClick={() => (window.location.href = "/contact")}
+            <Link
+              to="/lets-talk"
+              className="bg-white text-backgroundColor text-sm sm:text-md md:text-lg lg:text-xl font-outlet font-medium text-[14px] md:text-[16px] leading-[26px] py-1 sm:py-2 md:py-3 px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 rounded-md hover:bg-white/80 transition-colors duration-300 flex items-center justify-center mx-auto capitalize block max-w-[35%] xs:max-w-28 sm:max-w-36 lg:max-w-44"
             >
               join
               <img
@@ -36,7 +37,7 @@ const VideoSection = () => {
                 alt="arrow"
                 className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 ml-2 sm:ml-3 md:ml-4"
               />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
