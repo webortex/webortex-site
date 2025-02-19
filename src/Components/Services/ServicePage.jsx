@@ -46,7 +46,7 @@ const ServicePage = () => {
                 </div>
                 <Container maxWidth="lg">
                   {service.mockupImage && (
-                    <div className="py-10 sm:py-20 lg:py-32 2xl:py-48">
+                    <div className="py-10 sm:py-20 lg:py-32 2xl:py-40">
                       <img
                         src={service.mockupImage}
                         alt="social media marketing"
