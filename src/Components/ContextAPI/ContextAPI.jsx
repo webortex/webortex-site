@@ -22,6 +22,7 @@ import uiuxImg from "../../assets/ServicePage/ui.mp4";
 import mvpImg from "../../assets/ServicePage/mvp.mp4";
 import socialImg from "../../assets/ServicePage/social.mp4";
 import serviceBannerImg from "../../assets/ServicePage/we.png";
+import mockupImg from "../../assets/ServicePage/mockup.png";
 
 const Context = React.createContext();
 
@@ -252,6 +253,7 @@ export class Provider extends Component {
         frameTitle: "Social Media Marketing",
         frameText:
           "We increase revenue and ensure sustainable long-term growth for your business through powerful  apps and  websites.",
+        mockupImage: mockupImg,
         banners: [
           {
             title: "Navigating the digital landscape for success",
