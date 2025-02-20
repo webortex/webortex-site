@@ -26,9 +26,11 @@ const Pricing = () => {
               <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-4 px-10 rounded-lg transition-all duration-300 ease-in-out">
                 Book a Call
               </button>
-              <button className="bg-[#494949] hover:bg-[#494949]/40 text-[#f2f2f2] border border-[#424242] py-3 px-10 rounded-lg transition-all duration-300 ease-in-out">
+              <a href="get-quote">
+              <button className="bg-gray-500 hover:bg-gray-400 text-white py-4 px-10 rounded-lg">
                 Get a Quote
               </button>
+              </a>
             </div>
           </div>
           <ul className="grid grid-cols-2 sm:grid-cols-4  gap-4 text-sm font-medium mb-6">
