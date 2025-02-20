@@ -9,7 +9,7 @@ import { Provider } from "./Components/ContextAPI/ContextAPI";
 import NotFound from "./Components/NotFound/NotFound";
 import ServicePage from "./Components/Services/ServicePage";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-import Loader from "./Components/Services/compo/loader";
+import Loader from "./Components/Loader/Loader";
 import Quotation from "./Components/Pricing/Quotation";
 
 const Layout = ({ children }) => {
@@ -62,44 +62,10 @@ function App() {
               }
             />
             <Route path="/services/:slug" element={<ServicePage />} />
+            <Route path="/get-quote" element={<Quotation />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Layout>
-                <Homepage />
-              </Layout>
-            }
-          />
-          <Route
-            path="/lets-talk"
-            element={
-              <Layout>
-                <Contact />
-              </Layout>
-            }
-          />
-          <Route
-            path="/recruiting"
-            element={
-              <Layout>
-                <Recruit />
-              </Layout>
-            }
-          />
-          <Route
-            path="/get-quote"
-            element={
-              <Layout>
-                <Quotation />
-              </Layout>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
       </Router>
     </Provider>
   );

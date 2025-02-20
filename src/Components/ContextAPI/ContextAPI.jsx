@@ -11,7 +11,7 @@ import Webdev from "../Services/compo/Webdev";
 import Appdev from "../Services/compo/Appdev";
 import UiUx from "../Services/compo/UiUx";
 import Mvp from "../Services/compo/Mvp";
-import Seo from "../Services/compo/Seo";
+import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
 import teamGarudaIcon from "../../assets/teamgaruda.png";
