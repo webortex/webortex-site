@@ -43,66 +43,66 @@ const Quotation = () => {
       <div className="flex items-center justify-center bg-black text-white mb-4 mt-4">
         <form className="rounded-2xl shadow-lg w-full max-w-md space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1 text-[#696F79]">
+            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Name *
             </label>
             <input
               type="text"
               required
               placeholder="Enter your Name"
-              className="w-full px-4 py-4 rounded-lg bg-[#333] text-white placeholder-[#8692A6] focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-[#696F79]">
+            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Email address *
             </label>
             <input
               type="email"
               required
               placeholder="Enter email address"
-              className="w-full px-4 py-4 rounded-lg bg-[#333] text-white placeholder-[#8692A6] focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] border-[#8692A6]/40"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-[#696F79]">
+            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Mobile number *
             </label>
             <input
               type="tel"
               required
               placeholder="+91"
-              className="w-full px-4 py-4 rounded-lg bg-[#333] text-white placeholder-[#8692A6] focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-[#696F79]">
+            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Current Address
             </label>
             <input
               type="text"
               placeholder=""
-              className="w-full px-4 py-4 rounded-lg bg-[#333] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] border-[#8692A6]/40"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-[#696F79]">
+            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Company Name *
             </label>
             <input
               type="text"
               required
               placeholder=""
-              className="w-full px-4 py-4 rounded-lg bg-[#333] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] border-[#8692A6]/40"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-[#696F79]">
+            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Is it a startup? *
             </label>
             <select
               required
-              className="w-full px-4 py-4 rounded-lg bg-[#333] text-[#8692A6] focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
             >
               <option value="">Select</option>
               <option value="yes">Yes</option>
@@ -110,12 +110,12 @@ const Quotation = () => {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1 text-[#696F79]">
+            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Looking for *
             </label>
             <select
               required
-              className="w-full px-4 py-4 rounded-lg bg-[#333] text-[#8692A6] focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
             >
               <option value="">Select</option>
               <option value="service">Service</option>

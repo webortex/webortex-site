@@ -1,5 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
+import { Link } from "react-router-dom";
+
 const Pricing = () => {
   return (
     <Container maxWidth="md">
@@ -26,11 +28,11 @@ const Pricing = () => {
               <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-4 px-10 rounded-lg transition-all duration-300 ease-in-out">
                 Book a Call
               </button>
-              <a href="get-quote">
-              <button className="bg-gray-500 hover:bg-gray-400 text-white py-4 px-10 rounded-lg">
-                Get a Quote
-              </button>
-              </a>
+              <Link to="/get-quote">
+                <button className="bg-gray-500 hover:bg-gray-400 text-white py-4 px-10 rounded-lg">
+                  Get a Quote
+                </button>
+              </Link>
             </div>
           </div>
           <ul className="grid grid-cols-2 sm:grid-cols-4  gap-4 text-sm font-medium mb-6">
