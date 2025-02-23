@@ -40,7 +40,7 @@ const DesktopScroll = () => {
           <div className=" w-full  bg-gray-100">
             <div className="sticky top-0 z-50 bg-gray-100 text-center pt-3 pb-8">
               <div className="container mx-auto mt-5">
-                <h1 className="text-6xl xs:text-7xl md:text-8xl xl:text-9xl text-center  font-medium text-gry tracking-tighter">
+                <h1 className="text-6xl xs:text-7xl md:text-8xl xl:text-9xl text-center font-medium text-backgroundColor/50 tracking-tighter">
                   Founders
                 </h1>
               </div>
@@ -72,7 +72,7 @@ const DesktopScroll = () => {
                     {founders.map((founder, index) => (
                       <div
                         key={founder.id}
-                        className={`  absolute   inset-0 transition-all duration-700 ${
+                        className={`  absolute inset-0 transition-all duration-900 ${
                           index === activeIndex
                             ? "  opacity-100 translate-y-0"
                             : " opacity-0 translate-y-full"
@@ -80,8 +80,8 @@ const DesktopScroll = () => {
                       >
                         <div className="flex flex-col justify-center items-center max-w-full ">
                           <div className="inline-flex items-center">
-                            <div className="group duration-500 hover:-skew-x-0  skew-x-6 hover:translate-x-2 order-2">
-                              <div className="group-hover:duration-400 relative rounded-2xl xl:w-32 xl:h-20 md:w-28 md:h-16 xs:w-24 xs:h-14 h-10 w-16 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-2 md:before:right-3 before:top-0 xl:before:w-32 xl:before:h-16 md:before:h-14 md:before:w-28 xs:before:h-12 xs:before:w-24 before:h-8 before:w-16  before:-z-10">
+                            <div className="group duration-900 hover:-skew-x-0  skew-x-6 hover:translate-x-2 order-2">
+                              <div className="group-hover:duration-900 relative rounded-2xl xl:w-32 xl:h-20 md:w-28 md:h-16 xs:w-24 xs:h-14 h-10 w-16 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-2 md:before:right-3 before:top-0 xl:before:w-32 xl:before:h-16 md:before:h-14 md:before:w-28 xs:before:h-12 xs:before:w-24 before:h-8 before:w-16  before:-z-10">
                                 <span className="text-xs sm:text-sm md:text-lg xl:text-2xl font-semibold pr-16">
                                   Co
                                 </span>
@@ -92,9 +92,6 @@ const DesktopScroll = () => {
                             </div>
                             <h2 className="order-1 text-[18px] sm:text-[22px] md:text-[30px] lg:text-[41px] xl:text-[70px] 3xl:text-[85px] text-center pt-40 font-bold text-gray-800 mb-1">
                               {founder.name}
-                              {/* <span className="inline-block px-4 py-2 absolute  top-0 bg-gray-800 text-white rounded-lg text-sm">
-                      Co Founder
-                    </span> */}
                             </h2>
                           </div>
 
