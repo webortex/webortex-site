@@ -3,7 +3,7 @@ import { Consumer } from "../ContextAPI/ContextAPI";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
-const Scroll = () => {
+const DesktopScroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRefs = useRef([]);
 
@@ -142,4 +142,4 @@ const Scroll = () => {
   );
 };
 
-export default Scroll;
+export default DesktopScroll;

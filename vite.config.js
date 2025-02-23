@@ -11,11 +11,9 @@ export default defineConfig({
   },
   server: {
     watch: {
-      ignored: [
-        "**/node_modules/**",
-        "**/dist/**",
-        "**/large-assets-folder/**",
-      ],
+
+      ignored: ["**/node_modules/**", "**/dist/**", "**/public/**"],
+
     },
   },
 });
