@@ -8,7 +8,7 @@ const Founders = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 918);
     };
 
     checkScreenSize();

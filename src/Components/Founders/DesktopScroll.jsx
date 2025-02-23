@@ -53,7 +53,7 @@ const DesktopScroll = () => {
                     {founders.map((founder, index) => (
                       <div
                         key={index}
-                        className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                        className={`absolute inset-0 m-5 lg:m-16 2xl:m-10 transition-all duration-500 ease-in-out ${
                           index === activeIndex
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-full"
@@ -62,13 +62,13 @@ const DesktopScroll = () => {
                         <img
                           src={founder.image}
                           alt={founder.name}
-                          className="h-full object-contain filter grayscale"
+                          className="h-full object-cover rounded-2xl filter grayscale"
                         />
                       </div>
                     ))}
                   </div>
 
-                  <div className="w-full md:w-1/2 xl:w-2/3 md:absolute right-[1%] sm:right-[2.5%] lg:right-[5%] xl:right-[3%] 2xl:right-[6%] items-center order-1 md:order-2">
+                  <div className="w-full md:w-1/2 xl:w-2/3 md:absolute right-0 items-center order-1 md:order-2">
                     {founders.map((founder, index) => (
                       <div
                         key={founder.id}
@@ -80,7 +80,7 @@ const DesktopScroll = () => {
                       >
                         <div className="flex flex-col justify-center items-center max-w-full ">
                           <div className="inline-flex items-center">
-                            <div className="group duration-900 hover:-skew-x-0  skew-x-6 hover:translate-x-2 order-2">
+                            <div className="order-2">
                               <div className="group-hover:duration-900 relative rounded-2xl xl:w-32 xl:h-20 md:w-28 md:h-16 xs:w-24 xs:h-14 h-10 w-16 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-2 md:before:right-3 before:top-0 xl:before:w-32 xl:before:h-16 md:before:h-14 md:before:w-28 xs:before:h-12 xs:before:w-24 before:h-8 before:w-16  before:-z-10">
                                 <span className="text-xs sm:text-sm md:text-lg xl:text-2xl font-semibold pr-16">
                                   Co
@@ -90,7 +90,7 @@ const DesktopScroll = () => {
                                 </p>
                               </div>
                             </div>
-                            <h2 className="order-1 text-[18px] sm:text-[22px] md:text-[30px] lg:text-[41px] xl:text-[70px] 3xl:text-[85px] text-center pt-40 font-bold text-gray-800 mb-1">
+                            <h2 className="order-1 md:text-[35px] lg:text-[40px] xl:text-[53px] 3xl:text-[70px] text-center mt-44 font-bold text-gray-800 mb-1">
                               {founder.name}
                             </h2>
                           </div>

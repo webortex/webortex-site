@@ -58,9 +58,9 @@ const MobileScroll = () => {
                               <p className="text-xs sm:text-sm md:text-base font-semibold text-gray-800 leading-relaxed mb-8 mt-2">
                                 # {founder.title}
                               </p>
-                              <div className="w-[min(65vw,800px)] h-[min(65vw,800px)] mx-auto">
+                              <div className="w-[min(65vw,1000px)] md:w-[min(50vw,1000px)] h-[min(65vw,1000px)] md:h-[min(50vw,1000px)] mx-auto">
                                 <img
-                                  className="relative"
+                                  className="relative h-full rounded-2xl filter grayscale"
                                   src={founder.image}
                                   alt={founder.name}
                                 />

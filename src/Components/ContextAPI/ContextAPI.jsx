@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import gnana from "../../assets/Founders/Gnana.svg";
-import sisi from "../../assets/Founders/Sisindri.svg";
+import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.svg";
 import jaya from "../../assets/Founders/jayadeep.svg";
 import ashok from "../../assets/Founders/Ashok.svg";
@@ -352,7 +352,7 @@ export class Provider extends Component {
         title: "CLO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://linkedin.com",
+        src: "https://github.com/Sandeep010-hub",
       },
     ],
     footerLinks: [
