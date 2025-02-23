@@ -108,7 +108,6 @@ export class Provider extends Component {
               "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
             image: serviceBannerImg,
           },
-          
         ],
       },
       {
@@ -180,8 +179,7 @@ export class Provider extends Component {
           "Yes, GenClip supports a wide range of video formats, ensuring compatibility with most cameras and devices.",
       },
       {
-        question:
-          "What are the subscription plans and pricing for GenClip?",
+        question: "What are the subscription plans and pricing for GenClip?",
         answer:
           "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
       },
@@ -202,7 +200,7 @@ export class Provider extends Component {
         name: "Sisindri Singamsetti",
         title: "COO of webortex",
         quote:
-          "A passionate web developer and the co-founder of Webortex. With expertise in frontend and backend technologies like React, Tailwind CSS, Node.js, and Express.js, I focus on creating innovative, user-friendly solutions. My goal is to bridge the gap between education and industry by mentoring aspiring developers through real-time projects. Dedicated to learning and growth, I strive to deliver impactful digital experiences.",
+          "With pride and passion, I embrace innovation and mentorship to create impactful digital experiences. Together, let’s push boundaries, inspire growth, and redefine possibilities in web development.",
         src: "https://www.sisindrisingamsetti.com",
       },
       {
