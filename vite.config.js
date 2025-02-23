@@ -11,7 +11,9 @@ export default defineConfig({
   },
   server: {
     watch: {
+
       ignored: ["**/node_modules/**", "**/dist/**", "**/public/**"],
+
     },
   },
 });

@@ -11,14 +11,18 @@ import Webdev from "../Services/compo/Webdev";
 import Appdev from "../Services/compo/Appdev";
 import UiUx from "../Services/compo/UiUx";
 import Mvp from "../Services/compo/Mvp";
-import Seo from "../Services/compo/Seo";
+import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
 import teamGarudaIcon from "../../assets/teamgaruda.png";
 import FramezIcon from "../../assets/64FramezLogo.svg";
 
-import serviceImg from "../../assets/ServicePage/frame.png";
+import webImg from "../../assets/ServicePage/web.gif";
+import uiuxImg from "../../assets/ServicePage/ui.mp4";
+import mvpImg from "../../assets/ServicePage/mvp.mp4";
+import socialImg from "../../assets/ServicePage/social.mp4";
 import serviceBannerImg from "../../assets/ServicePage/we.png";
+import mockupImg from "../../assets/ServicePage/mockup.png";
 
 const Context = React.createContext();
 
@@ -86,7 +90,9 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Webdev />,
-        frame: serviceImg,
+        frameImg: webImg,
+        frameVideo: "",
+        frameTitle: "Web Development",
         frameText:
           "We increase revenue and ensure sustainable long-term growth for your business through powerful apps and websites.",
         banners: [
@@ -117,8 +123,29 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Appdev />,
-        frame: serviceImg,
+        frameVideo: "",
+        frameTitle: "App Development",
         frameText: "",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 3,
@@ -127,8 +154,30 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <UiUx />,
-        frame: serviceImg,
-        frameText: "",
+        frameVideo: uiuxImg,
+        frameTitle: "UI/UX",
+        frameText:
+          "Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta feugiat scelerisque in elit. Morbi rhoncus, tellus, ",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 4,
@@ -137,8 +186,30 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Mvp />,
-        frame: serviceImg,
-        frameText: "",
+        frameVideo: mvpImg,
+        frameTitle: "MVP",
+        frameText:
+          "Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta feugiat scelerisque in elit. Morbi rhoncus, tellus, ",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 5,
@@ -147,8 +218,29 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Seo />,
-        frame: serviceImg,
+        frameVideo: "",
+        frameTitle: "Search Engine Optimization",
         frameText: "",
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
       {
         id: 6,
@@ -157,8 +249,31 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Smedia />,
-        frame: serviceImg,
-        frameText: "",
+        frameVideo: socialImg,
+        frameTitle: "Social Media Marketing",
+        frameText:
+          "We increase revenue and ensure sustainable long-term growth for your business through powerful  apps and  websites.",
+        mockupImage: mockupImg,
+        banners: [
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+          {
+            title: "Navigating the digital landscape for success",
+            description:
+              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            image: serviceBannerImg,
+          },
+        ],
       },
     ],
 
