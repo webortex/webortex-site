@@ -7,39 +7,15 @@ const Quotation = () => {
   return (
     <Container
       maxWidth="lg"
-      className="h-screen h-dvh flex flex-col justify-center align-center"
+      className="h-auto my-9 sm:my-2 flex flex-col justify-center align-center"
     >
       <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl text-headColor font-bold tracking-tight">
         Quotation
       </h1>
-      <p className="text-center text-xs sm:text-sm lg:text-base text-secondaryTextColor px-[2%] xs:px-[6%] sm:px-[10%] md:px-[22%] mt-2 md:mt-4">
+      <p className="text-center text-xs sm:text-sm lg:text-base text-secondaryTextColor px-[2%] xs:px-[6%] sm:px-[10%] md:px-[22%] mt-2 md:mt-3">
         Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta
         feugiat scelerisque in elit. Morbi rhoncus, tellus,{" "}
       </p>
-      {alertpop == true ? (
-        <div className="sm:w-[400px] flex gap-3 rounded-lg px-4 py-4 bg-[#262626] fixed right-10 top-60">
-          <div className="h-[50px] w-[100px]">
-            <img src={alert} alt="Alert" className="pt-4" />
-          </div>
-          <div>
-            <p className="text-lg text-white font-bold">Quotation Alert</p>
-            <p className="text-gray-500 text-xs">
-              A free quotation is available only once. Our team will follow up
-              with the generated quotation. For additional quotes, other options
-              may apply
-            </p>
-            <p className="text-white text-sm pt-2 cursor-pointer">Learn More</p>
-          </div>
-          <div
-            className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F]"
-            onClick={() => setAlertpop(false)}
-          >
-            <p className="text-lg font-bold">x</p>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
       <div className="flex items-center justify-center bg-black text-white mb-4 mt-4">
         <form className="rounded-2xl shadow-lg w-full max-w-md space-y-4">
           <div>
@@ -122,7 +98,7 @@ const Quotation = () => {
               <option value="product">Product</option>
             </select>
           </div>
-          <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 ">
+          <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0 ">
             <button
               type="button"
               className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-brandsBgColor text-textColor rounded-lg hover:bg-brandsBgColor/60 focus:outline-none transition-all duration-300 ease-in-out"
@@ -137,6 +113,34 @@ const Quotation = () => {
             </button>
           </div>
         </form>
+        {alertpop == true ? (
+          <div className="sm:w-[400px] flex gap-3 rounded-lg px-4 py-4 bg-[#262626] fixed right-10 top-60">
+            <div className="h-[50px] w-[100px]">
+              <img src={alert} alt="Alert" className="pt-4" />
+            </div>
+            <div>
+              <p className="text-lg text-white font-bold">Quotation Alert</p>
+              <p className="text-gray-500 text-xs">
+                A free quotation is available only once. Our team will follow up
+                with the generated quotation. For additional quotes, other
+                options may apply
+              </p>
+              <p className="text-white text-sm pt-2 cursor-pointer">
+                Learn More
+              </p>
+            </div>
+            <div
+              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F]"
+              onClick={() => setAlertpop(false)}
+            >
+              <p className="text-lg font-bold items-center self-center justify-self-center">
+                x
+              </p>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </Container>
   );

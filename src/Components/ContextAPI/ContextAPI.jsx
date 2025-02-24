@@ -307,7 +307,7 @@ export class Provider extends Component {
         title: "CEO of webortex",
         quote:
           "As we stand on the threshold of a new chapter, I am filled with immense pride and excitement. Our journey has been marked by dedication, innovation, and a relentless pursuit of excellence.",
-        src: "https://youtube.com",
+        src: "https://github.com/gnanaofficial",
       },
       {
         id: 2,
@@ -321,11 +321,11 @@ export class Provider extends Component {
       {
         id: 3,
         image: tharun,
-        name: "A Tharun",
+        name: "Tharun A",
         title: "CPO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://x.com",
+        src: "https://www.linkedin.com/in/tharunavula/",
       },
       {
         id: 4,
@@ -334,16 +334,16 @@ export class Provider extends Component {
         title: "CTO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://instagram.com",
+        src: "https://www.linkedin.com/in/peddireddy-jayadeep-reddy-a3014124b/",
       },
       {
         id: 5,
         image: ashok,
-        name: "P Ashok",
+        name: "Ashok Pemeram",
         title: "CIO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://linkedin.com",
+        src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
       },
       {
         id: 6,
