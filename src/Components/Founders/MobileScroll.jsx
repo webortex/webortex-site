@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Consumer } from "../ContextAPI/ContextAPI";
-import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const MobileScroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -93,18 +93,14 @@ const MobileScroll = () => {
                                 {founder.quote}
                               </p>
                               <div className="flex justify-center z-999">
-                                <Button
-                                  onClick={() =>
-                                    window.open(
-                                      founder.url,
-                                      "_blank",
-                                      "noopener,noreferrer"
-                                    )
-                                  }
-                                  className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-900 transition-colors text-sm transition-all duration-300 ease-in-out capitalize"
+                                <Link
+                                  to={founder.src}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg z-99"
                                 >
                                   View Profile
-                                </Button>
+                                </Link>
                               </div>
                             </div>
                           </div>

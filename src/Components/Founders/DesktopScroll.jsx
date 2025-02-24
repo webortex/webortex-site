@@ -101,19 +101,15 @@ const DesktopScroll = () => {
                           <p className="text-xs sm:text-sm md:text-base xl:text-lg text-center text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
                             {founder.quote}
                           </p>
-                          <div className="flex justify-center z-50">
-                            <Button
-                              onClick={() =>
-                                window.open(
-                                  founder.url,
-                                  "_blank",
-                                  "noopener,noreferrer"
-                                )
-                              }
-                              className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg"
+                          <div className="flex justify-center">
+                            <Link
+                              to={founder.src}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg z-99"
                             >
                               View Profile
-                            </Button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -123,7 +119,7 @@ const DesktopScroll = () => {
               </div>
             </div>
 
-            <div className="relative z-0">
+            <div className="relative -z-10">
               {founders.map((_, index) => (
                 <div
                   key={index}
