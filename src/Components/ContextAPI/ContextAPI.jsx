@@ -87,6 +87,15 @@ export class Provider extends Component {
           twitter: "#",
           linkedin: "#",
         },
+
+        pageTitle:
+          "Join Our Team | Web Developer & UI/UX Design Jobs | Webortex",
+        pageDescription:
+          "Webortex is hiring talented web developers, UI/UX designers, and app developers. Join our innovative team and grow your career in tech.",
+        pageKeywords:
+          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers",
+        pageCanonical: "https://webortex.com/recruiting",
+        pageImage: "https://webortex.com/chair.png",
       },
     ],
 
