@@ -40,7 +40,7 @@ const Recruit = () => {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-[#9C9C9C3B] bg-[#111111] p-8 flex justify-between -z-10 mt-72 xs:mt-80 sm:mt-96 md:mt-0">
+                <div className="rounded-3xl border md:border-2 border-[#9C9C9C3B] bg-[#111111] p-8 flex justify-between -z-10 mt-72 xs:mt-80 sm:mt-96 md:mt-0">
                   <div className="md:w-1/3 md:px-4 lg:px-6 hidden md:block ">
                     <div className="text-textColor text-left text-lg sm:text-xl lg:text-2xl 2xl:text-3xl font-bold mb-6 relative">
                       {recruitData.requirements.title}
