@@ -7,90 +7,94 @@ import { Link } from "react-router-dom";
 const Recruit = () => {
   return (
     <Container maxWidth="xl">
-      <div className="w-full min-h-screen bg-black flex items-center justify-center p-4">
+      <div className="w-full min-h-screen bg-black flex items-center justify-center p-2 md:p-4 my-10 md:my-0">
         <div className="relative max-w-4xl w-full ">
-          <div className="text-center mb-24 -z-10">
-            <h1 className="text-[#9C9C9C] text-[135px] tracking-tight font-outlet font-bold leading-none">
+          <div className="text-center md:mb-24 -z-10">
+            <h1 className="text-[#9C9C9C] text-[60px] xs:text-[90px] sm:text-[120px] md:text-[135px] tracking-tight font-outlet font-bold leading-none">
               WE'RE
             </h1>
-            <h1 className="text-textColor text-[165px] tracking-wider chair-linearGradient font-bold leading-none -mt-5">
+            <h1 className="text-textColor text-[70px] xs:text-[100px] sm:text-[140px] md:text-[165px] tracking-wider chair-linearGradient font-bold leading-none -mt-2 xs:-mt-3 sm:-mt-4 md:-mt-5">
               HIRING
             </h1>
 
-            <div className="absolute top-[100px] right-[35%] transform -rotate-[6.695deg]">
-              <div className="bg-[#F2BD53] text-black text-3xl font-bold py-2 px-6 rounded-full">
+            <div className="absolute top-[42px] xs:top-[70px] sm:top-[96px] md:top-[110px] lg:top-[100px] right-[25%] xs:right-[32%] sm:right-[30%] md:right-[35%] transform -rotate-[6.695deg]">
+              <div className="bg-[#F2BD53] text-black text-sm xs:text-base sm:text-xl lg:text-2xl 2xl:text-3xl  font-semibold sm:font-bold py-1 sm:py-2 px-4 sm:px-6 rounded-full">
                 JOIN OUR TEAM
+              </div>
+            </div>
+            <div className="absolute top-[21.5%] xs:top-[26%] sm:top-[31%] md:top-[50%] lg:top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/3 -z-0">
+              <div className="">
+                <img
+                  src={chairImg}
+                  alt="chair-for-recruting"
+                  className="xs:scale-[85%] lg:scale-[80%]"
+                />
               </div>
             </div>
           </div>
 
-          <div className="absolute top-[56%] left-1/2 transform -translate-x-1/2 -translate-y-1/3 -z-0">
-            <div className="">
-              <img
-                src={chairImg}
-                alt="chair-for-recruting"
-                className="scale-150"
-              />
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-[#9C9C9C3B] bg-[#111111] p-8 flex justify-between -z-10">
-            <div className="w-1/3 px-6">
-              <div className="text-textColor text-left text-3xl font-bold mb-6 relative">
+          <div className="rounded-xl border border-[#9C9C9C3B] bg-[#111111] p-8 flex justify-between -z-10 mt-72 xs:mt-80 sm:mt-96 md:mt-0">
+            <div className="md:w-1/3 md:px-4 lg:px-6 hidden md:block ">
+              <div className="text-textColor text-left text-lg sm:text-xl lg:text-2xl 2xl:text-3xl font-bold mb-6 relative">
                 Requirements
                 <div className="w-[65%] h-1 bg-[#F2BD53] text-left mt-1"></div>
               </div>
 
               <ul className="text-textColor space-y-3 text-xl">
-                <li className="flex items-center text-3xl align-middle font-semibold">
-                  <span className="text-textColor text-3xl mr-2">•</span>{" "}
+                <li className="flex items-center text-lg sm:text-xl lg:text-2xl 2xl:text-3xl align-middle font-semibold">
+                  <span className="text-textColor text-lg sm:text-xl lg:text-2xl 2xl:text-3xl mr-2">
+                    •
+                  </span>{" "}
                   Projects
                 </li>
-                <li className="flex items-center text-3xl align-middle font-semibold">
-                  <span className="text-textColor text-3xl mr-2">•</span>
+                <li className="flex items-center text-lg sm:text-xl lg:text-2xl 2xl:text-3xl align-middle font-semibold">
+                  <span className="text-textColor text-lg sm:text-xl lg:text-2xl 2xl:text-3xl mr-2">
+                    •
+                  </span>
                   Git & GitHub
                 </li>
-                <li className="flex items-center text-3xl align-middle font-semibold">
-                  <span className="text-textColor text-3xl mr-2">•</span>
+                <li className="flex items-center text-lg sm:text-xl lg:text-2xl 2xl:text-3xl align-middle font-semibold">
+                  <span className="text-textColor text-lg sm:text-xl lg:text-2xl 2xl:text-3xl mr-2">
+                    •
+                  </span>
                   Consistent
                 </li>
               </ul>
             </div>
 
-            <div className="w-1/3 px-6 flex flex-col justify-end items-center">
-              <div className="text-textColor text-3xl font-bold font-outlet mb-6 relative">
+            <div className=" w-full xs:w-[80%] sm:w-2/3 md:w-1/3 md:px-12 lg:px-14 mx-auto md:mx-0 z-50">
+              <div className="text-textColor text-lg text-left sm:text-xl lg:text-2xl 2xl:text-3xl font-bold font-outlet mb-6 relative">
                 Positions
-                <div className="w-[90%] h-1 bg-[#F2BD53] mt-1 left-0"></div>
+                <div className="w-[70%] xs:w-[80%] md:w-[90%] h-1 bg-[#F2BD53] mt-1 left-0"></div>
               </div>
 
-              <div className="space-y-2 flex flex-col mt-2 uppercase">
-                <Link
-                  to=""
-                  className="bg-[#232121] text-xl font-light tracking-wide text-textColor py-3 px-10 rounded-2xl text-center w-auto"
-                >
-                  UI/UX
+              <div className="space-y-2 flex flex-col mt-2 uppercase z-50">
+                <Link to="" className="w-full">
+                  <button className="bg-[#1b1b1b] border border-[#424242] hover:bg-[#1b1b1b]/60 hover:border-[#424242]/80 text-textColor text-xs sm:text-sm lg:text-base w-full py-3 px-10 rounded-lg uppercase transition-all duration-300 ease-in-out">
+                    ui/ux
+                  </button>
                 </Link>
-                <Link
-                  to=""
-                  className="bg-[#232121] text-xl font-light tracking-wide text-textColor py-3 px-10 rounded-2xl text-center w-auto"
-                >
-                  Web
+                <Link to="" className="w-full">
+                  <button className="bg-[#1b1b1b] border border-[#424242] hover:bg-[#1b1b1b]/60 hover:border-[#424242]/80 text-textColor text-xs sm:text-sm lg:text-base w-full py-3 px-10 rounded-lg uppercase transition-all duration-300 ease-in-out">
+                    Web
+                  </button>
                 </Link>
-                <Link
-                  to=""
-                  className="bg-[#232121] text-xl font-light tracking-wide text-textColor py-3 px-10 rounded-2xl text-center w-auto"
-                >
-                  App
+                <Link to="" className="w-full">
+                  <button className="bg-[#1b1b1b] border border-[#424242] hover:bg-[#1b1b1b]/60 hover:border-[#424242]/80 text-textColor text-xs sm:text-sm lg:text-base w-full py-3 px-10 rounded-lg uppercase transition-all duration-300 ease-in-out">
+                    App
+                  </button>
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 flex justify-between items-center ">
-            <div className="flex items-center z-50">
-              <span className="text-textColor text-sm mr-2">Mail us</span>
+          <div className="mt-6 flex flex-col md:flex-row gap-y-4 md:gap-y-0 justify-between items-center ">
+            <div className="flex items-center z-50 mt-3 md:mt-0">
+              <span className="text-textColor text-xs md:text-sm mr-2">
+                Mail us
+              </span>
               <a
-                className="bg-[#262626] text-sm font-light text-textColor py-1 px-4 rounded-sm hover:text-navlinkHoverColor transition-all duration-300 ease-in-out cursor-pointer"
+                className="bg-[#262626] text-xs md:text-sm font-light text-textColor py-1 px-4 rounded-sm hover:text-navlinkHoverColor transition-all duration-300 ease-in-out cursor-pointer"
                 href="mailto:contact@webortex.com"
               >
                 contact@webortex.com
@@ -98,7 +102,7 @@ const Recruit = () => {
             </div>
 
             <div className="flex items-center border border-[#262626] p-2 rounded-md">
-              <span className="text-textColor text-sm mr-2">
+              <span className="text-textColor text-xs md:text-sm mr-2">
                 Stay Connected
               </span>
               <div className="flex space-x-2">
