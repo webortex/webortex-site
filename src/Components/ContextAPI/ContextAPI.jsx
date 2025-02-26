@@ -24,6 +24,8 @@ import socialImg from "../../assets/ServicePage/social.mp4";
 import serviceBannerImg from "../../assets/ServicePage/we.png";
 import mockupImg from "../../assets/ServicePage/mockup.png";
 
+import chairImage from "../../assets/chair.png";
+
 const Context = React.createContext();
 
 export class Provider extends Component {
@@ -52,6 +54,48 @@ export class Provider extends Component {
         text: "Recruiting",
         path: "/recruiting",
         type: "page",
+      },
+    ],
+
+    recruiting: [
+      {
+        chairImg: chairImage,
+        positions: [
+          {
+            id: 1,
+            title: "ui/ux",
+            link: "",
+          },
+          {
+            id: 2,
+            title: "web",
+            link: "",
+          },
+          {
+            id: 3,
+            title: "app",
+            link: "",
+          },
+        ],
+        requirements: {
+          title: "Requirements",
+          skills: ["Projects", "Git & GitHub", "Consistent"],
+        },
+        contactEmail: "contact@webortex.com",
+        socialLinks: {
+          instagram: "#",
+          twitter: "#",
+          linkedin: "#",
+        },
+
+        pageTitle:
+          "Join Our Team | Web Developer & UI/UX Design Jobs | Webortex",
+        pageDescription:
+          "Webortex is hiring talented web developers, UI/UX designers, and app developers. Join our innovative team and grow your career in tech.",
+        pageKeywords:
+          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers",
+        pageCanonical: "https://webortex.com/recruiting",
+        pageImage: "https://webortex.com/chair.png",
       },
     ],
 
@@ -299,6 +343,7 @@ export class Provider extends Component {
           "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
       },
     ],
+
     founders: [
       {
         id: 1,
@@ -355,6 +400,7 @@ export class Provider extends Component {
         src: "https://github.com/Sandeep010-hub",
       },
     ],
+
     footerLinks: [
       {
         id: 1,
