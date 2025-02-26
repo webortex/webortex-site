@@ -53,14 +53,7 @@ function App() {
                 </Layout>
               }
             />
-            <Route
-              path="/recruiting"
-              element={
-                <Layout>
-                  <Recruit />
-                </Layout>
-              }
-            />
+            <Route path="/recruiting" element={<Recruit />} />
             <Route path="/services/:slug" element={<ServicePage />} />
             <Route path="/get-quote" element={<Quotation />} />
             <Route path="*" element={<NotFound />} />
