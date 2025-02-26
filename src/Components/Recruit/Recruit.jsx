@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const Recruit = () => {
   return (
-    <Container maxWidth="xl">
-      <div className="w-full min-h-screen bg-black flex items-center justify-center p-2 md:p-4 my-10 md:my-0">
+    <Container maxWidth="lg">
+      <div className="w-full min-h-screen bg-black flex items-center justify-center p-2 md:p-4 my-10 md:-mt-10">
         <div className="relative max-w-4xl w-full ">
           <div className="text-center md:mb-24 -z-10">
             <h1 className="text-[#9C9C9C] text-[60px] xs:text-[90px] sm:text-[120px] md:text-[135px] tracking-tight font-outlet font-bold leading-none">
