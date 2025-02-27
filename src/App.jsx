@@ -21,6 +21,14 @@ const Layout = ({ children }) => {
     </>
   );
 };
+const Nav = ({ children }) => {
+  return (
+    <>
+      <Navbar />
+      {children}
+    </>
+  );
+};
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,9 +64,11 @@ function App() {
             <Route
               path="/recruiting"
               element={
-                <Layout>
-                  <Recruit />
-                </Layout>
+                <div className="h-screen w-screen overflow-hidden">
+                  <Nav>
+                    <Recruit />
+                  </Nav>
+                </div>
               }
             />
             <Route path="/services/:slug" element={<ServicePage />} />
