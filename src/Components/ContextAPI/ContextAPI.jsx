@@ -25,6 +25,7 @@ import serviceBannerImg from "../../assets/ServicePage/we.png";
 import mockupImg from "../../assets/ServicePage/mockup.png";
 
 import chairImage from "../../assets/chair.png";
+import chairImageMobile from "../../assets/chairMobile.png";
 
 const Context = React.createContext();
 
@@ -60,6 +61,7 @@ export class Provider extends Component {
     recruiting: [
       {
         chairImg: chairImage,
+        chairImgMobile: chairImageMobile,
         positions: [
           {
             id: 1,
