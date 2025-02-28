@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Container } from "@mui/material";
 import {
-  Email,
-  Phone,
+  
   Facebook,
   Instagram,
   LinkedIn,
