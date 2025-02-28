@@ -9,7 +9,8 @@ import { Provider } from "./Components/ContextAPI/ContextAPI";
 import NotFound from "./Components/NotFound/NotFound";
 import ServicePage from "./Components/Services/ServicePage";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
-import Loader from "./Components/Services/compo/loader";
+import Loader from "./Components/Loader/Loader";
+import Quotation from "./Components/Pricing/Quotation";
 
 const Layout = ({ children }) => {
   return (
@@ -17,6 +18,14 @@ const Layout = ({ children }) => {
       <Navbar />
       {children}
       <Footer />
+    </>
+  );
+};
+const Nav = ({ children }) => {
+  return (
+    <>
+      <Navbar />
+      {children}
     </>
   );
 };
@@ -55,12 +64,15 @@ function App() {
             <Route
               path="/recruiting"
               element={
-                <Layout>
-                  <Recruit />
-                </Layout>
+                <div className="h-screen md:overflow-hidden">
+                  <Nav>
+                    <Recruit />
+                  </Nav>
+                </div>
               }
             />
             <Route path="/services/:slug" element={<ServicePage />} />
+            <Route path="/get-quote" element={<Quotation />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

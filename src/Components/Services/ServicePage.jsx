@@ -15,12 +15,12 @@ const ServicePage = () => {
           <div>
             {service ? (
               <div>
-                <div className="flex justify-center h-screen py-10 relative">
+                <div className="flex justify-center h-dvh h-screen py-10 relative">
                   {service.frameImg ? (
                     <img
                       src={service.frameImg}
                       alt={service.title}
-                      className="h-full rounded-2xl opacity-40"
+                      className="h-full object-contain rounded-2xl opacity-40"
                     />
                   ) : (
                     <video
@@ -45,6 +45,15 @@ const ServicePage = () => {
                   </div>
                 </div>
                 <Container maxWidth="lg">
+                  {service.mockupImage && (
+                    <div className="py-10 sm:py-20 lg:py-32 2xl:py-40">
+                      <img
+                        src={service.mockupImage}
+                        alt="social media marketing"
+                        className="w-full h-full object-cover rounded-2xl"
+                      />
+                    </div>
+                  )}
                   {service.banners &&
                     service.banners.map((banner, index) => (
                       <div

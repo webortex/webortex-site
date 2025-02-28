@@ -1,9 +1,9 @@
-import "./Loader.css";
-
 const Loader = () => {
   return (
-    <div className="w-full h-screen z-999 fixed top-0 left-0 bg-backgroundColor flex flex-col justify-center items-center">
-      <span className="loader"></span>
+    <div>
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-logoBlueColor"></div>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,11 @@
-import Loader from "./loader";
+import SEOLoader from "./SEOLoader";
 
 const Seo = () => {
   return (
     <div>
-      <Loader />
+      <SEOLoader/>
     </div>
+
   );
 };
 

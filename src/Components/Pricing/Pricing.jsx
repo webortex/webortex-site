@@ -1,10 +1,12 @@
 import React from "react";
 import { Container } from "@mui/material";
+import { Link } from "react-router-dom";
+
 const Pricing = () => {
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" className="px-2">
       <section id="pricing">
-        <h1 className="text-center text-3xl xs:text-4xl md:text-5xl xl:text-6xl text-headColor tracking-tight font-bold mt-5">
+        <h1 className="text-center text-4xl xs:text-4xl md:text-5xl xl:text-6xl text-headColor tracking-tight font-bold mt-5">
           Elevate Your Brand
         </h1>
         <p className="text-center text-sm md:text-base px-[10%] text-[#e7e7e7]/60 mt-4">
@@ -12,7 +14,7 @@ const Pricing = () => {
           presence, whether it’s stunning website or powerful app
         </p>
 
-        <div className="bg-brandsBgColor text-white p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg border border-pricingBorderColor/50 max-w-3xl mx-auto mt-8 mb-6">
+        <div className="bg-brandsBgColor text-white p-3 sm:p-6 lg:p-8 rounded-2xl shadow-lg border border-pricingBorderColor/50 max-w-3xl mx-auto mt-8 mb-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-between  text-center sm:text-left">
             <div>
               <h2 className="text-base md:text-lg tracking-tight font-light">
@@ -23,15 +25,17 @@ const Pricing = () => {
               </h1>
             </div>
             <div className="flex flex-col gap-4 mb-8">
-              <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-4 px-10 rounded-lg transition-all duration-300 ease-in-out">
+              <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-textColor border border-[#424242] py-3 px-10 rounded-lg transition-all duration-300 ease-in-out">
                 Book a Call
               </button>
-              <button className="bg-[#494949] hover:bg-[#494949]/40 text-[#f2f2f2] border border-[#424242] py-3 px-10 rounded-lg transition-all duration-300 ease-in-out">
-                Get a Quote
-              </button>
+              <Link to="/get-quote" className="w-full">
+                <button className="bg-[#494949] border border-[#424242] hover:bg-[#494949]/60 text-textColor w-full py-3 px-10 rounded-lg">
+                  Get a Quote
+                </button>
+              </Link>
             </div>
           </div>
-          <ul className="grid grid-cols-2 sm:grid-cols-4  gap-4 text-sm font-medium mb-6">
+          <ul className="grid grid-cols-2 sm:grid-cols-4  gap-4 text-xs sm:text-sm font-medium mb-6">
             {[
               "Domain",
               "SSL",

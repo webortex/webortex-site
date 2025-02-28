@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import gnana from "../../assets/Founders/Gnana.svg";
-import sisi from "../../assets/Founders/Sisindri.svg";
+import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.svg";
 import jaya from "../../assets/Founders/jayadeep.svg";
 import ashok from "../../assets/Founders/Ashok.svg";
@@ -11,7 +11,7 @@ import Webdev from "../Services/compo/Webdev";
 import Appdev from "../Services/compo/Appdev";
 import UiUx from "../Services/compo/UiUx";
 import Mvp from "../Services/compo/Mvp";
-import Seo from "../Services/compo/Seo";
+import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
 import teamGarudaIcon from "../../assets/teamgaruda.png";
@@ -22,6 +22,10 @@ import uiuxImg from "../../assets/ServicePage/ui.mp4";
 import mvpImg from "../../assets/ServicePage/mvp.mp4";
 import socialImg from "../../assets/ServicePage/social.mp4";
 import serviceBannerImg from "../../assets/ServicePage/we.png";
+import mockupImg from "../../assets/ServicePage/mockup.png";
+
+import chairImage from "../../assets/chair.png";
+import chairImageMobile from "../../assets/chairMobile.png";
 
 const Context = React.createContext();
 
@@ -51,6 +55,49 @@ export class Provider extends Component {
         text: "Recruiting",
         path: "/recruiting",
         type: "page",
+      },
+    ],
+
+    recruiting: [
+      {
+        chairImg: chairImage,
+        chairImgMobile: chairImageMobile,
+        positions: [
+          {
+            id: 1,
+            title: "ui/ux",
+            link: "",
+          },
+          {
+            id: 2,
+            title: "web",
+            link: "",
+          },
+          {
+            id: 3,
+            title: "app",
+            link: "",
+          },
+        ],
+        requirements: {
+          title: "Requirements",
+          skills: ["Projects", "Git & GitHub", "Consistent"],
+        },
+        contactEmail: "contact@webortex.com",
+        socialLinks: {
+          instagram: "#",
+          twitter: "#",
+          linkedin: "#",
+        },
+
+        pageTitle:
+          "Join Our Team | Web Developer & UI/UX Design Jobs | Webortex",
+        pageDescription:
+          "Webortex is hiring talented web developers, UI/UX designers, and app developers. Join our innovative team and grow your career in tech.",
+        pageKeywords:
+          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers",
+        pageCanonical: "https://webortex.com/recruiting",
+        pageImage: "https://webortex.com/chair.png",
       },
     ],
 
@@ -252,6 +299,7 @@ export class Provider extends Component {
         frameTitle: "Social Media Marketing",
         frameText:
           "We increase revenue and ensure sustainable long-term growth for your business through powerful  apps and  websites.",
+        mockupImage: mockupImg,
         banners: [
           {
             title: "Navigating the digital landscape for success",
@@ -297,6 +345,7 @@ export class Provider extends Component {
           "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
       },
     ],
+
     founders: [
       {
         id: 1,
@@ -305,7 +354,7 @@ export class Provider extends Component {
         title: "CEO of webortex",
         quote:
           "As we stand on the threshold of a new chapter, I am filled with immense pride and excitement. Our journey has been marked by dedication, innovation, and a relentless pursuit of excellence.",
-        src: "https://youtube.com",
+        src: "https://github.com/gnanaofficial",
       },
       {
         id: 2,
@@ -313,17 +362,17 @@ export class Provider extends Component {
         name: "Sisindri Singamsetti",
         title: "COO of webortex",
         quote:
-          "A passionate web developer and the co-founder of Webortex. With expertise in frontend and backend technologies like React, Tailwind CSS, Node.js, and Express.js, I focus on creating innovative, user-friendly solutions. My goal is to bridge the gap between education and industry by mentoring aspiring developers through real-time projects. Dedicated to learning and growth, I strive to deliver impactful digital experiences.",
+          "With pride and passion, I embrace innovation and mentorship to create impactful digital experiences. Together, let’s push boundaries, inspire growth, and redefine possibilities in web development.",
         src: "https://www.sisindrisingamsetti.com",
       },
       {
         id: 3,
         image: tharun,
-        name: "A Tharun",
+        name: "Tharun A",
         title: "CPO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://x.com",
+        src: "https://www.linkedin.com/in/tharunavula/",
       },
       {
         id: 4,
@@ -332,16 +381,16 @@ export class Provider extends Component {
         title: "CTO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://instagram.com",
+        src: "https://www.linkedin.com/in/peddireddy-jayadeep-reddy-a3014124b/",
       },
       {
         id: 5,
         image: ashok,
-        name: "P Ashok",
+        name: "Ashok Pemeram",
         title: "CIO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://linkedin.com",
+        src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
       },
       {
         id: 6,
@@ -350,9 +399,10 @@ export class Provider extends Component {
         title: "CLO of webortex",
         quote:
           "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
-        src: "https://linkedin.com",
+        src: "https://github.com/Sandeep010-hub",
       },
     ],
+
     footerLinks: [
       {
         id: 1,

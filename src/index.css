@@ -45,14 +45,12 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.text-gry{
-  
+.text-gry {
   color: #999999;
 }
-.backgry{
+.backgry {
   background-color: #999999;
 }
-
 
 .text-greenWhite {
   background: linear-gradient(to right, #65b744 0%, #ffffff 100%);
@@ -61,8 +59,6 @@
   background-clip: text;
 }
 
-
-/* From Uiverse.io by Erasmus001 */ 
 #wifi-loader {
   --background: #62abff;
   --front-color: #000;
@@ -260,17 +256,14 @@
     clip-path: inset(0 0 0 100%);
   }
 }
-.mobile
-  {
-    background-image: url('./Components/Services/compo/phone.svg');
-    background-position: center;
-    background-size: cover;
-    height: 280px;
-    width: 200px;
-    margin-left: 30px;
-    
-  }
-
+.mobile {
+  background-image: url("./Components/Services/compo/phone.svg");
+  background-position: center;
+  background-size: cover;
+  height: 280px;
+  width: 200px;
+  margin-left: 30px;
+}
 
 @layer components {
   .grid-pattern {
@@ -423,7 +416,6 @@
   }
 }
 
-
 /* @layer base {
   * {
     @apply border-border;
@@ -432,6 +424,7 @@
     @apply bg-background text-foreground;
   }
 } */
+
 .contact-grid-color{
   background-color: #161616;
   padding:1.7% 2.9%;
@@ -448,4 +441,18 @@
 .gradient-color-icons{
  
   
+
+
+.chair-linearGradient {
+  background: linear-gradient(180deg, #fff 65.85%, #e6b235 93.99%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.recruting-stay-connected {
+  border-radius: 8.23px;
+  border: 1.029px solid #2e2e2e;
+  background: linear-gradient(180deg, #242424 25%, rgba(36, 36, 36, 0) 100%);
+
 }
