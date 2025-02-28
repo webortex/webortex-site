@@ -56,9 +56,9 @@ function App() {
             <Route
               path="/lets-talk"
               element={
-                <Layout>
+                <Nav>
                   <Contact />
-                </Layout>
+                </Nav>
               }
             />
             <Route

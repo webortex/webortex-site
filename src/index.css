@@ -425,23 +425,17 @@
   }
 } */
 
-.contact-grid-color{
+.contact-grid-color {
   background-color: #161616;
-  padding:1.7% 2.9%;
+  padding: 1.7% 2.9%;
   border-radius: 11.43px;
-  border: 1.43px solid  #363636;
-  
+  border: 1.43px solid #363636;
 }
-.contact-grid{
+.contact-grid {
   border-radius: 11.43px;
-  border: 1.43px solid  #363636;
+  border: 1.43px solid #363636;
   background-color: #161616;
- 
 }
-.gradient-color-icons{
- 
-  
-
 
 .chair-linearGradient {
   background: linear-gradient(180deg, #fff 65.85%, #e6b235 93.99%);
@@ -454,5 +448,4 @@
   border-radius: 8.23px;
   border: 1.029px solid #2e2e2e;
   background: linear-gradient(180deg, #242424 25%, rgba(36, 36, 36, 0) 100%);
-
 }
