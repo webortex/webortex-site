@@ -16,60 +16,101 @@ const Contact = () => {
     },
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
 
-    const newFormData = { ...formData };
-
-    newFormData[name] = value;
-
-    setFormData(newFormData);
+    // Clear errors dynamically as the user types
+    if (errors[name]) {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    }
   };
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
+    setFormData({
+      ...formData,
+      interests: { ...formData.interests, [name]: checked },
+    });
 
-    const newFormData = { ...formData };
+    // Clear checkbox error if at least one checkbox is selected
+    if (errors.interests) {
+      const isAnyCheckboxSelected = Object.values(formData.interests).some(
+        (value) => value
+      );
+      if (isAnyCheckboxSelected) {
+        setErrors((prevErrors) => ({ ...prevErrors, interests: "" }));
+      }
+    }
+  };
 
-    newFormData.interests = { ...formData.interests };
+  const validateForm = () => {
+    const newErrors = {};
 
-    newFormData.interests[name] = checked;
+    // Full Name validation
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full Name is required";
+    }
 
-    setFormData(newFormData);
+    // Phone validation
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone is required";
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = "Phone must be 10 digits";
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    } else if (!formData.email.endsWith("@gmail.com")) {
+      newErrors.email = "Only Gmail addresses are allowed";
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+
+    // Checkbox validation
+    const isAnyCheckboxSelected = Object.values(formData.interests).some(
+      (value) => value
+    );
+    if (!isAnyCheckboxSelected) {
+      newErrors.interests = "Please select at least one interest";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if no errors
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
 
-  const FormField = ({
-    label,
-    name,
-    value,
-    onChange,
-    placeholder = "Type here",
-    type = "text",
-  }) => {
-    return (
-      <div className="w-full mb-6">
-        <label
-          className="block text-headColor font-semibold mb-2"
-          htmlFor={name}
-        >
-          {label}
-        </label>
-        <input
-          type={type}
-          id={name}
-          name={name}
-          value={value || ""}
-          onChange={onChange}
-          className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
-          placeholder={placeholder}
-        />
-      </div>
-    );
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
+
+    console.log("Form submitted:", formData);
+    alert("Form submitted successfully!");
+
+    // Reset form after submission
+    setFormData({
+      fullName: "",
+      phone: "",
+      email: "",
+      message: "",
+      interests: {
+        webDesign: false,
+        mvp: false,
+        mobileApp: false,
+        other: false,
+      },
+    });
+    setErrors({});
   };
 
   const CheckboxField = ({ label, name, checked, onChange }) => (
@@ -122,7 +163,7 @@ const Contact = () => {
 
       <hr className="border-t-2 border-[#2626267c] mb-8 clear-both" />
 
-      <form className="w-full mb-16 md:mb-0" onSubmit={handleSubmit}>
+      <form className="w-full mb-16 md:mb-0" onSubmit={handleSubmit} noValidate>
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
           <div className="md:col-span-2 xl:col-span-3 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -140,9 +181,14 @@ const Contact = () => {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                      errors.fullName ? "border-red-500" : "border-[#363636]"
+                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
                     placeholder="Type here"
                   />
+                  {errors.fullName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+                  )}
                 </div>
               </div>
               <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
@@ -159,9 +205,14 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                      errors.phone ? "border-red-500" : "border-[#363636]"
+                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
                     placeholder="Type here"
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -196,6 +247,9 @@ const Contact = () => {
                   onChange={handleCheckboxChange}
                 />
               </div>
+              {errors.interests && (
+                <p className="text-red-500 text-sm mt-1">{errors.interests}</p>
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -213,9 +267,14 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                      errors.email ? "border-red-500" : "border-[#363636]"
+                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
                     placeholder="Type here"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  )}
                 </div>
               </div>
               <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
@@ -232,9 +291,14 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                      errors.message ? "border-red-500" : "border-[#363636]"
+                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
                     placeholder="Type here"
                   />
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -256,7 +320,7 @@ const Contact = () => {
           </div>
 
           <div className="hidden md:block md:col-span-1 md:-ml-3 lg:-ml-0 mb-10 md:mb-0 mx-auto md:mx-0">
-            <div className="md:h-[20%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] rounded-md border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
+            <div className="md:h-[20%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
               <div className="md:flex">
                 <div className="flex bg-[#262626] bg-opacity-95 text-center justify-center py-2 px-6 md:px-4 lg:px-8 rounded-lg">
                   <div className="flex items-center">
