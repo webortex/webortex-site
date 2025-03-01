@@ -340,7 +340,8 @@ export class Provider extends Component {
           "Yes, GenClip supports a wide range of video formats, ensuring compatibility with most cameras and devices.",
       },
       {
-        question: "What are the subscription plans and pricing for GenClip?",
+        question:
+          "What are the subscription plans and pricing for GenClip?",
         answer:
           "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
       },
