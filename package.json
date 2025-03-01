@@ -21,10 +21,7 @@
     "framer-motion": "^11.15.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-<<<<<<< HEAD
     "react-helmet": "^6.1.0",
-=======
->>>>>>> 018cabced137b22d188d451bb0499cf0014ebcbf
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.1.1",
     "tailwind-merge": "^2.6.0",

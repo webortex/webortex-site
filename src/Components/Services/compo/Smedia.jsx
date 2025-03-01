@@ -10,9 +10,9 @@ import twitterIcon from "../../../assets/ServiceCards/x.png";
 const socialMediaData = [
   { name: "Youtube", icon: youtubeIcon, position: { x: -100, y: -80 }, rotate: 30 },
   { name: "Facebook", icon: facebookIcon, position: { x: 95, y: -100 }, rotate: -40 },
-  { name: "Instagram", icon: instagramIcon, position: { x: 140, y: -10 }, rotate: 0 },
+  { name: "Twitter", icon: twitterIcon, position: { x: -120, y: -10 }, rotate: 0 },
   { name: "Linkedin", icon: linkedinIcon, position: { x: -120, y: 60 }, rotate: -30 },
-  { name: "Twitter", icon: twitterIcon, position: { x: 105, y: 75 }, rotate: 30 },
+  { name: "Instagram", icon: instagramIcon, position: { x: 125, y: 50 }, rotate: 20 },
 ];
 
 const Smedia = () => {
