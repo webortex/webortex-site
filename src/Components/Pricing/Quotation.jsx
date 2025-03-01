@@ -1,9 +1,97 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
-import alert from "../../assets/alert.png";
+import alertImg from "../../assets/alert.png";
 
 const Quotation = () => {
   const [alertpop, setAlertpop] = useState(true);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    currentAddress: "",
+    companyName: "",
+    isStartup: "",
+    lookingFor: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = "Name must be at least 3 characters";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Mobile number must be 10 digits";
+    }
+
+    if (
+      formData.currentAddress.trim() &&
+      formData.currentAddress.trim().length < 10
+    ) {
+      newErrors.currentAddress = "Address must be at least 10 characters";
+    }
+
+    if (!formData.companyName.trim()) {
+      newErrors.companyName = "Company Name is required";
+    } else if (formData.companyName.trim().length < 3) {
+      newErrors.companyName = "Company Name must be at least 3 characters";
+    }
+
+    if (!formData.isStartup) {
+      newErrors.isStartup = "Please select an option";
+    }
+
+    if (!formData.lookingFor) {
+      newErrors.lookingFor = "Please select an option";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    console.log("Form submitted:", formData);
+    alert("Form submitted successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      currentAddress: "",
+      companyName: "",
+      isStartup: "",
+      lookingFor: "",
+    });
+    setErrors({});
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -17,17 +105,28 @@ const Quotation = () => {
         feugiat scelerisque in elit. Morbi rhoncus, tellus,{" "}
       </p>
       <div className="flex items-center justify-center bg-black text-white mb-4 mt-4">
-        <form className="rounded-2xl shadow-lg w-full max-w-md space-y-4">
+        <form
+          className="rounded-2xl shadow-lg w-full max-w-md space-y-4"
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Name *
             </label>
             <input
               type="text"
-              required
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
               placeholder="Enter your Name"
-              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+                errors.name ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            )}
           </div>
           <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
@@ -35,10 +134,17 @@ const Quotation = () => {
             </label>
             <input
               type="email"
-              required
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               placeholder="Enter email address"
-              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] border-[#8692A6]/40"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] ${
+                errors.email ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
           <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
@@ -46,10 +152,17 @@ const Quotation = () => {
             </label>
             <input
               type="tel"
-              required
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleInputChange}
               placeholder="+91"
-              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+                errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
             />
+            {errors.mobile && (
+              <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>
+            )}
           </div>
           <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
@@ -57,9 +170,19 @@ const Quotation = () => {
             </label>
             <input
               type="text"
+              name="currentAddress"
+              value={formData.currentAddress}
+              onChange={handleInputChange}
               placeholder=""
-              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] border-[#8692A6]/40"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] ${
+                errors.currentAddress ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
             />
+            {errors.currentAddress && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.currentAddress}
+              </p>
+            )}
           </div>
           <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
@@ -67,36 +190,57 @@ const Quotation = () => {
             </label>
             <input
               type="text"
-              required
+              name="companyName"
+              value={formData.companyName}
+              onChange={handleInputChange}
               placeholder=""
-              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] border-[#8692A6]/40"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] ${
+                errors.companyName ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
             />
+            {errors.companyName && (
+              <p className="text-red-500 text-sm mt-1">{errors.companyName}</p>
+            )}
           </div>
           <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Is it a startup? *
             </label>
             <select
-              required
-              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
+              name="isStartup"
+              value={formData.isStartup}
+              onChange={handleInputChange}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] ${
+                errors.isStartup ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
             >
               <option value="">Select</option>
               <option value="yes">Yes</option>
               <option value="no">No</option>
             </select>
+            {errors.isStartup && (
+              <p className="text-red-500 text-sm mt-1">{errors.isStartup}</p>
+            )}
           </div>
           <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Looking for *
             </label>
             <select
-              required
-              className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
+              name="lookingFor"
+              value={formData.lookingFor}
+              onChange={handleInputChange}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] ${
+                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
             >
               <option value="">Select</option>
               <option value="service">Service</option>
               <option value="product">Product</option>
             </select>
+            {errors.lookingFor && (
+              <p className="text-red-500 text-sm mt-1">{errors.lookingFor}</p>
+            )}
           </div>
           <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0 ">
             <button
@@ -116,7 +260,7 @@ const Quotation = () => {
         {alertpop == true ? (
           <div className="sm:w-[400px] flex gap-3 rounded-lg px-4 py-4 bg-[#262626] fixed right-10 top-60">
             <div className="h-[50px] w-[100px]">
-              <img src={alert} alt="Alert" className="pt-4" />
+              <img src={alertImg} alt="Alert" className="pt-4" />
             </div>
             <div>
               <p className="text-lg text-white font-bold">Quotation Alert</p>

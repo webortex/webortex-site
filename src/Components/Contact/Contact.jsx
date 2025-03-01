@@ -22,7 +22,6 @@ const Contact = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Clear errors dynamically as the user types
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
@@ -35,7 +34,6 @@ const Contact = () => {
       interests: { ...formData.interests, [name]: checked },
     });
 
-    // Clear checkbox error if at least one checkbox is selected
     if (errors.interests) {
       const isAnyCheckboxSelected = Object.values(formData.interests).some(
         (value) => value
@@ -49,19 +47,18 @@ const Contact = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    // Full Name validation
     if (!formData.fullName.trim()) {
       newErrors.fullName = "Full Name is required";
+    } else if (formData.fullName.trim().length < 3) {
+      newErrors.fullName = "Name must be at least 3 characters";
     }
 
-    // Phone validation
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone is required";
     } else if (!/^\d{10}$/.test(formData.phone)) {
       newErrors.phone = "Phone must be 10 digits";
     }
 
-    // Email validation
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -70,12 +67,12 @@ const Contact = () => {
       newErrors.email = "Only Gmail addresses are allowed";
     }
 
-    // Message validation
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "At least 10 characters long";
     }
 
-    // Checkbox validation
     const isAnyCheckboxSelected = Object.values(formData.interests).some(
       (value) => value
     );
@@ -84,20 +81,19 @@ const Contact = () => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return; // Stop submission if validation fails
+      return;
     }
 
     console.log("Form submitted:", formData);
     alert("Form submitted successfully!");
 
-    // Reset form after submission
     setFormData({
       fullName: "",
       phone: "",
@@ -187,7 +183,9 @@ const Contact = () => {
                     placeholder="Type here"
                   />
                   {errors.fullName && (
-                    <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.fullName}
+                    </p>
                   )}
                 </div>
               </div>
@@ -297,7 +295,9 @@ const Contact = () => {
                     placeholder="Type here"
                   />
                   {errors.message && (
-                    <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
               </div>
