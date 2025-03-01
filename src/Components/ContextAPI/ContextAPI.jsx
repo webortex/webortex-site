@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import gnana from "../../assets/Founders/Gnana.svg";
+import gnana from "../../assets/Founders/Gnana.jpg";
 import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.svg";
 import jaya from "../../assets/Founders/jayadeep.svg";
