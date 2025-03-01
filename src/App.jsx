@@ -56,9 +56,18 @@ function App() {
             <Route
               path="/lets-talk"
               element={
-                <Nav>
-                  <Contact />
-                </Nav>
+                <>
+                  <div className="hidden md:block">
+                    <Nav>
+                      <Contact />
+                    </Nav>
+                  </div>
+                  <div className="md:hidden">
+                    <Layout>
+                      <Contact />
+                    </Layout>
+                  </div>
+                </>
               }
             />
             <Route

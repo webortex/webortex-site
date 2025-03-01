@@ -18,27 +18,29 @@ const Contact = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+
+    const newFormData = { ...formData };
+
+    newFormData[name] = value;
+
+    setFormData(newFormData);
   };
 
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
-    setFormData({
-      ...formData,
-      interests: {
-        ...formData.interests,
-        [name]: checked,
-      },
-    });
+
+    const newFormData = { ...formData };
+
+    newFormData.interests = { ...formData.interests };
+
+    newFormData.interests[name] = checked;
+
+    setFormData(newFormData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    // Add your form submission logic here
   };
 
   const FormField = ({
@@ -47,32 +49,35 @@ const Contact = () => {
     value,
     onChange,
     placeholder = "Type here",
-  }) => (
-    <div className="w-full mb-6">
-      <label
-        className="block text-headColor font-semibold mb-2"
-        htmlFor={name}
-      >
-        {label}
-      </label>
-      <input
-        type="text"
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
-        placeholder={placeholder}
-      />
-    </div>
-  );
+    type = "text",
+  }) => {
+    return (
+      <div className="w-full mb-6">
+        <label
+          className="block text-headColor font-semibold mb-2"
+          htmlFor={name}
+        >
+          {label}
+        </label>
+        <input
+          type={type}
+          id={name}
+          name={name}
+          value={value || ""}
+          onChange={onChange}
+          className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+          placeholder={placeholder}
+        />
+      </div>
+    );
+  };
 
   const CheckboxField = ({ label, name, checked, onChange }) => (
     <label className="flex items-center cursor-pointer mb-2">
       <input
         type="checkbox"
         name={name}
-        checked={checked}
+        checked={checked || false}
         onChange={onChange}
         className="hidden"
       />
@@ -91,21 +96,13 @@ const Contact = () => {
           </svg>
         )}
       </div>
-      <span className="ml-2 text-textColor text-sm font-light">
-        {label}
-      </span>
+      <span className="ml-2 text-textColor text-sm font-light">{label}</span>
     </label>
   );
 
   return (
-    <Container
-      maxWidth="lg"
-      className="max-h-screen h-dvh py-6 md:py-10"
-    >
-      <section
-        id="contact"
-        className="mb-4"
-      >
+    <Container maxWidth="lg" className="h-full my-6 md:my-10">
+      <section id="contact" className="mb-4">
         <h1 className="text-3xl md:text-4xl lg:text-6xl text-center text-headColor font-bold tracking-tighter mb-6">
           Contact Us
         </h1>
@@ -125,28 +122,47 @@ const Contact = () => {
 
       <hr className="border-t-2 border-[#2626267c] mb-8 clear-both" />
 
-      <form
-        onSubmit={handleSubmit}
-        className="w-full"
-      >
+      <form className="w-full mb-16 md:mb-0" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div className="md:col-span-2 xl:col-span-3 space-y-6 mb-16">
+          <div className="md:col-span-2 xl:col-span-3 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <FormField
-                  label="Full Name"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleInputChange}
-                />
+                <div className="w-full mb-6">
+                  <label
+                    className="block text-headColor font-semibold mb-2"
+                    htmlFor="fullName"
+                  >
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    placeholder="Type here"
+                  />
+                </div>
               </div>
               <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <FormField
-                  label="Phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                />
+                <div className="w-full mb-6">
+                  <label
+                    className="block text-headColor font-semibold mb-2"
+                    htmlFor="phone"
+                  >
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    placeholder="Type here"
+                  />
+                </div>
               </div>
             </div>
 
@@ -184,20 +200,42 @@ const Contact = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <FormField
-                  label="Email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
+                <div className="w-full mb-6">
+                  <label
+                    className="block text-headColor font-semibold mb-2"
+                    htmlFor="email"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    placeholder="Type here"
+                  />
+                </div>
               </div>
               <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <FormField
-                  label="Your Message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                />
+                <div className="w-full mb-6">
+                  <label
+                    className="block text-headColor font-semibold mb-2"
+                    htmlFor="message"
+                  >
+                    Your Message
+                  </label>
+                  <input
+                    type="text"
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 border-[#363636] focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors"
+                    placeholder="Type here"
+                  />
+                </div>
               </div>
             </div>
 
@@ -217,8 +255,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="md:col-span-1 md:-ml-3 lg:-ml-0 mb-10 md:mb-0 mx-auto md:mx-0">
-            <div className="md:h-[25%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
+          <div className="hidden md:block md:col-span-1 md:-ml-3 lg:-ml-0 mb-10 md:mb-0 mx-auto md:mx-0">
+            <div className="md:h-[20%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
               <div className="md:flex">
                 <div className="flex bg-[#262626] bg-opacity-95 text-center justify-center py-2 px-6 md:px-4 lg:px-8 rounded-lg">
                   <div className="flex items-center">
