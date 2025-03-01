@@ -256,7 +256,7 @@ const Contact = () => {
           </div>
 
           <div className="hidden md:block md:col-span-1 md:-ml-3 lg:-ml-0 mb-10 md:mb-0 mx-auto md:mx-0">
-            <div className="md:h-[20%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
+            <div className="md:h-[20%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] rounded-md border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
               <div className="md:flex">
                 <div className="flex bg-[#262626] bg-opacity-95 text-center justify-center py-2 px-6 md:px-4 lg:px-8 rounded-lg">
                   <div className="flex items-center">
