@@ -70,7 +70,7 @@ const Footer = () => {
       {(value) => {
         const { footerLinks } = value;
         return (
-          <div className="bg-backgroundColor text-white">
+          <div className="bg-backgroundColor text-white z-[999]">
             <div className="w-full bg-[#0A0E10] py-8">
               <Container maxWidth="xl">
                 <div className="flex flex-col md:flex-row justify-center text-center md:justify-between w-full mb-8 md:items-start gap-y-3 md:gap-y-0">
@@ -86,7 +86,7 @@ const Footer = () => {
                       top-tier clients from start-ups to enterprises.
                     </p>
                   </div>
-                  <div className="justify-items-center md:justify-items-start md:items-start md:mr-10 font-outlet font-light text-[14px] md:text-[16px] leading-[26px]">
+                  <div className="justify-items-center md:justify-items-start md:items-start md:mr-10 font-outlet font-light text-[14px] md:text-[16px] leading-[26px] z-50">
                     <div className="items-center mb-2 md:mb-4">
                       <Email className="md:mr-2" />
                       <a

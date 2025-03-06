@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Consumer } from "../ContextAPI/ContextAPI";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 
 const DesktopScroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -38,7 +37,7 @@ const DesktopScroll = () => {
         const { founders } = value;
         return (
           <div className="w-full bg-gray-100">
-            <div className="sticky top-0 z-50 bg-gray-100 text-center pt-3 pb-8">
+            <div className="sticky top-0 z-10 bg-gray-100 text-center pt-3 pb-8">
               <div className="container mx-auto mt-5">
                 <h1 className="text-6xl xs:text-7xl md:text-8xl xl:text-9xl text-center font-medium text-backgroundColor/50 tracking-tighter">
                   Founders
@@ -106,7 +105,7 @@ const DesktopScroll = () => {
                               to={founder.src}
                               target="_blank"
                               rel="noreferrer"
-                              className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg z-99"
+                              className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg -z-0"
                             >
                               View Profile
                             </Link>

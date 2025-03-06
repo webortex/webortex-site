@@ -62,7 +62,7 @@ function App() {
                       <Contact />
                     </Nav>
                   </div>
-                  <div className="md:hidden">
+                  <div className="block md:hidden">
                     <Layout>
                       <Contact />
                     </Layout>
