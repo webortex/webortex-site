@@ -9,7 +9,7 @@ const Services = () => {
       {(value) => {
         const { services } = value;
         return (
-          <Container maxWidth="lg" className="h-full w-full">
+          <Container maxWidth="lg" className="h-full w-full overflow-hidden">
             <section id="services">
               <div className="mb-8">
                 <h1 className="text-6xl text-center text-headColor font-bold tracking-tighter">
