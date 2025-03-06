@@ -29,7 +29,7 @@ const Services = () => {
                     <Link
                       to={`/services/${service.slug}`}
                       key={service.id}
-                      className="p-8 flex items-center flex-col bg-[#111111]/70 text-white w-auto max-w-[377px] h-[420px] border-2 rounded-3xl border-[#939393]/60"
+                      className="p-8 flex items-center flex-col bg-[#111111]/70 text-white w-auto md:max-w-[377px] md:h-[420px] max-w-[300px] h-[400px] border-2 rounded-3xl border-[#939393]/60"
                     >
                       <p className="text-2xl xl:text-3xl text-textColor tracking-wide font-semibold text-center">
                         {service.title}
