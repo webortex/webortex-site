@@ -105,7 +105,7 @@ const DesktopScroll = () => {
                               to={founder.src}
                               target="_blank"
                               rel="noreferrer"
-                              className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg -z-0"
+                              className="px-8 py-3 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors text-sm md:text-base xl:text-lg "
                             >
                               View Profile
                             </Link>
