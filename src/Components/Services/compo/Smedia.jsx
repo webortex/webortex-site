@@ -34,7 +34,7 @@ const socialMediaData = [
     rotate: 20,
   },
   {
-    name: "Insta",
+    name: "Instagram",
     icon: instagramIcon,
     position: { x: -120, y: 0 },
     rotate: 0,
