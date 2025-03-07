@@ -18,9 +18,11 @@ import teamGarudaIcon from "../../assets/teamgaruda.png";
 import FramezIcon from "../../assets/64FramezLogo.svg";
 
 import webImg from "../../assets/ServicePage/web.gif";
+import appImg from "../../assets/ServicePage/appdev.gif";
 import uiuxImg from "../../assets/ServicePage/ui.mp4";
 import mvpImg from "../../assets/ServicePage/mvp.mp4";
-import socialImg from "../../assets/ServicePage/social.mp4";
+import seoImg from "../../assets/ServicePage/seo.gif";
+import socialImg from "../../assets/ServicePage/socialmedia.gif";
 import serviceBannerImg from "../../assets/ServicePage/we.png";
 import mockupImg from "../../assets/ServicePage/mockup.png";
 
@@ -169,6 +171,7 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Appdev />,
+        frameImg: appImg,
         frameVideo: "",
         frameTitle: "App Development",
         frameText: "",
@@ -264,6 +267,7 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Seo />,
+        frameImg: seoImg,
         frameVideo: "",
         frameTitle: "Search Engine Optimization",
         frameText: "",
@@ -295,7 +299,8 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Smedia />,
-        frameVideo: socialImg,
+        frameImg: socialImg,
+        frameVideo: "",
         frameTitle: "Social Media Marketing",
         frameText:
           "We increase revenue and ensure sustainable long-term growth for your business through powerful  apps and  websites.",
@@ -340,8 +345,7 @@ export class Provider extends Component {
           "Yes, GenClip supports a wide range of video formats, ensuring compatibility with most cameras and devices.",
       },
       {
-        question:
-          "What are the subscription plans and pricing for GenClip?",
+        question: "What are the subscription plans and pricing for GenClip?",
         answer:
           "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
       },
