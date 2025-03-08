@@ -58,22 +58,35 @@ const ServicePage = () => {
                     service.banners.map((banner, index) => (
                       <div
                         key={index}
-                        className={`relative flex flex-col-reverse md:flex-row justify-center items-center w-full my-8 md:my-20 ${
-                          index % 2 === 0
-                            ? "md:flex-row"
-                            : "md:flex-row-reverse"
+                        className={`grid grid-cols-1 md:grid-cols-2 w-full my-14 xs:my-20 md:my-20 2xl:my-24 ${
+                          index % 2 === 0 ? "" : "md:[direction:rtl]"
                         }`}
                       >
-                        <div className="flex flex-col justify-center items-center align-middle text-center md:text-left px-3 xs:px-14 sm:px-24 md:px-10 2xl:px-20">
-                          <h2 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl text-white">
+                        <div className="flex flex-col justify-center items-center md:items-start align-middle text-center md:text-left px-3 xs:px-14 sm:px-24 md:px-8 2xl:px-20 [direction:ltr] order-2 md:order-1">
+                          <h2 className="text-center md:text-left text-2xl xs:text-3xl md:text-4xl lg:text-5xl text-white">
                             {banner.title}
                           </h2>
                           <p className="text-xs md:text-sm text-secondaryTextColor mt-2 md:mt-8">
                             {banner.description}
                           </p>
                         </div>
-                        <div className="px-3 xs:px-10 sm:px-20 md:px-10 2xl:px-20 mb-5 md:mb-0">
-                          <img src={banner.image} alt="" />
+                        <div className="flex items-center justify-center order-1 md:order-2">
+                          {banner.image ? (
+                            <img
+                              src={banner.image}
+                              alt={banner.title}
+                              className=" w-full h-full object-cover rounded-2xl scale-[80%]"
+                            />
+                          ) : (
+                            <video
+                              src={banner.video}
+                              className="w-full h-full object-cover rounded-2xl scale-90"
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                            />
+                          )}
                         </div>
                       </div>
                     ))}
