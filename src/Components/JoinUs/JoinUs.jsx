@@ -26,9 +26,19 @@ function JoinUs() {
     console.log(formData);
   };
 
+  const whatsappMessage = "Hello! I'd like to learn more about your services.";
+
+  const handleWhatsApp = () => {
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 py-12 px-4 relative">
-      <button className="absolute top-4 right-4 px-4 py-2 text-sm bg-gray-800 text-gray-300 rounded hover:bg-gray-700 transition-colors">
+      <button
+        onClick={handleWhatsApp}
+        className="absolute top-4 right-4 px-4 py-2 text-sm bg-gray-800 text-gray-300 rounded hover:bg-gray-700 transition-colors"
+      >
         Message us
       </button>
       <Container maxWidth="sm">

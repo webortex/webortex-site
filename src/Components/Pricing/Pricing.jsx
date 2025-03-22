@@ -100,7 +100,6 @@ const Pricing = () => {
               </button>
               <button
                 onClick={handleWhatsApp}
-                target="_blank"
                 className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 px-8 rounded-lg transition-all duration-300 ease-in-out"
               >
                 Message us
