@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import Slide from "../../assets/SlideItem.png";
 import "boxicons";
 
 const Works = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const slides = [Slide, Slide, Slide, Slide, Slide];
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -16,8 +26,8 @@ const Works = () => {
   };
 
   const getSlidePosition = (index) => {
+    if (isMobile) return "center";
     const offset = (index - currentSlide + slides.length) % slides.length;
-
     if (offset === 0) return "center";
     if (offset === 1) return "next1";
     if (offset === 2) return "next2";
@@ -45,7 +55,7 @@ const Works = () => {
           return (
             <div
               key={index}
-              className={`absolute      transition-all duration-500 ease-in-out ${
+              className={`absolute transition-all duration-500 ease-in-out ${
                 position === "center"
                   ? "z-30"
                   : position === "next1"
@@ -59,29 +69,30 @@ const Works = () => {
                   : "z-0"
               }`}
               style={{
-                transform:
-                  position === "center"
-                    ? "translateX(0) scale(1.50)"
-                    : position === "next1"
-                    ? "translateX(60%) scale(0.85)"
-                    : position === "next2"
-                    ? "translateX(120%) scale(0.7)"
-                    : position === "prev1"
-                    ? "translateX(-60%) scale(0.85)"
-                    : position === "prev2"
-                    ? "translateX(-120%) scale(0.7)"
-                    : "scale(0)",
-                width: "40%",
-                filter: position !== "center" ? "brightness(0.7)" : "none",
+                transform: isMobile
+                  ? `translate3d(${(index - currentSlide) * 100}%, 0, 0)`
+                  : position === "center"
+                  ? "translateX(0) scale(1.50)"
+                  : position === "next1"
+                  ? "translateX(60%) scale(0.85)"
+                  : position === "next2"
+                  ? "translateX(120%) scale(0.7)"
+                  : position === "prev1"
+                  ? "translateX(-60%) scale(0.85)"
+                  : position === "prev2"
+                  ? "translateX(-120%) scale(0.7)"
+                  : "scale(0)",
+                width: isMobile ? "100%" : "40%",
+                filter: !isMobile && position !== "center" ? "brightness(0.7)" : "none",
               }}
             >
-              <div className="relative   overflow-hidden transform transition-all duration-500 shadow-xl">
+              <div className="relative overflow-hidden transform transition-all duration-500 shadow-xl">
                 <img
                   src={slide}
-                  className=" object-cover"
+                  className="object-cover"
                   alt={`Slide ${index + 1}`}
                 />
-                {position !== "center" && (
+                {!isMobile && position !== "center" && (
                   <div className="absolute inset-0 bg-black bg-opacity-30 transition-opacity duration-300" />
                 )}
               </div>
