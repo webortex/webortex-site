@@ -145,9 +145,10 @@ function JoinUs() {
               onChange={handleInputChange}
             >
               <option value="">Select</option>
-              <option value="developer">Developer</option>
-              <option value="designer">Designer</option>
-              <option value="manager">Manager</option>
+              <option value="webdeveloper">Web Developer</option>
+              <option value="uiuxdesigner">UI UX Designer</option>
+              <option value="appdeveloper">App Developer</option>
+              <option value="wordpressdesigner">Wordpress Designer</option>
             </select>
           </div>
 
