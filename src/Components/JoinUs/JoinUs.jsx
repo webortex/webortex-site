@@ -225,7 +225,7 @@ function JoinUs() {
                 type="tel"
                 id="mobile"
                 name="mobile"
-                className={`flex-1 px-4 py-2 rounded-r bg-gray-800 border ${
+                className={`w-full flex-1 px-4 py-2 rounded-r bg-gray-800 border ${
                   errors.mobile ? "border-red-500" : "border-gray-700"
                 } text-gray-200 focus:outline-none focus:border-blue-500`}
                 value={formData.mobile}
