@@ -81,9 +81,17 @@ function App() {
                 </div>
               }
             />
+
+            <Route
+              path="/join-us"
+              element={
+                <Nav>
+                  <JoinUs />
+                </Nav>
+              }
+            />
             <Route path="/services/:slug" element={<ServicePage />} />
             <Route path="/get-quote" element={<Quotation />} />
-            <Route path="/join-us" element={<JoinUs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
