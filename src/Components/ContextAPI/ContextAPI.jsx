@@ -395,7 +395,7 @@ export class Provider extends Component {
         name: "Tharun A",
         title: "CPO of webortex",
         quote:
-          "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
+          "We drive innovative web and app development, delivering scalable, user-focused solutions. Passionate about blending technology and creativity to exceed expectations, we build the future, one pixel at a time!",
         src: "https://www.linkedin.com/in/tharunavula/",
       },
       {
