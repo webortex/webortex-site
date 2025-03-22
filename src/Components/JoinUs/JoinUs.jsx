@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Container, TextField, Button, Typography } from "@mui/material";
+import { useState } from "react";
+import { Container } from "@mui/material";
 
 function JoinUs() {
   const [formData, setFormData] = useState({
@@ -34,16 +34,16 @@ function JoinUs() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 py-12 px-4 relative">
+    <div className="min-h-screen py-12 px-4 relative">
       <button
         onClick={handleWhatsApp}
-        className="absolute top-4 right-4 px-4 py-2 text-sm bg-gray-800 text-gray-300 rounded hover:bg-gray-700 transition-colors"
+        className="absolute top-4 right-4 px-4 py-2 text-sm text-gray-300 rounded hover:bg-gray-700 transition-colors"
       >
         Message us
       </button>
       <Container maxWidth="sm">
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-gray-200 mb-4">Join Us</h1>
+          <h1 className="text-5xl font-bold text-headColor mb-4">Join Us</h1>
           <p className="text-gray-400">
             Risus commodo id odio turpis pharetra elementum. Pulvinar porta
             porta feugiat scelerisque in elit. Morbi rhoncus, tellus,
