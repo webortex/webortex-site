@@ -15,7 +15,7 @@ import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
 import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
-import FramezIcon from "../../assets/workedLogos/64FramezLogo.svg";
+// import FramezIcon from "../../assets/workedLogos/64FramezLogo.svg";
 import garudaIcon from "../../assets/workedLogos/garuda.png";
 import mygbitrIcon from "../../assets/workedLogos/mygbitr.png";
 
@@ -81,17 +81,17 @@ export class Provider extends Component {
           {
             id: 1,
             title: "ui/ux",
-            link: "",
+            link: "/join-us",
           },
           {
             id: 2,
             title: "web",
-            link: "",
+            link: "/join-us",
           },
           {
             id: 3,
             title: "app",
-            link: "",
+            link: "/join-us",
           },
         ],
         requirements: {
@@ -123,12 +123,12 @@ export class Provider extends Component {
         link: "https://teamgaruda.com/",
         image: teamGarudaIcon,
       },
-      {
-        id: 2,
-        title: "64Framez",
-        link: "https://www.64framez.com/",
-        image: FramezIcon,
-      },
+      // {
+      //   id: 2,
+      //   title: "64Framez",
+      //   link: "https://www.64framez.com/",
+      //   image: FramezIcon,
+      // },
       {
         id: 3,
         title: "MYGBITR",
