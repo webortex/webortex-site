@@ -83,13 +83,16 @@ const Works = () => {
                   ? "translateX(-120%) scale(0.7)"
                   : "scale(0)",
                 width: isMobile ? "100%" : "40%",
-                filter: !isMobile && position !== "center" ? "brightness(0.7)" : "none",
+                filter:
+                  !isMobile && position !== "center"
+                    ? "brightness(0.7)"
+                    : "none",
               }}
             >
               <div className="relative overflow-hidden transform transition-all duration-500 shadow-xl">
                 <img
                   src={slide}
-                  className="object-cover"
+                  className="object-cover px-1 sm:px-0"
                   alt={`Slide ${index + 1}`}
                 />
                 {!isMobile && position !== "center" && (

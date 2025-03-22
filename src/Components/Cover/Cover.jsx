@@ -20,11 +20,7 @@ const Cover = () => {
               <div className="pl-7 xs:pl-10 sm:pl-12 lg:pl-20 xl:pl-24 md:h-svh 2xl:h-full">
                 <div className="flex justify-start items-center">
                   <span className="relative self-start ml-[-50px] lg:ml-[-70px] mt-[-35px]  sm:mt-[-35px] lg:mt-[-30px] z-[-90] scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-[85%] xl:scale-[90%] 2xl:scale-100">
-                    <img
-                      src={starImg}
-                      alt="starIcon"
-                      className=""
-                    />
+                    <img src={starImg} alt="starIcon" className="" />
                   </span>
                   <h1
                     className="text-[35px] xs:text-[45px] sm:text-[65px] md:text-[75px] 
@@ -41,9 +37,7 @@ const Cover = () => {
                       />
                     </div>
                     <div className="flex justify-start items-center ">
-                      <div className="text-coverMainTextColor ">
-                        Amazing
-                      </div>
+                      <div className="text-coverMainTextColor ">Amazing</div>
                       <span className="text-logoGreenColor ml-[2%]">
                         <WordRotate
                           words={["Websites", "DevApps"]}
@@ -59,9 +53,7 @@ const Cover = () => {
                       </span>
                     </div>
                     <div>
-                      <span className="text-greenWhite block">
-                        For You
-                      </span>
+                      <span className="text-greenWhite block">For You</span>
                     </div>
                   </h1>
 
@@ -73,11 +65,7 @@ const Cover = () => {
                 lg:left-[270px] xl:left-[320px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px]
                 h-[16px] rotate-3"
                   >
-                    <img
-                      src={starImg}
-                      alt="starIcon"
-                      className=""
-                    />
+                    <img src={starImg} alt="starIcon" className="" />
                   </span>
                   <span
                     className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] 
@@ -86,11 +74,7 @@ const Cover = () => {
                 left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px]
                 xl:left-[750px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]"
                   >
-                    <img
-                      src={starImg}
-                      alt="starIcon"
-                      className=""
-                    />
+                    <img src={starImg} alt="starIcon" className="" />
                   </span>
                 </div>
                 <div></div>
@@ -121,7 +105,7 @@ const Cover = () => {
                       <img
                         src={brand.image}
                         alt={brand.title}
-                        className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px]"
+                        className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px] h-full"
                       />
                     </Link>
                   ))}

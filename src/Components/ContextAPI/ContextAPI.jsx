@@ -14,8 +14,10 @@ import Mvp from "../Services/compo/Mvp";
 import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
-import teamGarudaIcon from "../../assets/teamgaruda.png";
-import FramezIcon from "../../assets/64FramezLogo.svg";
+import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
+import FramezIcon from "../../assets/workedLogos/64FramezLogo.svg";
+import garudaIcon from "../../assets/workedLogos/garuda.png";
+import mygbitrIcon from "../../assets/workedLogos/mygbitr.png";
 
 import webImg from "../../assets/ServicePage/web.gif";
 import appImg from "../../assets/ServicePage/appdev.gif";
@@ -129,15 +131,15 @@ export class Provider extends Component {
       },
       {
         id: 3,
-        title: "Team Garuda",
-        link: "https://teamgaruda.com/",
-        image: teamGarudaIcon,
+        title: "MYGBITR",
+        link: "https://www.facebook.com/mygbitrhari/",
+        image: mygbitrIcon,
       },
       {
         id: 4,
-        title: "Team Garuda",
-        link: "https://teamgaruda.com/",
-        image: teamGarudaIcon,
+        title: "Garuda Creative Factory",
+        link: "https://www.instagram.com/garudacreativefactory9/",
+        image: garudaIcon,
       },
     ],
 

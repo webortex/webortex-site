@@ -3,6 +3,18 @@ import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Pricing = () => {
+  const phoneNumber = "+918688281821";
+  const whatsappMessage = "Hello! I'd like to learn more about your services.";
+
+  const handleCall = () => {
+    window.open(`tel:${phoneNumber}`, "_self");
+  };
+
+  const handleWhatsApp = () => {
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
+  };
+
   return (
     <Container maxWidth="md" className="px-2">
       <section id="pricing">
@@ -25,10 +37,12 @@ const Pricing = () => {
               </h1>
             </div>
             <div className="flex flex-col gap-4 mb-8">
-              <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-textColor border border-[#424242] py-3 px-10 rounded-lg transition-all duration-300 ease-in-out">
-                Book a Call
-              </button>
-              <Link to="/get-quote" className="w-full">
+              <Link to="https://cal.com/webortex" target="_blank">
+                <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-textColor border border-[#424242] py-3 px-10 rounded-lg transition-all duration-300 ease-in-out">
+                  Book a Call
+                </button>
+              </Link>
+              <Link to="/get-quote" className="w-full" target="_blank">
                 <button className="bg-[#494949] border border-[#424242] hover:bg-[#494949]/60 text-textColor w-full py-3 px-10 rounded-lg">
                   Get a Quote
                 </button>
@@ -77,11 +91,18 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 ">
-              <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 px-8 rounded-lg transition-all duration-300 ease-in-out sm:w-xl">
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={handleCall}
+                className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 px-8 rounded-lg transition-all duration-300 ease-in-out sm:w-xl"
+              >
                 Call us
               </button>
-              <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 px-8 rounded-lg transition-all duration-300 ease-in-out">
+              <button
+                onClick={handleWhatsApp}
+                target="_blank"
+                className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 px-8 rounded-lg transition-all duration-300 ease-in-out"
+              >
                 Message us
               </button>
             </div>
