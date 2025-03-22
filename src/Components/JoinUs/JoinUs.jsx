@@ -13,17 +13,120 @@ function JoinUs() {
     resume: null,
   });
 
+  const [errors, setErrors] = useState({});
+  const [fileError, setFileError] = useState("");
+  const [fileName, setFileName] = useState("");
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+    }
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, resume: e.target.files[0] });
+    const file = e.target.files[0];
+    setFileError("");
+    setFileName("");
+
+    if (!file) return;
+
+    if (file.type !== "application/pdf") {
+      setFileError("Only PDF files are allowed");
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      setFileError("File size must be less than 5MB");
+      return;
+    }
+
+    setFormData({ ...formData, resume: file });
+    setFileName(file.name);
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = "Name must be at least 3 characters";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Mobile number must be 10 digits";
+    }
+
+    if (!formData.whyWebortex.trim()) {
+      newErrors.whyWebortex = "This field is required";
+    } else if (formData.whyWebortex.trim().length < 20) {
+      newErrors.whyWebortex = "Please provide at least 20 characters";
+    }
+
+    if (!formData.profileLink.trim()) {
+      newErrors.profileLink = "Profile link is required";
+    } else if (
+      !/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
+        formData.profileLink
+      )
+    ) {
+      newErrors.profileLink = "Please enter a valid URL";
+    }
+
+    if (!formData.role) {
+      newErrors.role = "Please select a role";
+    }
+
+    if (!formData.source) {
+      newErrors.source = "Please select an option";
+    }
+
+    if (!formData.resume) {
+      setFileError("Please upload your resume");
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0 && !fileError;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (!formData.resume) {
+      setFileError("Please upload your resume");
+    }
+
+    if (!validateForm()) {
+      return;
+    }
+
+    console.log("Form submitted:", formData);
+    alert("Form submitted successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      whyWebortex: "",
+      profileLink: "",
+      role: "",
+      source: "",
+      resume: null,
+    });
+    setErrors({});
+    setFileName("");
+    setFileError("");
   };
 
   const whatsappMessage = "Hello! I'd like to learn more about your services.";
@@ -31,6 +134,22 @@ function JoinUs() {
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
     window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
+  };
+
+  const handleCancel = () => {
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      whyWebortex: "",
+      profileLink: "",
+      role: "",
+      source: "",
+      resume: null,
+    });
+    setErrors({});
+    setFileName("");
+    setFileError("");
   };
 
   return (
@@ -50,7 +169,7 @@ function JoinUs() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
           <div>
             <label htmlFor="name" className="block text-sm text-gray-400 mb-1">
               Name *
@@ -59,12 +178,16 @@ function JoinUs() {
               type="text"
               id="name"
               name="name"
-              required
-              className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:border-blue-500"
+              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
+                errors.name ? "border-red-500" : "border-gray-700"
+              } text-gray-200 focus:outline-none focus:border-blue-500`}
               placeholder="Enter your Name"
               value={formData.name}
               onChange={handleInputChange}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            )}
           </div>
 
           <div>
@@ -75,12 +198,16 @@ function JoinUs() {
               type="email"
               id="email"
               name="email"
-              required
-              className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:border-blue-500"
+              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
+                errors.email ? "border-red-500" : "border-gray-700"
+              } text-gray-200 focus:outline-none focus:border-blue-500`}
               placeholder="Enter email address"
               value={formData.email}
               onChange={handleInputChange}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
 
           <div>
@@ -98,12 +225,16 @@ function JoinUs() {
                 type="tel"
                 id="mobile"
                 name="mobile"
-                required
-                className="flex-1 px-4 py-2 rounded-r bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:border-blue-500"
+                className={`flex-1 px-4 py-2 rounded-r bg-gray-800 border ${
+                  errors.mobile ? "border-red-500" : "border-gray-700"
+                } text-gray-200 focus:outline-none focus:border-blue-500`}
                 value={formData.mobile}
                 onChange={handleInputChange}
               />
             </div>
+            {errors.mobile && (
+              <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>
+            )}
           </div>
 
           <div>
@@ -116,12 +247,16 @@ function JoinUs() {
             <textarea
               id="whyWebortex"
               name="whyWebortex"
-              required
               rows="4"
-              className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:border-blue-500"
+              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
+                errors.whyWebortex ? "border-red-500" : "border-gray-700"
+              } text-gray-200 focus:outline-none focus:border-blue-500`}
               value={formData.whyWebortex}
               onChange={handleInputChange}
             />
+            {errors.whyWebortex && (
+              <p className="text-red-500 text-sm mt-1">{errors.whyWebortex}</p>
+            )}
           </div>
 
           <div>
@@ -135,11 +270,15 @@ function JoinUs() {
               type="url"
               id="profileLink"
               name="profileLink"
-              required
-              className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:border-blue-500"
+              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
+                errors.profileLink ? "border-red-500" : "border-gray-700"
+              } text-gray-200 focus:outline-none focus:border-blue-500`}
               value={formData.profileLink}
               onChange={handleInputChange}
             />
+            {errors.profileLink && (
+              <p className="text-red-500 text-sm mt-1">{errors.profileLink}</p>
+            )}
           </div>
 
           <div>
@@ -149,8 +288,9 @@ function JoinUs() {
             <select
               id="role"
               name="role"
-              required
-              className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:border-blue-500 appearance-none"
+              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
+                errors.role ? "border-red-500" : "border-gray-700"
+              } text-gray-200 focus:outline-none focus:border-blue-500 appearance-none`}
               value={formData.role}
               onChange={handleInputChange}
             >
@@ -160,6 +300,9 @@ function JoinUs() {
               <option value="appdeveloper">App Developer</option>
               <option value="wordpressdesigner">Wordpress Designer</option>
             </select>
+            {errors.role && (
+              <p className="text-red-500 text-sm mt-1">{errors.role}</p>
+            )}
           </div>
 
           <div>
@@ -172,8 +315,9 @@ function JoinUs() {
             <select
               id="source"
               name="source"
-              required
-              className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:border-blue-500 appearance-none"
+              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
+                errors.source ? "border-red-500" : "border-gray-700"
+              } text-gray-200 focus:outline-none focus:border-blue-500 appearance-none`}
               value={formData.source}
               onChange={handleInputChange}
             >
@@ -182,14 +326,21 @@ function JoinUs() {
               <option value="friend">Friend</option>
               <option value="search">Search Engine</option>
             </select>
+            {errors.source && (
+              <p className="text-red-500 text-sm mt-1">{errors.source}</p>
+            )}
           </div>
 
           <div>
             <label className="block text-sm text-gray-400 mb-1">
-              Upload your Resume
+              Upload your Resume (PDF only, max 5MB) *
             </label>
             <div className="flex items-center justify-center w-full">
-              <label className="w-full flex flex-col items-center px-4 py-4 bg-gray-800 text-gray-400 rounded border border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors">
+              <label
+                className={`w-full flex flex-col items-center px-4 py-4 bg-gray-800 text-gray-400 rounded border ${
+                  fileError ? "border-red-500" : "border-gray-700"
+                } cursor-pointer hover:bg-gray-700 transition-colors`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -204,23 +355,37 @@ function JoinUs() {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                <span className="mt-2 text-sm">Upload here</span>
+                <span className="mt-2 text-sm">
+                  {fileName ? fileName : "Upload PDF here"}
+                </span>
                 <input
                   type="file"
                   className="hidden"
-                  accept=".pdf,.doc,.docx"
+                  accept=".pdf"
                   onChange={handleFileChange}
                 />
               </label>
             </div>
+            {fileError && (
+              <p className="text-red-500 text-sm mt-1">{fileError}</p>
+            )}
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-          >
-            Submit
-          </button>
+          <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0">
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:outline-none transition-all duration-300 ease-in-out"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300 ease-in-out"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </Container>
     </div>
