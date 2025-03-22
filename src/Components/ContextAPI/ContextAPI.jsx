@@ -323,31 +323,32 @@ export class Provider extends Component {
         title: "Marketing",
         slug: "social-media-marketing",
         description:
-          "We increase revenue and ensure sustainable long-term growth",
+          "Transforming brands into digital sensations through strategic and engaging social storytelling.",
         component: <Smedia />,
         frameImg: socialImg,
         frameVideo: "",
         frameTitle: "Social Media Marketing",
         frameText:
-          "We increase revenue and ensure sustainable long-term growth for your business through powerful  apps and  websites.",
+          "We fuel sustainable growth by combining innovative web solutions with compelling social storytelling.",
         mockupImage: mockupImg,
         banners: [
           {
-            title: "Navigating the digital landscape for success",
+            title: "Building a Powerful Digital Presence",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Webortex empowers brands to establish a strong online presence through cutting-edge SEO, PPC, and content strategies that drive visibility and engagement.",
+
             image: serviceBannerImg,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Creating Impactful Social Campaigns",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Our team designs data-driven social media campaigns that captivate audiences, boost interaction, and maximize brand awareness across digital platforms.",
             image: socialImg2,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Enhancing Brand Loyalty Online",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "By curating personalized content and fostering meaningful interactions, we build lasting relationships that turn followers into loyal brand advocates.",
             image: socialImg3,
           },
         ],

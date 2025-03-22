@@ -45,7 +45,7 @@ const ServicePage = () => {
                   </div>
                 </div>
                 <Container maxWidth="lg">
-                  {service.mockupImage && (
+                  {/* {service.mockupImage && (
                     <div className="py-10 sm:py-20 lg:py-32 2xl:py-40">
                       <img
                         src={service.mockupImage}
@@ -53,7 +53,7 @@ const ServicePage = () => {
                         className="w-full h-full object-cover rounded-2xl"
                       />
                     </div>
-                  )}
+                  )} */}
                   {service.banners &&
                     service.banners.map((banner, index) => (
                       <div
