@@ -11,6 +11,7 @@ import ServicePage from "./Components/Services/ServicePage";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Loader from "./Components/Loader/Loader";
 import Quotation from "./Components/Pricing/Quotation";
+import JoinUs from "./Components/JoinUs/JoinUs";
 
 const Layout = ({ children }) => {
   return (
@@ -82,6 +83,7 @@ function App() {
             />
             <Route path="/services/:slug" element={<ServicePage />} />
             <Route path="/get-quote" element={<Quotation />} />
+            <Route path="/join-us" element={<JoinUs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
