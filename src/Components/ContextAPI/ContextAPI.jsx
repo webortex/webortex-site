@@ -17,7 +17,8 @@ import Smedia from "../Services/compo/Smedia";
 import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
 // import FramezIcon from "../../assets/workedLogos/64FramezLogo.svg";
 import garudaIcon from "../../assets/workedLogos/garuda.png";
-import mygbitrIcon from "../../assets/workedLogos/mygbitr.png";
+// import mygbitrIcon from "../../assets/workedLogos/mygbitr.png";
+import sipIcon from "../../assets/workedLogos/SiP.png";
 
 import webImg from "../../assets/ServicePage/web.gif";
 import appImg from "../../assets/ServicePage/appdev.gif";
@@ -123,18 +124,24 @@ export class Provider extends Component {
         link: "https://teamgaruda.com/",
         image: teamGarudaIcon,
       },
+      {
+        id: 5,
+        title: "SIP",
+        link: "",
+        image: sipIcon,
+      },
       // {
       //   id: 2,
       //   title: "64Framez",
       //   link: "https://www.64framez.com/",
       //   image: FramezIcon,
       // },
-      {
-        id: 3,
-        title: "MYGBITR",
-        link: "https://www.facebook.com/mygbitrhari/",
-        image: mygbitrIcon,
-      },
+      // {
+      //   id: 3,
+      //   title: "MYGBITR",
+      //   link: "https://www.facebook.com/mygbitrhari/",
+      //   image: mygbitrIcon,
+      // },
       {
         id: 4,
         title: "Garuda Creative Factory",
