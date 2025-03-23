@@ -73,7 +73,7 @@ const DesktopScroll = () => {
               <meta
                 name="keywords"
                 content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology, Software Development in Tirupati, Custom Software Development in Tirupati, E-commerce Web Development in Tirupati, Mobile App Development in Tirupati, UI/UX Design Services in Tirupati, Cloud Solutions in Tirupati, IT Consulting in Tirupati, Software Maintenance in Tirupati,Digital Transformation in Tirupati, Webortex Software Development Agency, Webortex Sisindri Singamsetti, Webortex Gnana Sekhar, Webortex Founders, Webortex Team, Webortex Services, Webortex Projects, Webortex Tharun A, Webortex Jayadeep Reddy, Webortex Ashok P, Webortex Sai Sandeep, Sisindri Singamsettis Webortex, sisitarak, sisi-tarak, sisi-tarakk, Webortex Founders Team, Sisindri Singamsetti Webortex COO, K Gnana Sekhar Webortex CEO, Tharun A Webortex CPO, Jayadeep Reddy Webortex CTO, Ashok Pemeram Webortex CIO, Sai Sandeep Webortex CLO`}
-              />
+              />a
               <meta name="author" content="Sisindri Singamsetti" />
 
               <meta

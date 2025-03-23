@@ -31,12 +31,19 @@ import mockupImg from "../../assets/ServicePage/mockup.png";
 import webdevImg1 from "../../assets/ServicePage/webdev1.mp4";
 import webdevImg2 from "../../assets/ServicePage/webdev2.jpeg";
 import webdevImg3 from "../../assets/ServicePage/webdev3.jpeg";
-import webdevImg4 from "../../assets/ServicePage/webdev4.jpeg";
+import webdevImg4 from "../../assets/ServicePage/webdev4.svg";
+import proSupImg from "../../assets/ServicePage/productSupport.jpeg";
+import appdevImg1 from "../../assets/ServicePage/app1.svg";
+import appdevImg2 from "../../assets/ServicePage/app2.svg";
+import appdevImg3 from "../../assets/ServicePage/app3.svg";
 import uiuxImg1 from "../../assets/ServicePage/uiux1.png";
 import uiuxImg2 from "../../assets/ServicePage/uiux2.png";
 import uiuxImg3 from "../../assets/ServicePage/uiux3.png";
-import seoImg1 from "../../assets/ServicePage/seo1.png";
-import seoImg2 from "../../assets/ServicePage/seo2.png";
+import mvpImg1 from "../../assets/ServicePage/mvp1.svg";
+import mvpImg3 from "../../assets/ServicePage/mvp3.svg";
+import seoImg1 from "../../assets/ServicePage/seo1.svg";
+import seoImg2 from "../../assets/ServicePage/seo2.svg";
+import seoImg3 from "../../assets/ServicePage/seo3.svg";
 import socialImg1 from "../../assets/ServicePage/socialmedia1.svg";
 import socialImg2 from "../../assets/ServicePage/socialmedia2.png";
 import socialImg3 from "../../assets/ServicePage/socialmedia3.png";
@@ -168,26 +175,32 @@ export class Provider extends Component {
           {
             title: "Design",
             description:
-              "Great web experiences start with intelligent design. Webortex crafts visually stunning, user-centric interfaces that combine aesthetics with functionality. Our design approach prioritizes intuitive navigation, responsive layouts, and seamless interactions, ensuring an engaging digital experience across all devices.",
+              "Webortex crafts visually stunning, user-centric designs blending aesthetics with functionality. Our intuitive navigation and responsive layouts ensure seamless, engaging experiences across all devices, driving user satisfaction and conversions.",
             video: webdevImg1,
           },
           {
             title: "Develop",
             description:
-              "Precision coding meets innovation at Webortex. Our development process leverages modern frameworks and scalable architectures to build high-performance, secure, and future-ready websites. Whether it’s a sleek landing page or a complex web application, we engineer digital solutions that drive business success.",
+              "We build high-performance, secure websites using modern frameworks and scalable architectures. From sleek landing pages to complex web apps, our precision coding delivers future-ready solutions for business growth and innovation.",
             image: webdevImg2,
+          },
+          {
+            title: "Responsive",
+            description:
+              "Webortex ensures seamless, mobile-friendly experiences with fluid grids and flexible UI elements. Our responsive designs guarantee optimal performance on every screen, enhancing accessibility and user engagement across all devices.",
+            image: webdevImg4,
           },
           {
             title: "Testing",
             description:
-              "Flawless execution demands rigorous testing. Webortex conducts in-depth performance, security, and usability testing to ensure optimal functionality across browsers and devices. With a data-driven QA process, we eliminate vulnerabilities, enhance speed, and refine every interaction before launch.",
+              "We ensure flawless functionality through rigorous performance, security, and usability testing. Our data-driven QA process eliminates vulnerabilities, enhances speed, and refines every interaction for a seamless user experience.",
             image: webdevImg3,
           },
           {
             title: "Production & Support",
             description:
-              "Launching a website is just the beginning. Webortex provides continuous optimization, security updates, and real-time support to keep your platform running at peak efficiency. Our proactive maintenance and strategic enhancements ensure long-term performance, scalability, and business growth.",
-            image: webdevImg4,
+              "Webortex provides continuous optimization, security updates, and real-time support post-launch. Our proactive maintenance ensures long-term performance, scalability, and sustained business growth for your digital platform.",
+            image: proSupImg,
           },
         ],
       },
@@ -207,20 +220,26 @@ export class Provider extends Component {
           {
             title: "Concept & UI/UX Innovation",
             description:
-              "A successful app starts with a visionary concept and flawless design. Webortex blends market research, user psychology, and cutting-edge UI/UX principles to craft visually stunning and intuitive mobile experiences. From wireframing to prototyping, we ensure seamless navigation and high engagement.",
-            image: serviceBannerImg,
+              "Webortex combines market research, user psychology, and cutting-edge UI/UX principles to create visionary app concepts. From wireframing to prototyping, we deliver visually stunning, intuitive designs with seamless navigation and high user engagement.",
+            image: appdevImg1,
           },
           {
             title: "Development & Feature Integration",
             description:
-              "Powerful apps require robust engineering. Webortex develops high-performance, scalable mobile applications using modern frameworks like React Native, Flutter, and Swift. Our team integrates real-time functionalities, AI-driven automation, and seamless third-party APIs to enhance app efficiency and user satisfaction.",
-            image: serviceBannerImg,
+              "Webortex builds high-performance, scalable apps using React Native, Flutter, and Swift. We integrate real-time functionalities, AI-driven automation, and third-party APIs to enhance efficiency and deliver exceptional user experiences.",
+            image: appdevImg2,
           },
           {
             title: "Launch & Scalability",
             description:
-              "An app’s success extends beyond its launch. Webortex ensures smooth deployment, rigorous performance testing, and continuous optimizations to maximize speed, security, and user engagement. With strategic updates and data-driven growth plans, we help businesses scale their mobile presence effortlessly.",
-            image: serviceBannerImg,
+              "Webortex ensures smooth app deployment with rigorous testing and continuous optimization. We maximize speed, security, and engagement, offering strategic updates and data-driven growth plans to scale your mobile presence effortlessly.",
+            image: appdevImg3,
+          },
+          {
+            title: "Production & Support",
+            description:
+              "Webortex provides post-launch support, including continuous optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your app platform.",
+            image: proSupImg,
           },
         ],
       },
@@ -239,20 +258,26 @@ export class Provider extends Component {
           {
             title: "Creative Design & Visual Storytelling",
             description:
-              "Great design goes beyond functionality—it tells a story. Webortex crafts captivating digital experiences with dynamic visuals, interactive elements, and pixel-perfect layouts, ensuring every user interaction is meaningful and immersive.",
+              "Webortex creates captivating app designs with dynamic visuals, interactive elements, and pixel-perfect layouts. Our designs tell a story, ensuring every user interaction is meaningful, immersive, and drives engagement.",
             image: uiuxImg1,
           },
           {
             title: "Building Engaging Digital Interfaces",
             description:
-              "Just like constructing a strong foundation, Webortex builds visually striking, high-performance interfaces that balance aesthetics with usability. Our structured approach ensures every component works harmoniously for a seamless experience.",
+              "Webortex builds visually striking, high-performance app interfaces that balance aesthetics and usability. Our structured approach ensures every component works harmoniously for a seamless, engaging user experience.",
             image: uiuxImg2,
           },
           {
             title: "Seamless User Interactions",
             description:
-              "Designing intuitive experiences is at the heart of UI/UX. Webortex ensures smooth, effortless interactions with well-structured user flows, ensuring every tap, swipe, and action feels natural and engaging.",
+              "Webortex designs intuitive app experiences with well-structured user flows. We ensure every tap, swipe, and action feels natural, creating smooth, effortless interactions that keep users engaged and satisfied.",
             image: uiuxImg3,
+          },
+          {
+            title: "Production & Support",
+            description:
+              "Webortex provides continuous optimization, security updates, and real-time support post-launch. Our proactive maintenance ensures long-term performance, scalability, and sustained business growth for your digital platform.",
+            image: proSupImg,
           },
         ],
       },
@@ -271,20 +296,26 @@ export class Provider extends Component {
           {
             title: "Idea Validation & Prototyping",
             description:
-              "A successful product starts with a validated idea. Webortex conducts in-depth market research, user analysis, and rapid prototyping to refine concepts before development. Our data-driven approach ensures your MVP aligns with real-world needs and minimizes risk.",
-            image: serviceBannerImg,
+              "Webortex validates ideas through market research, user analysis, and rapid prototyping. Our data-driven approach ensures your MVP aligns with real-world needs, minimizing risks and setting a solid foundation for development.",
+            image: mvpImg1,
           },
           {
             title: "Agile Development & Features",
             description:
-              "Speed and efficiency define a great MVP. Webortex focuses on developing essential features with a scalable architecture, ensuring a functional, high-performance product. Our agile methodology allows for iterative improvements based on user feedback and market demand.",
+              "Webortex builds MVPs with essential features and scalable architecture, ensuring functionality and performance. Using agile methodologies, we iterate based on user feedback, delivering a product that meets market demands efficiently.",
             image: serviceBannerImg,
           },
           {
             title: "Launch & Growth Optimization",
             description:
-              "Launching an MVP is just the first step. Webortex ensures a seamless go-to-market strategy, monitors user engagement, and implements continuous optimizations. With strategic scaling solutions, we help transform MVPs into full-fledged, market-ready products. ",
-            image: serviceBannerImg,
+              "Webortex ensures a seamless MVP launch with a go-to-market strategy and continuous optimization. We monitor user engagement and implement scaling solutions to transform MVPs into market-ready, full-fledged products.",
+            image: mvpImg3,
+          },
+          {
+            title: "Production & Support",
+            description:
+              "Webortex offers post-launch support, including optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your MVP platform.",
+            image: proSupImg,
           },
         ],
       },
@@ -304,20 +335,26 @@ export class Provider extends Component {
           {
             title: "Technical SEO & Site Performance",
             description:
-              "A strong foundation is key to search success. Webortex optimizes site speed, mobile responsiveness, and structured data to enhance search engine rankings. Our technical SEO strategies ensure seamless indexing and superior user experience.",
+              "Webortex optimizes site speed, mobile responsiveness, and structured data for better search rankings. Our technical SEO ensures seamless indexing, superior user experience, and a strong foundation for search success.",
             image: seoImg1,
           },
           {
             title: "Content & Keyword Strategy",
             description:
-              "Quality content fuels SEO success. Webortex conducts in-depth keyword research and crafts high-value, SEO-optimized content that attracts and engages your target audience. Our strategic approach drives organic traffic and boosts authority.",
+              "Webortex crafts high-value, SEO-optimized content backed by in-depth keyword research. Our strategic approach attracts and engages your target audience, driving organic traffic and boosting your site’s authority.",
             image: seoImg2,
           },
           {
             title: "Link Building & Authority",
             description:
-              "Authority matters in search rankings. Webortex implements ethical link-building strategies, strengthens domain authority, and continuously optimizes SEO tactics. With data-driven insights, we ensure sustainable growth and long-term digital dominance.",
-            image: serviceBannerImg,
+              "Webortex builds domain authority through ethical link-building and continuous SEO optimization. With data-driven insights, we ensure sustainable growth, higher rankings, and long-term digital dominance for your business.",
+            image: seoImg3,
+          },
+          {
+            title: "Production & Support",
+            description:
+              "Webortex provides post-launch SEO support, including continuous optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your platform.",
+            image: proSupImg,
           },
         ],
       },
@@ -338,21 +375,26 @@ export class Provider extends Component {
           {
             title: "Building a Powerful Digital Presence",
             description:
-              "Webortex transforms brands with strategic SEO, targeted PPC campaigns, and high-value content marketing. We optimize every digital touchpoint to maximize reach, engagement, and conversion. With data-driven insights and innovative tactics, we position your brand as an industry leader.",
-
+              "Webortex transforms brands with strategic SEO, targeted PPC, and high-value content marketing. We optimize digital touchpoints to maximize reach, engagement, and conversions, positioning your brand as an industry leader with data-driven insights.",
             image: socialImg1,
           },
           {
             title: "Creating Impactful Social Campaigns",
             description:
-              "Webortex crafts dynamic, high-performing social campaigns designed to spark engagement and elevate brand awareness. Leveraging audience analytics and platform trends, we create compelling content that drives action. Our tailored strategies ensure maximum ROI and lasting digital impact.",
+              "Webortex designs dynamic social campaigns that spark engagement and elevate brand awareness. Using audience analytics and platform trends, we create compelling content that drives action, ensuring maximum ROI and lasting digital impact.",
             image: socialImg2,
           },
           {
             title: "Enhancing Brand Loyalty Online",
             description:
-              "Loyalty starts with meaningful connections. Webortex builds trust through authentic storytelling, personalized content, and interactive engagement strategies. By nurturing communities and fostering real-time interactions, we turn audiences into long-term brand advocates.",
+              "Webortex builds trust through authentic storytelling, personalized content, and interactive engagement. By nurturing communities and fostering real-time interactions, we turn audiences into loyal, long-term brand advocates.",
             image: socialImg3,
+          },
+          {
+            title: "Production & Support",
+            description:
+              "Webortex provides post-launch SEO support, including continuous optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your platform.",
+            image: proSupImg,
           },
         ],
       },
