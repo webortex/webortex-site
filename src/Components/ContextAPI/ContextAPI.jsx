@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import gnana from "../../assets/Founders/Gnana.jpg";
 import sisi from "../../assets/Founders/sisi.jpg";
-import tharun from "../../assets/Founders/Tharun.svg";
+import tharun from "../../assets/Founders/Tharun.jpg";
 import jaya from "../../assets/Founders/jayadeep.svg";
 import ashok from "../../assets/Founders/Ashok.svg";
 import sandeep from "../../assets/Founders/Sandeep.svg";
