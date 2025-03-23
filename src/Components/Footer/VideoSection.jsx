@@ -28,7 +28,7 @@ const VideoSection = () => {
               </p>
             </div>
             <Link
-              to="/lets-talk"
+              to="/join-us"
               className="bg-white text-backgroundColor text-sm sm:text-md md:text-lg lg:text-xl font-outlet font-medium text-[14px] md:text-[16px] leading-[26px] py-1 sm:py-2 md:py-3 px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 rounded-md hover:bg-white/80 transition-colors duration-300 flex items-center justify-center mx-auto capitalize block max-w-[35%] xs:max-w-28 sm:max-w-36 lg:max-w-44"
             >
               join
