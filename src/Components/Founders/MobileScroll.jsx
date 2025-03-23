@@ -4,9 +4,26 @@ import { Link } from "react-router-dom";
 
 const MobileScroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isFoundersSectionVisible, setIsFoundersSectionVisible] =
+    useState(false);
   const sectionRefs = useRef([]);
+  const foundersSectionRef = useRef(null);
 
   useEffect(() => {
+    const foundersObserver = new IntersectionObserver(
+      ([entry]) => {
+        setIsFoundersSectionVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+      }
+    );
+
+    if (foundersSectionRef.current) {
+      foundersObserver.observe(foundersSectionRef.current);
+    }
     const options = {
       root: null,
       rootMargin: "0px",
@@ -35,8 +52,43 @@ const MobileScroll = () => {
     <Consumer>
       {(value) => {
         const { founders } = value;
+        const activeFounder = founders[activeIndex];
+
         return (
           <div className="w-full py-20">
+            <Helmet>
+              <title>
+                {isFoundersSectionVisible
+                  ? `${activeFounder.name} - ${activeFounder.title} at Webortex`
+                  : "Webortex | Building the Future of Web Development"}
+              </title>
+
+              <meta
+                name="description"
+                content={`${activeFounder.name}, ${activeFounder.title} at Webortex. ${activeFounder.quote}`}
+              />
+              <meta
+                name="keywords"
+                content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology`}
+              />
+              <meta name="author" content="Sisindri Singamsetti" />
+
+              <meta
+                property="og:title"
+                content={`${activeFounder.name} - ${activeFounder.title} at Webortex`}
+              />
+              <meta
+                property="og:description"
+                content={`${activeFounder.name}, ${activeFounder.title} at Webortex. ${activeFounder.quote}`}
+              />
+              <meta property="og:type" content="profile" />
+              <meta property="og:url" content={activeFounder.src} />
+              <meta
+                property="og:image"
+                content={`https://www.webortex.com/images/${activeFounder.image}.jpg`}
+              />
+            </Helmet>
+
             <section className="mx-[calc(50%-50vw)] pl-10 w-full">
               <h1 className="sticky mx-auto top-[10px] text-6xl xs:text-7xl md:text-8xl text-center font-medium text-backgroundColor tracking-tighter">
                 Founders
