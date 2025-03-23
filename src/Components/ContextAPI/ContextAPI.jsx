@@ -37,6 +37,7 @@ import uiuxImg2 from "../../assets/ServicePage/uiux2.png";
 import uiuxImg3 from "../../assets/ServicePage/uiux3.png";
 import seoImg1 from "../../assets/ServicePage/seo1.png";
 import seoImg2 from "../../assets/ServicePage/seo2.png";
+import socialImg1 from "../../assets/ServicePage/socialmedia1.svg";
 import socialImg2 from "../../assets/ServicePage/socialmedia2.png";
 import socialImg3 from "../../assets/ServicePage/socialmedia3.png";
 
@@ -167,25 +168,25 @@ export class Provider extends Component {
           {
             title: "Design",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Great web experiences start with intelligent design. Webortex crafts visually stunning, user-centric interfaces that combine aesthetics with functionality. Our design approach prioritizes intuitive navigation, responsive layouts, and seamless interactions, ensuring an engaging digital experience across all devices.",
             video: webdevImg1,
           },
           {
             title: "Develop",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Precision coding meets innovation at Webortex. Our development process leverages modern frameworks and scalable architectures to build high-performance, secure, and future-ready websites. Whether it’s a sleek landing page or a complex web application, we engineer digital solutions that drive business success.",
             image: webdevImg2,
           },
           {
             title: "Testing",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Flawless execution demands rigorous testing. Webortex conducts in-depth performance, security, and usability testing to ensure optimal functionality across browsers and devices. With a data-driven QA process, we eliminate vulnerabilities, enhance speed, and refine every interaction before launch.",
             image: webdevImg3,
           },
           {
             title: "Production & Support",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Launching a website is just the beginning. Webortex provides continuous optimization, security updates, and real-time support to keep your platform running at peak efficiency. Our proactive maintenance and strategic enhancements ensure long-term performance, scalability, and business growth.",
             image: webdevImg4,
           },
         ],
@@ -200,24 +201,25 @@ export class Provider extends Component {
         frameImg: appImg,
         frameVideo: "",
         frameTitle: "App Development",
-        frameText: "",
+        frameText:
+          "We crafts high-performance, scalable, and user-centric mobile apps for seamless digital experiences.",
         banners: [
           {
-            title: "Navigating the digital landscape for success",
+            title: "Concept & UI/UX Innovation",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "A successful app starts with a visionary concept and flawless design. Webortex blends market research, user psychology, and cutting-edge UI/UX principles to craft visually stunning and intuitive mobile experiences. From wireframing to prototyping, we ensure seamless navigation and high engagement.",
             image: serviceBannerImg,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Development & Feature Integration",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Powerful apps require robust engineering. Webortex develops high-performance, scalable mobile applications using modern frameworks like React Native, Flutter, and Swift. Our team integrates real-time functionalities, AI-driven automation, and seamless third-party APIs to enhance app efficiency and user satisfaction.",
             image: serviceBannerImg,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Launch & Scalability",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "An app’s success extends beyond its launch. Webortex ensures smooth deployment, rigorous performance testing, and continuous optimizations to maximize speed, security, and user engagement. With strategic updates and data-driven growth plans, we help businesses scale their mobile presence effortlessly.",
             image: serviceBannerImg,
           },
         ],
@@ -232,24 +234,24 @@ export class Provider extends Component {
         frameVideo: uiuxImg,
         frameTitle: "UI/UX",
         frameText:
-          "Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta feugiat scelerisque in elit. Morbi rhoncus, tellus, ",
+          "We crafts immersive, user-centric designs that blend creativity and functionality, ensuring seamless digital experiences across all devices.",
         banners: [
           {
-            title: "Navigating the digital landscape for success",
+            title: "Creative Design & Visual Storytelling",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Great design goes beyond functionality—it tells a story. Webortex crafts captivating digital experiences with dynamic visuals, interactive elements, and pixel-perfect layouts, ensuring every user interaction is meaningful and immersive.",
             image: uiuxImg1,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Building Engaging Digital Interfaces",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Just like constructing a strong foundation, Webortex builds visually striking, high-performance interfaces that balance aesthetics with usability. Our structured approach ensures every component works harmoniously for a seamless experience.",
             image: uiuxImg2,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Seamless User Interactions",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Designing intuitive experiences is at the heart of UI/UX. Webortex ensures smooth, effortless interactions with well-structured user flows, ensuring every tap, swipe, and action feels natural and engaging.",
             image: uiuxImg3,
           },
         ],
@@ -264,24 +266,24 @@ export class Provider extends Component {
         frameVideo: mvpImg,
         frameTitle: "MVP",
         frameText:
-          "Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta feugiat scelerisque in elit. Morbi rhoncus, tellus, ",
+          "We helps businesses rapidly build, test, and scale MVPs with core features, ensuring market validation and seamless scalability.",
         banners: [
           {
-            title: "Navigating the digital landscape for success",
+            title: "Idea Validation & Prototyping",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "A successful product starts with a validated idea. Webortex conducts in-depth market research, user analysis, and rapid prototyping to refine concepts before development. Our data-driven approach ensures your MVP aligns with real-world needs and minimizes risk.",
             image: serviceBannerImg,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Agile Development & Features",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Speed and efficiency define a great MVP. Webortex focuses on developing essential features with a scalable architecture, ensuring a functional, high-performance product. Our agile methodology allows for iterative improvements based on user feedback and market demand.",
             image: serviceBannerImg,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Launch & Growth Optimization",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Launching an MVP is just the first step. Webortex ensures a seamless go-to-market strategy, monitors user engagement, and implements continuous optimizations. With strategic scaling solutions, we help transform MVPs into full-fledged, market-ready products. ",
             image: serviceBannerImg,
           },
         ],
@@ -296,24 +298,25 @@ export class Provider extends Component {
         frameImg: seoImg,
         frameVideo: "",
         frameTitle: "Search Engine Optimization",
-        frameText: "",
+        frameText:
+          "We boosts online visibility with advanced SEO strategies, driving organic traffic, higher rankings, and long-term digital growth.",
         banners: [
           {
-            title: "Navigating the digital landscape for success",
+            title: "Technical SEO & Site Performance",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "A strong foundation is key to search success. Webortex optimizes site speed, mobile responsiveness, and structured data to enhance search engine rankings. Our technical SEO strategies ensure seamless indexing and superior user experience.",
             image: seoImg1,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Content & Keyword Strategy",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Quality content fuels SEO success. Webortex conducts in-depth keyword research and crafts high-value, SEO-optimized content that attracts and engages your target audience. Our strategic approach drives organic traffic and boosts authority.",
             image: seoImg2,
           },
           {
-            title: "Navigating the digital landscape for success",
+            title: "Link Building & Authority",
             description:
-              "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+              "Authority matters in search rankings. Webortex implements ethical link-building strategies, strengthens domain authority, and continuously optimizes SEO tactics. With data-driven insights, we ensure sustainable growth and long-term digital dominance.",
             image: serviceBannerImg,
           },
         ],
@@ -335,20 +338,20 @@ export class Provider extends Component {
           {
             title: "Building a Powerful Digital Presence",
             description:
-              "Webortex empowers brands to establish a strong online presence through cutting-edge SEO, PPC, and content strategies that drive visibility and engagement.",
+              "Webortex transforms brands with strategic SEO, targeted PPC campaigns, and high-value content marketing. We optimize every digital touchpoint to maximize reach, engagement, and conversion. With data-driven insights and innovative tactics, we position your brand as an industry leader.",
 
-            image: serviceBannerImg,
+            image: socialImg1,
           },
           {
             title: "Creating Impactful Social Campaigns",
             description:
-              "Our team designs data-driven social media campaigns that captivate audiences, boost interaction, and maximize brand awareness across digital platforms.",
+              "Webortex crafts dynamic, high-performing social campaigns designed to spark engagement and elevate brand awareness. Leveraging audience analytics and platform trends, we create compelling content that drives action. Our tailored strategies ensure maximum ROI and lasting digital impact.",
             image: socialImg2,
           },
           {
             title: "Enhancing Brand Loyalty Online",
             description:
-              "By curating personalized content and fostering meaningful interactions, we build lasting relationships that turn followers into loyal brand advocates.",
+              "Loyalty starts with meaningful connections. Webortex builds trust through authentic storytelling, personalized content, and interactive engagement strategies. By nurturing communities and fostering real-time interactions, we turn audiences into long-term brand advocates.",
             image: socialImg3,
           },
         ],
