@@ -47,7 +47,7 @@ const Smedia = () => {
   return (
     <div className="flex items-center justify-center">
       <motion.div
-        className="w-60 h-60 rounded-full border-l-0 bg-[#424242]/20 flex items-center justify-center m-auto relative"
+        className="w-60 h-60 rounded-full border-l-0 bg-[#424242]/20 flex items-center justify-center my-6 relative"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >

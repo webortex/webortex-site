@@ -323,7 +323,7 @@ export class Provider extends Component {
         title: "Marketing",
         slug: "social-media-marketing",
         description:
-          "Transforming brands into digital sensations through strategic and engaging social storytelling.",
+          "We increase revenue and ensure sustainable long-term growth",
         component: <Smedia />,
         frameImg: socialImg,
         frameVideo: "",

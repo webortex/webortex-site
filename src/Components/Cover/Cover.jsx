@@ -60,9 +60,7 @@ const Cover = () => {
                   <span className="absolute overflow-hidden bg-logoGreenColor size-[100px] xs:size-[150px] sm:size-[200px] lg:size-[250px] rotate-6 blur-[80px] xs:blur-[100px] sm:blur-[150px] lg:blur-[200px] 2xl:blur-[250px] opacity-[100%] rounded-full left-[180px] xs:left-[240px] sm:left-[400px] lg:left-[700px] 2xl:left-[1000px] 3xl:left-[1200px] top-[200px] xs:top-[140px] sm:top-[120px] lg:top-[130px] xl:top-[190px] 2xl:top-[230px] z-[-9]"></span>
                   <span
                     className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] md:scale-90 
-                lg:scale-100 top-[380px] xs:top-[330px] sm:top-[400px] md:top-[450px] lg:top-[560px]
-                2xl:top-[630px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px]
-                lg:left-[270px] xl:left-[320px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px]
+                lg:scale-100 top-[380px] xs:top-[330px] sm:top-[400px] md:top-[450px] lg:top-[560px] 2xl:top-[580px] 3xl:top-[630px] left-[80px] xs:left-[100px] sm:left-[150px] md:left-[200px] lg:left-[270px] xl:left-[320px] 2xl:left-[550px] 3xl:left-[700px] z-[-90] w-[16px]
                 h-[16px] rotate-3"
                   >
                     <img src={starImg} alt="starIcon" className="" />
@@ -70,9 +68,7 @@ const Cover = () => {
                   <span
                     className="absolute scale-[40%] xs:scale-50 sm:scale-[70%] 
                 md:scale-90 lg:scale-100 top-[320px] xs:top-[290px]
-                sm:top-[360px] md:top-[400px] lg:top-[475px] 2xl:top-[570px]
-                left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px]
-                xl:left-[750px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]"
+                sm:top-[360px] md:top-[400px] lg:top-[475px] 2xl:top-[500px] 3xl:top-[570px] left-[240px] xs:left-[360px] sm:left-[500px] md:left-[550px] lg:left-[650px] xl:left-[750px] 2xl:left-[1050px] 3xl:left-[1450px] z-[-90] w-[24px] h-[24px]"
                   >
                     <img src={starImg} alt="starIcon" className="" />
                   </span>
@@ -105,7 +101,7 @@ const Cover = () => {
                       <img
                         src={brand.image}
                         alt={brand.title}
-                        className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px] py-2"
+                        className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px] py-2 sm:py-0"
                       />
                     </Link>
                   ))}
