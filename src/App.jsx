@@ -78,9 +78,9 @@ function App() {
                   <Nav>
                     <Recruit />
                   </Nav>
+                </div>
               }
-              />
-            
+            />
 
             <Route
               path="/join-us"
