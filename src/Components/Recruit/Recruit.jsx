@@ -78,7 +78,7 @@ const Recruit = () => {
               </script>
             </Helmet>
 
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" className="my-10 md:my-20 2xl:my-0">
               <div className="w-full min-h-screen flex  items-center justify-center p-2 md:p-4 my-10 md:-mt-10">
                 <div className="relative max-w-4xl w-full ">
                   <div className="text-center md:mb-24 -z-10">
