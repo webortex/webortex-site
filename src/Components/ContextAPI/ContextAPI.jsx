@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import gnana from "../../assets/Founders/Gnana.jpg";
 import sisi from "../../assets/Founders/sisi.jpg";
@@ -406,14 +407,14 @@ export class Provider extends Component {
         answer: (
           <>
             We specialize in{" "}
-            <a href="/services/web-development" className="text-gray-400 hover:text-white underline">
+            <Link to="/services/web-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
               web development
-            </a>
-            , <a href="/services/app-development" className="text-gray-400 hover:text-white underline">
+            </Link>
+            , <Link to="/services/app-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
               mobile app development
-            </a>,  <a href="/services/uiux-design" className="text-gray-400 hover:text-white underline">
+            </Link>,  <Link to="/services/uiux-design" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
               UI/UX design
-            </a>, and custom software solutions. Our team builds scalable, user-friendly, and high-performance digital products tailored to your business needs.
+            </Link>, and custom software solutions. Our team builds scalable, user-friendly, and high-performance digital products tailored to your business needs.
           </>
         ),
       },
