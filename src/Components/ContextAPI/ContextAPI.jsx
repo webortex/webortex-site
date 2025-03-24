@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import gnana from "../../assets/Founders/Gnana.jpg";
 import sisi from "../../assets/Founders/sisi.jpg";
@@ -402,24 +403,35 @@ export class Provider extends Component {
 
     faqs: [
       {
-        question: "What features does GenClip offer for video editing?",
-        answer:
-          "GenClip offers smart trimming, scene detection, color correction, background music suggestions, and automatic captions. It simplifies editing with easy transitions and voiceovers.",
+        question: "What services does Webortex offer?",
+        answer: (
+          <>
+            We specialize in{" "}
+            <Link to="/services/web-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+              web development
+            </Link>
+            , <Link to="/services/app-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+              mobile app development
+            </Link>,  <Link to="/services/uiux-design" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+              UI/UX design
+            </Link>, and custom software solutions. Our team builds scalable, user-friendly, and high-performance digital products tailored to your business needs.
+          </>
+        ),
       },
       {
-        question: "How does GenClip's AI improve the editing process?",
+        question: "Do you offer ongoing support and maintenance?",
         answer:
-          "GenClip's AI automates repetitive tasks, making video editing faster and more efficient, while maintaining high quality.",
+          "Yes, we provide post-launch support and maintenance packages to ensure your website or app stays updated, secure, and performs optimally.",
       },
       {
-        question: "Can GenClip work with all video formats?",
+        question: "What technologies do you use?",
         answer:
-          "Yes, GenClip supports a wide range of video formats, ensuring compatibility with most cameras and devices.",
+          "We use the latest technologies, including React, MaterialUI, Node.js,Tailwind CSS, Flutter, and more, to ensure your product is future-proof and scalable.",
       },
       {
-        question: "What are the subscription plans and pricing for GenClip?",
+        question: "How long does it take to develop a website or app?",
         answer:
-          "GenClip offers flexible subscription plans, including monthly, annual, and enterprise pricing. Visit our pricing page for more details.",
+          "The timeline depends on the project's complexity, features, and scope. A simple website may take 4-6 weeks, while a custom app can take 3-6 months. We provide a detailed timeline after understanding your requirements.",
       },
     ],
 

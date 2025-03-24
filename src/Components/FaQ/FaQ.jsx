@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import React, { useState } from "react";
 import { Consumer } from "../ContextAPI/ContextAPI";
+import { FaPhone } from "react-icons/fa";
 
 const FaQ = () => {
   const [expanded, setExpanded] = useState(null);
@@ -33,15 +34,10 @@ const FaQ = () => {
                   </p>
                   <button className="text-sm sm:text-base flex items-center space-x-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-100">
                     <span>Any questions? Reach out</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      width="24"
-                      height="24"
-                    >
-                      <path d="M15.05 3.72l-1.28 2.12a1 1 0 00.23 1.32l2.02 1.64a14.9 14.9 0 01-7.51 7.51l-1.64-2.02a1 1 0 00-1.32-.23l-2.12 1.28a1 1 0 00-.42 1.13A17.98 17.98 0 0012 21c4.66 0 8.89-1.79 12.05-4.95A18 18 0 0015.47 3.3a1 1 0 00-1.13.42z" />
-                    </svg>
+                   
+                    <div>
+    <FaPhone size={18} color="#000" /> 
+  </div>
                   </button>
                 </div>
 
@@ -52,18 +48,18 @@ const FaQ = () => {
                       className="border-b border-gray-600 pb-4 cursor-pointer"
                     >
                       <div
-                        className="flex justify-between items-center"
+                        className="flex justify-between items-center" 
                         onClick={() => toggleFAQ(index)}
                       >
                         <h2
                           className={`text-base sm:text-lg font-medium ${
-                            expanded === index ? "text-white" : "text-gray-400"
+                            expanded === index ? "text-white transition-all duration-300 ease-in-out" : "text-gray-400"
                           }`}
                         >
                           {faq.question}
                         </h2>
                         <button
-                          className={`w-8 h-8 flex items-center justify-center border rounded-md ${
+                          className={`w-8 h-8 flex items-center justify-center border rounded-md transition-all duration-300 ease-in-out ${
                             expanded === index
                               ? "bg-gray-800 text-white border-gray-500"
                               : "bg-black text-gray-400 border-gray-600"
