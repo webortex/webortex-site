@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
-import Slide from "../../assets/SlideItem.png";
 import "boxicons";
+
+import workImg1 from "../../assets/OurWorks/TeamGaruda.png";
+import workImg2 from "../../assets/OurWorks/yestelugu.jpg";
+import workImg3 from "../../assets/OurWorks/yestelugu.jpg";
+import workImg4 from "../../assets/OurWorks/TeamGaruda.png";
+import workImg5 from "../../assets/OurWorks/synapsis.jpg";
+
 
 const Works = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const slides = [Slide, Slide, Slide, Slide, Slide];
+  const slides = [workImg1, workImg2, workImg3, workImg4, workImg5];
 
   useEffect(() => {
     const handleResize = () => {
@@ -92,7 +98,7 @@ const Works = () => {
               <div className="relative overflow-hidden transform transition-all duration-500 shadow-xl">
                 <img
                   src={slide}
-                  className="object-cover px-1 sm:px-0"
+                  className="object-cover px-1 sm:px-0 rounded-xl"
                   alt={`Slide ${index + 1}`}
                 />
                 {!isMobile && position !== "center" && (
