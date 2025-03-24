@@ -12,6 +12,7 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Loader from "./Components/Loader/Loader";
 import Quotation from "./Components/Pricing/Quotation";
 import JoinUs from "./Components/JoinUs/JoinUs";
+import QuotationProject from "./Components/Pricing/QuotationProject";
 
 const Layout = ({ children }) => {
   return (
