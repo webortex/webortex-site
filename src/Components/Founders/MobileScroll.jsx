@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Consumer } from "../ContextAPI/ContextAPI";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MobileScroll = () => {
   const [activeIndex, setActiveIndex] = useState(0);
