@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import alertImg from "../../assets/alert.png";
+import QuotationProject from "./QuotationProject";
 
 const Quotation = () => {
   const [alertpop, setAlertpop] = useState(true);
@@ -274,10 +275,10 @@ const Quotation = () => {
               </p>
             </div>
             <div
-              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F]"
+              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F] "
               onClick={() => setAlertpop(false)}
             >
-              <p className="text-lg font-bold items-center self-center justify-self-center">
+              <p className="text-lg items-center justify-center mt-[-2.5px]">
                 x
               </p>
             </div>
