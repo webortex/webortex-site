@@ -3,16 +3,15 @@ import { Container } from "@mui/material";
 import "boxicons";
 
 import workImg1 from "../../assets/OurWorks/TeamGaruda.png";
-import workImg2 from "../../assets/OurWorks/yestelugu.jpg";
+import workImg2 from "../../assets/OurWorks/64Framez.png";
 import workImg3 from "../../assets/OurWorks/yestelugu.jpg";
-import workImg4 from "../../assets/OurWorks/TeamGaruda.png";
+import workImg4 from "../../assets/OurWorks/temple.png";
 import workImg5 from "../../assets/OurWorks/synapsis.jpg";
-
 
 const Works = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const slides = [workImg1, workImg2, workImg3, workImg4, workImg5];
+  const slides = [workImg1, workImg2, workImg4, workImg3, workImg5];
 
   useEffect(() => {
     const handleResize = () => {

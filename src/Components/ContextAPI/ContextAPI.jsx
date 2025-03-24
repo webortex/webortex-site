@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import gnana from "../../assets/Founders/Gnana.jpg";
 import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.jpg";
-import jaya from "../../assets/Founders/jayadeep.svg";
-import ashok from "../../assets/Founders/Ashok.svg";
-import sandeep from "../../assets/Founders/Sandeep.svg";
+import jaya from "../../assets/Founders/jayadeep.jpg";
+import ashok from "../../assets/Founders/Ashok.jpg";
+import sandeep from "../../assets/Founders/Sandeep.jpg";
 
 import Webdev from "../Services/compo/Webdev";
 import Appdev from "../Services/compo/Appdev";
@@ -407,14 +407,29 @@ export class Provider extends Component {
         answer: (
           <>
             We specialize in{" "}
-            <Link to="/services/web-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+            <Link
+              to="/services/web-development"
+              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
+            >
               web development
             </Link>
-            , <Link to="/services/app-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+            ,{" "}
+            <Link
+              to="/services/app-development"
+              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
+            >
               mobile app development
-            </Link>,  <Link to="/services/uiux-design" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+            </Link>
+            ,{" "}
+            <Link
+              to="/services/uiux-design"
+              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
+            >
               UI/UX design
-            </Link>, and custom software solutions. Our team builds scalable, user-friendly, and high-performance digital products tailored to your business needs.
+            </Link>
+            , and custom software solutions. Our team builds scalable,
+            user-friendly, and high-performance digital products tailored to
+            your business needs.
           </>
         ),
       },
@@ -469,7 +484,7 @@ export class Provider extends Component {
         name: "P Jayadeep Reddy",
         title: "CTO of webortex",
         quote:
-          "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
+          "With a passion for problem-solving and a vision for the future, we build solutions that elevate experiences, optimize performance, and set new standards in digital transformation. Innovation is at the heart of everything we do!",
         src: "https://www.linkedin.com/in/peddireddy-jayadeep-reddy-a3014124b/",
       },
       {
@@ -478,7 +493,7 @@ export class Provider extends Component {
         name: "Ashok Pemeram",
         title: "CIO of webortex",
         quote:
-          "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
+          "We believe in crafting digital experiences that are powerful, user-centric, and built to scale. By blending innovation with strategy, we create solutions that don’t just function—they inspire and drive success.",
         src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
       },
       {
@@ -487,7 +502,7 @@ export class Provider extends Component {
         name: "K Sai Sandeep",
         title: "CLO of webortex",
         quote:
-          "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
+          "Driven by creativity and technology, we transform ideas into seamless, scalable solutions. Our focus is on building intuitive experiences that not only meet expectations but redefine them—pushing boundaries, one innovation at a time.",
         src: "https://github.com/Sandeep010-hub",
       },
     ],
