@@ -58,7 +58,7 @@ const DesktopScroll = () => {
         const activeFounder = founders[activeIndex];
 
         return (
-          <div className="w-full bg-gray-100">
+          <div className="w-full bg-gray-100 pb-20">
             <Helmet>
               <title>
                 {isFoundersSectionVisible
@@ -95,7 +95,7 @@ const DesktopScroll = () => {
             <div ref={foundersSectionRef}>
               <div className="sticky top-0 z-10 bg-gray-100 text-center pt-3 pb-8">
                 <div className="container mx-auto mt-5">
-                  <h1 className="text-6xl xs:text-7xl md:text-8xl xl:text-9xl text-center font-medium text-backgroundColor/50 tracking-tighter">
+                  <h1 className="text-6xl xs:text-7xl md:text-8xl 2xl:text-9xl text-center font-medium text-backgroundColor/50 tracking-tighter">
                     Founders
                   </h1>
                 </div>
