@@ -48,18 +48,18 @@ const FaQ = () => {
                       className="border-b border-gray-600 pb-4 cursor-pointer"
                     >
                       <div
-                        className="flex justify-between items-center"
+                        className="flex justify-between items-center" 
                         onClick={() => toggleFAQ(index)}
                       >
                         <h2
                           className={`text-base sm:text-lg font-medium ${
-                            expanded === index ? "text-white" : "text-gray-400"
+                            expanded === index ? "text-white transition-all duration-300 ease-in-out" : "text-gray-400"
                           }`}
                         >
                           {faq.question}
                         </h2>
                         <button
-                          className={`w-8 h-8 flex items-center justify-center border rounded-md ${
+                          className={`w-8 h-8 flex items-center justify-center border rounded-md transition-all duration-300 ease-in-out ${
                             expanded === index
                               ? "bg-gray-800 text-white border-gray-500"
                               : "bg-black text-gray-400 border-gray-600"
