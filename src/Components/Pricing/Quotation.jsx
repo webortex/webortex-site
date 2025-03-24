@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Container } from "@mui/material";
 import alertImg from "../../assets/alert.png";
 import QuotationProject from "./QuotationProject";
+import { useNavigate } from "react-router-dom";
 
 const Quotation = () => {
+  const navigate = useNavigate();
   const [alertpop, setAlertpop] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -80,7 +82,7 @@ const Quotation = () => {
 
     console.log("Form submitted:", formData);
     alert("Form submitted successfully!");
-
+    navigate("/project-quote");
     setFormData({
       name: "",
       email: "",

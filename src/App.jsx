@@ -13,6 +13,9 @@ import Loader from "./Components/Loader/Loader";
 import Quotation from "./Components/Pricing/Quotation";
 import JoinUs from "./Components/JoinUs/JoinUs";
 import QuotationProject from "./Components/Pricing/QuotationProject";
+import MVPForm from "./Components/Pricing/QuotationMVP";
+import AppForm from "./Components/Pricing/QuotationApp";
+import WebForm from "./Components/Pricing/QuotationWeb";
 
 const Layout = ({ children }) => {
   return (
@@ -93,6 +96,10 @@ function App() {
             />
             <Route path="/services/:slug" element={<ServicePage />} />
             <Route path="/get-quote" element={<Quotation />} />
+            <Route path="/project-quote" element={<QuotationProject />} />
+            <Route path="/web-quote" element={<WebForm />} />
+            <Route path="/app-quote" element={<AppForm />} />
+            <Route path="/mvp-quote" element={<MVPForm />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

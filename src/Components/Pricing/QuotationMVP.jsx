@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-const QuotationProject = () => {
-  const navigate = useNavigate();
-  const [lookingFor,setLookingFor] = useState("Select");
+const MVPForm = () => {
   const [formData, setFormData] = useState({
     projectName: "",
     description: "",
@@ -32,12 +29,6 @@ const QuotationProject = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(lookingFor==="WEB")
-      navigate("/web-quote")
-    else if(lookingFor==="APP")
-      navigate("/app-quote")
-    else if(lookingFor==="MVP")
-      navigate("/mvp-quote")
     console.log("Form submitted:", formData);
   };
 
@@ -47,14 +38,14 @@ const QuotationProject = () => {
       className="h-auto flex flex-col justify-center align-center py-8"
       style={{ backgroundColor: "black", color: "white" }}
     >
-      <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl text-headColor font-bold tracking-tight">
-        Quotation
+      <h1 className="text-center text-5xl font-bold mb-4 text-white">
+        MVP
       </h1>
       <p className="text-center text-sm text-[#696F79] mb-6 px-[10%]">
         These essentials will form a practical specification. You can add more to the design later, and we'll be right there to help.
       </p>
-      <div className="flex items-center justify-center bg-black text-white mb-4 mt-4">
-      <form className="w-full space-y-4 max-w-md" onSubmit={handleSubmit}>
+
+      <form className="w-full space-y-4" onSubmit={handleSubmit}>
         {/* Project Name */}
         <div>
           <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
@@ -67,6 +58,35 @@ const QuotationProject = () => {
             onChange={handleInputChange}
             className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
             required
+          />
+        </div>
+
+        {/* Idea Description */}
+        <div>
+          <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
+            Idea Description*
+          </label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            rows="4"
+            className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
+            required
+          />
+        </div>
+
+        {/* Reference Websites */}
+        <div>
+          <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
+            Reference Websites
+          </label>
+          <input
+            type="text"
+            name="referenceWebsite"
+            value={formData.referenceWebsite}
+            onChange={handleInputChange}
+            className="w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40"
           />
         </div>
 
@@ -140,63 +160,44 @@ const QuotationProject = () => {
           </label>
         </div>
 
+        {/* File Upload */}
         <div>
-            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
-              Is it a startup? *
-            </label>
-            <select
-              name="isStartup"
-            //   value={formData.isStartup}
-            //   onChange={handleInputChange}
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40`}
-            >
-              <option value="">Select</option>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-            {/* {errors.isStartup && (
-              <p className="text-red-500 text-sm mt-1">{errors.isStartup}</p>
-            )} */}
-          </div>
-          <div>
-            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
-              Looking for *
-            </label>
-            <select
-              name="lookingFor"
-            value={lookingFor}
-            onChange={(e)=>setLookingFor(e.target.value)}
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40`}
-            >
-              <option value="select">Select</option>
-              <option value="MVP">MVP</option>
-              <option value="APP">APP</option>
-              <option value="WEB">WEB</option>
-            </select>
-            {/* {errors.lookingFor && (
-              <p className="text-red-500 text-sm mt-1">{errors.lookingFor}</p>
-            )} */}
-          </div>
-
-        {/* Submit Button */}
-        <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0 ">
+          <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
+            Upload Files
+          </label>
+          <div className="border-[.9px] border-dashed border-[#8692A6]/40 rounded-[11px] p-5 text-center bg-[#1e1f23]">
             <button
               type="button"
-              className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-brandsBgColor text-textColor rounded-lg  hover:bg-brandsBgColor/60 focus:outline-none transition-all duration-300 ease-in-out"
+              className="text-gray-400 flex items-center justify-center w-full"
+              onClick={() => document.getElementById('fileInput').click()}
             >
-              Back
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
+              </svg>
+              Upload here
             </button>
-            <button
-              type="submit"
-              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
-            >
-              Continue →
-            </button>
+            <input
+              id="fileInput"
+              type="file"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+            {formData.file && (
+              <p className="text-sm text-white mt-2">{formData.file.name}</p>
+            )}
           </div>
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full px-5 py-3 bg-white text-black rounded-[11px] font-medium hover:bg-gray-200 transition-all duration-300 text-sm md:text-base mt-6"
+        >
+          Submit
+        </button>
       </form>
-      </div>
     </Container>
   );
 };
 
-export default QuotationProject;
+export default MVPForm;
