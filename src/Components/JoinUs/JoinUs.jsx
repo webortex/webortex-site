@@ -1,7 +1,28 @@
 import { useState } from "react";
 import { Container } from "@mui/material";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function JoinUs() {
+  // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
+    authDomain: "webortex-7e798.firebaseapp.com",
+    databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
+    projectId: "webortex-7e798",
+    storageBucket: "webortex-7e798.firebasestorage.app",
+    messagingSenderId: "1095027363933",
+    appId: "1:1095027363933:web:77358a1d5b12782c183db4",
+  };
+
+  // Initialize Firebase app
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Firestore and Storage
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,6 +37,8 @@ function JoinUs() {
   const [errors, setErrors] = useState({});
   const [fileError, setFileError] = useState("");
   const [fileName, setFileName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
   const handleInputChange = (e) => {
@@ -100,8 +123,9 @@ function JoinUs() {
     return Object.keys(newErrors).length === 0 && !fileError;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus(null);
 
     if (!formData.resume) {
       setFileError("Please upload your resume");
@@ -111,22 +135,55 @@ function JoinUs() {
       return;
     }
 
-    console.log("Form submitted:", formData);
-    alert("Form submitted successfully!");
+    try {
+      setIsSubmitting(true);
 
-    setFormData({
-      name: "",
-      email: "",
-      mobile: "",
-      whyWebortex: "",
-      profileLink: "",
-      role: "",
-      source: "",
-      resume: null,
-    });
-    setErrors({});
-    setFileName("");
-    setFileError("");
+      // 1. Upload PDF to Firebase Storage
+      const storageRef = ref(
+        storage,
+        `resumes/${Date.now()}_${formData.resume.name}`
+      );
+      const uploadResult = await uploadBytes(storageRef, formData.resume);
+
+      // 2. Get the download URL
+      const downloadURL = await getDownloadURL(uploadResult.ref);
+
+      // 3. Save form data and resume URL to Firestore
+      const docRef = await addDoc(collection(db, "applications"), {
+        name: formData.name,
+        email: formData.email,
+        mobile: formData.mobile,
+        whyWebortex: formData.whyWebortex,
+        profileLink: formData.profileLink,
+        role: formData.role,
+        source: formData.source,
+        resumeURL: downloadURL,
+        submittedAt: new Date(),
+      });
+
+      console.log("Document written with ID: ", docRef.id);
+      setSubmitStatus("success");
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        whyWebortex: "",
+        profileLink: "",
+        role: "",
+        source: "",
+        resume: null,
+      });
+      setErrors({});
+      setFileName("");
+      setFileError("");
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const whatsappMessage = "Hello! I'd like to learn more about your services.";
@@ -150,10 +207,83 @@ function JoinUs() {
     setErrors({});
     setFileName("");
     setFileError("");
+    setSubmitStatus(null);
   };
 
   return (
     <div className="min-h-screen py-12 px-4 relative">
+      {submitStatus === "success" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-green-500 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <h2 className="text-2xl font-bold text-white mb-2">
+                Application Submitted!
+              </h2>
+              <p className="text-gray-300 mb-4">
+                Thank you for your interest. We'll review your application and
+                get back to you soon.
+              </p>
+              <button
+                onClick={() => setSubmitStatus(null)}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {submitStatus === "error" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-red-500 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h2 className="text-2xl font-bold text-white mb-2">
+                Submission Failed
+              </h2>
+              <p className="text-gray-300 mb-4">
+                There was an error submitting your application. Please try again
+                later.
+              </p>
+              <button
+                onClick={() => setSubmitStatus(null)}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <button
         onClick={handleWhatsApp}
         className="absolute top-4 right-4 px-4 py-2 text-sm text-gray-300 rounded hover:bg-gray-700 transition-colors"
@@ -376,14 +506,16 @@ function JoinUs() {
               type="button"
               onClick={handleCancel}
               className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:outline-none transition-all duration-300 ease-in-out"
+              disabled={isSubmitting}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300 ease-in-out"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300 ease-in-out disabled:bg-blue-400 disabled:cursor-not-allowed"
+              disabled={isSubmitting}
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>

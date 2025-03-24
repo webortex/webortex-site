@@ -74,9 +74,11 @@ function App() {
             <Route
               path="/recruiting"
               element={
+                <div className="h-screen 2xl:overflow-hidden ">
                   <Nav>
                     <Recruit />
                   </Nav>
+                </div>
               }
             />
 
