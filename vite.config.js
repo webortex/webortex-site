@@ -10,10 +10,12 @@ export default defineConfig({
     },
   },
   server: {
-    watch: {
-
-      ignored: ["**/node_modules/**", "**/dist/**", "**/public/**"],
-
+    host: true, // This allows access from external URLs
+    cors: {
+      origin: ["http://localhost:5173/"], // Replace with the exact URL you'll provide
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true,
     },
   },
 });

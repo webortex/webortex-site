@@ -1,34 +1,10 @@
 import { useState } from "react";
 import { Container } from "@mui/material";
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+import { db, storage } from "../../../Firebaseconfig"; // Import from firebaseConfig.js
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function JoinUs() {
-  // Initialize Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
-    authDomain: "webortex-7e798.firebaseapp.com",
-    databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
-    projectId: "webortex-7e798",
-    storageBucket: "webortex-7e798.firebasestorage.app",
-    messagingSenderId: "1095027363933",
-    appId: "1:1095027363933:web:77358a1d5b12782c183db4",
-  };
-
-  // Initialize Firebase app
-  const app = initializeApp(firebaseConfig);
-
-  // Initialize Firestore and Storage
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,26 +31,26 @@ function JoinUs() {
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFileError("");
-    setFileName("");
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setFileError("");
+  //   setFileName("");
 
-    if (!file) return;
+  //   if (!file) return;
 
-    if (file.type !== "application/pdf") {
-      setFileError("Only PDF files are allowed");
-      return;
-    }
+  //   if (file.type !== "application/pdf") {
+  //     setFileError("Only PDF files are allowed");
+  //     return;
+  //   }
 
-    if (file.size > MAX_FILE_SIZE) {
-      setFileError("File size must be less than 5MB");
-      return;
-    }
+  //   if (file.size > MAX_FILE_SIZE) {
+  //     setFileError("File size must be less than 5MB");
+  //     return;
+  //   }
 
-    setFormData({ ...formData, resume: file });
-    setFileName(file.name);
-  };
+  //   setFormData({ ...formData, resume: file });
+  //   setFileName(file.name);
+  // };
 
   const validateForm = () => {
     const newErrors = {};
@@ -144,77 +120,50 @@ function JoinUs() {
     try {
       setIsSubmitting(true);
 
-      // 1. Upload PDF to Firebase Storage
-      const storageRef = ref(
-        storage,
-        `resumes/${Date.now()}_${formData.resume.name}`
-      );
+      // // 1. Upload PDF to Firebase Storage
+      // const storageRef = ref(
+      //   storage,
+      //   `resumes/${Date.now()}_${formData.resume.name}`
+      // );
+      // const uploadResult = await uploadBytes(storageRef, formData.resume);
 
-      // Using uploadBytesResumable instead of uploadBytes
-      const uploadTask = uploadBytesResumable(storageRef, formData.resume);
+      // 2. Get the download URL
+      // const downloadURL = await getDownloadURL(uploadResult.ref);
 
-      // Monitor upload progress and handle errors better
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          // Progress monitoring (optional)
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-        },
-        (error) => {
-          // Handle upload errors
-          console.error("Upload error:", error);
-          setSubmitStatus("error");
-          setIsSubmitting(false);
-        },
-        async () => {
-          // Upload completed successfully
-          try {
-            // 2. Get the download URL
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-
-            // 3. Save form data and resume URL to Firestore
-            const docRef = await addDoc(collection(db, "applications"), {
-              name: formData.name,
-              email: formData.email,
-              mobile: formData.mobile,
-              whyWebortex: formData.whyWebortex,
-              profileLink: formData.profileLink,
-              role: formData.role,
-              source: formData.source,
-              resumeURL: downloadURL,
-              submittedAt: new Date(),
-            });
+      // 3. Save form data and resume URL to Firestore
+      const docRef = await addDoc(collection(db, "applications"), {
+        name: formData.name,
+        email: formData.email,
+        mobile: formData.mobile,
+        whyWebortex: formData.whyWebortex,
+        profileLink: formData.profileLink,
+        role: formData.role,
+        // source: formData.source,
+        // resumeURL: downloadURL,
+        submittedAt: new Date(),
+      });
 
             console.log("Document written with ID: ", docRef.id);
             setSubmitStatus("success");
 
-            // Reset form
-            setFormData({
-              name: "",
-              email: "",
-              mobile: "",
-              whyWebortex: "",
-              profileLink: "",
-              role: "",
-              source: "",
-              resume: null,
-            });
-            setErrors({});
-            setFileName("");
-            setFileError("");
-          } catch (error) {
-            console.error("Error submitting form: ", error);
-            setSubmitStatus("error");
-          } finally {
-            setIsSubmitting(false);
-          }
-        }
-      );
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        whyWebortex: "",
+        profileLink: "",
+        role: "",
+        // source: "",
+        // resume: null,
+      });
+      setErrors({});
+      setFileName("");
+      setFileError("");
     } catch (error) {
-      console.error("Error initiating upload: ", error);
+      console.error("Error submitting form: ", error);
       setSubmitStatus("error");
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -223,7 +172,7 @@ function JoinUs() {
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
   };
 
   const handleCancel = () => {
@@ -234,8 +183,8 @@ function JoinUs() {
       whyWebortex: "",
       profileLink: "",
       role: "",
-      source: "",
-      resume: null,
+      // source: "",
+      // resume: null,
     });
     setErrors({});
     setFileName("");
@@ -493,7 +442,7 @@ function JoinUs() {
               <p className="text-red-500 text-sm mt-1">{errors.source}</p>
             )}
           </div>
-
+          {/* 
           <div>
             <label className="block text-sm text-gray-400 mb-1">
               Upload your Resume (PDF only, max 5MB) *
@@ -532,7 +481,7 @@ function JoinUs() {
             {fileError && (
               <p className="text-red-500 text-sm mt-1">{fileError}</p>
             )}
-          </div>
+          </div> */}
 
           <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0">
             <button
