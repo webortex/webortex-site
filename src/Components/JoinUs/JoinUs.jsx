@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { Container } from "@mui/material";
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 function JoinUs() {
   // Initialize Firebase
@@ -143,45 +149,72 @@ function JoinUs() {
         storage,
         `resumes/${Date.now()}_${formData.resume.name}`
       );
-      const uploadResult = await uploadBytes(storageRef, formData.resume);
 
-      // 2. Get the download URL
-      const downloadURL = await getDownloadURL(uploadResult.ref);
+      // Using uploadBytesResumable instead of uploadBytes
+      const uploadTask = uploadBytesResumable(storageRef, formData.resume);
 
-      // 3. Save form data and resume URL to Firestore
-      const docRef = await addDoc(collection(db, "applications"), {
-        name: formData.name,
-        email: formData.email,
-        mobile: formData.mobile,
-        whyWebortex: formData.whyWebortex,
-        profileLink: formData.profileLink,
-        role: formData.role,
-        source: formData.source,
-        resumeURL: downloadURL,
-        submittedAt: new Date(),
-      });
+      // Monitor upload progress and handle errors better
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          // Progress monitoring (optional)
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+        },
+        (error) => {
+          // Handle upload errors
+          console.error("Upload error:", error);
+          setSubmitStatus("error");
+          setIsSubmitting(false);
+        },
+        async () => {
+          // Upload completed successfully
+          try {
+            // 2. Get the download URL
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
 
-      console.log("Document written with ID: ", docRef.id);
-      setSubmitStatus("success");
+            // 3. Save form data and resume URL to Firestore
+            const docRef = await addDoc(collection(db, "applications"), {
+              name: formData.name,
+              email: formData.email,
+              mobile: formData.mobile,
+              whyWebortex: formData.whyWebortex,
+              profileLink: formData.profileLink,
+              role: formData.role,
+              source: formData.source,
+              resumeURL: downloadURL,
+              submittedAt: new Date(),
+            });
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        mobile: "",
-        whyWebortex: "",
-        profileLink: "",
-        role: "",
-        source: "",
-        resume: null,
-      });
-      setErrors({});
-      setFileName("");
-      setFileError("");
+            console.log("Document written with ID: ", docRef.id);
+            setSubmitStatus("success");
+
+            // Reset form
+            setFormData({
+              name: "",
+              email: "",
+              mobile: "",
+              whyWebortex: "",
+              profileLink: "",
+              role: "",
+              source: "",
+              resume: null,
+            });
+            setErrors({});
+            setFileName("");
+            setFileError("");
+          } catch (error) {
+            console.error("Error submitting form: ", error);
+            setSubmitStatus("error");
+          } finally {
+            setIsSubmitting(false);
+          }
+        }
+      );
     } catch (error) {
-      console.error("Error submitting form: ", error);
+      console.error("Error initiating upload: ", error);
       setSubmitStatus("error");
-    } finally {
       setIsSubmitting(false);
     }
   };
