@@ -1,30 +1,11 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import alertImg from "../../assets/alert.png";
+import QuotationProject from "./QuotationProject";
 import { useNavigate } from "react-router-dom";
-
-// Firebase Imports
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const Quotation = () => {
   const navigate = useNavigate();
-
-  // Firebase Configuration (REPLACE WITH YOUR ACTUAL CONFIG)
-  const firebaseConfig = {
-    apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
-    authDomain: "webortex-7e798.firebaseapp.com",
-    databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
-    projectId: "webortex-7e798",
-    storageBucket: "webortex-7e798.firebasestorage.app",
-    messagingSenderId: "1095027363933",
-    appId: "1:1095027363933:web:77358a1d5b12782c183db4",
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
   const [alertpop, setAlertpop] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -37,8 +18,6 @@ const Quotation = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +27,7 @@ const Quotation = () => {
     }
   };
 
+  // New function to handle form reset
   const handleReset = () => {
     setFormData({
       name: "",
@@ -58,7 +38,7 @@ const Quotation = () => {
       isStartup: "",
       lookingFor: "",
     });
-    setErrors({});
+    setErrors({}); // Clear any validation errors
   };
 
   const validateForm = () => {
@@ -107,53 +87,23 @@ const Quotation = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
       return;
     }
-
-    try {
-      setIsSubmitting(true);
-      setSubmitStatus(null);
-
-      // Save form data to Firestore
-      const docRef = await addDoc(collection(db, "quotations"), {
-        name: formData.name,
-        email: formData.email,
-        mobile: formData.mobile,
-        currentAddress: formData.currentAddress || "",
-        companyName: formData.companyName,
-        isStartup: formData.isStartup,
-        lookingFor: formData.lookingFor,
-        submittedAt: new Date(),
-        status: "pending",
-      });
-
-      console.log("Quotation submitted with ID: ", docRef.id);
-
-      // Navigate to next page
-      navigate("/get-quote/continue-fctCCfgfv");
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        mobile: "",
-        currentAddress: "",
-        companyName: "",
-        isStartup: "",
-        lookingFor: "",
-      });
-      setErrors({});
-      setSubmitStatus("success");
-    } catch (error) {
-      console.error("Error submitting quotation: ", error);
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    navigate("/get-quote/continue-fctCCfgfv");
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      currentAddress: "",
+      companyName: "",
+      isStartup: "",
+      lookingFor: "",
+    });
+    setErrors({});
   };
 
   return (
@@ -166,7 +116,7 @@ const Quotation = () => {
       </h1>
       <p className="text-center text-xs sm:text-sm text-[#696F79] px-[2%] xs:px-[6%] sm:px-[10%] md:px-[28%] mt-2 md:mt-3">
         Get a tailored solution for your needs! Fill out the form with your
-        requirements, and we'll provide a custom quote for you.
+        requirements, and we’ll provide a custom quote for you.
       </p>
       <div className="flex items-center justify-center bg-black text-white mb-4 mt-8">
         <form
@@ -317,10 +267,9 @@ const Quotation = () => {
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:opacity-50"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
             >
-              {isSubmitting ? "Submitting..." : "Continue →"}
+              Continue →
             </button>
           </div>
         </form>
@@ -351,28 +300,6 @@ const Quotation = () => {
           </div>
         ) : (
           ""
-        )}
-
-        {submitStatus === "error" && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Submission Failed
-                </h2>
-                <p className="text-gray-300 mb-4">
-                  There was an error submitting your quotation. Please try again
-                  later.
-                </p>
-                <button
-                  onClick={() => setSubmitStatus(null)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
         )}
       </div>
     </Container>
