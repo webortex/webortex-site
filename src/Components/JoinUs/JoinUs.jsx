@@ -294,8 +294,8 @@ function JoinUs() {
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-headColor mb-4">Join Us</h1>
           <p className="text-gray-400">
-            Risus commodo id odio turpis pharetra elementum. Pulvinar porta
-            porta feugiat scelerisque in elit. Morbi rhoncus, tellus,
+            Join our team of innovators! Fill out the form to explore exciting
+            opportunities and collaborate on cutting-edge projects
           </p>
         </div>
 
@@ -308,9 +308,9 @@ function JoinUs() {
               type="text"
               id="name"
               name="name"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.name ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+                errors.name ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               placeholder="Enter your Name"
               value={formData.name}
               onChange={handleInputChange}
@@ -328,9 +328,9 @@ function JoinUs() {
               type="email"
               id="email"
               name="email"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.email ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] ${
+                errors.email ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               placeholder="Enter email address"
               value={formData.email}
               onChange={handleInputChange}
@@ -348,16 +348,15 @@ function JoinUs() {
               Mobile number *
             </label>
             <div className="flex">
-              <span className="inline-flex items-center px-4 py-2 rounded-l bg-gray-800 border border-r-0 border-gray-700 text-gray-400">
-                +91
-              </span>
+             
               <input
                 type="tel"
                 id="mobile"
                 name="mobile"
-                className={`w-full flex-1 px-4 py-2 rounded-r bg-gray-800 border ${
-                  errors.mobile ? "border-red-500" : "border-gray-700"
-                } text-gray-200 focus:outline-none focus:border-blue-500`}
+                placeholder="+91"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+                errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
                 value={formData.mobile}
                 onChange={handleInputChange}
               />
