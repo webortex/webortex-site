@@ -95,11 +95,13 @@ function App() {
               }
             />
             <Route path="/services/:slug" element={<ServicePage />} />
+
             <Route path="/get-quote" element={<Quotation />} />
             <Route path="/project-quote" element={<QuotationProject />} />
             <Route path="/web-quote" element={<WebForm />} />
             <Route path="/app-quote" element={<AppForm />} />
             <Route path="/mvp-quote" element={<MVPForm />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
