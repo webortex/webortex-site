@@ -16,7 +16,7 @@ import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
 import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
-// import FramezIcon from "../../assets/workedLogos/64FramezLogo.svg";
+import FramezIcon from "../../assets/workedLogos/64FramezLogo.png";
 import garudaIcon from "../../assets/workedLogos/garuda.png";
 // import mygbitrIcon from "../../assets/workedLogos/mygbitr.png";
 import sipIcon from "../../assets/workedLogos/SiP.png";
@@ -115,12 +115,11 @@ export class Provider extends Component {
           linkedin: "#",
         },
 
-        pageTitle:
-          "Join Our Team | Web Developer & UI/UX Design Jobs | Webortex",
+        pageTitle: "Join Our Team | Webortex",
         pageDescription:
           "Webortex is hiring talented web developers, UI/UX designers, and app developers. Join our innovative team and grow your career in tech.",
         pageKeywords:
-          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers",
+          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers, sisindri singamsetti, webortex",
         pageCanonical: "https://webortex.com/recruiting",
         pageImage: "https://webortex.com/chair.png",
       },
@@ -130,7 +129,7 @@ export class Provider extends Component {
       {
         id: 1,
         title: "Team Garuda",
-        link: "https://teamgaruda.com/",
+        link: "https://teamgaruda.vercel.app/",
         image: teamGarudaIcon,
       },
       {
@@ -139,12 +138,12 @@ export class Provider extends Component {
         link: "",
         image: sipIcon,
       },
-      // {
-      //   id: 2,
-      //   title: "64Framez",
-      //   link: "https://www.64framez.com/",
-      //   image: FramezIcon,
-      // },
+      {
+        id: 2,
+        title: "64Framez",
+        link: "https://www.64framez.com/",
+        image: FramezIcon,
+      },
       // {
       //   id: 3,
       //   title: "MYGBITR",

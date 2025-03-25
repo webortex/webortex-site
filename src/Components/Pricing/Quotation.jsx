@@ -7,21 +7,29 @@ import { useNavigate } from "react-router-dom";
 const Quotation = () => {
   const navigate = useNavigate();
   const [alertpop, setAlertpop] = useState(true);
+
+  const [lookingFor, setLookingFor] = useState("Select");
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    currentAddress: "",
-    companyName: "",
+    projectName: "",
+    description: "",
+    referenceWebsite: "",
+    design: true,
+    basicDevelopment: false,
+    simpleTesting: false,
+    file: null,
     isStartup: "",
-    lookingFor: "",
   });
 
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+
+    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
@@ -30,47 +38,44 @@ const Quotation = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    } else if (formData.name.trim().length < 3) {
-      newErrors.name = "Name must be at least 3 characters";
+    // Validate Project Name
+    if (!formData.projectName.trim()) {
+      newErrors.projectName = "Project Name is required";
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Invalid email address";
-    }
-
-    if (!formData.mobile.trim()) {
-      newErrors.mobile = "Mobile number is required";
-    } else if (!/^\d{10}$/.test(formData.mobile)) {
-      newErrors.mobile = "Mobile number must be 10 digits";
-    }
-
-    if (
-      formData.currentAddress.trim() &&
-      formData.currentAddress.trim().length < 10
-    ) {
-      newErrors.currentAddress = "Address must be at least 10 characters";
-    }
-
-    if (!formData.companyName.trim()) {
-      newErrors.companyName = "Company Name is required";
-    } else if (formData.companyName.trim().length < 3) {
-      newErrors.companyName = "Company Name must be at least 3 characters";
-    }
-
+    // Validate Is Startup
     if (!formData.isStartup) {
-      newErrors.isStartup = "Please select an option";
+      newErrors.isStartup = "Please select startup status";
     }
 
-    if (!formData.lookingFor) {
+    // Validate Looking For
+    if (lookingFor === "Select") {
       newErrors.lookingFor = "Please select an option";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handleReset = (e) => {
+    e.preventDefault();
+    // Reset form data to initial state
+    setFormData({
+      projectName: "",
+      description: "",
+      referenceWebsite: "",
+      design: true,
+      basicDevelopment: false,
+      simpleTesting: false,
+      file: null,
+      isStartup: "",
+    });
+
+    // Reset looking for
+    setLookingFor("Select");
+
+    // Clear all errors
+    setErrors({});
   };
 
   const handleSubmit = (e) => {
@@ -80,34 +85,24 @@ const Quotation = () => {
       return;
     }
 
-    console.log("Form submitted:", formData);
-    alert("Form submitted successfully!");
-    navigate("/project-quote");
-    setFormData({
-      name: "",
-      email: "",
-      mobile: "",
-      currentAddress: "",
-      companyName: "",
-      isStartup: "",
-      lookingFor: "",
-    });
-    setErrors({});
+    if (lookingFor === "WEB") navigate("/web-quote");
+    else if (lookingFor === "APP") navigate("/app-quote");
+    else if (lookingFor === "MVP") navigate("/mvp-quote");
   };
 
   return (
     <Container
       maxWidth="lg"
-      className="h-auto my-9 sm:my-2 flex flex-col justify-center align-center"
+      className="h-auto my-9 sm:my-8 lg:my-14 flex flex-col justify-center align-center"
     >
       <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl text-headColor font-bold tracking-tight">
         Quotation
       </h1>
-      <p className="text-center text-xs sm:text-sm lg:text-base text-secondaryTextColor px-[2%] xs:px-[6%] sm:px-[10%] md:px-[22%] mt-2 md:mt-3">
-        Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta
-        feugiat scelerisque in elit. Morbi rhoncus, tellus,{" "}
+      <p className="text-center text-xs sm:text-sm text-[#696F79] px-[2%] xs:px-[6%] sm:px-[10%] md:px-[28%] mt-2 md:mt-3">
+        Get a tailored solution for your needs! Fill out the form with your
+        requirements, and we’ll provide a custom quote for you.
       </p>
-      <div className="flex items-center justify-center bg-black text-white mb-4 mt-4">
+      <div className="flex items-center justify-center bg-black text-white mb-4 mt-8">
         <form
           className="rounded-2xl shadow-lg w-full max-w-md space-y-4"
           onSubmit={handleSubmit}
@@ -123,7 +118,7 @@ const Quotation = () => {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Enter your Name"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.name ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -141,7 +136,7 @@ const Quotation = () => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter email address"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.5px] ${
                 errors.email ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -159,7 +154,7 @@ const Quotation = () => {
               value={formData.mobile}
               onChange={handleInputChange}
               placeholder="+91"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -177,7 +172,7 @@ const Quotation = () => {
               value={formData.currentAddress}
               onChange={handleInputChange}
               placeholder=""
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.currentAddress ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -197,7 +192,7 @@ const Quotation = () => {
               value={formData.companyName}
               onChange={handleInputChange}
               placeholder=""
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.companyName ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -213,7 +208,7 @@ const Quotation = () => {
               name="isStartup"
               value={formData.isStartup}
               onChange={handleInputChange}
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.isStartup ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             >
@@ -233,7 +228,7 @@ const Quotation = () => {
               name="lookingFor"
               value={formData.lookingFor}
               onChange={handleInputChange}
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             >
@@ -249,9 +244,11 @@ const Quotation = () => {
             <button
               type="button"
               className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-brandsBgColor text-textColor rounded-lg  hover:bg-brandsBgColor/60 focus:outline-none transition-all duration-300 ease-in-out"
+              onClick={handleReset}
             >
               Cancel
             </button>
+
             <button
               type="submit"
               className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
