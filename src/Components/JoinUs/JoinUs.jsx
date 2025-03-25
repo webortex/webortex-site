@@ -34,7 +34,7 @@ function JoinUs() {
     whyWebortex: "",
     profileLink: "",
     role: "",
-    source: "",
+    resumeLink: "",
     resume: null,
   });
 
@@ -53,26 +53,26 @@ function JoinUs() {
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFileError("");
-    setFileName("");
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setFileError("");
+  //   setFileName("");
 
-    if (!file) return;
+  //   if (!file) return;
 
-    if (file.type !== "application/pdf") {
-      setFileError("Only PDF files are allowed");
-      return;
-    }
+  //   if (file.type !== "application/pdf") {
+  //     setFileError("Only PDF files are allowed");
+  //     return;
+  //   }
 
-    if (file.size > MAX_FILE_SIZE) {
-      setFileError("File size must be less than 5MB");
-      return;
-    }
+  //   if (file.size > MAX_FILE_SIZE) {
+  //     setFileError("File size must be less than 5MB");
+  //     return;
+  //   }
 
-    setFormData({ ...formData, resume: file });
-    setFileName(file.name);
-  };
+  //   setFormData({ ...formData, resume: file });
+  //   setFileName(file.name);
+  // };
 
   const validateForm = () => {
     const newErrors = {};
@@ -110,6 +110,15 @@ function JoinUs() {
     ) {
       newErrors.profileLink = "Please enter a valid URL";
     }
+    if (!formData.resumeLink.trim()) {
+      newErrors.resumeLink = "Resume link is required";
+    } else if (
+      !/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
+        formData.resumeLink
+      )
+    ) {
+      newErrors.resumeLink = "Please enter a valid URL";
+    }
 
     if (!formData.role) {
       newErrors.role = "Please select a role";
@@ -142,30 +151,31 @@ function JoinUs() {
     try {
       setIsSubmitting(true);
 
-      // 1. Upload PDF to Firebase Storage
-      const storageRef = ref(
-        storage,
-        `resumes/${Date.now()}_${formData.resume.name}`
-      );
-      const uploadResult = await uploadBytes(storageRef, formData.resume);
+      // // 1. Upload PDF to Firebase Storage
+      // const storageRef = ref(
+      //   storage,
+      //   `resumes/${Date.now()}_${formData.resume.name}`
+      // );
+      // const uploadResult = await uploadBytes(storageRef, formData.resume);
 
       // 2. Get the download URL
-      const downloadURL = await getDownloadURL(uploadResult.ref);
+      // const downloadURL = await getDownloadURL(uploadResult.ref);
 
       // 3. Save form data and resume URL to Firestore
-      const docRef = await addDoc(collection(db, "applications"), {
+      const docRef = doc(db, "applications", formData.name.trim());
+      await setDoc(docRef, {
         name: formData.name,
         email: formData.email,
         mobile: formData.mobile,
         whyWebortex: formData.whyWebortex,
         profileLink: formData.profileLink,
         role: formData.role,
-        source: formData.source,
-        resumeURL: downloadURL,
+        resumeLink: formData.resumeLink,
+        // resumeURL: downloadURL,
         submittedAt: new Date(),
       });
 
-      console.log("Document written with ID: ", docRef.id);
+      console.log("Document written with ID: ", docRef.id, FormData.name);
       setSubmitStatus("success");
 
       // Reset form
@@ -176,8 +186,8 @@ function JoinUs() {
         whyWebortex: "",
         profileLink: "",
         role: "",
-        source: "",
-        resume: null,
+        resumeLink: "",
+        // resume: null,
       });
       setErrors({});
       setFileName("");
@@ -194,7 +204,7 @@ function JoinUs() {
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
   };
 
   const handleCancel = () => {
@@ -205,8 +215,8 @@ function JoinUs() {
       whyWebortex: "",
       profileLink: "",
       role: "",
-      source: "",
-      resume: null,
+      resumeLink: "",
+      // resume: null,
     });
     setErrors({});
     setFileName("");
@@ -218,11 +228,11 @@ function JoinUs() {
     <div className="min-h-screen py-12 px-4 relative">
       {submitStatus === "success" && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
+          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
             <div className="text-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-green-500 mx-auto mb-4"
+                className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -234,16 +244,16 @@ function JoinUs() {
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <h2 className="text-2xl font-bold text-white mb-2">
+              <h2 className="text-2xl font-normal text-white mb-2">
                 Application Submitted!
               </h2>
-              <p className="text-gray-300 mb-4">
+              <p className="text-white/80 font-light px-[5%] mb-4">
                 Thank you for your interest. We'll review your application and
                 get back to you soon.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
               </button>
@@ -270,16 +280,16 @@ function JoinUs() {
                   d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <h2 className="text-2xl font-bold text-white mb-2">
+              <h2 className="text-2xl font-normal text-white mb-2">
                 Submission Failed
               </h2>
-              <p className="text-gray-300 mb-4">
+              <p className="text-white/80 font-light px-[5%] mb-4">
                 There was an error submitting your application. Please try again
                 later.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-red-500/90 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
               </button>
@@ -290,7 +300,7 @@ function JoinUs() {
 
       <button
         onClick={handleWhatsApp}
-        className="absolute top-4 right-4 px-4 py-2 text-sm text-gray-300 rounded hover:bg-gray-700 transition-colors"
+        className="absolute top-[4%] right-[8%] px-4 py-2 text-sm text-gray-300 rounded bg-brandsBgColor hover:bg-brandsBgColor/60 transition-colors"
       >
         Message us
       </button>
@@ -465,16 +475,16 @@ function JoinUs() {
               <p className="text-red-500 text-sm mt-1">{errors.source}</p>
             )}
           </div>
-
+          {/* 
           <div>
             <label className="block text-sm text-gray-400 mb-1">
               Upload your Resume (PDF only, max 5MB) *
             </label>
             <div className="flex items-center justify-center w-full">
               <label
-                 className={`w-full border-[.9px] border-dashed rounded-[11px] p-5 text-[#8692A6] flex justify-center items-center text-center bg-[#1e1f23] ${
-                errors.file ? "border-red-500" : "border-[#8692A6]/40"
-              }`}
+                className={`w-full border-[.9px] border-dashed rounded-[11px] p-5 text-[#8692A6] flex justify-center items-center text-center bg-[#1e1f23] ${
+                  errors.file ? "border-red-500" : "border-[#8692A6]/40"
+                }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -504,6 +514,28 @@ function JoinUs() {
             {fileError && (
               <p className="text-red-500 text-sm mt-1">{fileError}</p>
             )}
+          </div> */}
+
+          <div>
+            <label
+              htmlFor="profileLink"
+              className="block text-sm text-gray-400 mb-1"
+            >
+              Your Resume link *
+            </label>
+            <input
+              type="url"
+              id="resumeLink"
+              name="resumeLink"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.name ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
+              value={formData.resumeLink}
+              onChange={handleInputChange}
+            />
+            {errors.resuneLink && (
+              <p className="text-red-500 text-sm mt-1">{errors.resumeeLink}</p>
+            )}
           </div>
 
           <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0">
@@ -517,7 +549,7 @@ function JoinUs() {
             </button>
             <button
               type="submit"
-              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300 ease-in-out disabled:bg-blue-400 disabled:cursor-not-allowed"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-blue-400 disabled:cursor-not-allowed"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Submit"}
