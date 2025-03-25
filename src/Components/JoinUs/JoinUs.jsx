@@ -196,11 +196,11 @@ function JoinUs() {
     <div className="min-h-screen py-12 px-4 relative">
       {submitStatus === "success" && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
+          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
             <div className="text-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-green-500 mx-auto mb-4"
+                className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -212,16 +212,16 @@ function JoinUs() {
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <h2 className="text-2xl font-bold text-white mb-2">
+              <h2 className="text-2xl font-normal text-white mb-2">
                 Application Submitted!
               </h2>
-              <p className="text-gray-300 mb-4">
+              <p className="text-white/80 font-light px-[5%] mb-4">
                 Thank you for your interest. We'll review your application and
                 get back to you soon.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-logoGreenColor/60 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
               </button>
