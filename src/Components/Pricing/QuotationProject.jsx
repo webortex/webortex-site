@@ -65,9 +65,9 @@ const QuotationProject = () => {
       return;
     }
 
-    if (lookingFor === "WEB") navigate("/web-quote");
-    else if (lookingFor === "APP") navigate("/app-quote");
-    else if (lookingFor === "MVP") navigate("/mvp-quote");
+    if (lookingFor === "WEB") navigate("/web-quote-234ghj9s_dff16syr");
+    else if (lookingFor === "APP") navigate("/app-quote-dfg45678_dffss189");
+    else if (lookingFor === "MVP") navigate("/mvp-quote-sy34rh32_dff84fgd");
   };
 
   return (

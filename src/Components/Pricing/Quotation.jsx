@@ -93,7 +93,7 @@ const Quotation = () => {
     if (!validateForm()) {
       return;
     }
-    navigate("/project-quote");
+    navigate("/get-quote/continue-fctCCfgfv");
     setFormData({
       name: "",
       email: "",
