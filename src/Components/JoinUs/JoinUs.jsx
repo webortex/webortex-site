@@ -308,9 +308,9 @@ function JoinUs() {
               type="text"
               id="name"
               name="name"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.name ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.name ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               placeholder="Enter your Name"
               value={formData.name}
               onChange={handleInputChange}
@@ -328,9 +328,9 @@ function JoinUs() {
               type="email"
               id="email"
               name="email"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.email ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.5px] ${
+                errors.email ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               placeholder="Enter email address"
               value={formData.email}
               onChange={handleInputChange}
@@ -348,16 +348,15 @@ function JoinUs() {
               Mobile number *
             </label>
             <div className="flex">
-              <span className="inline-flex items-center px-4 py-2 rounded-l bg-gray-800 border border-r-0 border-gray-700 text-gray-400">
-                +91
-              </span>
+              
               <input
                 type="tel"
                 id="mobile"
                 name="mobile"
-                className={`w-full flex-1 px-4 py-2 rounded-r bg-gray-800 border ${
-                  errors.mobile ? "border-red-500" : "border-gray-700"
-                } text-gray-200 focus:outline-none focus:border-blue-500`}
+                placeholder="+91"
+                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                  errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
+                }`}
                 value={formData.mobile}
                 onChange={handleInputChange}
               />
@@ -378,9 +377,9 @@ function JoinUs() {
               id="whyWebortex"
               name="whyWebortex"
               rows="4"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.whyWebortex ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.description ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               value={formData.whyWebortex}
               onChange={handleInputChange}
             />
@@ -400,9 +399,9 @@ function JoinUs() {
               type="url"
               id="profileLink"
               name="profileLink"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.profileLink ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.name ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               value={formData.profileLink}
               onChange={handleInputChange}
             />
@@ -418,9 +417,9 @@ function JoinUs() {
             <select
               id="role"
               name="role"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.role ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500 appearance-none`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               value={formData.role}
               onChange={handleInputChange}
             >
@@ -445,9 +444,9 @@ function JoinUs() {
             <select
               id="source"
               name="source"
-              className={`w-full px-4 py-2 rounded bg-gray-800 border ${
-                errors.source ? "border-red-500" : "border-gray-700"
-              } text-gray-200 focus:outline-none focus:border-blue-500 appearance-none`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               value={formData.source}
               onChange={handleInputChange}
             >
@@ -467,9 +466,9 @@ function JoinUs() {
             </label>
             <div className="flex items-center justify-center w-full">
               <label
-                className={`w-full flex flex-col items-center px-4 py-4 bg-gray-800 text-gray-400 rounded border ${
-                  fileError ? "border-red-500" : "border-gray-700"
-                } cursor-pointer hover:bg-gray-700 transition-colors`}
+                 className={`w-full border-[.9px] border-dashed rounded-[11px] p-5 text-[#8692A6] flex justify-center items-center text-center bg-[#1e1f23] ${
+                errors.file ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
