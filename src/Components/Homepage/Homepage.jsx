@@ -1,5 +1,5 @@
 import Cover from "../Cover/Cover";
-import Services from "../Services/Service";
+import Services from "../Services/Services";
 import Works from "../Works/Works";
 import Pricing from "../Pricing/Pricing";
 import FaQ from "../FaQ/FaQ";
