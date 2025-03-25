@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container } from "@mui/material";
 import { db, storage } from "../../../Firebaseconfig"; // Import from firebaseConfig.js
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function JoinUs() {
@@ -12,7 +12,7 @@ function JoinUs() {
     whyWebortex: "",
     profileLink: "",
     role: "",
-    source: "",
+    resumeLink: "",
     resume: null,
   });
 
@@ -88,6 +88,15 @@ function JoinUs() {
     ) {
       newErrors.profileLink = "Please enter a valid URL";
     }
+    if (!formData.resumeLink.trim()) {
+      newErrors.resumeLink = "Resume link is required";
+    } else if (
+      !/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
+        formData.resumeLink
+      )
+    ) {
+      newErrors.resumeLink = "Please enter a valid URL";
+    }
 
     if (!formData.role) {
       newErrors.role = "Please select a role";
@@ -131,19 +140,20 @@ function JoinUs() {
       // const downloadURL = await getDownloadURL(uploadResult.ref);
 
       // 3. Save form data and resume URL to Firestore
-      const docRef = await addDoc(collection(db, "applications"), {
+      const docRef = doc(db, "applications", formData.name.trim());
+      await setDoc(docRef, {
         name: formData.name,
         email: formData.email,
         mobile: formData.mobile,
         whyWebortex: formData.whyWebortex,
         profileLink: formData.profileLink,
         role: formData.role,
-        // source: formData.source,
+        resumeLink: formData.resumeLink,
         // resumeURL: downloadURL,
         submittedAt: new Date(),
       });
 
-      console.log("Document written with ID: ", docRef.id);
+      console.log("Document written with ID: ", docRef.id, FormData.name);
       setSubmitStatus("success");
 
       // Reset form
@@ -154,7 +164,7 @@ function JoinUs() {
         whyWebortex: "",
         profileLink: "",
         role: "",
-        // source: "",
+        resumeLink: "",
         // resume: null,
       });
       setErrors({});
@@ -183,7 +193,7 @@ function JoinUs() {
       whyWebortex: "",
       profileLink: "",
       role: "",
-      // source: "",
+      resumeLink: "",
       // resume: null,
     });
     setErrors({});
@@ -480,6 +490,28 @@ function JoinUs() {
               <p className="text-red-500 text-sm mt-1">{fileError}</p>
             )}
           </div> */}
+
+          <div>
+            <label
+              htmlFor="profileLink"
+              className="block text-sm text-gray-400 mb-1"
+            >
+              Your Resume link *
+            </label>
+            <input
+              type="url"
+              id="resumeLink"
+              name="resumeLink"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.name ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
+              value={formData.resumeLink}
+              onChange={handleInputChange}
+            />
+            {errors.resuneLink && (
+              <p className="text-red-500 text-sm mt-1">{errors.resumeeLink}</p>
+            )}
+          </div>
 
           <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0">
             <button
