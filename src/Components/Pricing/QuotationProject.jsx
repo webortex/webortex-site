@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const QuotationProject = () => {
+  const navigate = useNavigate();
+  const [lookingFor,setLookingFor] = useState("Select");
   const [formData, setFormData] = useState({
     projectName: "",
     description: "",
@@ -29,6 +32,12 @@ const QuotationProject = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(lookingFor==="WEB")
+      navigate("/web-quote")
+    else if(lookingFor==="APP")
+      navigate("/app-quote")
+    else if(lookingFor==="MVP")
+      navigate("/mvp-quote")
     console.log("Form submitted:", formData);
   };
 
@@ -194,11 +203,16 @@ const QuotationProject = () => {
             </label>
             <select
               name="lookingFor"
+
+            value={lookingFor}
+            onChange={(e)=>setLookingFor(e.target.value)}
+
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] border-[#8692A6]/40`}
             >
-              <option value="">Select</option>
-              <option value="service">Service</option>
-              <option value="product">Product</option>
+              <option value="select">Select</option>
+              <option value="MVP">MVP</option>
+              <option value="APP">APP</option>
+              <option value="WEB">WEB</option>
             </select>
           </div>
 
