@@ -286,7 +286,7 @@ function JoinUs() {
 
       <button
         onClick={handleWhatsApp}
-        className="absolute top-4 right-4 px-4 py-2 text-sm text-gray-300 rounded hover:bg-gray-700 transition-colors"
+        className="absolute top-[4%] right-[8%] px-4 py-2 text-sm text-gray-300 rounded bg-brandsBgColor hover:bg-brandsBgColor/60 transition-colors"
       >
         Message us
       </button>
@@ -348,7 +348,6 @@ function JoinUs() {
               Mobile number *
             </label>
             <div className="flex">
-              
               <input
                 type="tel"
                 id="mobile"
@@ -466,9 +465,9 @@ function JoinUs() {
             </label>
             <div className="flex items-center justify-center w-full">
               <label
-                 className={`w-full border-[.9px] border-dashed rounded-[11px] p-5 text-[#8692A6] flex justify-center items-center text-center bg-[#1e1f23] ${
-                errors.file ? "border-red-500" : "border-[#8692A6]/40"
-              }`}
+                className={`w-full border-[.9px] border-dashed rounded-[11px] p-5 text-[#8692A6] flex justify-center items-center text-center bg-[#1e1f23] ${
+                  errors.file ? "border-red-500" : "border-[#8692A6]/40"
+                }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -511,7 +510,7 @@ function JoinUs() {
             </button>
             <button
               type="submit"
-              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none transition-all duration-300 ease-in-out disabled:bg-blue-400 disabled:cursor-not-allowed"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-blue-400 disabled:cursor-not-allowed"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Submit"}
