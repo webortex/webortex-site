@@ -27,7 +27,8 @@ const useMorphingText = (texts) => {
       current1.style.opacity = `${Math.pow(invertedFraction, 0.4) * 100}%`;
 
       current1.textContent = texts[textIndexRef.current % texts.length];
-      current2.textContent = texts[(textIndexRef.current + 1) % texts.length];
+      current2.textContent =
+        texts[(textIndexRef.current + 1) % texts.length];
     },
     [texts]
   );
@@ -103,7 +104,11 @@ function Texts({ texts }) {
 
 function SvgFilters() {
   return (
-    <svg id="filters" className="hidden" preserveAspectRatio="xMidYMid slice">
+    <svg
+      id="filters"
+      className="hidden"
+      preserveAspectRatio="xMidYMid slice"
+    >
       <defs>
         <filter id="threshold">
           <feColorMatrix
@@ -122,7 +127,7 @@ function SvgFilters() {
 
 function MorphingText({ texts, className }) {
   const combinedClassName = [
-    "relative inline-block h-16 text-left text-[110px] leading-[118px] font-outlet font-bold [filter:url(#threshold)_blur(0.6px)]",
+    "relative inline-block text-left text-[35px] xs:text-[45px] sm:text-[65px] md:text-[75px] lg:text-[98px] 2xl:text-[110px] leading-[45px] xs:leading-[55px] sm:leading-[75px] md:leading-[85px] lg:leading-[108px] 2xl:leading-[118px] font-outlet font-bold [filter:url(#threshold)_blur(0.6px)]",
     className,
   ]
     .filter(Boolean)
