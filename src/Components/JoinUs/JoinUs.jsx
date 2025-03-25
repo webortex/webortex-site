@@ -525,8 +525,8 @@ function JoinUs() {
           </div>
         </form>
         {alertpop == true ? (
-          <div className="sm:w-[400px] flex gap-8 rounded-lg px-4 py-4 bg-[#262626] fixed right-10 top-60">
-             <div className="h-[50px] w-[50px]">
+          <div className="sm:w-[380px] xl:w-[400px] lg:w-[400px] xs:w-[380px] 2xs:w-[300px] flex gap-8 2xs:gap-2 rounded-lg px-4 py-4 2xs:px-2 2xs:py-2 bg-[#262626] fixed right-10 2xs:right-2 top-60">
+             <div className="h-[50px] w-[50px] xl:w-[50px] lg:w-[50px] sm:w-[50px] xs:w-[50px] 2xs:w-[30px]">
                           <img src={Frame} alt="Alert" className="pt-4" />
                         </div>
             <div>
@@ -545,7 +545,7 @@ function JoinUs() {
               className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F] "
               onClick={() => setAlertpop(false)}
             >
-              <p className="text-lg items-center justify-center mt-[-2.5px]">
+              <p className="text-lg 2xs:text-xs items-center justify-center mt-[-2.5px]">
                 x
               </p>
             </div>
