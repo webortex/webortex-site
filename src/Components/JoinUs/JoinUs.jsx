@@ -221,7 +221,7 @@ function JoinUs() {
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-logoGreenColor/60 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
               </button>
@@ -248,16 +248,16 @@ function JoinUs() {
                   d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <h2 className="text-2xl font-bold text-white mb-2">
+              <h2 className="text-2xl font-normal text-white mb-2">
                 Submission Failed
               </h2>
-              <p className="text-gray-300 mb-4">
+              <p className="text-white/80 font-light px-[5%] mb-4">
                 There was an error submitting your application. Please try again
                 later.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-red-500/90 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
               </button>
