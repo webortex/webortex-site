@@ -168,7 +168,7 @@ const Quotation = () => {
         Get a tailored solution for your needs! Fill out the form with your
         requirements, and we'll provide a custom quote for you.
       </p>
-      <div className="flex items-center justify-center bg-black text-white mb-4 mt-8">
+      <div className="flex items-center justify-center  text-white mb-4 mt-8">
         <form
           className="rounded-2xl shadow-lg w-full max-w-md space-y-4"
           onSubmit={handleSubmit}
