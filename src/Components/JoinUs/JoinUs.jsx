@@ -294,8 +294,8 @@ function JoinUs() {
         <div className="text-center mb-8">
           <h1 className="text-5xl font-bold text-headColor mb-4">Join Us</h1>
           <p className="text-gray-400">
-            Risus commodo id odio turpis pharetra elementum. Pulvinar porta
-            porta feugiat scelerisque in elit. Morbi rhoncus, tellus,
+            Join our team of innovators! Fill out the form to explore exciting
+            opportunities and collaborate on cutting-edge projects
           </p>
         </div>
 

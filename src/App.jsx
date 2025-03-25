@@ -92,7 +92,7 @@ function App() {
               }
             />
             <Route path="/services/:slug" element={<ServicePage />} />
-            <Route path="/get-quote" element={<Quotation />} />
+            <Route path="/get-quote" element={<QuotationProject />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
