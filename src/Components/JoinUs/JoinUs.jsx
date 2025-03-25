@@ -143,8 +143,8 @@ function JoinUs() {
         submittedAt: new Date(),
       });
 
-            console.log("Document written with ID: ", docRef.id);
-            setSubmitStatus("success");
+      console.log("Document written with ID: ", docRef.id);
+      setSubmitStatus("success");
 
       // Reset form
       setFormData({
