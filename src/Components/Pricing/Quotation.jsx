@@ -7,75 +7,84 @@ import { useNavigate } from "react-router-dom";
 const Quotation = () => {
   const navigate = useNavigate();
   const [alertpop, setAlertpop] = useState(true);
-
-  const [lookingFor, setLookingFor] = useState("Select");
   const [formData, setFormData] = useState({
-    projectName: "",
-    description: "",
-    referenceWebsite: "",
-    design: true,
-    basicDevelopment: false,
-    simpleTesting: false,
-    file: null,
+    name: "",
+    email: "",
+    mobile: "",
+    currentAddress: "",
+    companyName: "",
     isStartup: "",
+    lookingFor: "",
   });
 
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
-
-    // Clear error when user starts typing
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
   };
 
+  // New function to handle form reset
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      currentAddress: "",
+      companyName: "",
+      isStartup: "",
+      lookingFor: "",
+    });
+    setErrors({}); // Clear any validation errors
+  };
+
   const validateForm = () => {
     const newErrors = {};
 
-    // Validate Project Name
-    if (!formData.projectName.trim()) {
-      newErrors.projectName = "Project Name is required";
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = "Name must be at least 3 characters";
     }
 
-    // Validate Is Startup
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Mobile number must be 10 digits";
+    }
+
+    if (
+      formData.currentAddress.trim() &&
+      formData.currentAddress.trim().length < 10
+    ) {
+      newErrors.currentAddress = "Address must be at least 10 characters";
+    }
+
+    if (!formData.companyName.trim()) {
+      newErrors.companyName = "Company Name is required";
+    } else if (formData.companyName.trim().length < 3) {
+      newErrors.companyName = "Company Name must be at least 3 characters";
+    }
+
     if (!formData.isStartup) {
-      newErrors.isStartup = "Please select startup status";
+      newErrors.isStartup = "Please select an option";
     }
 
-    // Validate Looking For
-    if (lookingFor === "Select") {
+    if (!formData.lookingFor) {
       newErrors.lookingFor = "Please select an option";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
-
-  const handleReset = (e) => {
-    e.preventDefault();
-    // Reset form data to initial state
-    setFormData({
-      projectName: "",
-      description: "",
-      referenceWebsite: "",
-      design: true,
-      basicDevelopment: false,
-      simpleTesting: false,
-      file: null,
-      isStartup: "",
-    });
-
-    // Reset looking for
-    setLookingFor("Select");
-
-    // Clear all errors
-    setErrors({});
   };
 
   const handleSubmit = (e) => {
@@ -84,10 +93,17 @@ const Quotation = () => {
     if (!validateForm()) {
       return;
     }
-
-    if (lookingFor === "WEB") navigate("/web-quote");
-    else if (lookingFor === "APP") navigate("/app-quote");
-    else if (lookingFor === "MVP") navigate("/mvp-quote");
+    navigate("/project-quote");
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      currentAddress: "",
+      companyName: "",
+      isStartup: "",
+      lookingFor: "",
+    });
+    setErrors({});
   };
 
   return (
