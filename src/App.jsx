@@ -12,6 +12,10 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Loader from "./Components/Loader/Loader";
 import Quotation from "./Components/Pricing/Quotation";
 import JoinUs from "./Components/JoinUs/JoinUs";
+import QuotationProject from "./Components/Pricing/QuotationProject";
+import MVPForm from "./Components/Pricing/QuotationMVP";
+import AppForm from "./Components/Pricing/QuotationApp";
+import WebForm from "./Components/Pricing/QuotationWeb";
 
 const Layout = ({ children }) => {
   return (
@@ -55,6 +59,7 @@ function App() {
               }
             />
             <Route
+              exact
               path="/lets-talk"
               element={
                 <>
@@ -72,6 +77,7 @@ function App() {
               }
             />
             <Route
+              exact
               path="/recruiting"
               element={
                 <div className="h-screen 2xl:overflow-hidden ">
@@ -83,6 +89,7 @@ function App() {
             />
 
             <Route
+              exact
               path="/join-us"
               element={
                 <Nav>
@@ -90,8 +97,30 @@ function App() {
                 </Nav>
               }
             />
-            <Route path="/services/:slug" element={<ServicePage />} />
-            <Route path="/get-quote" element={<Quotation />} />
+            <Route exact path="/services/:slug" element={<ServicePage />} />
+
+            <Route exact path="/get-quote" element={<Quotation />} />
+            <Route
+              exact
+              path="/get-quote/continue-fctCCfgfv"
+              element={<QuotationProject />}
+            />
+            <Route
+              exact
+              path="/web-quote-234ghj9s_dff16syr"
+              element={<WebForm />}
+            />
+            <Route
+              exact
+              path="/app-quote-dfg45678_dffss189"
+              element={<AppForm />}
+            />
+            <Route
+              exact
+              path="/mvp-quote-sy34rh32_dff84fgd"
+              element={<MVPForm />}
+            />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import alertImg from "../../assets/alert.png";
+import QuotationProject from "./QuotationProject";
+import { useNavigate } from "react-router-dom";
 
 const Quotation = () => {
+  const navigate = useNavigate();
   const [alertpop, setAlertpop] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -22,6 +25,20 @@ const Quotation = () => {
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
+  };
+
+  // New function to handle form reset
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      currentAddress: "",
+      companyName: "",
+      isStartup: "",
+      lookingFor: "",
+    });
+    setErrors({}); // Clear any validation errors
   };
 
   const validateForm = () => {
@@ -76,10 +93,7 @@ const Quotation = () => {
     if (!validateForm()) {
       return;
     }
-
-    console.log("Form submitted:", formData);
-    alert("Form submitted successfully!");
-
+    navigate("/get-quote/continue-fctCCfgfv");
     setFormData({
       name: "",
       email: "",
@@ -95,16 +109,16 @@ const Quotation = () => {
   return (
     <Container
       maxWidth="lg"
-      className="h-auto my-9 sm:my-2 flex flex-col justify-center align-center"
+      className="h-auto my-9 sm:my-8 lg:my-14 flex flex-col justify-center align-center"
     >
       <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl text-headColor font-bold tracking-tight">
         Quotation
       </h1>
-      <p className="text-center text-xs sm:text-sm lg:text-base text-secondaryTextColor px-[2%] xs:px-[6%] sm:px-[10%] md:px-[22%] mt-2 md:mt-3">
-        Risus commodo id odio turpis pharetra elementum. Pulvinar porta porta
-        feugiat scelerisque in elit. Morbi rhoncus, tellus,{" "}
+      <p className="text-center text-xs sm:text-sm text-[#696F79] px-[2%] xs:px-[6%] sm:px-[10%] md:px-[28%] mt-2 md:mt-3">
+        Get a tailored solution for your needs! Fill out the form with your
+        requirements, and we’ll provide a custom quote for you.
       </p>
-      <div className="flex items-center justify-center bg-black text-white mb-4 mt-4">
+      <div className="flex items-center justify-center bg-black text-white mb-4 mt-8">
         <form
           className="rounded-2xl shadow-lg w-full max-w-md space-y-4"
           onSubmit={handleSubmit}
@@ -120,7 +134,7 @@ const Quotation = () => {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Enter your Name"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.name ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -138,7 +152,7 @@ const Quotation = () => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter email address"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.5px] ${
                 errors.email ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -156,7 +170,7 @@ const Quotation = () => {
               value={formData.mobile}
               onChange={handleInputChange}
               placeholder="+91"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -174,7 +188,7 @@ const Quotation = () => {
               value={formData.currentAddress}
               onChange={handleInputChange}
               placeholder=""
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.currentAddress ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -194,7 +208,7 @@ const Quotation = () => {
               value={formData.companyName}
               onChange={handleInputChange}
               placeholder=""
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.companyName ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             />
@@ -210,7 +224,7 @@ const Quotation = () => {
               name="isStartup"
               value={formData.isStartup}
               onChange={handleInputChange}
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.isStartup ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             >
@@ -230,7 +244,7 @@ const Quotation = () => {
               name="lookingFor"
               value={formData.lookingFor}
               onChange={handleInputChange}
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
               }`}
             >
@@ -246,9 +260,11 @@ const Quotation = () => {
             <button
               type="button"
               className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-brandsBgColor text-textColor rounded-lg  hover:bg-brandsBgColor/60 focus:outline-none transition-all duration-300 ease-in-out"
+              onClick={handleReset}
             >
               Cancel
             </button>
+
             <button
               type="submit"
               className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
@@ -274,10 +290,10 @@ const Quotation = () => {
               </p>
             </div>
             <div
-              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F]"
+              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F] "
               onClick={() => setAlertpop(false)}
             >
-              <p className="text-lg font-bold items-center self-center justify-self-center">
+              <p className="text-lg items-center justify-center mt-[-2.5px]">
                 x
               </p>
             </div>

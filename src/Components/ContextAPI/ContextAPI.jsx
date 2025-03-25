@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import gnana from "../../assets/Founders/Gnana.jpg";
 import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.jpg";
-import jaya from "../../assets/Founders/jayadeep.svg";
-import ashok from "../../assets/Founders/Ashok.svg";
-import sandeep from "../../assets/Founders/Sandeep.svg";
+import jaya from "../../assets/Founders/jayadeep.jpg";
+import ashok from "../../assets/Founders/Ashok.jpg";
+import sandeep from "../../assets/Founders/Sandeep.jpg";
 
 import Webdev from "../Services/compo/Webdev";
 import Appdev from "../Services/compo/Appdev";
@@ -16,7 +16,7 @@ import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
 import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
-// import FramezIcon from "../../assets/workedLogos/64FramezLogo.svg";
+import FramezIcon from "../../assets/workedLogos/64FramezLogo.png";
 import garudaIcon from "../../assets/workedLogos/garuda.png";
 // import mygbitrIcon from "../../assets/workedLogos/mygbitr.png";
 import sipIcon from "../../assets/workedLogos/SiP.png";
@@ -31,18 +31,18 @@ import serviceBannerImg from "../../assets/ServicePage/we.png";
 import mockupImg from "../../assets/ServicePage/mockup.png";
 import webdevImg1 from "../../assets/ServicePage/webdev1.mp4";
 import webdevImg2 from "../../assets/ServicePage/webdev2.jpeg";
-import webdevImg3 from "../../assets/ServicePage/webdev3.jpeg";
-import webdevImg4 from "../../assets/ServicePage/webdev4.svg";
+import webdevImg4 from "../../assets/ServicePage/webdev3.gif";
+import webdevImg3 from "../../assets/ServicePage/webdev4.jpeg";
 import proSupImg from "../../assets/ServicePage/productSupport.jpeg";
 import appdevImg1 from "../../assets/ServicePage/app1.svg";
-import appdevImg2 from "../../assets/ServicePage/app2.svg";
-import appdevImg3 from "../../assets/ServicePage/app3.svg";
+import appdevImg2 from "../../assets/ServicePage/app2.gif";
+import appdevImg3 from "../../assets/ServicePage/app3.gif";
 import uiuxImg1 from "../../assets/ServicePage/uiux1.png";
 import uiuxImg2 from "../../assets/ServicePage/uiux2.png";
 import uiuxImg3 from "../../assets/ServicePage/uiux3.png";
-import mvpImg1 from "../../assets/ServicePage/mvp1.svg";
-import mvpImg3 from "../../assets/ServicePage/mvp3.svg";
-import seoImg1 from "../../assets/ServicePage/seo1.svg";
+import mvpImg1 from "../../assets/ServicePage/mvp1.gif";
+import mvpImg3 from "../../assets/ServicePage/mvp3.gif";
+import seoImg1 from "../../assets/ServicePage/seo1.gif";
 import seoImg2 from "../../assets/ServicePage/seo2.svg";
 import seoImg3 from "../../assets/ServicePage/seo3.svg";
 import socialImg1 from "../../assets/ServicePage/socialmedia1.svg";
@@ -115,12 +115,11 @@ export class Provider extends Component {
           linkedin: "#",
         },
 
-        pageTitle:
-          "Join Our Team | Web Developer & UI/UX Design Jobs | Webortex",
+        pageTitle: "Join Our Team | Webortex",
         pageDescription:
           "Webortex is hiring talented web developers, UI/UX designers, and app developers. Join our innovative team and grow your career in tech.",
         pageKeywords:
-          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers",
+          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers, sisindri singamsetti, webortex",
         pageCanonical: "https://webortex.com/recruiting",
         pageImage: "https://webortex.com/chair.png",
       },
@@ -130,7 +129,7 @@ export class Provider extends Component {
       {
         id: 1,
         title: "Team Garuda",
-        link: "https://teamgaruda.com/",
+        link: "https://teamgaruda.vercel.app/",
         image: teamGarudaIcon,
       },
       {
@@ -139,12 +138,12 @@ export class Provider extends Component {
         link: "",
         image: sipIcon,
       },
-      // {
-      //   id: 2,
-      //   title: "64Framez",
-      //   link: "https://www.64framez.com/",
-      //   image: FramezIcon,
-      // },
+      {
+        id: 2,
+        title: "64Framez",
+        link: "https://www.64framez.com/",
+        image: FramezIcon,
+      },
       // {
       //   id: 3,
       //   title: "MYGBITR",
@@ -407,14 +406,29 @@ export class Provider extends Component {
         answer: (
           <>
             We specialize in{" "}
-            <Link to="/services/web-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+            <Link
+              to="/services/web-development"
+              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
+            >
               web development
             </Link>
-            , <Link to="/services/app-development" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+            ,{" "}
+            <Link
+              to="/services/app-development"
+              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
+            >
               mobile app development
-            </Link>,  <Link to="/services/uiux-design" className="transition-all duration-200 ease-in-out text-gray-400 hover:text-navlinkHoverColor underline">
+            </Link>
+            ,{" "}
+            <Link
+              to="/services/uiux-design"
+              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
+            >
               UI/UX design
-            </Link>, and custom software solutions. Our team builds scalable, user-friendly, and high-performance digital products tailored to your business needs.
+            </Link>
+            , and custom software solutions. Our team builds scalable,
+            user-friendly, and high-performance digital products tailored to
+            your business needs.
           </>
         ),
       },
@@ -469,7 +483,7 @@ export class Provider extends Component {
         name: "P Jayadeep Reddy",
         title: "CTO of webortex",
         quote:
-          "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
+          "With a passion for problem-solving and a vision for the future, we build solutions that elevate experiences, optimize performance, and set new standards in digital transformation. Innovation is at the heart of everything we do!",
         src: "https://www.linkedin.com/in/peddireddy-jayadeep-reddy-a3014124b/",
       },
       {
@@ -478,7 +492,7 @@ export class Provider extends Component {
         name: "Ashok Pemeram",
         title: "CIO of webortex",
         quote:
-          "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
+          "We believe in crafting digital experiences that are powerful, user-centric, and built to scale. By blending innovation with strategy, we create solutions that don’t just function—they inspire and drive success.",
         src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
       },
       {
@@ -487,7 +501,7 @@ export class Provider extends Component {
         name: "K Sai Sandeep",
         title: "CLO of webortex",
         quote:
-          "Technology is the driving force behind our success, enabling us to create innovative solutions that transform businesses.",
+          "Driven by creativity and technology, we transform ideas into seamless, scalable solutions. Our focus is on building intuitive experiences that not only meet expectations but redefine them—pushing boundaries, one innovation at a time.",
         src: "https://github.com/Sandeep010-hub",
       },
     ],
