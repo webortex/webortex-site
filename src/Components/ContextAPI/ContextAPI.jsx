@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import foundersImages from "../../assets/ImageLinks";
 // https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg
-import gnana from "../../assets/Founders/Gnana.jpg";
+// import gnana from "https://cdn.webortex.com/Founders/Gnana.jpg";
 
-import sisi from "../../assets/Founders/sisi.jpg";
-import tharun from "../../assets/Founders/Tharun.jpg";
-import jaya from "../../assets/Founders/jayadeep.jpg";
-import ashok from "../../assets/Founders/Ashok.jpg";
-import sandeep from "../../assets/Founders/Sandeep.jpg";
+// import sisi from "https://cdn.webortex.com/Founders/sisi.jpg";
+// import tharun from "https://cdn.webortex.com/Founders/Tharun.jpg";
+// import jaya from "https://cdn.webortex.com/Founders/Jayadeep.jpg";
+// import ashok from "https://cdn.webortex.com/Founders/Ashok.jpg";
+// import sandeep from "https://cdn.webortex.com/Founders/Sandeep.jpg";
 
 import Webdev from "../Services/compo/Webdev";
 import Appdev from "../../assets/ServiceCards/app.gif";
@@ -430,8 +430,8 @@ export class Provider extends Component {
               UI/UX design
             </Link>
             , and custom software solutions. Our team builds scalable,
-            user-friendly, and high-performance digital products tailored
-            to your business needs.
+            user-friendly, and high-performance digital products tailored to
+            your business needs.
           </>
         ),
       },
@@ -455,7 +455,7 @@ export class Provider extends Component {
     founders: [
       {
         id: 1,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg",
+        image: foundersImages.gnana,
         name: "K Gnana Sekhar",
         title: "CEO of webortex",
         quote:
@@ -464,7 +464,7 @@ export class Provider extends Component {
       },
       {
         id: 2,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/sisi.jpg",
+        image: foundersImages.sisi,
         name: "Sisindri Singamsetti",
         title: "COO of webortex",
         quote:
@@ -473,7 +473,7 @@ export class Provider extends Component {
       },
       {
         id: 3,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Tharun.jpg",
+        image: foundersImages.tharun,
         name: "Tharun A",
         title: "CPO of webortex",
         quote:
@@ -482,7 +482,7 @@ export class Provider extends Component {
       },
       {
         id: 4,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Jayadeep.jpg",
+        image: foundersImages.jaya,
         name: "P Jayadeep Reddy",
         title: "CTO of webortex",
         quote:
@@ -491,7 +491,7 @@ export class Provider extends Component {
       },
       {
         id: 5,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Ashok.jpg",
+        image: foundersImages.ashok,
         name: "Ashok Pemeram",
         title: "CIO of webortex",
         quote:
@@ -500,7 +500,7 @@ export class Provider extends Component {
       },
       {
         id: 6,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Sa .jpg",
+        image: foundersImages.sandeep,
         name: "K Sai Sandeep",
         title: "CLO of webortex",
         quote:

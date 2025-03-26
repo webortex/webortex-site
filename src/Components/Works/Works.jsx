@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import "boxicons";
 
-import workImg1 from "../../assets/OurWorks/TeamGaruda.png";
+import workImg1 from "../../assets/OurWorks/64Framez.png";
 import workImg2 from "../../assets/OurWorks/64Framez.png";
 import workImg3 from "../../assets/OurWorks/yestelugu.jpg";
 import workImg4 from "../../assets/OurWorks/temple.png";
