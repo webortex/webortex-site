@@ -402,50 +402,23 @@ export class Provider extends Component {
 
     faqs: [
       {
-        question: "What services does Webortex offer?",
-        answer: (
-          <>
-            We specialize in{" "}
-            <Link
-              to="/services/web-development"
-              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
-            >
-              web development
-            </Link>
-            ,{" "}
-            <Link
-              to="/services/app-development"
-              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
-            >
-              mobile app development
-            </Link>
-            ,{" "}
-            <Link
-              to="/services/uiux-design"
-              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
-            >
-              UI/UX design
-            </Link>
-            , and custom software solutions. Our team builds scalable,
-            user-friendly, and high-performance digital products tailored to
-            your business needs.
-          </>
-        ),
-      },
-      {
-        question: "Do you offer ongoing support and maintenance?",
-        answer:
-          "Yes, we provide post-launch support and maintenance packages to ensure your website or app stays updated, secure, and performs optimally.",
-      },
-      {
-        question: "What technologies do you use?",
-        answer:
-          "We use the latest technologies, including React, MaterialUI, Node.js,Tailwind CSS, Flutter, and more, to ensure your product is future-proof and scalable.",
+        question: "What industries do you specialize in?",
+        answer: "We’ve worked with eCommerce, SaaS, healthcare, GOVT, education, and startups across various sectors. Our solutions are adaptable to any industry’s unique needs."
       },
       {
         question: "How long does it take to develop a website or app?",
         answer:
           "The timeline depends on the project's complexity, features, and scope. A simple website may take 4-6 weeks, while a custom app can take 3-6 months. We provide a detailed timeline after understanding your requirements.",
+      },
+      {
+        question: "What is your pricing model?",
+        answer:
+          "We offer custom pricing based on project scope, complexity, and timelines. We provide transparent quotes after discussing your requirements.",
+      },
+      {
+        question: "Do you offer ongoing support and maintenance?",
+        answer:
+          "Yes, we provide post-launch support and maintenance packages to ensure your website or app stays updated, secure, and performs optimally.",
       },
     ],
 
