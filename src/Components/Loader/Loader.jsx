@@ -1,9 +1,9 @@
+import logoImg from "../../assets/Webortexlogo2.png";
+
 const Loader = () => {
   return (
-    <div>
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-logoBlueColor"></div>
-      </div>
+    <div className="fixed inset-0 z-[9999] bg-backgroundColor flex justify-center items-center transition-opacity duration-200 ease-in-out">
+      <img src={logoImg} alt="Webortex" className="scale-50" />
     </div>
   );
 };
