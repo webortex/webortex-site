@@ -455,7 +455,8 @@ export class Provider extends Component {
     founders: [
       {
         id: 1,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg",
+        image:
+          "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg",
         name: "K Gnana Sekhar",
         title: "CEO of webortex",
         quote:
@@ -464,7 +465,8 @@ export class Provider extends Component {
       },
       {
         id: 2,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/sisi.jpg",
+        image:
+          "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/sisi.jpg",
         name: "Sisindri Singamsetti",
         title: "COO of webortex",
         quote:
@@ -473,7 +475,8 @@ export class Provider extends Component {
       },
       {
         id: 3,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Tharun.jpg",
+        image:
+          "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Tharun.jpg",
         name: "Tharun A",
         title: "CPO of webortex",
         quote:
@@ -482,7 +485,8 @@ export class Provider extends Component {
       },
       {
         id: 4,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Jayadeep.jpg",
+        image:
+          "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Jayadeep.jpg",
         name: "P Jayadeep Reddy",
         title: "CTO of webortex",
         quote:
@@ -491,7 +495,8 @@ export class Provider extends Component {
       },
       {
         id: 5,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Ashok.jpg",
+        image:
+          "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Ashok.jpg",
         name: "Ashok Pemeram",
         title: "CIO of webortex",
         quote:
@@ -500,7 +505,8 @@ export class Provider extends Component {
       },
       {
         id: 6,
-        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Sa .jpg",
+        image:
+          "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Sa .jpg",
         name: "K Sai Sandeep",
         title: "CLO of webortex",
         quote:
