@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 // https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg
 import gnana from "../../assets/Founders/Gnana.jpg";
+
 import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.jpg";
 import jaya from "../../assets/Founders/jayadeep.jpg";
@@ -454,7 +455,7 @@ export class Provider extends Component {
     founders: [
       {
         id: 1,
-        image: gnana,
+        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg",
         name: "K Gnana Sekhar",
         title: "CEO of webortex",
         quote:
@@ -463,7 +464,7 @@ export class Provider extends Component {
       },
       {
         id: 2,
-        image: sisi,
+        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/sisi.jpg",
         name: "Sisindri Singamsetti",
         title: "COO of webortex",
         quote:
@@ -472,7 +473,7 @@ export class Provider extends Component {
       },
       {
         id: 3,
-        image: tharun,
+        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Tharun.jpg",
         name: "Tharun A",
         title: "CPO of webortex",
         quote:
@@ -481,7 +482,7 @@ export class Provider extends Component {
       },
       {
         id: 4,
-        image: jaya,
+        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Jayadeep.jpg",
         name: "P Jayadeep Reddy",
         title: "CTO of webortex",
         quote:
@@ -490,7 +491,7 @@ export class Provider extends Component {
       },
       {
         id: 5,
-        image: ashok,
+        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Ashok.jpg",
         name: "Ashok Pemeram",
         title: "CIO of webortex",
         quote:
@@ -499,7 +500,7 @@ export class Provider extends Component {
       },
       {
         id: 6,
-        image: sandeep,
+        image: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Sa .jpg",
         name: "K Sai Sandeep",
         title: "CLO of webortex",
         quote:
