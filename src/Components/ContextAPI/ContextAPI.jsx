@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import foundersImages from "../../assets/ImageLinks";
-// https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg
-// import gnana from "https://cdn.webortex.com/Founders/Gnana.jpg";
 
-// import sisi from "https://cdn.webortex.com/Founders/sisi.jpg";
-// import tharun from "https://cdn.webortex.com/Founders/Tharun.jpg";
-// import jaya from "https://cdn.webortex.com/Founders/Jayadeep.jpg";
-// import ashok from "https://cdn.webortex.com/Founders/Ashok.jpg";
-// import sandeep from "https://cdn.webortex.com/Founders/Sandeep.jpg";
 
 import Webdev from "../Services/compo/Webdev";
-import Appdev from "../../assets/ServiceCards/app.gif";
+
 import UiUx from "../Services/compo/UiUx";
 import Mvp from "../Services/compo/Mvp";
 import Seo from "../Services/compo/SEOCompo/Seo";
@@ -213,7 +206,7 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: "",
-        componentGif: Appdev,
+        componentGif: "https://cdn.webortex.com/ServiceCards/app.gif",
         frameImg: appImg,
         frameVideo: "",
         frameTitle: "App Development",

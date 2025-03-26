@@ -9,10 +9,8 @@ const foundersImages = {
   sandeep: "https://cdn.webortex.com/Founders/Sandeep.jpg",
 };
 
-
 const ourWorksImages = {
-  garuda:
-    "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/OurWorks/TeamGaruda.png",
+  garuda: "https://cdn.webortex.com/OurWorks/TeamGaruda.png",
   synapsis:
     "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/OurWorks/synapsis.jpg",
   temple:

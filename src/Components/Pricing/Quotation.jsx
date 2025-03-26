@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "./FormContext";
+import { db, storage } from "../../../Firebaseconfig";
+import { collection, addDoc } from "firebase/firestore";
+
+
 
 import alertImg from "../../assets/alert.png";
 
@@ -177,14 +181,14 @@ const Quotation = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-
+  
     const isValid = validateForm();
-
+  
     if (!isValid) {
-      // Scroll to the first error
+      // Scroll to the first error if any
       const firstErrorKey = Object.keys(errors)[0];
       const errorElement = document.getElementsByName(firstErrorKey)[0];
       if (errorElement) {
@@ -193,34 +197,53 @@ const Quotation = () => {
       }
       return;
     }
-
-    // Prevent submission if not all validations are met
-    if (Object.keys(errors).length > 0) {
-      return;
-    }
-
-    // Update form context with combined data
-    updateUserInfo({
-      ...formData,
-      lookingFor,
-    });
-
-    // Navigate based on lookingFor selection
-    switch (lookingFor) {
-      case "Website Development":
-        navigate("/get-quote/web-details");
-        break;
-      case "App Development":
-        navigate("/get-quote/app-details");
-        break;
-      case "MVP Development":
-        navigate("/get-quote/mvp-details");
-        break;
-      default:
-        navigate("/get-quote/");
+  
+    try {
+      // Determine the collection name based on the selected option
+      let collectionName = "";
+      switch (lookingFor) {
+        case "Website Development":
+          collectionName = "website_development";
+          break;
+        case "App Development":
+          collectionName = "app_development";
+          break;
+        case "MVP Development":
+          collectionName = "mvp_development";
+          break;
+        default:
+          collectionName = "general_queries";
+      }
+  
+      // Add form data to Firestore
+      const docRef = await addDoc(collection(db, collectionName), {
+        ...formData,
+        lookingFor,
+        createdAt: new Date().toISOString(),
+      });
+  
+      console.log("Document written with ID: ", docRef.id);
+  
+      // Redirect based on lookingFor selection after submission
+      switch (lookingFor) {
+        case "Website Development":
+          navigate("/get-quote/web-details");
+          break;
+        case "App Development":
+          navigate("/get-quote/app-details");
+          break;
+        case "MVP Development":
+          navigate("/get-quote/mvp-details");
+          break;
+        default:
+          navigate("/get-quote/");
+      }
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("Failed to submit the form. Please try again.");
     }
   };
-
+  
   // Custom checkbox component for better control and accessibility
   const CustomCheckbox = ({ name, label, checked, onChange }) => {
     return (

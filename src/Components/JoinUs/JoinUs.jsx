@@ -1,31 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db, storage } from "../../../Firebaseconfig"; // Import from firebaseConfig.js
+import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React from "react";
 import Frame from "../../assets/Star.png";
 
 function JoinUs() {
-  const [alertpop, setAlertpop] = useState(true);
+  const [alertpop, setAlertpop] = useState(false);
 
-  // Initialize Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
-    authDomain: "webortex-7e798.firebaseapp.com",
-    databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
-    projectId: "webortex-7e798",
-    storageBucket: "webortex-7e798.firebasestorage.app",
-    messagingSenderId: "1095027363933",
-    appId: "1:1095027363933:web:77358a1d5b12782c183db4",
-  };
-
-  // Initialize Firebase app
-  const app = initializeApp(firebaseConfig);
-
-  // Initialize Firestore and Storage
-  const db = getFirestore(app);
-  const storage = getStorage(app);
+  // Inside your component
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAlertpop(true); // Show alert after 10 seconds
+    }, 4000);
+    // Clean up the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
 
   const [formData, setFormData] = useState({
     name: "",

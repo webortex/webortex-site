@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import "boxicons";
-
-import workImg1 from "../../assets/OurWorks/64Framez.png";
-import workImg2 from "../../assets/OurWorks/64Framez.png";
-import workImg3 from "../../assets/OurWorks/yestelugu.jpg";
-import workImg4 from "../../assets/OurWorks/temple.png";
-import workImg5 from "../../assets/OurWorks/synapsis.jpg";
+import ourWorksImages from "../../assets/works";
+// import workImg1 from "https://cdn.webortex.com/Founders/Gnana.jpg";
+// import workImg2 from "../../assets/OurWorks/64Framez.png";
+// import workImg3 from "../../assets/OurWorks/yestelugu.jpg";
+// import workImg4 from "../../assets/OurWorks/temple.png";
+// import workImg5 from "../../assets/OurWorks/synapsis.jpg";
 
 const Works = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const slides = [workImg1, workImg2, workImg4, workImg3, workImg5];
+  const slides = [
+    ourWorksImages.garuda,
+    ourWorksImages.framez64,
+    ourWorksImages.temple,
+    ourWorksImages.yestelugu,
+    ourWorksImages.synapsis,
+  ];
 
   useEffect(() => {
     const handleResize = () => {
