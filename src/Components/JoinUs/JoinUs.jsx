@@ -1,10 +1,37 @@
 import { useState } from "react";
 import { Container } from "@mui/material";
-import { db, storage } from "../../../Firebaseconfig"; // Import from firebaseConfig.js
-import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
+import React from "react";
+import Frame from "../../assets/Star.png";
 
 function JoinUs() {
+  const [alertpop, setAlertpop] = useState(true);
+
+  // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
+    authDomain: "webortex-7e798.firebaseapp.com",
+    databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
+    projectId: "webortex-7e798",
+    storageBucket: "webortex-7e798.firebasestorage.app",
+    messagingSenderId: "1095027363933",
+    appId: "1:1095027363933:web:77358a1d5b12782c183db4",
+  };
+
+  // Initialize Firebase app
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Firestore and Storage
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -178,11 +205,15 @@ function JoinUs() {
     }
   };
 
-  const whatsappMessage = "Hello! I'd like to learn more about your services.";
+  const whatsappMessage =
+    "Hello! I'd like to learn more about your services.";
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
+    window.open(
+      `https://wa.me/918688281821?text=${encodedMessage}`,
+      "_blank"
+    );
   };
 
   const handleCancel = () => {
@@ -226,12 +257,12 @@ function JoinUs() {
                 Application Submitted!
               </h2>
               <p className="text-white/80 font-light px-[5%] mb-4">
-                Thank you for your interest. We'll review your application and
-                get back to you soon.
+                Thank you for your interest. We'll review your application
+                and get back to you soon.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
               </button>
@@ -262,12 +293,12 @@ function JoinUs() {
                 Submission Failed
               </h2>
               <p className="text-white/80 font-light px-[5%] mb-4">
-                There was an error submitting your application. Please try again
-                later.
+                There was an error submitting your application. Please try
+                again later.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-red-500/90 text-white rounded hover:text-textColor hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+                className="px-4 py-2 bg-red-500/90 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
               </button>
@@ -284,23 +315,32 @@ function JoinUs() {
       </button>
       <Container maxWidth="sm">
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-headColor mb-4">Join Us</h1>
+          <h1 className="text-5xl font-bold text-headColor mb-4">
+            Join Us
+          </h1>
           <p className="text-gray-400">
-            Join our team of innovators! Fill out the form to explore exciting
-            opportunities and collaborate on cutting-edge projects
+            Join our team of innovators! Fill out the form to explore
+            exciting opportunities and collaborate on cutting-edge projects
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6"
+          noValidate
+        >
           <div>
-            <label htmlFor="name" className="block text-sm text-gray-400 mb-1">
+            <label
+              htmlFor="name"
+              className="block text-sm text-gray-400 mb-1"
+            >
               Name *
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
                 errors.name ? "border-red-500" : "border-[#8692A6]/40"
               }`}
               placeholder="Enter your Name"
@@ -313,14 +353,17 @@ function JoinUs() {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm text-gray-400 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm text-gray-400 mb-1"
+            >
               Email address *
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.5px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] ${
                 errors.email ? "border-red-500" : "border-[#8692A6]/40"
               }`}
               placeholder="Enter email address"
@@ -345,7 +388,7 @@ function JoinUs() {
                 id="mobile"
                 name="mobile"
                 placeholder="+91"
-                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
                   errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
                 }`}
                 value={formData.mobile}
@@ -369,13 +412,17 @@ function JoinUs() {
               name="whyWebortex"
               rows="4"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.description ? "border-red-500" : "border-[#8692A6]/40"
+                errors.description
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
               value={formData.whyWebortex}
               onChange={handleInputChange}
             />
             {errors.whyWebortex && (
-              <p className="text-red-500 text-sm mt-1">{errors.whyWebortex}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.whyWebortex}
+              </p>
             )}
           </div>
 
@@ -397,19 +444,26 @@ function JoinUs() {
               onChange={handleInputChange}
             />
             {errors.profileLink && (
-              <p className="text-red-500 text-sm mt-1">{errors.profileLink}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.profileLink}
+              </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="role" className="block text-sm text-gray-400 mb-1">
+            <label
+              htmlFor="role"
+              className="block text-sm text-gray-400 mb-1"
+            >
               Are you a *
             </label>
             <select
               id="role"
               name="role"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
+                errors.lookingFor
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
               value={formData.role}
               onChange={handleInputChange}
@@ -436,7 +490,9 @@ function JoinUs() {
               id="source"
               name="source"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
+                errors.lookingFor
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
               value={formData.source}
               onChange={handleInputChange}
@@ -509,7 +565,9 @@ function JoinUs() {
               onChange={handleInputChange}
             />
             {errors.resuneLink && (
-              <p className="text-red-500 text-sm mt-1">{errors.resumeeLink}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.resumeeLink}
+              </p>
             )}
           </div>
 
@@ -531,6 +589,42 @@ function JoinUs() {
             </button>
           </div>
         </form>
+        {alertpop == true ? (
+          <div className="sm:w-[380px] xl:w-[400px] lg:w-[400px] xs:w-[380px] 2xs:w-[300px] flex gap-8 2xs:gap-2 rounded-lg px-4 py-4 2xs:px-2 2xs:py-2 bg-[#262626] fixed right-10 2xs:right-2 top-60">
+            <div className="h-[50px] w-[50px] xl:w-[50px] lg:w-[50px] sm:w-[50px] xs:w-[50px] 2xs:w-[30px]">
+              <img
+                src={Frame}
+                alt="Alert"
+                className="pt-4"
+              />
+            </div>
+            <div>
+              <p className="text-lg text-white font-bold mb-3">
+                Required Technologies
+              </p>
+              <p className="text-gray-500 text-xs">
+                Frontend : React, Angular, Tailwind, MUI
+                <br />
+                Backend : NodeJS, ExpressJS <br />
+                Wordpress : Elementor, Custom Themes <br />
+                UI/UX : Figma, AdobeXD, Sketch
+              </p>
+              <p className="text-white text-sm pt-2 cursor-pointer">
+                Learn More
+              </p>
+            </div>
+            <div
+              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F] "
+              onClick={() => setAlertpop(false)}
+            >
+              <p className="text-lg 2xs:text-xs items-center justify-center mt-[-2.5px]">
+                x
+              </p>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </Container>
     </div>
   );

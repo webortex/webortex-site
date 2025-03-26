@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import gnana from "../../assets/Founders/gnana.jpg";
+// https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg
+import gnana from "../../assets/Founders/Gnana.jpg";
+
 import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.jpg";
 import jaya from "../../assets/Founders/jayadeep.jpg";
@@ -9,7 +11,7 @@ import ashok from "../../assets/Founders/Ashok.jpg";
 import sandeep from "../../assets/Founders/Sandeep.jpg";
 
 import Webdev from "../Services/compo/Webdev";
-import Appdev from "../Services/compo/Appdev";
+import Appdev from "../../assets/ServiceCards/app.gif";
 import UiUx from "../Services/compo/UiUx";
 import Mvp from "../Services/compo/Mvp";
 import Seo from "../Services/compo/SEOCompo/Seo";
@@ -210,7 +212,8 @@ export class Provider extends Component {
         slug: "app-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
-        component: <Appdev />,
+        component: "",
+        componentGif: Appdev,
         frameImg: appImg,
         frameVideo: "",
         frameTitle: "App Development",
@@ -427,8 +430,8 @@ export class Provider extends Component {
               UI/UX design
             </Link>
             , and custom software solutions. Our team builds scalable,
-            user-friendly, and high-performance digital products tailored to
-            your business needs.
+            user-friendly, and high-performance digital products tailored
+            to your business needs.
           </>
         ),
       },
