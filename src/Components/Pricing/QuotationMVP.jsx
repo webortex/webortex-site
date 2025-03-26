@@ -11,7 +11,8 @@ const MVPForm = () => {
     design: true,
     basicDevelopment: false,
     simpleTesting: false,
-    file: null,
+    mvpDocLink: "",
+    // file: null,
   });
 
   const [errors, setErrors] = useState({});
@@ -29,43 +30,48 @@ const MVPForm = () => {
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-
-    // Reset any previous file-related errors
-    const newErrors = { ...errors };
-    delete newErrors.file;
-    setErrors(newErrors);
-
-    if (file) {
-      // Validate file type (PDF only)
-      if (file.type !== "application/pdf") {
-        setErrors((prev) => ({
-          ...prev,
-          file: "Only PDF files are allowed",
-        }));
-        e.target.value = null; // Clear the file input
-        return;
-      }
-
-      // Validate file size (max 2MB)
-      const maxSize = 2 * 1024 * 1024; // 2MB in bytes
-      if (file.size > maxSize) {
-        setErrors((prev) => ({
-          ...prev,
-          file: "File size must be less than 2MB",
-        }));
-        e.target.value = null; // Clear the file input
-        return;
-      }
-
-      // If all validations pass
-      setFormData({
-        ...formData,
-        file: file,
-      });
-    }
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate("/get-quote");
   };
+
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+
+  //   // Reset any previous file-related errors
+  //   const newErrors = { ...errors };
+  //   delete newErrors.file;
+  //   setErrors(newErrors);
+
+  //   if (file) {
+  //     // Validate file type (PDF only)
+  //     if (file.type !== "application/pdf") {
+  //       setErrors((prev) => ({
+  //         ...prev,
+  //         file: "Only PDF files are allowed",
+  //       }));
+  //       e.target.value = null; // Clear the file input
+  //       return;
+  //     }
+
+  //     // Validate file size (max 2MB)
+  //     const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+  //     if (file.size > maxSize) {
+  //       setErrors((prev) => ({
+  //         ...prev,
+  //         file: "File size must be less than 2MB",
+  //       }));
+  //       e.target.value = null; // Clear the file input
+  //       return;
+  //     }
+
+  //     // If all validations pass
+  //     setFormData({
+  //       ...formData,
+  //       file: file,
+  //     });
+  //   }
+  // };
 
   const validateForm = () => {
     const newErrors = {};
@@ -91,6 +97,16 @@ const MVPForm = () => {
       if (!urlPattern.test(formData.referenceWebsite)) {
         newErrors.referenceWebsite = "Please enter a valid website URL";
       }
+    }
+
+    if (!formData.mvpDocLink.trim()) {
+      newErrors.mvpDocLink = "Your MVP Doc link is required";
+    } else if (
+      !/^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(
+        formData.mvpDocLink
+      )
+    ) {
+      newErrors.mvpDocLink = "Please enter a valid URL";
     }
 
     // At least one service must be selected
@@ -128,7 +144,8 @@ const MVPForm = () => {
       design: true,
       basicDevelopment: false,
       simpleTesting: false,
-      file: null,
+      mvpDocLink: "",
+      // file: null,
     });
     setErrors({});
   };
@@ -334,8 +351,31 @@ const MVPForm = () => {
             )}
           </div>
 
-          {/* File Upload */}
           <div>
+            <label
+              htmlFor="profileLink"
+              className="block text-sm md:text-base font-medium mb-1 text-[#696F79]"
+            >
+              Your MVP Doc Link *
+            </label>
+            <input
+              type="url"
+              id="mvpDocLink"
+              name="mvpDocLink"
+              placeholder="https://example.com"
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                errors.name ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
+              value={formData.mvpDocLink}
+              onChange={handleInputChange}
+            />
+            {errors.mvpDocLink && (
+              <p className="text-red-500 text-sm mt-1">{errors.mvpDocLink}</p>
+            )}
+          </div>
+
+          {/* File Upload */}
+          {/* <div>
             <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
               Upload Files (PDF only, max 2MB)*
             </label>
@@ -377,15 +417,22 @@ const MVPForm = () => {
             {errors.file && (
               <p className="text-red-500 text-sm mt-1">{errors.file}</p>
             )}
-          </div>
+          </div> */}
 
           {/* Submit Button */}
-          <div className="flex justify-center">
+          <div className="flex flex-col-reverse sm:flex-row justify-center pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0">
+            <button
+              type="button"
+              className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-brandsBgColor text-textColor rounded-lg hover:bg-brandsBgColor/60 focus:outline-none transition-all duration-300 ease-in-out"
+              onClick={handleBack}
+            >
+              Back
+            </button>
             <button
               type="submit"
-              className="w-full px-5 py-3 bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out text-sm md:text-base mt-6"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
             >
-              Submit
+              Submit{/* Continue → */}
             </button>
           </div>
         </form>
