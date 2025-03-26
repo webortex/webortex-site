@@ -405,11 +405,9 @@ export class Provider extends Component {
 
     faqs: [
       {
-
         question: "What industries do you specialize in?",
-        answer: "We’ve worked with eCommerce, SaaS, healthcare, GOVT, education, and startups across various sectors. Our solutions are adaptable to any industry’s unique needs."
-
-       
+        answer:
+          "We’ve worked with eCommerce, SaaS, healthcare, GOVT, education, and startups across various sectors. Our solutions are adaptable to any industry’s unique needs.",
       },
       {
         question: "How long does it take to develop a website or app?",

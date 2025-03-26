@@ -5,7 +5,6 @@ const FormContext = createContext();
 export const FormProvider = ({ children }) => {
   const [formData, setFormData] = useState({
     userInfo: {},
-    projectInfo: {},
     specificInfo: {},
   });
 
@@ -13,13 +12,6 @@ export const FormProvider = ({ children }) => {
     setFormData((prev) => ({
       ...prev,
       userInfo: { ...prev.userInfo, ...data },
-    }));
-  };
-
-  const updateProjectInfo = (data) => {
-    setFormData((prev) => ({
-      ...prev,
-      projectInfo: { ...prev.projectInfo, ...data },
     }));
   };
 
@@ -33,7 +25,6 @@ export const FormProvider = ({ children }) => {
   const resetForm = () => {
     setFormData({
       userInfo: {},
-      projectInfo: {},
       specificInfo: {},
     });
   };
@@ -43,7 +34,6 @@ export const FormProvider = ({ children }) => {
       value={{
         formData,
         updateUserInfo,
-        updateProjectInfo,
         updateSpecificInfo,
         resetForm,
       }}
