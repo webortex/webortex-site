@@ -12,7 +12,7 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Loader from "./Components/Loader/Loader";
 import Quotation from "./Components/Pricing/Quotation";
 import JoinUs from "./Components/JoinUs/JoinUs";
-import QuotationProject from "./Components/Pricing/QuotationProject";
+// import QuotationProject from "./Components/Pricing/QuotationProject";
 import MVPForm from "./Components/Pricing/QuotationMVP";
 import AppForm from "./Components/Pricing/QuotationApp";
 import WebForm from "./Components/Pricing/QuotationWeb";
@@ -106,11 +106,11 @@ function App() {
 
               {/* Updated Quotation Flow Routes */}
               <Route exact path="/get-quote" element={<Quotation />} />
-              <Route
+              {/* <Route
                 exact
                 path="/get-quote/project-details"
                 element={<QuotationProject />}
-              />
+              /> */}
               <Route
                 exact
                 path="/get-quote/web-details"
@@ -128,11 +128,11 @@ function App() {
               />
 
               {/* Keep old routes for backward compatibility */}
-              <Route
+              {/* <Route
                 exact
                 path="/get-quote/continue-fctCCfgfv"
                 element={<QuotationProject />}
-              />
+              /> */}
               <Route
                 exact
                 path="/web-quote-234ghj9s_dff16syr"

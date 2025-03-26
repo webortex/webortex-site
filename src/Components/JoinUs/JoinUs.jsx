@@ -2,12 +2,7 @@ import { useState } from "react";
 import { Container } from "@mui/material";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React from "react";
 import Frame from "../../assets/Star.png";
 
@@ -205,15 +200,11 @@ function JoinUs() {
     }
   };
 
-  const whatsappMessage =
-    "Hello! I'd like to learn more about your services.";
+  const whatsappMessage = "Hello! I'd like to learn more about your services.";
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(
-      `https://wa.me/918688281821?text=${encodedMessage}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
   };
 
   const handleCancel = () => {
@@ -257,8 +248,8 @@ function JoinUs() {
                 Application Submitted!
               </h2>
               <p className="text-white/80 font-light px-[5%] mb-4">
-                Thank you for your interest. We'll review your application
-                and get back to you soon.
+                Thank you for your interest. We'll review your application and
+                get back to you soon.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
@@ -293,8 +284,8 @@ function JoinUs() {
                 Submission Failed
               </h2>
               <p className="text-white/80 font-light px-[5%] mb-4">
-                There was an error submitting your application. Please try
-                again later.
+                There was an error submitting your application. Please try again
+                later.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
@@ -315,25 +306,16 @@ function JoinUs() {
       </button>
       <Container maxWidth="sm">
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-bold text-headColor mb-4">
-            Join Us
-          </h1>
+          <h1 className="text-5xl font-bold text-headColor mb-4">Join Us</h1>
           <p className="text-gray-400">
-            Join our team of innovators! Fill out the form to explore
-            exciting opportunities and collaborate on cutting-edge projects
+            Join our team of innovators! Fill out the form to explore exciting
+            opportunities and collaborate on cutting-edge projects
           </p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6"
-          noValidate
-        >
+        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
           <div>
-            <label
-              htmlFor="name"
-              className="block text-sm text-gray-400 mb-1"
-            >
+            <label htmlFor="name" className="block text-sm text-gray-400 mb-1">
               Name *
             </label>
             <input
@@ -353,10 +335,7 @@ function JoinUs() {
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm text-gray-400 mb-1"
-            >
+            <label htmlFor="email" className="block text-sm text-gray-400 mb-1">
               Email address *
             </label>
             <input
@@ -412,17 +391,13 @@ function JoinUs() {
               name="whyWebortex"
               rows="4"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.description
-                  ? "border-red-500"
-                  : "border-[#8692A6]/40"
+                errors.description ? "border-red-500" : "border-[#8692A6]/40"
               }`}
               value={formData.whyWebortex}
               onChange={handleInputChange}
             />
             {errors.whyWebortex && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.whyWebortex}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.whyWebortex}</p>
             )}
           </div>
 
@@ -444,26 +419,19 @@ function JoinUs() {
               onChange={handleInputChange}
             />
             {errors.profileLink && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.profileLink}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.profileLink}</p>
             )}
           </div>
 
           <div>
-            <label
-              htmlFor="role"
-              className="block text-sm text-gray-400 mb-1"
-            >
+            <label htmlFor="role" className="block text-sm text-gray-400 mb-1">
               Are you a *
             </label>
             <select
               id="role"
               name="role"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.lookingFor
-                  ? "border-red-500"
-                  : "border-[#8692A6]/40"
+                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
               }`}
               value={formData.role}
               onChange={handleInputChange}
@@ -490,9 +458,7 @@ function JoinUs() {
               id="source"
               name="source"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.lookingFor
-                  ? "border-red-500"
-                  : "border-[#8692A6]/40"
+                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
               }`}
               value={formData.source}
               onChange={handleInputChange}
@@ -565,9 +531,7 @@ function JoinUs() {
               onChange={handleInputChange}
             />
             {errors.resuneLink && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.resumeeLink}
-              </p>
+              <p className="text-red-500 text-sm mt-1">{errors.resumeeLink}</p>
             )}
           </div>
 
@@ -592,11 +556,7 @@ function JoinUs() {
         {alertpop == true ? (
           <div className="sm:w-[380px] xl:w-[400px] lg:w-[400px] xs:w-[380px] 2xs:w-[300px] flex gap-8 2xs:gap-2 rounded-lg px-4 py-4 2xs:px-2 2xs:py-2 bg-[#262626] fixed right-10 2xs:right-2 top-60">
             <div className="h-[50px] w-[50px] xl:w-[50px] lg:w-[50px] sm:w-[50px] xs:w-[50px] 2xs:w-[30px]">
-              <img
-                src={Frame}
-                alt="Alert"
-                className="pt-4"
-              />
+              <img src={Frame} alt="Alert" className="pt-4" />
             </div>
             <div>
               <p className="text-lg text-white font-bold mb-3">
