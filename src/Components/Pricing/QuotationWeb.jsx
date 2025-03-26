@@ -1,29 +1,10 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "./FormContext";
-import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
-import Frame from "../../assets/Star.png";
-
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
-  authDomain: "webortex-7e798.firebaseapp.com",
-  databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
-  projectId: "webortex-7e798",
-  storageBucket: "webortex-7e798.appspot.com",
-  messagingSenderId: "1095027363933",
-  appId: "1:1095027363933:web:77358a1d5b12782c183db4",
-};
-
-// Initialize Firebase app
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 const WebForm = () => {
   const navigate = useNavigate();
-  const { formData, resetForm } = useForm();
+
   const [webFormData, setWebFormData] = useState({
     referenceSites: "",
     referenceDesigns: "",
@@ -35,8 +16,6 @@ const WebForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,9 +29,19 @@ const WebForm = () => {
     }
   };
 
+  const handleTimingSelection = (time) => {
+    setWebFormData({ ...webFormData, timing: time });
+
+    // Remove timing error when a time is selected
+    if (errors.timing) {
+      setErrors((prevErrors) => ({ ...prevErrors, timing: "" }));
+    }
+  };
+
   const validateForm = () => {
     const newErrors = {};
 
+    // URL Validation for Reference Sites
     if (webFormData.referenceSites.trim()) {
       const urlPattern =
         /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
@@ -61,6 +50,7 @@ const WebForm = () => {
       }
     }
 
+    // URL Validation for Reference Designs
     if (webFormData.referenceDesigns.trim()) {
       const urlPattern =
         /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
@@ -70,12 +60,14 @@ const WebForm = () => {
       }
     }
 
+    // Idea Description Validation
     if (!webFormData.ideaDescription.trim()) {
       newErrors.ideaDescription = "Idea description is required";
     } else if (webFormData.ideaDescription.trim().length < 20) {
       newErrors.ideaDescription = "Description must be at least 20 characters";
     }
 
+    // Budget Validation
     if (webFormData.budget.trim()) {
       const budgetPattern = /^\$?(\d{1,3}(,\d{3})*|\d+)(\.\d{1,2})?$/;
       if (!budgetPattern.test(webFormData.budget.trim())) {
@@ -86,6 +78,7 @@ const WebForm = () => {
       newErrors.budget = "Budget is required";
     }
 
+    // Timing Validation
     if (!webFormData.timing) {
       newErrors.timing = "Please select an available timing";
     }
@@ -94,129 +87,27 @@ const WebForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitStatus(null);
 
-    if (!validateForm()) {
-      return;
+    // Client-side form validation
+    if (validateForm()) {
+      // Here you would typically handle form submission
+      // For now, we'll just log the form data
+      console.log("Form submitted successfully", webFormData);
+
+      // Reset form or show success message
+      alert("Form submitted successfully!");
     }
+  };
 
-    try {
-      setIsSubmitting(true);
-
-      // Combine all form data
-      const submissionData = {
-        ...formData.userInfo,
-        ...formData.projectInfo,
-        ...webFormData,
-        submittedAt: new Date(),
-        formType: "WEB_QUOTE",
-      };
-
-      // Generate a unique document ID
-      const docId = `${formData.userInfo.email}-${Date.now()}`;
-
-      // Save to Firestore
-      const docRef = doc(db, "quotations", docId);
-      await setDoc(docRef, submissionData);
-
-      console.log("Quotation saved with ID: ", docId);
-      setSubmitStatus("success");
-      resetForm();
-
-      // Auto-close success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-        navigate("/");
-      }, 5000);
-    } catch (error) {
-      console.error("Error submitting quotation: ", error);
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate("/get-quote");
   };
 
   return (
     <div className="min-h-screen py-12 px-4 relative">
-      {/* Success Toast */}
-      {submitStatus === "success" && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
-            <div className="text-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <h2 className="text-2xl font-normal text-white mb-2">
-                Quotation Submitted!
-              </h2>
-              <p className="text-white/80 font-light px-[5%] mb-4">
-                Thank you for your request. We'll review your requirements and
-                get back to you soon.
-              </p>
-              <button
-                onClick={() => {
-                  setSubmitStatus(null);
-                  navigate("/");
-                }}
-                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Error Toast */}
-      {submitStatus === "error" && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
-            <div className="text-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-red-500 mx-auto mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <h2 className="text-2xl font-normal text-white mb-2">
-                Submission Failed
-              </h2>
-              <p className="text-white/80 font-light px-[5%] mb-4">
-                There was an error submitting your quotation. Please try again
-                later.
-              </p>
-              <button
-                onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-red-500/90 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       <Container
         maxWidth="lg"
         className="h-auto my-9 sm:my-8 lg:my-14 flex flex-col justify-center align-center"
@@ -234,7 +125,7 @@ const WebForm = () => {
             onSubmit={handleSubmit}
             noValidate
           >
-            {/* Reference Sites */}
+            {/* Reference Sites Input */}
             <div>
               <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
                 Reference Sites
@@ -258,7 +149,7 @@ const WebForm = () => {
               )}
             </div>
 
-            {/* Reference Designs */}
+            {/* Reference Designs Input */}
             <div>
               <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
                 Reference Designs
@@ -411,9 +302,7 @@ const WebForm = () => {
                 {["10:00 AM", "12:00 PM", "6:00 PM", "4:00 PM"].map((time) => (
                   <div
                     key={time}
-                    onClick={() =>
-                      setWebFormData({ ...webFormData, timing: time })
-                    }
+                    onClick={() => handleTimingSelection(time)}
                     className={`p-2 rounded-[20px] bg-[#1e1f23] border-[.9px] flex justify-center items-center cursor-pointer transition-colors ${
                       webFormData.timing === time
                         ? "border-gray-800 bg-[#606477]"
@@ -431,14 +320,20 @@ const WebForm = () => {
               )}
             </div>
 
-            {/* Submit Button */}
-            <div className="flex justify-center">
+            {/* Submit and Back Buttons */}
+            <div className="flex flex-col-reverse sm:flex-row justify-center pt-6 sm:gap-x-8 gap-y-4 sm:gap-y-0">
+              <button
+                type="button"
+                className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-brandsBgColor text-textColor rounded-lg hover:bg-brandsBgColor/60 focus:outline-none transition-all duration-300 ease-in-out"
+                onClick={handleBack}
+              >
+                Back
+              </button>
               <button
                 type="submit"
-                className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed my-6"
-                disabled={isSubmitting}
+                className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
               >
-                {isSubmitting ? "Submitting..." : "Submit"}
+                Submit
               </button>
             </div>
           </form>
