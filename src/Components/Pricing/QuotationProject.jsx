@@ -22,11 +22,22 @@ const QuotationProject = () => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setProjectFormData({
-      ...projectFormData,
-      [name]: type === "checkbox" ? checked : value,
-    });
 
+    // For checkboxes, update the state directly
+    if (type === "checkbox") {
+      setProjectFormData((prevData) => ({
+        ...prevData,
+        [name]: checked,
+      }));
+    } else {
+      // For other input types
+      setProjectFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+
+    // Clear any existing errors for this field
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
@@ -45,6 +56,15 @@ const QuotationProject = () => {
 
     if (lookingFor === "Select") {
       newErrors.lookingFor = "Please select an option";
+    }
+
+    // Ensure at least one service is selected
+    if (
+      !projectFormData.design &&
+      !projectFormData.basicDevelopment &&
+      !projectFormData.simpleTesting
+    ) {
+      newErrors.services = "Please select at least one service";
     }
 
     setErrors(newErrors);
@@ -73,6 +93,46 @@ const QuotationProject = () => {
     else if (lookingFor === "MVP") navigate("/get-quote/mvp-details");
   };
 
+  // Custom checkbox component for better control and accessibility
+  const CustomCheckbox = ({ name, label, checked, onChange }) => {
+    return (
+      <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
+        <span className="text-sm md:text-base text-white">{label}</span>
+        <div className="relative flex items-center">
+          <input
+            type="checkbox"
+            name={name}
+            checked={checked}
+            onChange={onChange}
+            className="opacity-0 absolute h-5 w-5"
+            aria-label={label}
+          />
+          <div
+            className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
+              checked ? "bg-logoGreenColor" : ""
+            }`}
+          >
+            {checked && (
+              <svg
+                className="w-3 h-3 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            )}
+          </div>
+        </div>
+      </label>
+    );
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -99,7 +159,7 @@ const QuotationProject = () => {
             <input
               type="text"
               name="projectName"
-              value={formData.projectName}
+              value={projectFormData.projectName}
               onChange={handleInputChange}
               placeholder="Enter project name"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
@@ -117,111 +177,30 @@ const QuotationProject = () => {
               Services*
             </label>
 
-            <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
-              <span className="text-sm md:text-base text-white">Design</span>
-              <div className="relative flex items-center">
-                <input
-                  type="checkbox"
-                  name="design"
-                  checked={formData.design}
-                  onChange={handleInputChange}
-                  className="opacity-0 absolute h-5 w-5"
-                />
-                <div
-                  className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
-                    formData.design ? "bg-logoGreenColor" : ""
-                  }`}
-                >
-                  {formData.design && (
-                    <svg
-                      className="w-3 h-3 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            </label>
+            <CustomCheckbox
+              name="design"
+              label="Design"
+              checked={projectFormData.design}
+              onChange={handleInputChange}
+            />
 
-            <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
-              <span className="text-sm md:text-base text-white">
-                Basic Development
-              </span>
-              <div className="relative flex items-center">
-                <input
-                  type="checkbox"
-                  name="basicDevelopment"
-                  checked={formData.basicDevelopment}
-                  onChange={handleInputChange}
-                  className="opacity-0 absolute h-5 w-5"
-                />
-                <div
-                  className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
-                    formData.basicDevelopment ? "bg-logoGreenColor" : ""
-                  }`}
-                >
-                  {formData.basicDevelopment && (
-                    <svg
-                      className="w-3 h-3 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            </label>
+            <CustomCheckbox
+              name="basicDevelopment"
+              label="Basic Development"
+              checked={projectFormData.basicDevelopment}
+              onChange={handleInputChange}
+            />
 
-            <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
-              <span className="text-sm md:text-base text-white">
-                Simple Testing
-              </span>
-              <div className="relative flex items-center">
-                <input
-                  type="checkbox"
-                  name="simpleTesting"
-                  checked={formData.simpleTesting}
-                  onChange={handleInputChange}
-                  className="opacity-0 absolute h-5 w-5"
-                />
-                <div
-                  className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
-                    formData.simpleTesting ? "bg-logoGreenColor" : ""
-                  }`}
-                >
-                  {formData.simpleTesting && (
-                    <svg
-                      className="w-3 h-3 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            </label>
+            <CustomCheckbox
+              name="simpleTesting"
+              label="Simple Testing"
+              checked={projectFormData.simpleTesting}
+              onChange={handleInputChange}
+            />
+
+            {errors.services && (
+              <p className="text-red-500 text-sm mt-1">{errors.services}</p>
+            )}
           </div>
 
           {/* Is Startup */}
@@ -231,7 +210,7 @@ const QuotationProject = () => {
             </label>
             <select
               name="isStartup"
-              value={formData.isStartup}
+              value={projectFormData.isStartup}
               onChange={handleInputChange}
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
                 errors.isStartup ? "border-red-500" : "border-[#8692A6]/40"
