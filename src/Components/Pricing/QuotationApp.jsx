@@ -87,25 +87,42 @@ const AppForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
+    // Client-side form validation
+    if (validateForm()) {
+      // Here you would typically handle form submission
+      // For now, we'll just log the form data
+      console.log("Form submitted successfully", formData);
+
+      // Reset form or show success message
+      alert("Form submitted successfully!");
     }
 
-    // Navigate to next page or submit form
-    navigate("/app-submission");
+    // // Reset form
+    // setFormData({
+    //   referenceSites: "",
+    //   referenceDesigns: "",
+    //   marketing: false,
+    //   seo: false,
+    //   ideaDescription: "",
+    //   budget: "",
+    //   timing: "",
+    //   publish: "",
+    // });
+    // setErrors({});
+  };
 
-    // Reset form
-    setFormData({
-      referenceSites: "",
-      referenceDesigns: "",
-      marketing: false,
-      seo: false,
-      ideaDescription: "",
-      budget: "",
-      timing: "",
-      publish: "",
-    });
-    setErrors({});
+  const handleTimingSelection = (time) => {
+    setFormData({ ...formData, timing: time });
+
+    // Remove timing error when a time is selected
+    if (errors.timing) {
+      setErrors((prevErrors) => ({ ...prevErrors, timing: "" }));
+    }
+  };
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate("/get-quote");
   };
 
   return (
@@ -299,7 +316,7 @@ const AppForm = () => {
               {["10:00 AM", "12:00 PM", "6:00 PM", "4:00 PM"].map((time) => (
                 <div
                   key={time}
-                  onClick={() => setFormData({ ...formData, timing: time })}
+                  onClick={() => handleTimingSelection(time)}
                   className={`p-2 rounded-[20px] bg-[#1e1f23] border-[.9px] flex justify-center items-center cursor-pointer transition-colors ${
                     formData.timing === time
                       ? "border-gray-800 bg-[#606477]"
@@ -336,10 +353,17 @@ const AppForm = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-center">
+          <div className="flex flex-col-reverse sm:flex-row justify-center pt-6 sm:gap-x-8 gap-y-4 sm:gap-y-0">
+            <button
+              type="button"
+              className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-brandsBgColor text-textColor rounded-lg hover:bg-brandsBgColor/60 focus:outline-none transition-all duration-300 ease-in-out"
+              onClick={handleBack}
+            >
+              Back
+            </button>
             <button
               type="submit"
-              className="w-full px-5 py-3 bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out text-sm md:text-base mt-6"
+              className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
             >
               Submit
             </button>
