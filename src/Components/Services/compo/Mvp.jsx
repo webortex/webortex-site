@@ -1,8 +1,33 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion,useAnimation } from "framer-motion";
+import { useState,useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 const Mvp = () => {
   const [hovered, setHovered] = useState(false);
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 1 });
+
+  const updateScreenSize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateScreenSize);
+    return () => {
+      window.removeEventListener("resize", updateScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, x: 0, y: 0 });
+    } else {
+      controls.start({ opacity: 0, y: 50 });
+    }
+  }, [controls, inView]);
 
   return (
     <div className="flex justify-center">
@@ -19,9 +44,15 @@ const Mvp = () => {
             relative
           "
           initial={{ y: 0, scale: 1 }}
+          ref={ref}
           animate={
             hovered
               ? {
+                  y: 112,
+                  scale: [1, 1.5, 0.7, 1.3, 1], // Pronounced zoom while moving down
+                }
+                :width<=768 && inView?
+                {
                   y: 112,
                   scale: [1, 1.5, 0.7, 1.3, 1], // Pronounced zoom while moving down
                 }
@@ -48,8 +79,12 @@ const Mvp = () => {
             relative
           "
           whileHover={{ scale: 1.05 }}
+          ref={ref}
           animate={{
-            scale: hovered ? [1, 1.4, 0.8, 1.2, 1] : 1,
+            scale: hovered ? [1, 1.4, 0.8, 1.2, 1] 
+            :width<=768 && inView?
+            [1, 1.4, 0.8, 1.2, 1] 
+            : 1,
           }}
           transition={{
             type: "spring",
@@ -68,9 +103,15 @@ const Mvp = () => {
             relative
           "
           initial={{ y: 0, scale: 1 }}
+          ref={ref}
           animate={
             hovered
               ? {
+                  y: -112,
+                  scale: [1, 1.5, 0.7, 1.3, 1], // Pronounced zoom while moving up
+                }
+                :width<=768 && inView?
+                {
                   y: -112,
                   scale: [1, 1.5, 0.7, 1.3, 1], // Pronounced zoom while moving up
                 }
