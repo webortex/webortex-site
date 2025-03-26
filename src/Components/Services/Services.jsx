@@ -13,7 +13,10 @@ const Services = () => {
       {(value) => {
         const { services } = value;
         return (
-          <Container maxWidth="lg" className="h-full w-full overflow-hidden">
+          <Container
+            maxWidth="lg"
+            className="h-full w-full overflow-hidden"
+          >
             <section id="services">
               <div className="mb-8">
                 <h1 className="text-6xl text-center text-headColor font-bold tracking-tighter">
@@ -22,8 +25,8 @@ const Services = () => {
 
                 <p className="text-secondaryTextColor text-smallcolor mt-5 text-xs sm:text-sm xl:text-base  xs:w-2/3 md:w-3/5 text-center m-auto">
                   Crafting scalable, user-centric solutions with
-                  innovation-driven web development, design, marketing & app
-                  solutions.
+                  innovation-driven web development, design, marketing &
+                  app solutions.
                 </p>
               </div>
 
@@ -32,6 +35,7 @@ const Services = () => {
                   {services.map((service, index) =>
                     index === 0 ? (
                       <Link
+                        key={service.id}
                         to={`/services/${service.slug}`}
                         className="p-8 flex items-center flex-col text-white w-auto md:max-w-[377px] md:h-[420px] max-w-[300px] h-[400px] border-2 rounded-3xl border-[#939393]/60 relative overflow-visible transition-all ease-in-out"
                         onMouseEnter={() => setIsHovered(true)}

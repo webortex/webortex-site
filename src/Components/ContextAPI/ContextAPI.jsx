@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import gnana from "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg";
+// https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg
+import gnana from "../../assets/Founders/Gnana.jpg";
 import sisi from "../../assets/Founders/sisi.jpg";
 import tharun from "../../assets/Founders/Tharun.jpg";
 import jaya from "../../assets/Founders/jayadeep.jpg";
@@ -427,8 +428,8 @@ export class Provider extends Component {
               UI/UX design
             </Link>
             , and custom software solutions. Our team builds scalable,
-            user-friendly, and high-performance digital products tailored to
-            your business needs.
+            user-friendly, and high-performance digital products tailored
+            to your business needs.
           </>
         ),
       },
