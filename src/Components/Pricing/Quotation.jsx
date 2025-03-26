@@ -3,28 +3,8 @@ import { Container } from "@mui/material";
 import alertImg from "../../assets/alert.png";
 import { useNavigate } from "react-router-dom";
 
-// Firebase Imports
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-
 const Quotation = () => {
   const navigate = useNavigate();
-
-  // Firebase Configuration (REPLACE WITH YOUR ACTUAL CONFIG)
-  const firebaseConfig = {
-    apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
-    authDomain: "webortex-7e798.firebaseapp.com",
-    databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
-    projectId: "webortex-7e798",
-    storageBucket: "webortex-7e798.firebasestorage.app",
-    messagingSenderId: "1095027363933",
-    appId: "1:1095027363933:web:77358a1d5b12782c183db4",
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
   const [alertpop, setAlertpop] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -37,8 +17,6 @@ const Quotation = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +26,7 @@ const Quotation = () => {
     }
   };
 
+  // New function to handle form reset
   const handleReset = () => {
     setFormData({
       name: "",
@@ -58,7 +37,7 @@ const Quotation = () => {
       isStartup: "",
       lookingFor: "",
     });
-    setErrors({});
+    setErrors({}); // Clear any validation errors
   };
 
   const validateForm = () => {
@@ -107,53 +86,23 @@ const Quotation = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
       return;
     }
-
-    try {
-      setIsSubmitting(true);
-      setSubmitStatus(null);
-
-      // Save form data to Firestore
-      const docRef = await addDoc(collection(db, "quotations"), {
-        name: formData.name,
-        email: formData.email,
-        mobile: formData.mobile,
-        currentAddress: formData.currentAddress || "",
-        companyName: formData.companyName,
-        isStartup: formData.isStartup,
-        lookingFor: formData.lookingFor,
-        submittedAt: new Date(),
-        status: "pending",
-      });
-
-      console.log("Quotation submitted with ID: ", docRef.id);
-
-      // Navigate to next page
-      navigate("/get-quote/continue-fctCCfgfv");
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        mobile: "",
-        currentAddress: "",
-        companyName: "",
-        isStartup: "",
-        lookingFor: "",
-      });
-      setErrors({});
-      setSubmitStatus("success");
-    } catch (error) {
-      console.error("Error submitting quotation: ", error);
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    navigate("/get-quote/continue-fctCCfgfv");
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      currentAddress: "",
+      companyName: "",
+      isStartup: "",
+      lookingFor: "",
+    });
+    setErrors({});
   };
 
   return (
@@ -166,7 +115,7 @@ const Quotation = () => {
       </h1>
       <p className="text-center text-xs sm:text-sm text-[#696F79] px-[2%] xs:px-[6%] sm:px-[10%] md:px-[28%] mt-2 md:mt-3">
         Get a tailored solution for your needs! Fill out the form with your
-        requirements, and we'll provide a custom quote for you.
+        requirements, and we’ll provide a custom quote for you.
       </p>
       <div className="flex items-center justify-center  text-white mb-4 mt-8">
         <form
@@ -239,7 +188,9 @@ const Quotation = () => {
               onChange={handleInputChange}
               placeholder=""
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.currentAddress ? "border-red-500" : "border-[#8692A6]/40"
+                errors.currentAddress
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
             />
             {errors.currentAddress && (
@@ -259,11 +210,15 @@ const Quotation = () => {
               onChange={handleInputChange}
               placeholder=""
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.companyName ? "border-red-500" : "border-[#8692A6]/40"
+                errors.companyName
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
             />
             {errors.companyName && (
-              <p className="text-red-500 text-sm mt-1">{errors.companyName}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.companyName}
+              </p>
             )}
           </div>
           <div>
@@ -283,7 +238,9 @@ const Quotation = () => {
               <option value="no">No</option>
             </select>
             {errors.isStartup && (
-              <p className="text-red-500 text-sm mt-1">{errors.isStartup}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.isStartup}
+              </p>
             )}
           </div>
           <div>
@@ -295,7 +252,9 @@ const Quotation = () => {
               value={formData.lookingFor}
               onChange={handleInputChange}
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.lookingFor ? "border-red-500" : "border-[#8692A6]/40"
+                errors.lookingFor
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
             >
               <option value="">Select</option>
@@ -303,7 +262,9 @@ const Quotation = () => {
               <option value="product">Product</option>
             </select>
             {errors.lookingFor && (
-              <p className="text-red-500 text-sm mt-1">{errors.lookingFor}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.lookingFor}
+              </p>
             )}
           </div>
           <div className="flex flex-col-reverse sm:flex-row justify-around pt-6 sm:gap-x-10 gap-y-4 sm:gap-y-0 ">
@@ -317,24 +278,29 @@ const Quotation = () => {
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:opacity-50"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
             >
-              {isSubmitting ? "Submitting..." : "Continue →"}
+              Continue →
             </button>
           </div>
         </form>
         {alertpop == true ? (
           <div className="sm:w-[400px] flex gap-3 rounded-lg px-4 py-4 bg-[#262626] fixed right-10 top-60">
             <div className="h-[50px] w-[100px]">
-              <img src={alertImg} alt="Alert" className="pt-4" />
+              <img
+                src={alertImg}
+                alt="Alert"
+                className="pt-4"
+              />
             </div>
             <div>
-              <p className="text-lg text-white font-bold">Quotation Alert</p>
+              <p className="text-lg text-white font-bold">
+                Quotation Alert
+              </p>
               <p className="text-gray-500 text-xs">
-                A free quotation is available only once. Our team will follow up
-                with the generated quotation. For additional quotes, other
-                options may apply
+                A free quotation is available only once. Our team will
+                follow up with the generated quotation. For additional
+                quotes, other options may apply
               </p>
               <p className="text-white text-sm pt-2 cursor-pointer">
                 Learn More
@@ -351,28 +317,6 @@ const Quotation = () => {
           </div>
         ) : (
           ""
-        )}
-
-        {submitStatus === "error" && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
-              <div className="text-center">
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Submission Failed
-                </h2>
-                <p className="text-gray-300 mb-4">
-                  There was an error submitting your quotation. Please try again
-                  later.
-                </p>
-                <button
-                  onClick={() => setSubmitStatus(null)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
         )}
       </div>
     </Container>

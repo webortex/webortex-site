@@ -61,7 +61,7 @@ const MobileScroll = () => {
               <title>
                 {isFoundersSectionVisible
                   ? `${activeFounder.name} - ${activeFounder.title} at Webortex`
-                  : "Webortex | Building the Future of Web Development"}
+                  : "Webortex | Building the Future of Software Development"}
               </title>
 
               <meta
@@ -72,6 +72,7 @@ const MobileScroll = () => {
                 name="keywords"
                 content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology, Software Development in Tirupati, Web Development in Tirupati, IT Services in Tirupati, Web Design in Tirupati, App Development in Tirupati, Digital Solutions in Tirupati, Software Development in India, Startup, Webortex Software Development Agency, Webortex Sisindri Singamsetti, Webortex Gnana Sekhar, Webortex Founders, Webortex Team, Webortex Services, Webortex Projects, Webortex Tharun A, Webortex Jayadeep Reddy, Webortex Ashok P, Webortex Sai Sandeep, Sisindri Singamsettis Webortex, sisitarak, sisi-tarak, sisi-tarakk`}
               />
+              <meta name="author" content="Gnana Sekhar" />
               <meta name="author" content="Sisindri Singamsetti" />
 
               <meta

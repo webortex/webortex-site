@@ -3,11 +3,19 @@ import React, { useState } from "react";
 import { Consumer } from "../ContextAPI/ContextAPI";
 import { FaPhone } from "react-icons/fa";
 
+import { useNavigate } from "react-router-dom";
+
 const FaQ = () => {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState(null);
 
   const toggleFAQ = (index) => {
     setExpanded(expanded === index ? null : index);
+  };
+
+  const handleAskQueBtn = (e) => {
+    e.preventDefault();
+    navigate("/lets-talk");
   };
 
   return (
@@ -16,7 +24,10 @@ const FaQ = () => {
         const { faqs } = value;
         return (
           <Container maxWidth="lg">
-            <section id="faq" className="pt-5">
+            <section
+              id="faq"
+              className="pt-5"
+            >
               <div className="flex flex-col justify-start lg:items-center my-20 lg:flex-row h-full text-white px-2 py-8 gap-x-5">
                 <div className="lg:w-1/2 space-y-6">
                   <div className="inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-medium border border-white">
@@ -28,16 +39,22 @@ const FaQ = () => {
                   </h1>
                   <p className="text-base sm:text-lg text-gray-400">
                     Managing a small business today is already tough. Avoid
-                    further complications by ditching outdated, tedious trade
-                    methods. Our goal is to streamline SMB trade, making it
-                    easier and faster than ever.
+                    further complications by ditching outdated, tedious
+                    trade methods. Our goal is to streamline SMB trade,
+                    making it easier and faster than ever.
                   </p>
-                  <button className="text-sm sm:text-base flex items-center space-x-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-100">
+                  <button
+                    className="text-sm sm:text-base flex items-center space-x-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-100"
+                    onClick={handleAskQueBtn}
+                  >
                     <span>Any questions? Reach out</span>
-                   
+
                     <div>
-    <FaPhone size={18} color="#000" /> 
-  </div>
+                      <FaPhone
+                        size={18}
+                        color="#000"
+                      />
+                    </div>
                   </button>
                 </div>
 
@@ -48,12 +65,14 @@ const FaQ = () => {
                       className="border-b border-gray-600 pb-4 cursor-pointer"
                     >
                       <div
-                        className="flex justify-between items-center" 
+                        className="flex justify-between items-center"
                         onClick={() => toggleFAQ(index)}
                       >
                         <h2
                           className={`text-base sm:text-lg font-medium ${
-                            expanded === index ? "text-white transition-all duration-300 ease-in-out" : "text-gray-400"
+                            expanded === index
+                              ? "text-white transition-all duration-300 ease-in-out"
+                              : "text-gray-400"
                           }`}
                         >
                           {faq.question}
@@ -76,7 +95,12 @@ const FaQ = () => {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             >
-                              <line x1="5" y1="12" x2="19" y2="12" />
+                              <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                              />
                             </svg>
                           ) : (
                             <svg
@@ -89,8 +113,18 @@ const FaQ = () => {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             >
-                              <line x1="12" y1="5" x2="12" y2="19" />
-                              <line x1="5" y1="12" x2="19" y2="12" />
+                              <line
+                                x1="12"
+                                y1="5"
+                                x2="12"
+                                y2="19"
+                              />
+                              <line
+                                x1="5"
+                                y1="12"
+                                x2="19"
+                                y2="12"
+                              />
                             </svg>
                           )}
                         </button>

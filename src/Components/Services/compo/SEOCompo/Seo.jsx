@@ -2,10 +2,9 @@ import SEOLoader from "./SEOLoader";
 
 const Seo = () => {
   return (
-    <div>
-      <SEOLoader/>
+    <div className="relative mt-20">
+      <SEOLoader />
     </div>
-
   );
 };
 
