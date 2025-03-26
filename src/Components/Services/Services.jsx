@@ -32,16 +32,53 @@ const Services = () => {
 
               <div className="flex justify-center items-center">
                 <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-12 gap-x-6 md:gap-x-10">
-                  {services.map((service, index) =>
-                    index === 0 ? (
+                  {services.map((service, index) => {
+                    return service.componentGif ? (
                       <Link
-                        key={service.id}
                         to={`/services/${service.slug}`}
-                        className="p-8 flex items-center flex-col text-white w-auto md:max-w-[377px] md:h-[420px] max-w-[300px] h-[400px] border-2 rounded-3xl border-[#939393]/60 relative overflow-visible transition-all ease-in-out"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
+                        key={service.id}
+                        className={`
+                          p-8 flex items-center flex-col 
+                          text-white w-auto md:max-w-[377px] md:h-[420px] max-w-[300px] h-[400px] 
+                          border-2 rounded-3xl border-[#939393]/60 relative overflow-hidden
+                          transition-all ease-in-out
+                        `}
                       >
-                        {isHovered && (
+                        <p className="text-2xl xl:text-3xl text-textColor tracking-wide font-semibold text-center">
+                          {service.title}
+                        </p>
+                        <p className="text-xs sm:text-sm xl:text-base text-center text-secondaryTextColor text-smallcolor font-medium mt-2">
+                          {service.description}
+                        </p>
+
+                        <div className="max-w-full max-h-48 sm:max-h-52 lg:max-h-56 2xl:max-h-60 overflow-hidden my-auto">
+                          <img
+                            src={service.componentGif}
+                            alt={`${service.title} illustration`}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={`/services/${service.slug}`}
+                        key={service.id}
+                        className={`
+                          p-8 flex items-center flex-col 
+                          ${
+                            index === 0
+                              ? "text-white w-auto md:max-w-[377px] md:h-[420px] max-w-[300px] h-[400px] border-2 rounded-3xl border-[#939393]/60 relative overflow-visible transition-all ease-in-out"
+                              : "bg-[#111111]/70 text-white w-auto md:max-w-[377px] md:h-[420px] max-w-[300px] h-[400px] border-2 rounded-3xl border-[#939393]/60"
+                          }
+                        `}
+                        onMouseEnter={() =>
+                          index === 0 && setIsHovered(true)
+                        }
+                        onMouseLeave={() =>
+                          index === 0 && setIsHovered(false)
+                        }
+                      >
+                        {index === 0 && isHovered && (
                           <div className="absolute inset-0 -z-20 transition-all ease-in-out">
                             <Squares
                               direction="diagonal"
@@ -61,22 +98,8 @@ const Services = () => {
                         </p>
                         <div className="">{service.component}</div>
                       </Link>
-                    ) : (
-                      <Link
-                        to={`/services/${service.slug}`}
-                        key={service.id}
-                        className="p-8 flex items-center flex-col bg-[#111111]/70 text-white w-auto md:max-w-[377px] md:h-[420px] max-w-[300px] h-[400px] border-2 rounded-3xl border-[#939393]/60"
-                      >
-                        <p className="text-2xl xl:text-3xl text-textColor tracking-wide font-semibold text-center">
-                          {service.title}
-                        </p>
-                        <p className="text-xs sm:text-sm xl:text-base text-center text-secondaryTextColor text-smallcolor font-medium mt-2">
-                          {service.description}
-                        </p>
-                        <div className="">{service.component}</div>
-                      </Link>
-                    )
-                  )}
+                    );
+                  })}
                 </div>
               </div>
             </section>

@@ -10,7 +10,7 @@ import ashok from "../../assets/Founders/Ashok.jpg";
 import sandeep from "../../assets/Founders/Sandeep.jpg";
 
 import Webdev from "../Services/compo/Webdev";
-import Appdev from "../Services/compo/Appdev";
+import Appdev from "../../assets/ServiceCards/app.gif";
 import UiUx from "../Services/compo/UiUx";
 import Mvp from "../Services/compo/Mvp";
 import Seo from "../Services/compo/SEOCompo/Seo";
@@ -211,7 +211,8 @@ export class Provider extends Component {
         slug: "app-development",
         description:
           "We increase revenue and ensure sustainable long-term growth",
-        component: <Appdev />,
+        component: "",
+        componentGif: Appdev,
         frameImg: appImg,
         frameVideo: "",
         frameTitle: "App Development",
