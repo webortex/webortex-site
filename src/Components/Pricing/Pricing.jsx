@@ -45,16 +45,16 @@ const Pricing = () => {
             </div>
             <div className="flex flex-col gap-4 mb-8">
               <button
-                onClick={handleCall}
-                className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 sm:px-10 rounded-lg transition-all duration-300 ease-in-out"
-              >
-                Call us
-              </button>
-              <button
                 onClick={handleWhatsApp}
                 className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 sm:px-10 rounded-lg transition-all duration-300 ease-in-out"
               >
                 Message us
+              </button>
+              <button
+                onClick={handleCall}
+                className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-[#d8d8d8] border border-[#424242] py-3 sm:px-10 rounded-lg transition-all duration-300 ease-in-out"
+              >
+                Call us
               </button>
             </div>
           </div>
