@@ -1,10 +1,32 @@
 import { useState } from "react";
 import { Container } from "@mui/material";
-import { db, storage } from "../../../Firebaseconfig"; // Import from firebaseConfig.js
-import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import React from "react";
+import Frame from "../../assets/Star.png";
 
 function JoinUs() {
+   const [alertpop, setAlertpop] = useState(true);
+  
+  // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
+    authDomain: "webortex-7e798.firebaseapp.com",
+    databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
+    projectId: "webortex-7e798",
+    storageBucket: "webortex-7e798.firebasestorage.app",
+    messagingSenderId: "1095027363933",
+    appId: "1:1095027363933:web:77358a1d5b12782c183db4",
+  };
+
+  // Initialize Firebase app
+  const app = initializeApp(firebaseConfig);
+
+  // Initialize Firestore and Storage
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -288,6 +310,8 @@ function JoinUs() {
           <p className="text-gray-400">
             Join our team of innovators! Fill out the form to explore exciting
             opportunities and collaborate on cutting-edge projects
+            Join our team of innovators! Fill out the form to explore exciting
+            opportunities and collaborate on cutting-edge projects
           </p>
         </div>
 
@@ -300,7 +324,7 @@ function JoinUs() {
               type="text"
               id="name"
               name="name"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
                 errors.name ? "border-red-500" : "border-[#8692A6]/40"
               }`}
               placeholder="Enter your Name"
@@ -320,7 +344,7 @@ function JoinUs() {
               type="email"
               id="email"
               name="email"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.5px] ${
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.5px] ${
                 errors.email ? "border-red-500" : "border-[#8692A6]/40"
               }`}
               placeholder="Enter email address"
@@ -340,14 +364,15 @@ function JoinUs() {
               Mobile number *
             </label>
             <div className="flex">
+             
               <input
                 type="tel"
                 id="mobile"
                 name="mobile"
                 placeholder="+91"
-                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                  errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
-                }`}
+              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none border-[.9px] ${
+                errors.mobile ? "border-red-500" : "border-[#8692A6]/40"
+              }`}
                 value={formData.mobile}
                 onChange={handleInputChange}
               />
@@ -531,6 +556,35 @@ function JoinUs() {
             </button>
           </div>
         </form>
+        {alertpop == true ? (
+          <div className="sm:w-[380px] xl:w-[400px] lg:w-[400px] xs:w-[380px] 2xs:w-[300px] flex gap-8 2xs:gap-2 rounded-lg px-4 py-4 2xs:px-2 2xs:py-2 bg-[#262626] fixed right-10 2xs:right-2 top-60">
+             <div className="h-[50px] w-[50px] xl:w-[50px] lg:w-[50px] sm:w-[50px] xs:w-[50px] 2xs:w-[30px]">
+                          <img src={Frame} alt="Alert" className="pt-4" />
+                        </div>
+            <div>
+              <p className="text-lg text-white font-bold mb-3">Required Technologies</p>
+              <p className="text-gray-500 text-xs">
+                Frontend : React, Angular, Tailwind, MUI<br/>
+                Backend : NodeJS, ExpressJS <br/>
+                Wordpress : Elementor, Custom Themes <br/>
+                UI/UX : Figma, AdobeXD, Sketch
+              </p>
+              <p className="text-white text-sm pt-2 cursor-pointer">
+                Learn More
+              </p>
+            </div>
+            <div
+              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F] "
+              onClick={() => setAlertpop(false)}
+            >
+              <p className="text-lg 2xs:text-xs items-center justify-center mt-[-2.5px]">
+                x
+              </p>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </Container>
     </div>
   );
