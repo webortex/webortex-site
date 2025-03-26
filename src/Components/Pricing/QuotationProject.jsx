@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "./FormContext";
 
 const QuotationProject = () => {
   const navigate = useNavigate();
+  const { formData, updateProjectInfo } = useForm();
   const [lookingFor, setLookingFor] = useState("Select");
-  const [formData, setFormData] = useState({
+  const [projectFormData, setProjectFormData] = useState({
     projectName: "",
     description: "",
     referenceWebsite: "",
@@ -20,12 +22,11 @@ const QuotationProject = () => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
+    setProjectFormData({
+      ...projectFormData,
       [name]: type === "checkbox" ? checked : value,
     });
 
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
@@ -34,17 +35,14 @@ const QuotationProject = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    // Validate Project Name
-    if (!formData.projectName.trim()) {
+    if (!projectFormData.projectName.trim()) {
       newErrors.projectName = "Project Name is required";
     }
 
-    // Validate Is Startup
-    if (!formData.isStartup) {
+    if (!projectFormData.isStartup) {
       newErrors.isStartup = "Please select startup status";
     }
 
-    // Validate Looking For
     if (lookingFor === "Select") {
       newErrors.lookingFor = "Please select an option";
     }
@@ -65,9 +63,14 @@ const QuotationProject = () => {
       return;
     }
 
-    if (lookingFor === "WEB") navigate("/web-quote-234ghj9s_dff16syr");
-    else if (lookingFor === "APP") navigate("/app-quote-dfg45678_dffss189");
-    else if (lookingFor === "MVP") navigate("/mvp-quote-sy34rh32_dff84fgd");
+    updateProjectInfo({
+      ...projectFormData,
+      lookingFor,
+    });
+
+    if (lookingFor === "WEB") navigate("/get-quote/web-details");
+    else if (lookingFor === "APP") navigate("/get-quote/app-details");
+    else if (lookingFor === "MVP") navigate("/get-quote/mvp-details");
   };
 
   return (

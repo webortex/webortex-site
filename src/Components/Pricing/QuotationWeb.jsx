@@ -1,10 +1,30 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "./FormContext";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import Frame from "../../assets/Star.png";
+
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyDi9A6eg7hKPYfV0SK3tHE87jH0vZQvXhc",
+  authDomain: "webortex-7e798.firebaseapp.com",
+  databaseURL: "https://webortex-7e798-default-rtdb.firebaseio.com",
+  projectId: "webortex-7e798",
+  storageBucket: "webortex-7e798.appspot.com",
+  messagingSenderId: "1095027363933",
+  appId: "1:1095027363933:web:77358a1d5b12782c183db4",
+};
+
+// Initialize Firebase app
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const WebForm = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const { formData, resetForm } = useForm();
+  const [webFormData, setWebFormData] = useState({
     referenceSites: "",
     referenceDesigns: "",
     marketing: false,
@@ -15,15 +35,16 @@ const WebForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
+    setWebFormData({
+      ...webFormData,
       [name]: type === "checkbox" ? checked : value,
     });
 
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
@@ -32,36 +53,32 @@ const WebForm = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    // Validate Reference Sites (only validate if something is entered)
-    if (formData.referenceSites.trim()) {
+    if (webFormData.referenceSites.trim()) {
       const urlPattern =
         /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-      if (!urlPattern.test(formData.referenceSites)) {
+      if (!urlPattern.test(webFormData.referenceSites)) {
         newErrors.referenceSites = "Please enter a valid website URL";
       }
     }
 
-    // Validate Reference Designs (only validate if something is entered)
-    if (formData.referenceDesigns.trim()) {
+    if (webFormData.referenceDesigns.trim()) {
       const urlPattern =
         /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-      if (!urlPattern.test(formData.referenceDesigns)) {
+      if (!urlPattern.test(webFormData.referenceDesigns)) {
         newErrors.referenceDesigns =
           "Please enter a valid design reference URL";
       }
     }
 
-    // Validate Idea Description (required and minimum length)
-    if (!formData.ideaDescription.trim()) {
+    if (!webFormData.ideaDescription.trim()) {
       newErrors.ideaDescription = "Idea description is required";
-    } else if (formData.ideaDescription.trim().length < 20) {
+    } else if (webFormData.ideaDescription.trim().length < 20) {
       newErrors.ideaDescription = "Description must be at least 20 characters";
     }
 
-    // Validate Budget (must be a valid dollar amount)
-    if (formData.budget.trim()) {
+    if (webFormData.budget.trim()) {
       const budgetPattern = /^\$?(\d{1,3}(,\d{3})*|\d+)(\.\d{1,2})?$/;
-      if (!budgetPattern.test(formData.budget.trim())) {
+      if (!budgetPattern.test(webFormData.budget.trim())) {
         newErrors.budget =
           "Please enter a valid dollar amount (e.g., $1,000 or 1000.00)";
       }
@@ -69,8 +86,7 @@ const WebForm = () => {
       newErrors.budget = "Budget is required";
     }
 
-    // Validate Timing (required)
-    if (!formData.timing) {
+    if (!webFormData.timing) {
       newErrors.timing = "Please select an available timing";
     }
 
@@ -78,248 +94,357 @@ const WebForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus(null);
 
     if (!validateForm()) {
       return;
     }
 
-    // Navigate to next page or submit form
-    navigate("/web-submission");
+    try {
+      setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      referenceSites: "",
-      referenceDesigns: "",
-      marketing: false,
-      seo: false,
-      ideaDescription: "",
-      budget: "",
-      timing: "",
-    });
-    setErrors({});
+      // Combine all form data
+      const submissionData = {
+        ...formData.userInfo,
+        ...formData.projectInfo,
+        ...webFormData,
+        submittedAt: new Date(),
+        formType: "WEB_QUOTE",
+      };
+
+      // Generate a unique document ID
+      const docId = `${formData.userInfo.email}-${Date.now()}`;
+
+      // Save to Firestore
+      const docRef = doc(db, "quotations", docId);
+      await setDoc(docRef, submissionData);
+
+      console.log("Quotation saved with ID: ", docId);
+      setSubmitStatus("success");
+      resetForm();
+
+      // Auto-close success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+        navigate("/");
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting quotation: ", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <Container
-      maxWidth="lg"
-      className="h-auto my-9 sm:my-8 lg:my-14 flex flex-col justify-center align-center"
-    >
-      <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl text-headColor font-bold tracking-tight">
-        WEB
-      </h1>
-      <p className="text-center text-xs sm:text-sm text-[#696F79] px-[2%] xs:px-[6%] sm:px-[10%] md:px-[28%] mt-2 md:mt-3">
-        Let's build a high-performance, scalable website tailored to your needs.
-        Fill out the form to get started!
-      </p>
-      <div className="flex items-center justify-center bg-black text-white mb-4 mt-8">
-        <form
-          className="rounded-2xl shadow-lg w-full max-w-md space-y-4"
-          onSubmit={handleSubmit}
-          noValidate
-        >
-          {/* Reference Sites */}
-          <div>
-            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
-              Reference Sites
-            </label>
-            <input
-              type="text"
-              name="referenceSites"
-              value={formData.referenceSites}
-              onChange={handleInputChange}
-              placeholder="https://example.com"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.referenceSites ? "border-red-500" : "border-[#8692A6]/40"
-              }`}
-            />
-            {errors.referenceSites && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.referenceSites}
-              </p>
-            )}
-          </div>
-
-          {/* Reference Designs */}
-          <div>
-            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
-              Reference Designs
-            </label>
-            <input
-              type="text"
-              name="referenceDesigns"
-              value={formData.referenceDesigns}
-              onChange={handleInputChange}
-              placeholder="Design reference links"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.referenceDesigns
-                  ? "border-red-500"
-                  : "border-[#8692A6]/40"
-              }`}
-            />
-            {errors.referenceDesigns && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.referenceDesigns}
-              </p>
-            )}
-          </div>
-
-          {/* Marketing Checkbox */}
-          <div>
-            <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
-              <span className="text-sm md:text-base text-white">Marketing</span>
-              <div className="relative flex items-center">
-                <input
-                  type="checkbox"
-                  name="marketing"
-                  checked={formData.marketing}
-                  onChange={handleInputChange}
-                  className="opacity-0 absolute h-5 w-5"
+    <div className="min-h-screen py-12 px-4 relative">
+      {/* Success Toast */}
+      {submitStatus === "success" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
                 />
-                <div
-                  className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
-                    formData.marketing ? "bg-logoGreenColor" : ""
-                  }`}
-                >
-                  {formData.marketing && (
-                    <svg
-                      className="w-3 h-3 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            </label>
-          </div>
-
-          {/* SEO Checkbox */}
-          <div>
-            <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
-              <span className="text-sm md:text-base text-white">SEO</span>
-              <div className="relative flex items-center">
-                <input
-                  type="checkbox"
-                  name="seo"
-                  checked={formData.seo}
-                  onChange={handleInputChange}
-                  className="opacity-0 absolute h-5 w-5"
-                />
-                <div
-                  className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
-                    formData.seo ? "bg-logoGreenColor" : ""
-                  }`}
-                >
-                  {formData.seo && (
-                    <svg
-                      className="w-3 h-3 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  )}
-                </div>
-              </div>
-            </label>
-          </div>
-
-          {/* Idea Description */}
-          <div>
-            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
-              Describe Idea*
-            </label>
-            <textarea
-              name="ideaDescription"
-              value={formData.ideaDescription}
-              onChange={handleInputChange}
-              rows="4"
-              placeholder="Provide detailed description of your website idea"
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.ideaDescription
-                  ? "border-red-500"
-                  : "border-[#8692A6]/40"
-              }`}
-            />
-            {errors.ideaDescription && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.ideaDescription}
+              </svg>
+              <h2 className="text-2xl font-normal text-white mb-2">
+                Quotation Submitted!
+              </h2>
+              <p className="text-white/80 font-light px-[5%] mb-4">
+                Thank you for your request. We'll review your requirements and
+                get back to you soon.
               </p>
-            )}
-          </div>
-
-          {/* Budget */}
-          <div>
-            <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
-              Budget*
-            </label>
-            <input
-              type="text"
-              name="budget"
-              placeholder="$1,000 ( Enter in Dollars only)"
-              value={formData.budget}
-              onChange={handleInputChange}
-              className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.budget ? "border-red-500" : "border-[#8692A6]/40"
-              }`}
-            />
-            {errors.budget && (
-              <p className="text-red-500 text-sm mt-1">{errors.budget}</p>
-            )}
-          </div>
-
-          {/* Timing Selection */}
-          <div>
-            <label className="block text-sm md:text-base font-medium mb-3 text-[#696F79]">
-              Support Your Available Timing*
-            </label>
-            <div className="grid grid-cols-2 grid-rows-2 gap-x-20 gap-y-4 ml-6 xs:size-[80%] sm:size-[70%] lg:size-[60%] xl:size-[60%]">
-              {["10:00 AM", "12:00 PM", "6:00 PM", "4:00 PM"].map((time) => (
-                <div
-                  key={time}
-                  onClick={() => setFormData({ ...formData, timing: time })}
-                  className={`p-2 rounded-[20px] bg-[#1e1f23] border-[.9px] flex justify-center items-center cursor-pointer transition-colors ${
-                    formData.timing === time
-                      ? "border-gray-800 bg-[#606477]"
-                      : "border-gray-800 hover:border-[#606477]"
-                  }`}
-                >
-                  <span className="text-sm text-white">{time}</span>
-                </div>
-              ))}
+              <button
+                onClick={() => {
+                  setSubmitStatus(null);
+                  navigate("/");
+                }}
+                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+              >
+                Close
+              </button>
             </div>
-            {errors.timing && (
-              <p className="text-red-500 text-sm mt-2 ml-6">{errors.timing}</p>
-            )}
           </div>
+        </div>
+      )}
 
-          {/* Submit Button */}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              className="w-full px-5 py-3 bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out text-sm md:text-base mt-6"
-            >
-              Submit
-            </button>
+      {/* Error Toast */}
+      {submitStatus === "error" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-red-500 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h2 className="text-2xl font-normal text-white mb-2">
+                Submission Failed
+              </h2>
+              <p className="text-white/80 font-light px-[5%] mb-4">
+                There was an error submitting your quotation. Please try again
+                later.
+              </p>
+              <button
+                onClick={() => setSubmitStatus(null)}
+                className="px-4 py-2 bg-red-500/90 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+              >
+                Close
+              </button>
+            </div>
           </div>
-        </form>
-      </div>
-    </Container>
+        </div>
+      )}
+
+      <Container
+        maxWidth="lg"
+        className="h-auto my-9 sm:my-8 lg:my-14 flex flex-col justify-center align-center"
+      >
+        <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl text-headColor font-bold tracking-tight">
+          WEB
+        </h1>
+        <p className="text-center text-xs sm:text-sm text-[#696F79] px-[2%] xs:px-[6%] sm:px-[10%] md:px-[28%] mt-2 md:mt-3">
+          Let's build a high-performance, scalable website tailored to your
+          needs. Fill out the form to get started!
+        </p>
+        <div className="flex items-center justify-center bg-black text-white mb-4 mt-8">
+          <form
+            className="rounded-2xl shadow-lg w-full max-w-md space-y-4"
+            onSubmit={handleSubmit}
+            noValidate
+          >
+            {/* Reference Sites */}
+            <div>
+              <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
+                Reference Sites
+              </label>
+              <input
+                type="text"
+                name="referenceSites"
+                value={webFormData.referenceSites}
+                onChange={handleInputChange}
+                placeholder="https://example.com"
+                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                  errors.referenceSites
+                    ? "border-red-500"
+                    : "border-[#8692A6]/40"
+                }`}
+              />
+              {errors.referenceSites && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.referenceSites}
+                </p>
+              )}
+            </div>
+
+            {/* Reference Designs */}
+            <div>
+              <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
+                Reference Designs
+              </label>
+              <input
+                type="text"
+                name="referenceDesigns"
+                value={webFormData.referenceDesigns}
+                onChange={handleInputChange}
+                placeholder="Design reference links"
+                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                  errors.referenceDesigns
+                    ? "border-red-500"
+                    : "border-[#8692A6]/40"
+                }`}
+              />
+              {errors.referenceDesigns && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.referenceDesigns}
+                </p>
+              )}
+            </div>
+
+            {/* Marketing Checkbox */}
+            <div>
+              <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
+                <span className="text-sm md:text-base text-white">
+                  Marketing
+                </span>
+                <div className="relative flex items-center">
+                  <input
+                    type="checkbox"
+                    name="marketing"
+                    checked={webFormData.marketing}
+                    onChange={handleInputChange}
+                    className="opacity-0 absolute h-5 w-5"
+                  />
+                  <div
+                    className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
+                      webFormData.marketing ? "bg-logoGreenColor" : ""
+                    }`}
+                  >
+                    {webFormData.marketing && (
+                      <svg
+                        className="w-3 h-3 text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            {/* SEO Checkbox */}
+            <div>
+              <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
+                <span className="text-sm md:text-base text-white">SEO</span>
+                <div className="relative flex items-center">
+                  <input
+                    type="checkbox"
+                    name="seo"
+                    checked={webFormData.seo}
+                    onChange={handleInputChange}
+                    className="opacity-0 absolute h-5 w-5"
+                  />
+                  <div
+                    className={`border-[.9px] border-[#8692A6]/40 rounded w-5 h-5 flex items-center justify-center ${
+                      webFormData.seo ? "bg-logoGreenColor" : ""
+                    }`}
+                  >
+                    {webFormData.seo && (
+                      <svg
+                        className="w-3 h-3 text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            {/* Idea Description */}
+            <div>
+              <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
+                Describe Idea*
+              </label>
+              <textarea
+                name="ideaDescription"
+                value={webFormData.ideaDescription}
+                onChange={handleInputChange}
+                rows="4"
+                placeholder="Provide detailed description of your website idea"
+                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                  errors.ideaDescription
+                    ? "border-red-500"
+                    : "border-[#8692A6]/40"
+                }`}
+              />
+              {errors.ideaDescription && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.ideaDescription}
+                </p>
+              )}
+            </div>
+
+            {/* Budget */}
+            <div>
+              <label className="block text-sm md:text-base font-medium mb-1 text-[#696F79]">
+                Budget*
+              </label>
+              <input
+                type="text"
+                name="budget"
+                placeholder="$1,000 ( Enter in Dollars only)"
+                value={webFormData.budget}
+                onChange={handleInputChange}
+                className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
+                  errors.budget ? "border-red-500" : "border-[#8692A6]/40"
+                }`}
+              />
+              {errors.budget && (
+                <p className="text-red-500 text-sm mt-1">{errors.budget}</p>
+              )}
+            </div>
+
+            {/* Timing Selection */}
+            <div>
+              <label className="block text-sm md:text-base font-medium mb-3 text-[#696F79]">
+                Support Your Available Timing*
+              </label>
+              <div className="grid grid-cols-2 grid-rows-2 gap-x-20 gap-y-4 ml-6 xs:size-[80%] sm:size-[70%] lg:size-[60%] xl:size-[60%]">
+                {["10:00 AM", "12:00 PM", "6:00 PM", "4:00 PM"].map((time) => (
+                  <div
+                    key={time}
+                    onClick={() =>
+                      setWebFormData({ ...webFormData, timing: time })
+                    }
+                    className={`p-2 rounded-[20px] bg-[#1e1f23] border-[.9px] flex justify-center items-center cursor-pointer transition-colors ${
+                      webFormData.timing === time
+                        ? "border-gray-800 bg-[#606477]"
+                        : "border-gray-800 hover:border-[#606477]"
+                    }`}
+                  >
+                    <span className="text-sm text-white">{time}</span>
+                  </div>
+                ))}
+              </div>
+              {errors.timing && (
+                <p className="text-red-500 text-sm mt-2 ml-6">
+                  {errors.timing}
+                </p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </Container>
+    </div>
   );
 };
 
