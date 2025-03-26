@@ -18,6 +18,8 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Added isSubmitting state
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -110,11 +112,13 @@ const Contact = () => {
       interests: selectedInterests,
     };
 
+    setIsSubmitting(true); // Set isSubmitting to true before submission
+
     emailjs
       .send(serviceID, templateID, templateParams, publicKey)
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
-        alert("Form submitted successfully!");
+        setSubmitStatus("success");
 
         setFormData({
           fullName: "",
@@ -132,7 +136,10 @@ const Contact = () => {
       })
       .catch((error) => {
         console.error("FAILED...", error);
-        alert("Failed to submit the form. Please try again.");
+        setSubmitStatus("error");
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
   };
 
@@ -171,6 +178,77 @@ const Contact = () => {
       maxWidth="lg"
       className="h-full my-6 md:my-10"
     >
+      {submitStatus === "success" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <h2 className="text-2xl font-normal text-white mb-2">
+                Submission Successful! 🎉
+              </h2>
+              <p className="text-white/80 font-light px-[5%] mb-4">
+                Thank you for reaching out! Our team will get back to you
+                soon.😊
+              </p>
+              <button
+                onClick={() => setSubmitStatus(null)}
+                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {submitStatus === "error" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-red-500 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h2 className="text-2xl font-normal text-white mb-2">
+                Submission Failed! ❌
+              </h2>
+              <p className="text-white/80 font-light px-[5%] mb-4">
+                There was an error submitting your application. Please try
+                again later or contact us for assistance.
+              </p>
+              <button
+                onClick={() => setSubmitStatus(null)}
+                className="px-4 py-2 bg-red-500/90 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <section
         id="contact"
         className="mb-4"
@@ -357,10 +435,12 @@ const Contact = () => {
             <div className="flex flex-col items-center">
               <button
                 type="submit"
-                className="bg-buttonBgColor hover:bg-textColor hover:text-backgroundColor text-textColor py-2 px-6 rounded w-full max-w-xs transition-all duration-500 ease-in-out mt-8"
+                className="bg-buttonBgColor hover:bg-textColor hover:text-backgroundColor text-textColor py-2 px-6 rounded w-full max-w-xs transition-all duration-500 ease-in-out mt-8 disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
+
               <p className="text-textColor text-xs mt-12">
                 Operating Days{" "}
                 <span className="bg-white bg-opacity-15 font-light rounded px-3 py-2 ml-2">

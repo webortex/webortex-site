@@ -582,7 +582,7 @@ function JoinUs() {
             </button>
             <button
               type="submit"
-              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-blue-400 disabled:cursor-not-allowed"
+              className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "Submit"}
