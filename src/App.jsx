@@ -16,7 +16,7 @@ import JoinUs from "./Components/JoinUs/JoinUs";
 import MVPForm from "./Components/Pricing/QuotationMVP";
 import AppForm from "./Components/Pricing/QuotationApp";
 import WebForm from "./Components/Pricing/QuotationWeb";
-import { FormProvider } from "./Components/Pricing/FormContext";
+// import { FormProvider } from "./Components/Pricing/FormContext";
 
 const Layout = ({ children }) => {
   return (
@@ -48,112 +48,98 @@ function App() {
     <Loader />
   ) : (
     <Provider>
-      <FormProvider>
-        {" "}
-        {/* Wrap with FormProvider */}
-        <Router>
-          <ScrollToTop />
-          <Suspense fallback={<Loader />}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Layout>
-                    <Homepage />
-                  </Layout>
-                }
-              />
-              <Route
-                exact
-                path="/lets-talk"
-                element={
-                  <>
-                    <div className="hidden md:block">
-                      <Nav>
-                        <Contact />
-                      </Nav>
-                    </div>
-                    <div className="block md:hidden">
-                      <Layout>
-                        <Contact />
-                      </Layout>
-                    </div>
-                  </>
-                }
-              />
-              <Route
-                exact
-                path="/recruiting"
-                element={
-                  <div className="h-screen 2xl:overflow-hidden ">
+      {" "}
+      {/* Wrap with FormProvider */}
+      <Router>
+        <ScrollToTop />
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <Homepage />
+                </Layout>
+              }
+            />
+            <Route
+              exact
+              path="/lets-talk"
+              element={
+                <>
+                  <div className="hidden md:block">
                     <Nav>
-                      <Recruit />
+                      <Contact />
                     </Nav>
                   </div>
-                }
-              />
-
-              <Route
-                exact
-                path="/join-us"
-                element={
+                  <div className="block md:hidden">
+                    <Layout>
+                      <Contact />
+                    </Layout>
+                  </div>
+                </>
+              }
+            />
+            <Route
+              exact
+              path="/recruiting"
+              element={
+                <div className="h-screen 2xl:overflow-hidden ">
                   <Nav>
-                    <JoinUs />
+                    <Recruit />
                   </Nav>
-                }
-              />
-              <Route exact path="/services/:slug" element={<ServicePage />} />
+                </div>
+              }
+            />
 
-              {/* Updated Quotation Flow Routes */}
-              <Route exact path="/get-quote" element={<Quotation />} />
-              {/* <Route
+            <Route
+              exact
+              path="/join-us"
+              element={
+                <Nav>
+                  <JoinUs />
+                </Nav>
+              }
+            />
+            <Route exact path="/services/:slug" element={<ServicePage />} />
+
+            {/* Updated Quotation Flow Routes */}
+            <Route exact path="/get-quote" element={<Quotation />} />
+            {/* <Route
                 exact
                 path="/get-quote/project-details"
                 element={<QuotationProject />}
               /> */}
-              <Route
-                exact
-                path="/get-quote/web-details"
-                element={<WebForm />}
-              />
-              <Route
-                exact
-                path="/get-quote/app-details"
-                element={<AppForm />}
-              />
-              <Route
-                exact
-                path="/get-quote/mvp-details"
-                element={<MVPForm />}
-              />
+            <Route exact path="/get-quote/web-details" element={<WebForm />} />
+            <Route exact path="/get-quote/app-details" element={<AppForm />} />
+            <Route exact path="/get-quote/mvp-details" element={<MVPForm />} />
 
-              {/* Keep old routes for backward compatibility */}
-              {/* <Route
+            {/* Keep old routes for backward compatibility */}
+            {/* <Route
                 exact
                 path="/get-quote/continue-fctCCfgfv"
                 element={<QuotationProject />}
               /> */}
-              <Route
-                exact
-                path="/web-quote-234ghj9s_dff16syr"
-                element={<WebForm />}
-              />
-              <Route
-                exact
-                path="/app-quote-dfg45678_dffss189"
-                element={<AppForm />}
-              />
-              <Route
-                exact
-                path="/mvp-quote-sy34rh32_dff84fgd"
-                element={<MVPForm />}
-              />
+            <Route
+              exact
+              path="/web-quote-234ghj9s_dff16syr"
+              element={<WebForm />}
+            />
+            <Route
+              exact
+              path="/app-quote-dfg45678_dffss189"
+              element={<AppForm />}
+            />
+            <Route
+              exact
+              path="/mvp-quote-sy34rh32_dff84fgd"
+              element={<MVPForm />}
+            />
 
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </Router>
-      </FormProvider>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </Router>
     </Provider>
   );
 }
