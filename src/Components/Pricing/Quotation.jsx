@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "./FormContext";
-import { db, storage } from "../../../Firebaseconfig";
-import { collection, addDoc } from "firebase/firestore";
-
-
 
 import alertImg from "../../assets/alert.png";
 
@@ -184,9 +180,9 @@ const Quotation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-  
+
     const isValid = validateForm();
-  
+
     if (!isValid) {
       // Scroll to the first error if any
       const firstErrorKey = Object.keys(errors)[0];
@@ -197,8 +193,11 @@ const Quotation = () => {
       }
       return;
     }
-  
+
     try {
+      // Store form data temporarily
+      sessionStorage.setItem("mainForm", JSON.stringify(formData));
+
       // Determine the collection name based on the selected option
       let collectionName = "";
       switch (lookingFor) {
@@ -214,17 +213,17 @@ const Quotation = () => {
         default:
           collectionName = "general_queries";
       }
-  
-      // Add form data to Firestore
-      const docRef = await addDoc(collection(db, collectionName), {
-        ...formData,
-        lookingFor,
-        createdAt: new Date().toISOString(),
-      });
-  
-      console.log("Document written with ID: ", docRef.id);
-  
-      // Redirect based on lookingFor selection after submission
+
+      // Firestore logic (Uncomment if needed)
+      // const docRef = await addDoc(collection(db, collectionName), {
+      //   ...formData,
+      //   lookingFor,
+      //   createdAt: new Date().toISOString(),
+      // });
+
+      console.log("Form data temporarily saved:", formData);
+
+      // Redirect based on selection
       switch (lookingFor) {
         case "Website Development":
           navigate("/get-quote/web-details");
@@ -239,11 +238,11 @@ const Quotation = () => {
           navigate("/get-quote/");
       }
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error handling form submission: ", error);
       alert("Failed to submit the form. Please try again.");
     }
   };
-  
+
   // Custom checkbox component for better control and accessibility
   const CustomCheckbox = ({ name, label, checked, onChange }) => {
     return (

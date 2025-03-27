@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import foundersImages from "../../assets/ImageLinks";
 
-
 import Webdev from "../Services/compo/Webdev";
 
 import UiUx from "../Services/compo/UiUx";
@@ -44,9 +43,6 @@ import socialImg1 from "../../assets/ServicePage/socialmedia1.svg";
 import socialImg2 from "../../assets/ServicePage/socialmedia2.png";
 import socialImg3 from "../../assets/ServicePage/socialmedia3.png";
 
-import chairImage from "../../assets/chair.png";
-import chairImageMobile from "../../assets/chairMobile.png";
-
 const Context = React.createContext();
 
 export class Provider extends Component {
@@ -80,8 +76,8 @@ export class Provider extends Component {
 
     recruiting: [
       {
-        chairImg: chairImage,
-        chairImgMobile: chairImageMobile,
+        chairImg: "https://cdn.webortex.com/chair.png",
+        chairImgMobile: "https://cdn.webortex.com/chairMobile.png",
         positions: [
           {
             id: 1,
@@ -125,19 +121,19 @@ export class Provider extends Component {
         id: 1,
         title: "Team Garuda",
         link: "https://teamgaruda.vercel.app/",
-        image: teamGarudaIcon,
+        image: "https://cdn.webortex.com/workedLogos/teamgaruda.png",
       },
       {
         id: 5,
         title: "SIP",
         link: "",
-        image: sipIcon,
+        image: "https://cdn.webortex.com/workedLogos/SiP.png",
       },
       {
         id: 2,
         title: "64Framez",
         link: "https://www.64framez.com/",
-        image: FramezIcon,
+        image: "https://cdn.webortex.com/workedLogos/64FramezLogo.png",
       },
       // {
       //   id: 3,
@@ -149,7 +145,7 @@ export class Provider extends Component {
         id: 4,
         title: "Garuda Creative Factory",
         link: "https://www.instagram.com/garudacreativefactory9/",
-        image: garudaIcon,
+        image: "https://cdn.webortex.com/workedLogos/garuda.png",
       },
     ],
 

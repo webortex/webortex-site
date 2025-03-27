@@ -16,7 +16,7 @@ export default defineConfig({
     strictPort: true,
     allowedHosts: [
       "localhost",
-      "3213-2406-7400-3d-e111-d48d-40b0-7ce6-e02f.ngrok-free.app", // Allow any ngrok URL
+      "bb9b-2406-7400-3d-50db-197a-35a0-11ed-caf1.ngrok-free.app", // Allow any ngrok URL
     ],
     cors: {
       origin: ["http://localhost:5173/"], // Replace with the exact URL you'll provide
