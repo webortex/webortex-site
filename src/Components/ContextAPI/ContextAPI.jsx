@@ -355,7 +355,7 @@ export class Provider extends Component {
         title: "Marketing",
         slug: "social-media-marketing",
         description:
-          "We increase revenue and ensure sustainable long-term growth",
+          "Transforming brands into digital sensations through strategic and engaging social storytelling.",
         component: <Smedia />,
         frameImg: "https://cdn.webortex.com/ServicePage/socialmedia.gif",
         frameVideo: "",
@@ -393,37 +393,6 @@ export class Provider extends Component {
     ],
 
     faqs: [
-      {
-        question: "What services does Webortex offer?",
-        answer: (
-          <>
-            We specialize in{" "}
-            <Link
-              to="/services/web-development"
-              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
-            >
-              web development
-            </Link>
-            ,{" "}
-            <Link
-              to="/services/app-development"
-              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
-            >
-              mobile app development
-            </Link>
-            ,{" "}
-            <Link
-              to="/services/uiux-design"
-              className="transition-all ease-in-out text-gray-400 hover:text-navlinkHoverColor underline"
-            >
-              UI/UX design
-            </Link>
-            , and custom software solutions. Our team builds scalable,
-            user-friendly, and high-performance digital products tailored to
-            your business needs.
-          </>
-        ),
-      },
       {
         question: "Do you offer ongoing support and maintenance?",
         answer:

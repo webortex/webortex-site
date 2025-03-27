@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { db, storage } from "../../../Firebaseconfig";
+import { db, storage } from "../../../FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 
 const MVPForm = () => {
@@ -14,11 +14,10 @@ const MVPForm = () => {
     basicDevelopment: false,
     simpleTesting: false,
     mvpDocLink: "",
-    // file: null,
   });
 
   const [errors, setErrors] = useState({});
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleWhatsApp = () => {
@@ -44,64 +43,22 @@ const MVPForm = () => {
     navigate("/get-quote");
   };
 
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-
-  //   // Reset any previous file-related errors
-  //   const newErrors = { ...errors };
-  //   delete newErrors.file;
-  //   setErrors(newErrors);
-
-  //   if (file) {
-  //     // Validate file type (PDF only)
-  //     if (file.type !== "application/pdf") {
-  //       setErrors((prev) => ({
-  //         ...prev,
-  //         file: "Only PDF files are allowed",
-  //       }));
-  //       e.target.value = null; // Clear the file input
-  //       return;
-  //     }
-
-  //     // Validate file size (max 2MB)
-  //     const maxSize = 2 * 1024 * 1024; // 2MB in bytes
-  //     if (file.size > maxSize) {
-  //       setErrors((prev) => ({
-  //         ...prev,
-  //         file: "File size must be less than 2MB",
-  //       }));
-  //       e.target.value = null; // Clear the file input
-  //       return;
-  //     }
-
-  //     // If all validations pass
-  //     setFormData({
-  //       ...formData,
-  //       file: file,
-  //     });
-  //   }
-  // };
-
   const validateForm = () => {
     const newErrors = {};
 
-    console.log("Validating form...", formData); // Debugging
-
-    // Validate Project Name (required)
+    // Existing validation logic remains the same
     if (!formData.projectName?.trim()) {
       newErrors.projectName = "Project name is required";
     } else if (formData.projectName.trim().length < 3) {
       newErrors.projectName = "Project name must be at least 3 characters";
     }
 
-    // Validate Description (required and minimum length)
     if (!formData.description?.trim()) {
       newErrors.description = "Idea description is required";
     } else if (formData.description.trim().length < 20) {
       newErrors.description = "Description must be at least 20 characters";
     }
 
-    // Validate Reference Website (optional, but if provided must be a valid URL)
     if (formData.referenceWebsite?.trim()) {
       const urlPattern =
         /^(https?:\/\/)?(www\.)?[\w-]+(\.[a-z]{2,6})+([/?#].*)?$/i;
@@ -110,7 +67,6 @@ const MVPForm = () => {
       }
     }
 
-    // Validate MVP Doc Link (required & valid URL)
     if (!formData.mvpDocLink?.trim()) {
       newErrors.mvpDocLink = "Your MVP Doc link is required";
     } else {
@@ -120,7 +76,6 @@ const MVPForm = () => {
       }
     }
 
-    // At least one service must be selected
     if (
       !formData.design &&
       !formData.basicDevelopment &&
@@ -130,27 +85,25 @@ const MVPForm = () => {
     }
 
     setErrors(newErrors);
-
-    console.log("Errors found:", newErrors); // Debugging
-
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit button clicked!");
-
     setSubmitStatus(null);
 
     if (validateForm()) {
-      const mainFormData = JSON.parse(sessionStorage.getItem("mainForm")) || {};
-      const finalData = {
-        ...mainFormData,
-        ...formData,
-        timestamp: new Date(),
-      };
-
       try {
+        setIsSubmitting(true);
+
+        const mainFormData =
+          JSON.parse(sessionStorage.getItem("mainForm")) || {};
+        const finalData = {
+          ...mainFormData,
+          ...formData,
+          timestamp: new Date(),
+        };
+
         const docRef = doc(db, "mvp_quotation", mainFormData.name.trim());
         await setDoc(docRef, finalData);
         console.log(
@@ -159,22 +112,12 @@ const MVPForm = () => {
         );
 
         sessionStorage.removeItem("mainForm"); // Clear temp data
-
         setSubmitStatus("success");
-        // Reset form
-        // setFormData({
-        //   projectName: "",
-        //   description: "",
-        //   referenceWebsite: "",
-        //   design: true,
-        //   basicDevelopment: false,
-        //   simpleTesting: false,
-        //   mvpDocLink: "",
-        //   // file: null,
-        // });
       } catch (error) {
         console.error("Error adding document:", error);
         setSubmitStatus("error");
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -202,14 +145,14 @@ const MVPForm = () => {
                 />
               </svg>
               <h2 className="text-2xl font-normal text-white mb-2">
-                Application Submitted!
+                Submission Successful!
               </h2>
               <p className="text-white/80 font-light px-[5%] mb-4">
-                Thank you for your interest. We'll review your application and
-                get back to you soon.
+                Thank you for your submission. We'll review your requirements
+                and get back to you soon.
               </p>
               <button
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/get-quote")}
                 className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
@@ -545,9 +488,10 @@ const MVPForm = () => {
               </button>
               <button
                 type="submit"
-                className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
+                className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
               >
-                Submit{/* Continue → */}
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>

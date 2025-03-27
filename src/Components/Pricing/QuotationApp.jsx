@@ -20,14 +20,8 @@ const AppForm = () => {
     publish: "",
   });
 
-  // useEffect(() => {
-  //   const storedData = sessionStorage.getItem("mainform");
-  //   if (!storedData) {
-  //     navigate("/");
-  //   }
-  // });
-
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
@@ -109,14 +103,17 @@ const AppForm = () => {
     setSubmitStatus(null);
 
     if (validateForm()) {
-      const mainFormData = JSON.parse(sessionStorage.getItem("mainForm")) || {};
-      const finalData = {
-        ...mainFormData,
-        ...formData,
-        timestamp: new Date(),
-      };
-
       try {
+        setIsSubmitting(true);
+
+        const mainFormData =
+          JSON.parse(sessionStorage.getItem("mainForm")) || {};
+        const finalData = {
+          ...mainFormData,
+          ...formData,
+          timestamp: new Date(),
+        };
+
         const docRef = doc(db, "app_quotation", mainFormData.name.trim());
         await setDoc(docRef, finalData);
         console.log(
@@ -125,22 +122,12 @@ const AppForm = () => {
         );
 
         sessionStorage.removeItem("mainForm"); // Clear temp data
-
-        // setFormData({
-        //   referenceSites: "",
-        //   referenceDesigns: "",
-        //   marketing: false,
-        //   seo: false,
-        //   ideaDescription: "",
-        //   budget: "",
-        //   timing: "",
-        //   publish: "",
-        // });
-
         setSubmitStatus("success");
       } catch (error) {
         console.error("Error adding document:", error);
         setSubmitStatus("error");
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -175,14 +162,14 @@ const AppForm = () => {
                 />
               </svg>
               <h2 className="text-2xl font-normal text-white mb-2">
-                Application Submitted!
+                Submission Successful!
               </h2>
               <p className="text-white/80 font-light px-[5%] mb-4">
-                Thank you for your interest. We'll review your application and
-                get back to you soon.
+                Thank you for your submission. We'll review your requirements
+                and get back to you soon.
               </p>
               <button
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/get-quote")}
                 className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
               >
                 Close
@@ -478,9 +465,10 @@ const AppForm = () => {
               </button>
               <button
                 type="submit"
-                className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
+                className="px-10 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>

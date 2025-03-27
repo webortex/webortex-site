@@ -223,16 +223,16 @@ const Quotation = () => {
       // Redirect based on selection
       switch (lookingFor) {
         case "Website Development":
-          navigate("/get-quote/web-details");
+          navigate("/get-quote/web-quote-234ghj9s_dff16syr");
           break;
         case "App Development":
-          navigate("/get-quote/app-details");
+          navigate("/get-quote/app-quote-dfg45678_dffss189");
           break;
         case "MVP Development":
-          navigate("/get-quote/mvp-details");
+          navigate("/get-quote/mvp-quote-sy34rh32_dff84fgd");
           break;
         default:
-          navigate("/submission-success");
+          navigate("/get-quote");
       }
     } catch (error) {
       console.error("Error handling form submission: ", error);
