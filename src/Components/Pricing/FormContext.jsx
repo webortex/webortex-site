@@ -1,5 +1,5 @@
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../../Firebaseconfig";
+import { db } from "../../../FirebaseConfig";
 
 export const FormProvider = ({ children }) => {
   const [formStages, setFormStages] = useState({
