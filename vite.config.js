@@ -9,6 +9,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+
+  build: {
+    outDir: "dist", // Ensure the correct output directory
+    assetsDir: "src", // Optional: To organize assets
+  },
+
   server: {
     host: true, // This allows access from external URLs
 

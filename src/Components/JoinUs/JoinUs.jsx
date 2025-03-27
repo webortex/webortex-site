@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
-import { db, storage } from "../../../FirebaseConfig"; // Import from firebaseConfig.js
+import { db, storage } from "../../../firebaseconfig"; // Import from firebaseConfig.js
 import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React from "react";
