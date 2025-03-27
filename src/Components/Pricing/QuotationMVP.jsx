@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { db, storage } from "@/firebaseconfig";
+import { db, storage } from "../../../firebaseconfig";
 import { doc, setDoc } from "firebase/firestore";
 
 const MVPForm = () => {

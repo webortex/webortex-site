@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { db, storage } from "@/firebaseConfig";
+import { db, storage } from "../../../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 
 const AppForm = () => {
