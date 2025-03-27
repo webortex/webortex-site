@@ -7,7 +7,7 @@ import alertImg from "../../assets/alert.png";
 
 const Quotation = () => {
   const navigate = useNavigate();
-  const { updateUserInfo } = useForm();
+  const { updateQuotationData } = useForm();
   const [alertpop, setAlertpop] = useState(true);
   const [lookingFor, setLookingFor] = useState("");
   const [formData, setFormData] = useState({
@@ -20,10 +20,9 @@ const Quotation = () => {
     development: false,
     simpleTesting: false,
     responsiveDevelopment: false,
-    file: null,
-    projectType: "",
-    projectTypeOther: "",
     projectTimeline: "",
+    companyName: "",
+    isStartup: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -235,7 +234,7 @@ const Quotation = () => {
           navigate("/get-quote/mvp-details");
           break;
         default:
-          navigate("/get-quote/");
+          navigate("/submission-success");
       }
     } catch (error) {
       console.error("Error handling form submission: ", error);

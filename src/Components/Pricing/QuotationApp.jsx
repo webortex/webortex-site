@@ -6,6 +6,10 @@ import { doc, setDoc } from "firebase/firestore";
 
 const AppForm = () => {
   const navigate = useNavigate();
+  const { formStages, updateSpecificFormData, submitAllData, resetForms } =
+    useForm();
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   const [formData, setFormData] = useState({
     referenceSites: "",
     referenceDesigns: "",
