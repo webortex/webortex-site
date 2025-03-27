@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "./FormContext";
 
 const AppForm = () => {
   const navigate = useNavigate();
+  const { formStages, updateSpecificFormData, submitAllData, resetForms } =
+    useForm();
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   const [formData, setFormData] = useState({
     referenceSites: "",
     referenceDesigns: "",
@@ -16,6 +21,7 @@ const AppForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -56,7 +62,8 @@ const AppForm = () => {
     if (!formData.ideaDescription.trim()) {
       newErrors.ideaDescription = "Idea description is required";
     } else if (formData.ideaDescription.trim().length < 20) {
-      newErrors.ideaDescription = "Description must be at least 20 characters";
+      newErrors.ideaDescription =
+        "Description must be at least 20 characters";
     }
 
     // Validate Budget (must be a valid dollar amount)
@@ -84,31 +91,33 @@ const AppForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitStatus(null);
 
-    // Client-side form validation
-    if (validateForm()) {
-      // Here you would typically handle form submission
-      // For now, we'll just log the form data
-      console.log("Form submitted successfully", formData);
+    if (!validateForm()) return;
 
-      // Reset form or show success message
-      alert("Form submitted successfully!");
+    setIsSubmitting(true);
+
+    try {
+      // Update specific form data in context
+      updateSpecificFormData(formData);
+
+      // Submit all data to 'applications' collection
+      await submitAllData("App Development"); // or appropriate form type
+
+      setSubmitStatus("success");
+      resetForms();
+    } catch (error) {
+      console.error("Submission Error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    // // Reset form
-    // setFormData({
-    //   referenceSites: "",
-    //   referenceDesigns: "",
-    //   marketing: false,
-    //   seo: false,
-    //   ideaDescription: "",
-    //   budget: "",
-    //   timing: "",
-    //   publish: "",
-    // });
-    // setErrors({});
+  };
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate("/get-quote");
   };
 
   const handleTimingSelection = (time) => {
@@ -120,16 +129,84 @@ const AppForm = () => {
     }
   };
 
-  const handleBack = (e) => {
-    e.preventDefault();
-    navigate("/get-quote");
-  };
-
   return (
     <Container
       maxWidth="lg"
       className="h-auto my-9 sm:my-8 lg:my-14 flex flex-col justify-center align-center"
     >
+      {submitStatus === "success" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <h2 className="text-2xl font-normal text-white mb-2">
+                Submission Successful!
+              </h2>
+              <p className="text-white/80 font-light px-[5%] mb-4">
+                Thank you for your submission. We'll review your
+                requirements and get back to you soon.
+              </p>
+              <button
+                onClick={() => navigate("/get-quote")}
+                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Modal */}
+      {submitStatus === "error" && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div className="text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 text-red-500 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <h2 className="text-2xl font-normal text-white mb-2">
+                Submission Failed
+              </h2>
+              <p className="text-white/80 font-light px-[5%] mb-4">
+                There was an error submitting your application. Please try
+                again later.
+              </p>
+              <button
+                onClick={() => setSubmitStatus(null)}
+                className="px-4 py-2 bg-red-500/90 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl text-headColor font-bold tracking-tight">
         APP
       </h1>
@@ -155,7 +232,9 @@ const AppForm = () => {
               onChange={handleInputChange}
               placeholder="https://example.com"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.referenceSites ? "border-red-500" : "border-[#8692A6]/40"
+                errors.referenceSites
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
             />
             {errors.referenceSites && (
@@ -192,7 +271,9 @@ const AppForm = () => {
           {/* Marketing Checkbox (kept as before) */}
           <div>
             <label className="flex items-center justify-between cursor-pointer bg-[#1e1f23] border-[.9px] border-[#8692A6]/40 rounded-[11px] px-5 py-4 w-full hover:bg-[#2a2b30] transition-colors">
-              <span className="text-sm md:text-base text-white">Marketing</span>
+              <span className="text-sm md:text-base text-white">
+                Marketing
+              </span>
               <div className="relative flex items-center">
                 <input
                   type="checkbox"
@@ -313,22 +394,26 @@ const AppForm = () => {
               Support Your Available Timing*
             </label>
             <div className="grid grid-cols-2 grid-rows-2 gap-x-20 gap-y-4 ml-6 xs:size-[80%] sm:size-[70%] lg:size-[60%] xl:size-[60%]">
-              {["10:00 AM", "12:00 PM", "6:00 PM", "4:00 PM"].map((time) => (
-                <div
-                  key={time}
-                  onClick={() => handleTimingSelection(time)}
-                  className={`p-2 rounded-[20px] bg-[#1e1f23] border-[.9px] flex justify-center items-center cursor-pointer transition-colors ${
-                    formData.timing === time
-                      ? "border-gray-800 bg-[#606477]"
-                      : "border-gray-800 hover:border-[#606477]"
-                  }`}
-                >
-                  <span className="text-sm text-white">{time}</span>
-                </div>
-              ))}
+              {["10:00 AM", "12:00 PM", "6:00 PM", "4:00 PM"].map(
+                (time) => (
+                  <div
+                    key={time}
+                    onClick={() => handleTimingSelection(time)}
+                    className={`p-2 rounded-[20px] bg-[#1e1f23] border-[.9px] flex justify-center items-center cursor-pointer transition-colors ${
+                      formData.timing === time
+                        ? "border-gray-800 bg-[#606477]"
+                        : "border-gray-800 hover:border-[#606477]"
+                    }`}
+                  >
+                    <span className="text-sm text-white">{time}</span>
+                  </div>
+                )
+              )}
             </div>
             {errors.timing && (
-              <p className="text-red-500 text-sm mt-2 ml-6">{errors.timing}</p>
+              <p className="text-red-500 text-sm mt-2 ml-6">
+                {errors.timing}
+              </p>
             )}
           </div>
 
@@ -364,8 +449,9 @@ const AppForm = () => {
             <button
               type="submit"
               className="px-20 py-3 sm:max-h-24 w-full sm:w-[50%] bg-textColor text-backgroundColor rounded-lg hover:text-textColor hover:bg-brandsBgColor focus:outline-none transition-all duration-300 ease-in-out"
+              disabled={isSubmitting}
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>

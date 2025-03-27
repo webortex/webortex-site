@@ -2,16 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "./FormContext";
-import { db, storage } from "../../../Firebaseconfig";
-import { collection, addDoc } from "firebase/firestore";
-
-
-
 import alertImg from "../../assets/alert.png";
 
 const Quotation = () => {
   const navigate = useNavigate();
-  const { updateUserInfo } = useForm();
+  const { updateQuotationData } = useForm();
   const [alertpop, setAlertpop] = useState(true);
   const [lookingFor, setLookingFor] = useState("");
   const [formData, setFormData] = useState({
@@ -24,10 +19,9 @@ const Quotation = () => {
     development: false,
     simpleTesting: false,
     responsiveDevelopment: false,
-    file: null,
-    projectType: "",
-    projectTypeOther: "",
     projectTimeline: "",
+    companyName: "",
+    isStartup: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -183,48 +177,26 @@ const Quotation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
-  
-    const isValid = validateForm();
-  
-    if (!isValid) {
-      // Scroll to the first error if any
-      const firstErrorKey = Object.keys(errors)[0];
-      const errorElement = document.getElementsByName(firstErrorKey)[0];
-      if (errorElement) {
-        errorElement.focus();
-        errorElement.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      return;
-    }
-  
+
     try {
-      // Determine the collection name based on the selected option
-      let collectionName = "";
-      switch (lookingFor) {
-        case "Website Development":
-          collectionName = "website_development";
-          break;
-        case "App Development":
-          collectionName = "app_development";
-          break;
-        case "MVP Development":
-          collectionName = "mvp_development";
-          break;
-        default:
-          collectionName = "general_queries";
-      }
-  
-      // Add form data to Firestore
-      const docRef = await addDoc(collection(db, collectionName), {
+      const isValid = validateForm();
+      if (!isValid) return;
+
+      setIsSubmitting(true);
+
+      // Save quotation data to context
+      const quotationData = {
         ...formData,
         lookingFor,
-        createdAt: new Date().toISOString(),
-      });
-  
-      console.log("Document written with ID: ", docRef.id);
-  
-      // Redirect based on lookingFor selection after submission
+        submittedAt: new Date().toISOString(),
+      };
+
+      updateQuotationData(quotationData);
+
+      // Submit all data to 'applications' collection
+      await submitAllData(lookingFor);
+
+      // Redirect based on selection
       switch (lookingFor) {
         case "Website Development":
           navigate("/get-quote/web-details");
@@ -236,14 +208,15 @@ const Quotation = () => {
           navigate("/get-quote/mvp-details");
           break;
         default:
-          navigate("/get-quote/");
+          navigate("/submission-success");
       }
     } catch (error) {
-      console.error("Error adding document: ", error);
-      alert("Failed to submit the form. Please try again.");
+      console.error("Submission Error:", error);
+      alert(`Submission failed: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
-  
   // Custom checkbox component for better control and accessibility
   const CustomCheckbox = ({ name, label, checked, onChange }) => {
     return (
@@ -367,7 +340,9 @@ const Quotation = () => {
               onChange={handleInputChange}
               placeholder=""
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.currentAddress ? "border-red-500" : "border-[#8692A6]/40"
+                errors.currentAddress
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
             />
             {errors.currentAddress && (
@@ -387,11 +362,15 @@ const Quotation = () => {
               onChange={handleInputChange}
               placeholder=""
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.companyName ? "border-red-500" : "border-[#8692A6]/40"
+                errors.companyName
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
             />
             {errors.companyName && (
-              <p className="text-red-500 text-sm mt-1">{errors.companyName}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.companyName}
+              </p>
             )}
           </div>
           <div>
@@ -411,7 +390,9 @@ const Quotation = () => {
               <option value="no">No</option>
             </select>
             {errors.isStartup && (
-              <p className="text-red-500 text-sm mt-1">{errors.isStartup}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.isStartup}
+              </p>
             )}
           </div>
 
@@ -426,11 +407,15 @@ const Quotation = () => {
               onChange={handleInputChange}
               placeholder="Enter project name"
               className={`w-full px-5 py-4 rounded-[11px] font-poppins text-sm md:text-base bg-[#1e1f23] text-white placeholder-[#8692A6] focus:outline-none focus:ring-0 focus:border-[#8692A6]/80 border-[.9px] ${
-                errors.projectName ? "border-red-500" : "border-[#8692A6]/40"
+                errors.projectName
+                  ? "border-red-500"
+                  : "border-[#8692A6]/40"
               }`}
             />
             {errors.projectName && (
-              <p className="text-red-500 text-sm mt-1">{errors.projectName}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.projectName}
+              </p>
             )}
           </div>
 
@@ -465,7 +450,9 @@ const Quotation = () => {
             />
 
             {errors.services && (
-              <p className="text-red-500 text-sm mt-1">{errors.services}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.services}
+              </p>
             )}
           </div>
 
@@ -486,13 +473,18 @@ const Quotation = () => {
             >
               <option value="">Select Project Type</option>
               {lookingForOptions.map((option) => (
-                <option key={option.value} value={option.value}>
+                <option
+                  key={option.value}
+                  value={option.value}
+                >
                   {option.label}
                 </option>
               ))}
             </select>
             {isSubmitted && errors.lookingFor && (
-              <p className="text-red-500 text-sm mt-1">{errors.lookingFor}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.lookingFor}
+              </p>
             )}
             {lookingFor && (
               <p className="text-xs text-gray-400 mt-1">
@@ -581,14 +573,20 @@ const Quotation = () => {
         {alertpop === true && (
           <div className="sm:w-[400px] flex gap-3 rounded-lg px-4 py-4 bg-[#262626] fixed right-10 top-60">
             <div className="h-[50px] w-[100px]">
-              <img src={alertImg} alt="Alert" className="pt-4" />
+              <img
+                src={alertImg}
+                alt="Alert"
+                className="pt-4"
+              />
             </div>
             <div>
-              <p className="text-lg text-white font-bold">Quotation Alert</p>
+              <p className="text-lg text-white font-bold">
+                Quotation Alert
+              </p>
               <p className="text-gray-500 text-xs">
-                A free quotation is available only once. Our team will follow up
-                with the generated quotation. For additional quotes, other
-                options may apply
+                A free quotation is available only once. Our team will
+                follow up with the generated quotation. For additional
+                quotes, other options may apply
               </p>
               <p className="text-white text-sm pt-2 cursor-pointer">
                 Learn More
