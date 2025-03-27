@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "./FormContext";
 
 import alertImg from "../../assets/alert.png";
 
 const Quotation = () => {
   const navigate = useNavigate();
-  const { updateQuotationData } = useForm();
   const [alertpop, setAlertpop] = useState(true);
   const [lookingFor, setLookingFor] = useState("");
   const [formData, setFormData] = useState({

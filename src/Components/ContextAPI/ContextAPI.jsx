@@ -9,39 +9,39 @@ import Mvp from "../Services/compo/Mvp";
 import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
-import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
-import FramezIcon from "../../assets/workedLogos/64FramezLogo.png";
-import garudaIcon from "../../assets/workedLogos/garuda.png";
+// import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
+// import FramezIcon from "../../assets/workedLogos/64FramezLogo.png";
+// import garudaIcon from "../../assets/workedLogos/garuda.png";
 // import mygbitrIcon from "../../assets/workedLogos/mygbitr.png";
-import sipIcon from "../../assets/workedLogos/SiP.png";
+// import sipIcon from "../../assets/workedLogos/SiP.png";
 
-import webImg from "../../assets/ServicePage/web.gif";
-import appImg from "../../assets/ServicePage/appdev.gif";
-import uiuxImg from "../../assets/ServicePage/ui.mp4";
-import mvpImg from "../../assets/ServicePage/mvp.mp4";
-import seoImg from "../../assets/ServicePage/seo.gif";
-import socialImg from "../../assets/ServicePage/socialmedia.gif";
-import serviceBannerImg from "../../assets/ServicePage/we.png";
-import mockupImg from "../../assets/ServicePage/mockup.png";
-import webdevImg1 from "../../assets/ServicePage/webdev1.mp4";
-import webdevImg2 from "../../assets/ServicePage/webdev2.jpeg";
-import webdevImg4 from "../../assets/ServicePage/webdev3.gif";
-import webdevImg3 from "../../assets/ServicePage/webdev4.jpeg";
-import proSupImg from "../../assets/ServicePage/productSupport.jpeg";
-import appdevImg1 from "../../assets/ServicePage/app1.svg";
-import appdevImg2 from "../../assets/ServicePage/app2.gif";
-import appdevImg3 from "../../assets/ServicePage/app3.gif";
-import uiuxImg1 from "../../assets/ServicePage/uiux1.png";
-import uiuxImg2 from "../../assets/ServicePage/uiux2.png";
-import uiuxImg3 from "../../assets/ServicePage/uiux3.png";
-import mvpImg1 from "../../assets/ServicePage/mvp1.gif";
-import mvpImg3 from "../../assets/ServicePage/mvp3.gif";
-import seoImg1 from "../../assets/ServicePage/seo1.gif";
-import seoImg2 from "../../assets/ServicePage/seo2.svg";
-import seoImg3 from "../../assets/ServicePage/seo3.svg";
-import socialImg1 from "../../assets/ServicePage/socialmedia1.svg";
-import socialImg2 from "../../assets/ServicePage/socialmedia2.png";
-import socialImg3 from "../../assets/ServicePage/socialmedia3.png";
+// import webImg from "../../assets/ServicePage/web.gif";
+// import appImg from "../../assets/ServicePage/appdev.gif";
+// import uiuxImg from "../../assets/ServicePage/ui.mp4";
+// import mvpImg from "../../assets/ServicePage/mvp.mp4";
+// import seoImg from "../../assets/ServicePage/seo.gif";
+// import socialImg from "../../assets/ServicePage/socialmedia.gif";
+// import serviceBannerImg from "../../assets/ServicePage/we.png";
+// import mockupImg from "../../assets/ServicePage/mockup.png";
+// import webdevImg1 from "../../assets/ServicePage/webdev1.mp4";
+// import webdevImg2 from "../../assets/ServicePage/webdev2.jpeg";
+// import webdevImg4 from "../../assets/ServicePage/webdev3.gif";
+// import webdevImg3 from "../../assets/ServicePage/webdev4.jpeg";
+// import proSupImg from "../../assets/ServicePage/productSupport.jpeg";
+// import appdevImg1 from "../../assets/ServicePage/app1.svg";
+// import appdevImg2 from "../../assets/ServicePage/app2.gif";
+// import appdevImg3 from "../../assets/ServicePage/app3.gif";
+// import uiuxImg1 from "../../assets/ServicePage/uiux1.png";
+// import uiuxImg2 from "../../assets/ServicePage/uiux2.png";
+// import uiuxImg3 from "../../assets/ServicePage/uiux3.png";
+// import mvpImg1 from "../../assets/ServicePage/mvp1.gif";
+// import mvpImg3 from "../../assets/ServicePage/mvp3.gif";
+// import seoImg1 from "../../assets/ServicePage/seo1.gif";
+// import seoImg2 from "../../assets/ServicePage/seo2.svg";
+// import seoImg3 from "../../assets/ServicePage/seo3.svg";
+// import socialImg1 from "../../assets/ServicePage/socialmedia1.svg";
+// import socialImg2 from "../../assets/ServicePage/socialmedia2.png";
+// import socialImg3 from "../../assets/ServicePage/socialmedia3.png";
 
 const Context = React.createContext();
 
@@ -157,7 +157,7 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Webdev />,
-        frameImg: webImg,
+        frameImg: "https://cdn.webortex.com/ServicePage/web.gif",
         frameVideo: "",
         frameTitle: "Web Development",
         frameText:
@@ -167,31 +167,31 @@ export class Provider extends Component {
             title: "Design",
             description:
               "Webortex crafts visually stunning, user-centric designs blending aesthetics with functionality. Our intuitive navigation and responsive layouts ensure seamless, engaging experiences across all devices, driving user satisfaction and conversions.",
-            video: webdevImg1,
+            video: "https://cdn.webortex.com/ServicePage/webdev1.mp4",
           },
           {
             title: "Develop",
             description:
               "We build high-performance, secure websites using modern frameworks and scalable architectures. From sleek landing pages to complex web apps, our precision coding delivers future-ready solutions for business growth and innovation.",
-            image: webdevImg2,
+            image: "https://cdn.webortex.com/ServicePage/webdev2.jpeg",
           },
           {
             title: "Responsive",
             description:
               "Webortex ensures seamless, mobile-friendly experiences with fluid grids and flexible UI elements. Our responsive designs guarantee optimal performance on every screen, enhancing accessibility and user engagement across all devices.",
-            image: webdevImg4,
+            image: "https://cdn.webortex.com/ServicePage/webdev3.gif",
           },
           {
             title: "Testing",
             description:
               "We ensure flawless functionality through rigorous performance, security, and usability testing. Our data-driven QA process eliminates vulnerabilities, enhances speed, and refines every interaction for a seamless user experience.",
-            image: webdevImg3,
+            image: "https://cdn.webortex.com/ServicePage/webdev4.jpeg",
           },
           {
             title: "Production & Support",
             description:
               "Webortex provides continuous optimization, security updates, and real-time support post-launch. Our proactive maintenance ensures long-term performance, scalability, and sustained business growth for your digital platform.",
-            image: proSupImg,
+            image: "https://cdn.webortex.com/ServicePage/productSupport.jpeg",
           },
         ],
       },
@@ -203,7 +203,7 @@ export class Provider extends Component {
           "We increase revenue and ensure sustainable long-term growth",
         component: "",
         componentGif: "https://cdn.webortex.com/ServiceCards/app.gif",
-        frameImg: appImg,
+        frameImg: "https://cdn.webortex.com/ServicePage/appdev.gif",
         frameVideo: "",
         frameTitle: "App Development",
         frameText:
@@ -213,25 +213,25 @@ export class Provider extends Component {
             title: "Concept & UI/UX Innovation",
             description:
               "Webortex combines market research, user psychology, and cutting-edge UI/UX principles to create visionary app concepts. From wireframing to prototyping, we deliver visually stunning, intuitive designs with seamless navigation and high user engagement.",
-            image: appdevImg1,
+            image: "https://cdn.webortex.com/ServicePage/app1.svg",
           },
           {
             title: "Development & Feature Integration",
             description:
               "Webortex builds high-performance, scalable apps using React Native, Flutter, and Swift. We integrate real-time functionalities, AI-driven automation, and third-party APIs to enhance efficiency and deliver exceptional user experiences.",
-            image: appdevImg2,
+            image: "https://cdn.webortex.com/ServicePage/app2.gif",
           },
           {
             title: "Launch & Scalability",
             description:
               "Webortex ensures smooth app deployment with rigorous testing and continuous optimization. We maximize speed, security, and engagement, offering strategic updates and data-driven growth plans to scale your mobile presence effortlessly.",
-            image: appdevImg3,
+            image: "https://cdn.webortex.com/ServicePage/app3.gif",
           },
           {
             title: "Production & Support",
             description:
               "Webortex provides post-launch support, including continuous optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your app platform.",
-            image: proSupImg,
+            image: "https://cdn.webortex.com/ServicePage/productSupport.jpeg",
           },
         ],
       },
@@ -242,7 +242,7 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <UiUx />,
-        frameVideo: uiuxImg,
+        frameVideo: "https://cdn.webortex.com/ServicePage/ui.mp4",
         frameTitle: "UI/UX",
         frameText:
           "We crafts immersive, user-centric designs that blend creativity and functionality, ensuring seamless digital experiences across all devices.",
@@ -251,25 +251,25 @@ export class Provider extends Component {
             title: "Creative Design & Visual Storytelling",
             description:
               "Webortex creates captivating app designs with dynamic visuals, interactive elements, and pixel-perfect layouts. Our designs tell a story, ensuring every user interaction is meaningful, immersive, and drives engagement.",
-            image: uiuxImg1,
+            image: "https://cdn.webortex.com/ServicePage/uiux1.png",
           },
           {
             title: "Building Engaging Digital Interfaces",
             description:
               "Webortex builds visually striking, high-performance app interfaces that balance aesthetics and usability. Our structured approach ensures every component works harmoniously for a seamless, engaging user experience.",
-            image: uiuxImg2,
+            image: "https://cdn.webortex.com/ServicePage/uiux2.png",
           },
           {
             title: "Seamless User Interactions",
             description:
               "Webortex designs intuitive app experiences with well-structured user flows. We ensure every tap, swipe, and action feels natural, creating smooth, effortless interactions that keep users engaged and satisfied.",
-            image: uiuxImg3,
+            image: "https://cdn.webortex.com/ServicePage/uiux3.png",
           },
           {
             title: "Production & Support",
             description:
               "Webortex provides continuous optimization, security updates, and real-time support post-launch. Our proactive maintenance ensures long-term performance, scalability, and sustained business growth for your digital platform.",
-            image: proSupImg,
+            image: "https://cdn.webortex.com/ServicePage/productSupport.jpeg",
           },
         ],
       },
@@ -280,7 +280,7 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Mvp />,
-        frameVideo: mvpImg,
+        frameVideo: "https://cdn.webortex.com/ServicePage/mvp.mp4",
         frameTitle: "MVP",
         frameText:
           "We helps businesses rapidly build, test, and scale MVPs with core features, ensuring market validation and seamless scalability.",
@@ -289,25 +289,25 @@ export class Provider extends Component {
             title: "Idea Validation & Prototyping",
             description:
               "Webortex validates ideas through market research, user analysis, and rapid prototyping. Our data-driven approach ensures your MVP aligns with real-world needs, minimizing risks and setting a solid foundation for development.",
-            image: mvpImg1,
+            image: "https://cdn.webortex.com/ServicePage/mvp1.gif",
           },
           {
             title: "Agile Development & Features",
             description:
               "Webortex builds MVPs with essential features and scalable architecture, ensuring functionality and performance. Using agile methodologies, we iterate based on user feedback, delivering a product that meets market demands efficiently.",
-            image: serviceBannerImg,
+            image: "https://cdn.webortex.com/ServicePage/we.png",
           },
           {
             title: "Launch & Growth Optimization",
             description:
               "Webortex ensures a seamless MVP launch with a go-to-market strategy and continuous optimization. We monitor user engagement and implement scaling solutions to transform MVPs into market-ready, full-fledged products.",
-            image: mvpImg3,
+            image: "https://cdn.webortex.com/ServicePage/mvp3.gif",
           },
           {
             title: "Production & Support",
             description:
               "Webortex offers post-launch support, including optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your MVP platform.",
-            image: proSupImg,
+            image: "https://cdn.webortex.com/ServicePage/productSupport.jpeg",
           },
         ],
       },
@@ -318,7 +318,7 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Seo />,
-        frameImg: seoImg,
+        frameImg: "https://cdn.webortex.com/ServicePage/seo.gif",
         frameVideo: "",
         frameTitle: "Search Engine Optimization",
         frameText:
@@ -328,25 +328,25 @@ export class Provider extends Component {
             title: "Technical SEO & Site Performance",
             description:
               "Webortex optimizes site speed, mobile responsiveness, and structured data for better search rankings. Our technical SEO ensures seamless indexing, superior user experience, and a strong foundation for search success.",
-            image: seoImg1,
+            image: "https://cdn.webortex.com/ServicePage/seo1.gif",
           },
           {
             title: "Content & Keyword Strategy",
             description:
               "Webortex crafts high-value, SEO-optimized content backed by in-depth keyword research. Our strategic approach attracts and engages your target audience, driving organic traffic and boosting your site’s authority.",
-            image: seoImg2,
+            image: "https://cdn.webortex.com/ServicePage/seo2.svg",
           },
           {
             title: "Link Building & Authority",
             description:
               "Webortex builds domain authority through ethical link-building and continuous SEO optimization. With data-driven insights, we ensure sustainable growth, higher rankings, and long-term digital dominance for your business.",
-            image: seoImg3,
+            image: "https://cdn.webortex.com/ServicePage/seo3.svg",
           },
           {
             title: "Production & Support",
             description:
               "Webortex provides post-launch SEO support, including continuous optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your platform.",
-            image: proSupImg,
+            image: "https://cdn.webortex.com/ServicePage/productSupport.jpeg",
           },
         ],
       },
@@ -357,36 +357,36 @@ export class Provider extends Component {
         description:
           "We increase revenue and ensure sustainable long-term growth",
         component: <Smedia />,
-        frameImg: socialImg,
+        frameImg: "https://cdn.webortex.com/ServicePage/socialmedia.gif",
         frameVideo: "",
         frameTitle: "Social Media Marketing",
         frameText:
           "We fuel sustainable growth by combining innovative web solutions with compelling social storytelling.",
-        mockupImage: mockupImg,
+        mockupImage: "https://cdn.webortex.com/ServicePage/mockup.png",
         banners: [
           {
             title: "Building a Powerful Digital Presence",
             description:
               "Webortex transforms brands with strategic SEO, targeted PPC, and high-value content marketing. We optimize digital touchpoints to maximize reach, engagement, and conversions, positioning your brand as an industry leader with data-driven insights.",
-            image: socialImg1,
+            image: "https://cdn.webortex.com/ServicePage/socialmedia1.svg",
           },
           {
             title: "Creating Impactful Social Campaigns",
             description:
               "Webortex designs dynamic social campaigns that spark engagement and elevate brand awareness. Using audience analytics and platform trends, we create compelling content that drives action, ensuring maximum ROI and lasting digital impact.",
-            image: socialImg2,
+            image: "https://cdn.webortex.com/ServicePage/socialmedia2.png",
           },
           {
             title: "Enhancing Brand Loyalty Online",
             description:
               "Webortex builds trust through authentic storytelling, personalized content, and interactive engagement. By nurturing communities and fostering real-time interactions, we turn audiences into loyal, long-term brand advocates.",
-            image: socialImg3,
+            image: "https://cdn.webortex.com/ServicePage/socialmedia3.png",
           },
           {
             title: "Production & Support",
             description:
               "Webortex provides post-launch SEO support, including continuous optimization, security updates, and real-time maintenance. Our proactive approach ensures long-term performance, scalability, and sustained growth for your platform.",
-            image: proSupImg,
+            image: "https://cdn.webortex.com/ServicePage/productSupport.jpeg",
           },
         ],
       },

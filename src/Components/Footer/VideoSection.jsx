@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
-import bgVideo from "../../assets/bgcta.mp4";
+
 import arrow from "../../assets/arrow.png";
 
 const VideoSection = () => {
@@ -11,7 +11,7 @@ const VideoSection = () => {
           <video
             className="absolute top-0 left-0 w-full h-full"
             style={{ objectFit: "cover", mixBlendMode: "hard-light" }}
-            src={bgVideo}
+            src="https://cdn.webortex.com/bgCTA.mp4"
             autoPlay
             loop
             muted

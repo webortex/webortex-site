@@ -1,57 +1,53 @@
-import { motion,useAnimation } from "framer-motion";
-import { useState,useEffect } from "react";
-import logo from "/logo.png";
-import youtubeIcon from "../../../assets/ServiceCards/youtube.png";
-import facebookIcon from "../../../assets/ServiceCards/facebook.png";
-import instagramIcon from "../../../assets/ServiceCards/instagram.png";
-import linkedinIcon from "../../../assets/ServiceCards/linkedin.png";
-import twitterIcon from "../../../assets/ServiceCards/x.png";
+import { motion, useAnimation } from "framer-motion";
+import { useState, useEffect } from "react";
+// import logo from "/logo.png";
+// import youtubeIcon from "../../../assets/ServiceCards/youtube.png";
+// import facebookIcon from "../../../assets/ServiceCards/facebook.png";
+// import instagramIcon from "../../../assets/ServiceCards/instagram.png";
+// import linkedinIcon from "../../../assets/ServiceCards/linkedin.png";
+// import twitterIcon from "../../../assets/ServiceCards/x.png";
 import { useInView } from "react-intersection-observer";
 
-
-
 const Smedia = () => {
-
   const [width, setWidth] = useState(window.innerWidth);
 
   const socialMediaData = [
     {
       name: "Youtube",
-      icon: youtubeIcon,
-      position: { x: width<=768? -80:-100, y: -80 },
+      icon: "https://cdn.webortex.com/ServiceCards/youtube.png",
+      position: { x: width <= 768 ? -80 : -100, y: -80 },
       rotate: 30,
     },
     {
       name: "Facebook",
-      icon: facebookIcon,
-      position: { x: width<=768? 80:100, y: -100 },
+      icon: "https://cdn.webortex.com/ServiceCards/facebook.png",
+      position: { x: width <= 768 ? 80 : 100, y: -100 },
       rotate: -40,
     },
-  
+
     {
       name: "Linkedin",
-      icon: linkedinIcon,
-      position: { x: width<=768? -80:-100, y: 80 },
+      icon: "https://cdn.webortex.com/ServiceCards/linkedin.png",
+      position: { x: width <= 768 ? -80 : -100, y: 80 },
       rotate: -30,
     },
     {
       name: "Twitter",
-      icon: twitterIcon,
-      position: { x: width<=768? 80:120, y: 50 },
+      icon: "https://cdn.webortex.com/ServiceCards/x.png",
+      position: { x: width <= 768 ? 80 : 120, y: 50 },
       rotate: 20,
     },
     {
       name: "Instagram",
-      icon: instagramIcon,
-      position: { x: width<=768? -100:-120, y: 0 },
+      icon: "https://cdn.webortex.com/ServiceCards/instagram.png",
+      position: { x: width <= 768 ? -100 : -120, y: 0 },
       rotate: 0,
     },
   ];
 
   const [hovered, setHovered] = useState(false);
 
-  
-  console.log(width)
+  console.log(width);
 
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.5 });
@@ -85,7 +81,7 @@ const Smedia = () => {
         <div className="w-32 h-32 rounded-full stroke-1 stroke-[#191919] bg-[#42424247] flex items-center justify-center">
           <div className="w-24 h-24 rounded-full flex items-center justify-center">
             <img
-              src={logo}
+              src="https://cdn.webortex.com/Webortexlogo.png"
               alt="W Logo"
               className="w-16 opacity-80 filter grayscale"
             />
@@ -107,8 +103,8 @@ const Smedia = () => {
             animate={
               hovered
                 ? { opacity: 1, x: position.x, y: position.y, rotate }
-                :inView && width <= 768 ?
-                { opacity: 1, x: position.x, y: position.y, rotate }
+                : inView && width <= 768
+                ? { opacity: 1, x: position.x, y: position.y, rotate }
                 : { opacity: 0, x: 0, y: 0, rotate: 0 }
             }
             transition={{
