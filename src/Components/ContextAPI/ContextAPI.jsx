@@ -155,7 +155,7 @@ export class Provider extends Component {
         title: "Web Development",
         slug: "web-development",
         description:
-          "We increase revenue and ensure sustainable long-term growth",
+          "Crafting responsive websites that ensure seamless user experiences.",
         component: <Webdev />,
         frameImg: "https://cdn.webortex.com/ServicePage/web.gif",
         frameVideo: "",
@@ -200,7 +200,7 @@ export class Provider extends Component {
         title: "App Development",
         slug: "app-development",
         description:
-          "We increase revenue and ensure sustainable long-term growth",
+          "Building scalable mobile apps that combine creativity and functionality.",
         component: "",
         componentGif: "https://cdn.webortex.com/ServiceCards/app.gif",
         frameImg: "https://cdn.webortex.com/ServicePage/appdev.gif",
@@ -240,7 +240,7 @@ export class Provider extends Component {
         title: "UI/UX Design",
         slug: "uiux-design",
         description:
-          "We increase revenue and ensure sustainable long-term growth",
+          "Designing intuitive interfaces for captivating & memorable user journeys.",
         component: <UiUx />,
         frameVideo: "https://cdn.webortex.com/ServicePage/ui.mp4",
         frameTitle: "UI/UX",
@@ -278,7 +278,7 @@ export class Provider extends Component {
         title: "MVP Product",
         slug: "minimum-viable-product",
         description:
-          "We increase revenue and ensure sustainable long-term growth",
+          "Delivering feature-rich MVPs for faster idea validation and market entry.",
         component: <Mvp />,
         frameVideo: "https://cdn.webortex.com/ServicePage/mvp.mp4",
         frameTitle: "MVP",
@@ -316,7 +316,7 @@ export class Provider extends Component {
         title: "SEO Services",
         slug: "search-engine-optimization",
         description:
-          "We increase revenue and ensure sustainable long-term growth",
+          "Boosting online visibility with data-driven, cutting-edge SEO strategies.",
         component: <Seo />,
         frameImg: "https://cdn.webortex.com/ServicePage/seo.gif",
         frameVideo: "",
@@ -355,7 +355,7 @@ export class Provider extends Component {
         title: "Marketing",
         slug: "social-media-marketing",
         description:
-          "Transforming brands into digital sensations through strategic and engaging social storytelling.",
+          "Creating impactful campaigns that enhance brand engagement.",
         component: <Smedia />,
         frameImg: "https://cdn.webortex.com/ServicePage/socialmedia.gif",
         frameVideo: "",
