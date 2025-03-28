@@ -16,6 +16,8 @@ import JoinUs from "./Components/JoinUs/JoinUs";
 import MVPForm from "./Components/Pricing/QuotationMVP";
 import AppForm from "./Components/Pricing/QuotationApp";
 import WebForm from "./Components/Pricing/QuotationWeb";
+// import { FormProvider } from "./Components/Pricing/FormContext";
+import LaunchButton from "./Components/LaunchButton/LaunchButton";
 
 const Layout = ({ children }) => {
   return (
@@ -38,15 +40,25 @@ const Nav = ({ children }) => {
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isLaunched, setIsLaunched] = useState(false);
 
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 3000);
+  const handleLaunch = () => {
+    setIsLaunched(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  };
 
   return isLoading ? (
-    <Loader />
+    !isLaunched ? (
+      <LaunchButton onLaunch={handleLaunch} />
+    ) : (
+      <Loader />
+    )
   ) : (
     <Provider>
+      {" "}
+      {/* Wrap with FormProvider */}
       <Router>
         <ScrollToTop />
         <Suspense fallback={<Loader />}>
@@ -99,17 +111,8 @@ function App() {
               }
             />
             <Route exact path="/services/:slug" element={<ServicePage />} />
-            <Route
-              exact
-              path="/join-us"
-              element={
-                <Nav>
-                  <JoinUs />
-                </Nav>
-              }
-            />
-            <Route exact path="/services/:slug" element={<ServicePage />} />
 
+            {/* Updated Quotation Flow Routes */}
             <Route exact path="/get-quote" element={<Quotation />} />
 
             <Route

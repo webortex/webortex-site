@@ -167,17 +167,12 @@ const Contact = () => {
           </svg>
         )}
       </div>
-      <span className="ml-2 text-textColor text-sm font-light">
-        {label}
-      </span>
+      <span className="ml-2 text-textColor text-sm font-light">{label}</span>
     </label>
   );
 
   return (
-    <Container
-      maxWidth="lg"
-      className="h-full my-6 md:my-10"
-    >
+    <Container maxWidth="lg" className="h-full my-6 md:my-10">
       {submitStatus === "success" && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
@@ -235,8 +230,8 @@ const Contact = () => {
                 Submission Failed! ❌
               </h2>
               <p className="text-white/80 font-light px-[5%] mb-4">
-                There was an error submitting your application. Please try
-                again later or contact us for assistance.
+                There was an error submitting your application. Please try again
+                later or contact us for assistance.
               </p>
               <button
                 onClick={() => setSubmitStatus(null)}
@@ -249,10 +244,7 @@ const Contact = () => {
         </div>
       )}
 
-      <section
-        id="contact"
-        className="mb-4"
-      >
+      <section id="contact" className="mb-4">
         <h1 className="text-3xl md:text-4xl lg:text-6xl text-center text-headColor font-bold tracking-tighter mb-6">
           Contact Us
         </h1>
@@ -272,11 +264,7 @@ const Contact = () => {
 
       <hr className="border-t-2 border-[#2626267c] mb-8 clear-both" />
 
-      <form
-        className="w-full mb-16 md:mb-0"
-        onSubmit={handleSubmit}
-        noValidate
-      >
+      <form className="w-full mb-16 md:mb-0" onSubmit={handleSubmit} noValidate>
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
           <div className="md:col-span-2 xl:col-span-3 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -295,9 +283,7 @@ const Contact = () => {
                     value={formData.fullName}
                     onChange={handleInputChange}
                     className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
-                      errors.fullName
-                        ? "border-red-500"
-                        : "border-[#363636]"
+                      errors.fullName ? "border-red-500" : "border-[#363636]"
                     } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
                     placeholder="Type here"
                   />
@@ -329,9 +315,7 @@ const Contact = () => {
                     placeholder="Type here"
                   />
                   {errors.phone && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.phone}
-                    </p>
+                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
                   )}
                 </div>
               </div>
@@ -368,9 +352,7 @@ const Contact = () => {
                 />
               </div>
               {errors.interests && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.interests}
-                </p>
+                <p className="text-red-500 text-sm mt-1">{errors.interests}</p>
               )}
             </div>
 
@@ -395,9 +377,7 @@ const Contact = () => {
                     placeholder="Type here"
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.email}
-                    </p>
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                   )}
                 </div>
               </div>
@@ -417,9 +397,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
-                      errors.message
-                        ? "border-red-500"
-                        : "border-[#363636]"
+                      errors.message ? "border-red-500" : "border-[#363636]"
                     } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
                     placeholder="Type here"
                   />
@@ -499,10 +477,10 @@ const Contact = () => {
                     />
                   </svg>
                   <a
-                    href="mailto:contact@webortex.com"
+                    href="mailto:webortex@gmail.com"
                     className="hover:underline text-textColor pl-3 font-outlet"
                   >
-                    contact@webortex.com
+                    webortex@gmail.com
                   </a>
                 </div>
               </div>

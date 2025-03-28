@@ -137,7 +137,7 @@ const WebForm = () => {
   return (
     <div className="min-h-screen py-12 px-4 relative">
       {submitStatus === "success" && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center  bg-opacity-50 z-50">
           <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
             <div className="text-center">
               <svg
@@ -227,7 +227,7 @@ const WebForm = () => {
             Let's build a high-performance, scalable website tailored to your
             needs. Fill out the form to get started!
           </p>
-          <div className="flex items-center justify-center bg-black text-white mb-4 mt-8">
+          <div className="flex items-center justify-center text-white mb-4 mt-8">
             <form
               className="rounded-2xl shadow-lg w-full max-w-md space-y-4"
               onSubmit={handleSubmit}
