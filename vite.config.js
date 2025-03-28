@@ -10,10 +10,10 @@ export default defineConfig({
     },
   },
 
-  build: {
-    outDir: "dist", // Ensure the correct output directory
-    assetsDir: "src", // Optional: To organize assets
-  },
+  // build: {
+  //   outDir: "dist", // Ensure the correct output directory
+  //   assetsDir: "src", // Optional: To organize assets
+  // },
 
   server: {
     host: true, // This allows access from external URLs
