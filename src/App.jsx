@@ -49,13 +49,7 @@ function App() {
     }, 3000);
   };
 
-  return isLoading ? (
-    !isLaunched ? (
-      <LaunchButton onLaunch={handleLaunch} />
-    ) : (
-      <Loader />
-    )
-  ) : (
+  return (
     <Provider>
       {" "}
       {/* Wrap with FormProvider */}

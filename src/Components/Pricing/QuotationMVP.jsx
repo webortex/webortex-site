@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { db, storage } from "../../../firebaseconfig";
+import { db, storage } from "../../../Firebaseconfig";
 import { doc, setDoc } from "firebase/firestore";
 
 const MVPForm = () => {
@@ -22,7 +22,7 @@ const MVPForm = () => {
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
   };
 
   const handleInputChange = (e) => {

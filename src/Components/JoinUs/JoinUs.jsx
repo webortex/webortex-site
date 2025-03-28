@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
-import { db, storage } from "../../../firebaseconfig"; // Import from firebaseConfig.js
+import { db, storage } from "../../../Firebaseconfig"; // Import from firebaseConfig.js
 import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React from "react";
@@ -195,7 +195,7 @@ function JoinUs() {
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/919502414128?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
   };
 
   const handleCancel = () => {

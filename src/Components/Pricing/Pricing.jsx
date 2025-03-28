@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 const Pricing = () => {
   const phoneNumber = "+918688281821";
-  const whatsappMessage =
-    "Hello! I'd like to learn more about your services.";
+  const whatsappMessage = "Hello! I'd like to learn more about your services.";
 
   const handleCall = () => {
     window.open(`tel:${phoneNumber}`, "_self");
@@ -13,17 +12,11 @@ const Pricing = () => {
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(
-      `https://wa.me/919502414128?text=${encodedMessage}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
   };
 
   return (
-    <Container
-      maxWidth="md"
-      className="px-2"
-    >
+    <Container maxWidth="md" className="px-2">
       <section id="pricing">
         <h1 className="text-center text-4xl xs:text-4xl md:text-5xl xl:text-6xl text-headColor tracking-tight font-bold mt-5">
           Elevate Your Brand
@@ -69,10 +62,7 @@ const Pricing = () => {
               "10 Personal Emails",
               "Post Launch Support",
             ].map((item, index) => (
-              <li
-                key={index}
-                className="flex items-center gap-2 text-white"
-              >
+              <li key={index} className="flex items-center gap-2 text-white">
                 <span className="text-green-400">▲</span> {item}
               </li>
             ))}
@@ -104,19 +94,12 @@ const Pricing = () => {
             </div>
 
             <div className="flex flex-col gap-4 sm:justify-end sm:items-end">
-              <Link
-                to="https://cal.com/webortex"
-                target="_blank"
-              >
+              <Link to="https://cal.com/webortex" target="_blank">
                 <button className="bg-[#1b1b1b] hover:bg-[#1b1b1b]/40 text-textColor border border-[#424242] py-3 sm:px-10 rounded-lg transition-all duration-300 ease-in-out w-full">
                   Book a Call
                 </button>
               </Link>
-              <Link
-                to="/get-quote"
-                className="w-full"
-                target="_blank"
-              >
+              <Link to="/get-quote" className="w-full" target="_blank">
                 <button className="bg-white border border-[#424242] hover:bg-brandsBgColor text-brandsBgColor hover:text-textColor transition-all duration-300 ease-in-out w-full py-3 rounded-lg">
                   Get a Quote
                 </button>
