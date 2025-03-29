@@ -14,32 +14,32 @@ const Smedia = () => {
   const socialMediaData = [
     {
       name: "Youtube",
-      icon: "https://cdn.webortex.com/ServiceCards/youtube.png",
+      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/youtube.png",
       position: { x: width <= 768 ? -80 : -100, y: -80 },
       rotate: 30,
     },
     {
       name: "Facebook",
-      icon: "https://cdn.webortex.com/ServiceCards/facebook.png",
+      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/facebook.png",
       position: { x: width <= 768 ? 80 : 100, y: -100 },
       rotate: -40,
     },
 
     {
       name: "Linkedin",
-      icon: "https://cdn.webortex.com/ServiceCards/linkedin.png",
+      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/linkedin.png",
       position: { x: width <= 768 ? -80 : -100, y: 80 },
       rotate: -30,
     },
     {
       name: "Twitter",
-      icon: "https://cdn.webortex.com/ServiceCards/x.png",
+      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/x.png",
       position: { x: width <= 768 ? 80 : 120, y: 50 },
       rotate: 20,
     },
     {
       name: "Instagram",
-      icon: "https://cdn.webortex.com/ServiceCards/instagram.png",
+      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/instagram.png",
       position: { x: width <= 768 ? -100 : -120, y: 0 },
       rotate: 0,
     },
@@ -81,7 +81,7 @@ const Smedia = () => {
         <div className="w-32 h-32 rounded-full stroke-1 stroke-[#191919] bg-[#42424247] flex items-center justify-center">
           <div className="w-24 h-24 rounded-full flex items-center justify-center">
             <img
-              src="https://cdn.webortex.com/Webortexlogo.png"
+              src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Webortexlogo.png"
               alt="W Logo"
               className="w-16 opacity-80 filter grayscale"
             />

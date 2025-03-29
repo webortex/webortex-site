@@ -1,16 +1,21 @@
 // src/assets/imageLinks.js
 // src/assets/imageLinks.js
 const foundersImages = {
-  gnana: "https://cdn.webortex.com/Founders/Gnana.jpg",
-  sisi: "https://cdn.webortex.com/Founders/sisi.jpg",
-  tharun: "https://cdn.webortex.com/Founders/Tharun.jpg",
-  jaya: "https://cdn.webortex.com/Founders/Jayadeep.jpg",
-  ashok: "https://cdn.webortex.com/Founders/Ashok.jpg",
-  sandeep: "https://cdn.webortex.com/Founders/Sandeep.jpg",
+  gnana:
+    "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Gnana.jpg",
+  sisi: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/sisi.jpg",
+  tharun:
+    "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Tharun.jpg",
+  jaya: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Jayadeep.jpg",
+  ashok:
+    "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Ashok.jpg",
+  sandeep:
+    "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Founders/Sandeep.jpg",
 };
 
 const ourWorksImages = {
-  garuda: "https://cdn.webortex.com/OurWorks/TeamGaruda.png",
+  garuda:
+    "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/OurWorks/TeamGaruda.png",
   synapsis:
     "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/OurWorks/synapsis.jpg",
   temple:

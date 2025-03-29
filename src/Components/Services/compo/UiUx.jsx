@@ -34,7 +34,7 @@ const UiUx = () => {
         </div>
 
         <motion.img
-          src="https://cdn.webortex.com/ServiceCards/uiux/Bezeir.svg"
+          src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/uiux/Bezeir.svg"
           alt="icon1"
           className="absolute w-12 h-12"
           style={{ left: "-50px", top: "60px" }}
@@ -49,7 +49,7 @@ const UiUx = () => {
         />
 
         <motion.img
-          src="https://cdn.webortex.com/ServiceCards/uiux/blend.png"
+          src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/uiux/blend.png"
           alt="icon2"
           className="absolute top-20 right-14 w-8 h-8"
           style={{ left: "100px", top: "-20px" }}
@@ -64,7 +64,7 @@ const UiUx = () => {
         />
 
         <motion.img
-          src="https://cdn.webortex.com/ServiceCards/uiux/transform.png"
+          src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/uiux/transform.png"
           alt="icon3"
           className="absolute bottom-16 left-24 w-8 h-8"
           style={{ left: "-25px", top: "-20px" }}
@@ -79,7 +79,7 @@ const UiUx = () => {
         />
 
         <motion.img
-          src="https://cdn.webortex.com/ServiceCards/uiux/color.png"
+          src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/uiux/color.png"
           alt="icon4"
           className="absolute bottom-8 right-10 w-8 h-8"
           style={{ left: "240px", top: "80px" }}
@@ -95,7 +95,7 @@ const UiUx = () => {
         />
 
         <motion.img
-          src="https://cdn.webortex.com/ServiceCards/uiux/area.png"
+          src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/uiux/area.png"
           alt="icon1"
           className="absolute w-8 h-8"
           style={{ left: "230px", top: "-20px" }}
