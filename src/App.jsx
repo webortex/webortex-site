@@ -12,12 +12,9 @@ import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import Loader from "./Components/Loader/Loader";
 import Quotation from "./Components/Pricing/Quotation";
 import JoinUs from "./Components/JoinUs/JoinUs";
-// import QuotationProject from "./Components/Pricing/QuotationProject";
 import MVPForm from "./Components/Pricing/QuotationMVP";
 import AppForm from "./Components/Pricing/QuotationApp";
 import WebForm from "./Components/Pricing/QuotationWeb";
-// import { FormProvider } from "./Components/Pricing/FormContext";
-import LaunchButton from "./Components/LaunchButton/LaunchButton";
 
 const Layout = ({ children }) => {
   return (
@@ -40,19 +37,16 @@ const Nav = ({ children }) => {
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isLaunched, setIsLaunched] = useState(false);
 
-  const handleLaunch = () => {
-    setIsLaunched(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  };
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 3000);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <Provider>
       {" "}
-      {/* Wrap with FormProvider */}
       <Router>
         <ScrollToTop />
         <Suspense fallback={<Loader />}>
@@ -104,10 +98,18 @@ function App() {
                 </Nav>
               }
             />
-            <Route exact path="/services/:slug" element={<ServicePage />} />
+            <Route
+              exact
+              path="/services/:slug"
+              element={<ServicePage />}
+            />
 
             {/* Updated Quotation Flow Routes */}
-            <Route exact path="/get-quote" element={<Quotation />} />
+            <Route
+              exact
+              path="/get-quote"
+              element={<Quotation />}
+            />
 
             <Route
               exact
@@ -125,7 +127,10 @@ function App() {
               element={<MVPForm />}
             />
 
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
           </Routes>
         </Suspense>
       </Router>
