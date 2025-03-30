@@ -421,8 +421,15 @@ export class Provider extends Component {
         image: foundersImages.gnana,
         name: "K Gnana Sekhar",
         title: "Founder & CEO, Webortex",
-        quote:
-          "Expert in design, development & marketing, crafting sleek websites & powerful apps. Passionate about innovation & turning ideas into reality. Nothing expensive under the power of creativity  – Gnana Sekhar.",
+        quote: (
+          <>
+            Expert in design, development & marketing, crafting sleek websites &
+            powerful apps. Passionate about innovation & turning ideas into
+            reality. <br />
+            "Nothing expensive under the power of creativity" –{" "}
+            <strong>Gnana Sekhar</strong>.
+          </>
+        ),
         src: "https://github.com/gnanaofficial",
       },
       {
@@ -430,8 +437,16 @@ export class Provider extends Component {
         image: foundersImages.sisi,
         name: "Sisindri Singamsetti",
         title: "Founder & COO, Webortex",
-        quote:
-          "With passion and expertise, I excel in design, development, and marketing, building dynamic websites and powerful apps. Let’s push boundaries, inspire growth, and redefine possibilities in digital experiences.",
+        quote: (
+          <>
+            With passion and expertise, I excel in design, development, and
+            building dynamic, high-performing websites and powerful,
+            user-centric apps.
+            <br />
+            "Push boundaries, inspire growth & redefine possibilities" -{" "}
+            <strong>Sisindri Singamsetti</strong> .
+          </>
+        ),
         src: "https://www.sisindrisingamsetti.com",
       },
       {
