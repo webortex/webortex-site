@@ -65,7 +65,6 @@ const DesktopScroll = () => {
                   ? `${activeFounder.name} - ${activeFounder.title} at Webortex`
                   : "Webortex | Building the Future of Web Development"}
               </title>
-
               <meta
                 name="description"
                 content={`${activeFounder.name}, ${activeFounder.title} at Webortex. ${activeFounder.quote}`}
@@ -73,9 +72,9 @@ const DesktopScroll = () => {
               <meta
                 name="keywords"
                 content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology, Software Development in Tirupati, Custom Software Development in Tirupati, E-commerce Web Development in Tirupati, Mobile App Development in Tirupati, UI/UX Design Services in Tirupati, Cloud Solutions in Tirupati, IT Consulting in Tirupati, Software Maintenance in Tirupati,Digital Transformation in Tirupati, Webortex Software Development Agency, Webortex Sisindri Singamsetti, Webortex Gnana Sekhar, Webortex Founders, Webortex Team, Webortex Services, Webortex Projects, Webortex Tharun A, Webortex Jayadeep Reddy, Webortex Ashok P, Webortex Sai Sandeep, Sisindri Singamsettis Webortex, sisitarak, sisi-tarak, sisi-tarakk, Webortex Founders Team, Sisindri Singamsetti Webortex COO, K Gnana Sekhar Webortex CEO, Tharun A Webortex CPO, Jayadeep Reddy Webortex CTO, Ashok Pemeram Webortex CIO, Sai Sandeep Webortex CLO`}
-              />a
+              />
+              a
               <meta name="author" content="Sisindri Singamsetti" />
-
               <meta
                 property="og:title"
                 content={`${activeFounder.name} - ${activeFounder.title} at Webortex`}
@@ -138,7 +137,7 @@ const DesktopScroll = () => {
                               <div className="order-2">
                                 <div className="group-hover:duration-900 relative rounded-2xl xl:w-32 xl:h-20 md:w-28 md:h-16 xs:w-24 xs:h-14 h-10 w-16 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12 before:rounded-2xl before:absolute before:content[''] before:bg-neutral-700 before:right-2 md:before:right-3 before:top-0 xl:before:w-32 xl:before:h-16 md:before:h-14 md:before:w-28 xs:before:h-12 xs:before:w-24 before:h-8 before:w-16 before:-z-10">
                                   <span className="text-xs sm:text-sm md:text-lg xl:text-2xl font-semibold pr-16">
-                                    Co
+                                    {index >= 4 ? "Co" : ""}
                                   </span>
                                   <p className="text-xs sm:text-sm md:text-lg xl:text-2xl font-semibold">
                                     Founder

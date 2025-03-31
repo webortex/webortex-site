@@ -459,52 +459,68 @@ export class Provider extends Component {
         id: 1,
         image: foundersImages.gnana,
         name: "K Gnana Sekhar",
-        title: "CEO of webortex",
-        quote:
-          "As we stand on the threshold of a new chapter, I am filled with immense pride and excitement. Our journey has been marked by dedication, innovation, and a relentless pursuit of excellence.",
+        title: "Founder & CEO, Webortex",
+        quote: (
+          <>
+            Expert in design, development & marketing, crafting sleek websites &
+            powerful apps. Passionate about innovation & turning ideas into
+            reality. <br />
+            "Nothing expensive under the power of creativity" –{" "}
+            <strong>Gnana Sekhar</strong>.
+          </>
+        ),
         src: "https://github.com/gnanaofficial",
       },
       {
         id: 2,
         image: foundersImages.sisi,
         name: "Sisindri Singamsetti",
-        title: "COO of webortex",
-        quote:
-          "With pride and passion, I embrace innovation and mentorship to create impactful digital experiences. Together, let’s push boundaries, inspire growth, and redefine possibilities in web development.",
+        title: "Founder & COO, Webortex",
+        quote: (
+          <>
+            With passion and expertise, I excel in design, development, and
+            building dynamic, high-performing websites and powerful,
+            user-centric apps.
+            <br />
+            "Push boundaries, inspire growth & redefine possibilities" -{" "}
+            <strong>Sisindri Singamsetti</strong> .
+          </>
+        ),
         src: "https://www.sisindrisingamsetti.com",
       },
       {
         id: 3,
         image: foundersImages.tharun,
-        name: "Tharun A",
-        title: "CPO of webortex",
+        name: "Tharun Avula",
+        title: "Founder & CPO, Webortex",
         quote:
           "We drive innovative web and app development, delivering scalable, user-focused solutions. Passionate about blending technology and creativity to exceed expectations, we build the future, one pixel at a time!",
         src: "https://www.linkedin.com/in/tharunavula/",
       },
       {
         id: 4,
-        image: foundersImages.jaya,
-        name: "P Jayadeep Reddy",
-        title: "CTO of webortex",
-        quote:
-          "With a passion for problem-solving and a vision for the future, we build solutions that elevate experiences, optimize performance, and set new standards in digital transformation. Innovation is at the heart of everything we do!",
-        src: "https://www.linkedin.com/in/peddireddy-jayadeep-reddy-a3014124b/",
-      },
-      {
-        id: 5,
         image: foundersImages.ashok,
         name: "Ashok Pemeram",
-        title: "CIO of webortex",
+        title: "Founder & CIO, Webortex",
         quote:
           "We believe in crafting digital experiences that are powerful, user-centric, and built to scale. By blending innovation with strategy, we create solutions that don’t just function—they inspire and drive success.",
         src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
       },
       {
+        id: 5,
+        image: foundersImages.jaya,
+        name: "P Jayadeep Reddy",
+        title: "Co-Founder & CTO, Webortex",
+        quote:
+          "With a passion for problem-solving and a vision for the future, we build solutions that elevate experiences, optimize performance, and set new standards in digital transformation. Innovation is at the heart of everything we do!",
+        src: "https://www.linkedin.com/in/peddireddy-jayadeep-reddy-a3014124b/",
+      },
+
+      {
         id: 6,
         image: foundersImages.sandeep,
         name: "K Sai Sandeep",
-        title: "CLO of webortex",
+        title: "Co-Founder & CLO, Webortex",
         quote:
           "Driven by creativity and technology, we transform ideas into seamless, scalable solutions. Our focus is on building intuitive experiences that not only meet expectations but redefine them—pushing boundaries, one innovation at a time.",
         src: "https://github.com/Sandeep010-hub",
