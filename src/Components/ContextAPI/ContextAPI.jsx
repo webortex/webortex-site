@@ -9,6 +9,7 @@ import Mvp from "../Services/compo/Mvp";
 import Seo from "../Services/compo/SEOCompo/Seo";
 import Smedia from "../Services/compo/Smedia";
 
+// import gnana from "../../assets/workedLogos/teamgaruda.png";
 // import teamGarudaIcon from "../../assets/workedLogos/teamgaruda.png";
 // import FramezIcon from "../../assets/workedLogos/64FramezLogo.png";
 // import garudaIcon from "../../assets/workedLogos/garuda.png";
@@ -68,8 +69,8 @@ export class Provider extends Component {
       },
       {
         id: 4,
-        text: "Recruiting",
-        path: "/recruiting",
+        text: "Careers",
+        path: "/careers",
         type: "page",
       },
     ],
@@ -103,18 +104,20 @@ export class Provider extends Component {
         },
         contactEmail: "contact@webortex.com",
         socialLinks: {
-          instagram: "#",
-          twitter: "#",
-          linkedin: "#",
+          instagram: "https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5",
+          twitter: "https://x.com/webortex?t=p5A5wW138nP5vf9T2Z42OQ&s=09",
+          linkedin:
+            "https://www.linkedin.com/in/webortex-a08a93359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         },
 
         pageTitle: "Join Our Team | Webortex",
         pageDescription:
           "Webortex is hiring talented web developers, UI/UX designers, and app developers. Join our innovative team and grow your career in tech.",
         pageKeywords:
-          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers, sisindri singamsetti, webortex",
-        pageCanonical: "https://webortex.com/recruiting",
-        pageImage: "https://webortex.com/chair.png",
+          "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers,  webortex",
+        pageCanonical: "https://webortex.com/careers",
+        pageImage:
+          "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/chairMobile.png",
       },
     ],
 
@@ -466,7 +469,7 @@ export class Provider extends Component {
             powerful apps. Passionate about innovation & turning ideas into
             reality. <br />
             "Nothing expensive under the power of creativity" –{" "}
-            <strong>Gnana Sekhar</strong>.
+            <strong>K Gnana Sekhar</strong>.
           </>
         ),
         src: "https://github.com/gnanaofficial",
@@ -511,8 +514,15 @@ export class Provider extends Component {
         image: foundersImages.jaya,
         name: "P Jayadeep Reddy",
         title: "Co-Founder & CTO, Webortex",
-        quote:
-          "With a passion for problem-solving and a vision for the future, we build solutions that elevate experiences, optimize performance, and set new standards in digital transformation. Innovation is at the heart of everything we do!",
+        quote: (
+          <>
+            Innovate boldly, inspire endlessly, and transform ideas into reality
+            . Strive for excellence in every line of code and push the
+            boundaries of what's possible.
+            <br />" Build solutions that not only solve problems but also create
+            a lasting impact on the world" - <strong> Jayadeep </strong> .
+          </>
+        ),
         src: "https://www.linkedin.com/in/peddireddy-jayadeep-reddy-a3014124b/",
       },
 

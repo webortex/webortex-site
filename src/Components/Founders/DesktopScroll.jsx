@@ -63,7 +63,7 @@ const DesktopScroll = () => {
               <title>
                 {isFoundersSectionVisible
                   ? `${activeFounder.name} - ${activeFounder.title} at Webortex`
-                  : "Webortex | Building the Future of Web Development"}
+                  : "Webortex | Building the Future of Sofware Development"}
               </title>
               <meta
                 name="description"

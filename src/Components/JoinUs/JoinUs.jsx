@@ -5,6 +5,7 @@ import { collection, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import React from "react";
 import Frame from "../../assets/Star.png";
+import emailjs from "@emailjs/browser";
 
 function JoinUs() {
   const [alertpop, setAlertpop] = useState(false);
@@ -140,8 +141,6 @@ function JoinUs() {
     }
 
     try {
-      setIsSubmitting(true);
-
       // // 1. Upload PDF to Firebase Storage
       // const storageRef = ref(
       //   storage,
@@ -167,20 +166,43 @@ function JoinUs() {
       });
 
       console.log("Document written with ID: ", docRef.id, FormData.name);
-      setSubmitStatus("success");
+      // EmailJS Config
+      const serviceID = "service_ndlmhll";
+      const templateID = "template_7p271j8";
+      const publicKey = "Ajz3sov1TAVsxPO18";
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        mobile: "",
-        whyWebortex: "",
-        profileLink: "",
-        role: "",
-        resumeLink: "",
-        // resume: null,
-      });
-      setErrors({});
+      const templateParams = {
+        fullName: formData.name,
+        phone: formData.mobile,
+        email: formData.email,
+        whyWebortex: formData.whyWebortex,
+        profileLink: formData.profileLink,
+        role: formData.role,
+        resumeLink: formData.resumeLink,
+      };
+
+      setIsSubmitting(true); // Set isSubmitting to true before submission
+
+      emailjs
+        .send(serviceID, templateID, templateParams, publicKey)
+        .then((response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          setSubmitStatus("success");
+
+          // Reset form
+          setFormData({
+            name: "",
+            email: "",
+            mobile: "",
+            whyWebortex: "",
+            profileLink: "",
+            role: "",
+            resumeLink: "",
+            // resume: null,
+          });
+          setErrors({});
+        });
+
       setFileName("");
       setFileError("");
     } catch (error) {
@@ -291,7 +313,7 @@ function JoinUs() {
 
       <button
         onClick={handleWhatsApp}
-        className="absolute top-[4%] right-[8%] px-4 py-2 text-sm text-gray-300 rounded bg-brandsBgColor hover:bg-brandsBgColor/60 transition-colors"
+        className="absolute top-[0%] right-[22%] px-4 py-2 text-sm text-gray-300 rounded bg-brandsBgColor hover:bg-brandsBgColor/60 transition-colors"
       >
         Message us
       </button>
@@ -545,32 +567,34 @@ function JoinUs() {
           </div>
         </form>
         {alertpop == true ? (
-          <div className="sm:w-[380px] xl:w-[400px] lg:w-[400px] xs:w-[380px] 2xs:w-[300px] flex gap-8 2xs:gap-2 rounded-lg px-4 py-4 2xs:px-2 2xs:py-2 bg-[#262626] fixed right-10 2xs:right-2 top-60">
-            <div className="h-[50px] w-[50px] xl:w-[50px] lg:w-[50px] sm:w-[50px] xs:w-[50px] 2xs:w-[30px]">
-              <img src={Frame} alt="Alert" className="pt-4" />
-            </div>
-            <div>
-              <p className="text-lg text-white font-bold mb-3">
-                Required Technologies
-              </p>
-              <p className="text-gray-500 text-xs">
-                Frontend : React, Angular, Tailwind, MUI
-                <br />
-                Backend : NodeJS, ExpressJS <br />
-                Wordpress : Elementor, Custom Themes <br />
-                UI/UX : Figma, AdobeXD, Sketch
-              </p>
-              <p className="text-white text-sm pt-2 cursor-pointer">
-                Learn More
-              </p>
-            </div>
-            <div
-              className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F] "
-              onClick={() => setAlertpop(false)}
-            >
-              <p className="text-lg 2xs:text-xs items-center justify-center mt-[-2.5px]">
-                x
-              </p>
+          <div className="fixed inset-0 flex justify-center items-center">
+            <div className=" justify-items-center   flex gap-8 2xs:gap-2 rounded-lg px-4 py-4 2xs:px-2 2xs:py-2 bg-[#262626]  ">
+              <div className="h-[50px] w-[50px] xl:w-[50px] lg:w-[50px] sm:w-[50px]  xs:w-[50px] 2xs:w-[30px]">
+                <img src={Frame} alt="Alert" className="pt-4" />
+              </div>
+              <div>
+                <p className="text-lg text-white font-bold mb-3">
+                  Required Technologies
+                </p>
+                <p className="text-gray-500 text-xs">
+                  Frontend : React, Angular, Tailwind, MUI
+                  <br />
+                  Backend : NodeJS, ExpressJS <br />
+                  Wordpress : Elementor, Custom Themes <br />
+                  UI/UX : Figma, AdobeXD, Sketch
+                </p>
+                <p className="text-white text-sm pt-2 cursor-pointer">
+                  Learn More
+                </p>
+              </div>
+              <div
+                className="cursor-pointer bg-[#BAB5B5] rounded-[50%] h-[20px] p-2 w-[20px] flex justify-center items-center text-[#4F4F4F] "
+                onClick={() => setAlertpop(false)}
+              >
+                <p className="text-lg 2xs:text-xs items-center justify-center mt-[-2.5px]">
+                  x
+                </p>
+              </div>
             </div>
           </div>
         ) : (

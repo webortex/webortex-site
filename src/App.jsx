@@ -79,7 +79,7 @@ function App() {
             />
             <Route
               exact
-              path="/recruiting"
+              path="/careers"
               element={
                 <div className="h-screen 2xl:overflow-hidden ">
                   <Nav>
@@ -98,18 +98,10 @@ function App() {
                 </Nav>
               }
             />
-            <Route
-              exact
-              path="/services/:slug"
-              element={<ServicePage />}
-            />
+            <Route exact path="/services/:slug" element={<ServicePage />} />
 
             {/* Updated Quotation Flow Routes */}
-            <Route
-              exact
-              path="/get-quote"
-              element={<Quotation />}
-            />
+            <Route exact path="/get-quote" element={<Quotation />} />
 
             <Route
               exact
@@ -127,10 +119,7 @@ function App() {
               element={<MVPForm />}
             />
 
-            <Route
-              path="*"
-              element={<NotFound />}
-            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </Router>

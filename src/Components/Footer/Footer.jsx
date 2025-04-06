@@ -111,9 +111,24 @@ const Footer = () => {
                       </div>
                     </div>
                     <div className="flex space-x-2 md:space-x-4">
-                      <Facebook className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
-                      <Instagram className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
-                      <LinkedIn className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+                      <a
+                        href="https://www.facebook.com/share/181A4ZPQmc/"
+                        target="_blank"
+                      >
+                        <Facebook className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5"
+                        target="_blank"
+                      >
+                        <Instagram className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/webortex-a08a93359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank"
+                      >
+                        <LinkedIn className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+                      </a>
                     </div>
                   </div>
                 </div>
