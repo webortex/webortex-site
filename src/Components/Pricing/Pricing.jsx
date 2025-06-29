@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Pricing = () => {
-  const phoneNumber = "+918688281821";
+  const phoneNumber = "+917672024001";
   const whatsappMessage = "Hello! I'd like to learn more about your services.";
 
   const handleCall = () => {
@@ -12,7 +12,7 @@ const Pricing = () => {
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/917672024001?text=${encodedMessage}`, "_blank");
   };
 
   return (

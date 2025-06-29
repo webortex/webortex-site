@@ -11,7 +11,7 @@ const VideoSection = () => {
           <video
             className="absolute top-0 left-0 w-full h-full"
             style={{ objectFit: "cover", mixBlendMode: "hard-light" }}
-            src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/bgCTA.mp4"
+            src="https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/bgCTA.mp4"
             autoPlay
             loop
             muted

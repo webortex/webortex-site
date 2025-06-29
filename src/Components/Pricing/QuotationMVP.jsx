@@ -22,7 +22,7 @@ const MVPForm = () => {
 
   const handleWhatsApp = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/918688281821?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/917672024001?text=${encodedMessage}`, "_blank");
   };
 
   const handleInputChange = (e) => {

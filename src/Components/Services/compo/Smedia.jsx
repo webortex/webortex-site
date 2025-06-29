@@ -14,32 +14,32 @@ const Smedia = () => {
   const socialMediaData = [
     {
       name: "Youtube",
-      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/youtube.png",
+      icon: "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/YoutubeOctDenoiserBeauty_001%20copy.svg",
       position: { x: width <= 768 ? -80 : -100, y: -80 },
       rotate: 30,
     },
     {
       name: "Facebook",
-      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/facebook.png",
+      icon: "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/FacebookOctDenoiserBeauty_001%20copy.svg",
       position: { x: width <= 768 ? 80 : 100, y: -100 },
       rotate: -40,
     },
 
     {
       name: "Linkedin",
-      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/linkedin.png",
+      icon: "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/LinkedIn.svg",
       position: { x: width <= 768 ? -80 : -100, y: 80 },
       rotate: -30,
     },
     {
       name: "Twitter",
-      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/x.png",
+      icon: "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/image%2070.svg",
       position: { x: width <= 768 ? 80 : 120, y: 50 },
       rotate: 20,
     },
     {
       name: "Instagram",
-      icon: "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/ServiceCards/instagram.png",
+      icon: "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/InstagramOctDenoiserBeauty_001%20copy.svg",
       position: { x: width <= 768 ? -100 : -120, y: 0 },
       rotate: 0,
     },
@@ -81,7 +81,7 @@ const Smedia = () => {
         <div className="w-32 h-32 rounded-full stroke-1 stroke-[#191919] bg-[#42424247] flex items-center justify-center">
           <div className="w-24 h-24 rounded-full flex items-center justify-center">
             <img
-              src="https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/Webortexlogo.png"
+              src="https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/Webortexlogo.png"
               alt="W Logo"
               className="w-16 opacity-80 filter grayscale"
             />

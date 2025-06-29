@@ -254,14 +254,25 @@ const Contact = () => {
               Stay Connected
             </p>
             <div className="flex space-x-2 md:space-x-4">
-            <a href="https://www.facebook.com/share/181A4ZPQmc/" target="_blank"> <FaFacebook className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" /></a>
-               <a
-                        href="https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5"
-                        target="_blank"
-                      ><FaInstagram className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" /></a>
-                <a href="https://www.linkedin.com/in/webortex-a08a93359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                        target="_blank">
-                        <FaLinkedin className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" /></a>
+              <a
+                href="https://www.facebook.com/share/181A4ZPQmc/"
+                target="_blank"
+              >
+                {" "}
+                <FaFacebook className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+              </a>
+              <a
+                href="https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5"
+                target="_blank"
+              >
+                <FaInstagram className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/webortex-a08a93359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank"
+              >
+                <FaLinkedin className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+              </a>
             </div>
           </div>
         </div>
@@ -456,10 +467,10 @@ const Contact = () => {
                       />
                     </svg>
                     <a
-                      href="tel:+918688281821"
+                      href="tel:+917672024001"
                       className="hover:underline text-textColor text-lg pl-3 font-outlet"
                     >
-                      +91 8688281821
+                      +91 7672024001
                     </a>
                   </div>
                 </div>
