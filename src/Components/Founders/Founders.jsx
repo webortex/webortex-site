@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
-import MobileScroll from "./mobileScroll";
-import DesktopScroll from "./desktopScroll";
+import MobileScroll from "./MobileScroll";
+import DesktopScroll from "./DesktopScroll";
 
 const Founders = () => {
   const [isMobile, setIsMobile] = useState(false);
