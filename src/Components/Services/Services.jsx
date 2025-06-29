@@ -3,7 +3,7 @@ import { Container } from "@mui/material";
 import { Consumer } from "../ContextAPI/ContextAPI";
 import { Link } from "react-router-dom";
 
-import { Squares } from "@/components/ui/squares-background";
+import { Squares } from "@/Components/ui/Squares";
 
 const Services = () => {
   const [isHovered, setIsHovered] = useState(false);
