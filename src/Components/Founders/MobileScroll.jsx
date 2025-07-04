@@ -70,7 +70,7 @@ const MobileScroll = () => {
               />
               <meta
                 name="keywords"
-                content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology, Software Development in Tirupati, Web Development in Tirupati, IT Services in Tirupati, Web Design in Tirupati, App Development in Tirupati, Digital Solutions in Tirupati, Software Development in India, Startup, Webortex Software Development Agency, Webortex Sisindri Singamsetti, Webortex Founders, Webortex Team, Webortex Services, Webortex Projects, Webortex Tharun A, Webortex Jayadeep Reddy, Webortex Ashok P, Webortex Sai Sandeep, Sisindri Singamsettis Webortex, sisitarak, sisi-tarak, sisi-tarakk`}
+                content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology, Software Development in Tirupati, Web Development in Tirupati, IT Services in Tirupati, Web Design in Tirupati, App Development in Tirupati, Digital Solutions in Tirupati, Software Development in India, Startup, Webortex Software Development Agency, Webortex Sisindri Singamsetti, Webortex Founders, Webortex Team, Webortex Services, Webortex Projects, Webortex Tharun A, Webortex Jayadeep Reddy, Webortex Ashok P, Webortex Sai Sandeep, Sisindri Singamsetti Webortex`}
               />
 
               <meta name="author" content="Sisindri Singamsetti" />
@@ -85,10 +85,6 @@ const MobileScroll = () => {
               />
               <meta property="og:type" content="profile" />
               <meta property="og:url" content={activeFounder.src} />
-              <meta
-                property="og:image"
-                content={`https://www.webortex.com/images/${activeFounder.image}.jpg`}
-              />
             </Helmet>
 
             <section className="mx-[calc(50%-50vw)] pl-10 w-full">

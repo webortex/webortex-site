@@ -47,35 +47,6 @@ const Recruit = () => {
               />
               <meta name="author" content="Sisindri Singamsetti" />
               <meta http-equiv="content-language" content="en-US" />
-
-              <script type="application/ld+json">
-                {JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "JobPosting",
-                  title: "Multiple Tech Positions",
-                  description:
-                    "Webortex is hiring talented professionals in UI/UX design, web development, and app development.",
-                  datePosted: new Date().toISOString(),
-                  validThrough: new Date(
-                    new Date().setMonth(new Date().getMonth() + 3)
-                  ).toISOString(),
-                  employmentType: "FULL_TIME",
-                  hiringOrganization: {
-                    "@type": "Organization",
-                    name: "Webortex",
-                    sameAs: "https://webortex.com",
-                    logo: "https://webortex.com/logo.png",
-                  },
-                  jobLocation: {
-                    "@type": "Place",
-                    address: {
-                      "@type": "PostalAddress",
-                      addressCountry: "US",
-                    },
-                  },
-                  skills: recruitData.requirements.skills.join(", "),
-                })}
-              </script>
             </Helmet>
 
             <Container maxWidth="lg" className="my-10 md:my-20 2xl:my-0">

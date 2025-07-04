@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container } from "@mui/material";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -172,339 +173,376 @@ const Contact = () => {
   );
 
   return (
-    <Container maxWidth="lg" className="h-full my-6 md:my-10">
-      {submitStatus === "success" && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
-            <div className="text-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              <h2 className="text-2xl font-normal text-white mb-2">
-                Submission Successful! 🎉
-              </h2>
-              <p className="text-white/80 font-light px-[5%] mb-4">
-                Thank you for reaching out! Our team will get back to you
-                soon.😊
+    <>
+      <Helmet>
+        <title>
+          Contact Webortex | Reach Out for Website, App & Marketing Solutions
+        </title>
+        <meta
+          name="description"
+          content="Get in touch with Webortex for expert web development, app development, SEO, and social media marketing services. Let's grow your business together!"
+        />
+        <meta
+          name="keywords"
+          content="Contact Webortex, Web development support, App development contact, SEO consultation, Marketing services, Tirupati, Andhra Pradesh"
+        />
+        <link rel="canonical" href="https://www.webortex.com/lets-talk" />
+        <meta
+          property="og:title"
+          content="Contact Webortex | Web & App Development Experts"
+        />
+        <meta
+          property="og:description"
+          content="Reach out to Webortex for digital solutions including web development, mobile apps, and SEO."
+        />
+        <meta property="og:url" content="https://www.webortex.com/lets-talk" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      <Container maxWidth="lg" className="h-full my-6 md:my-10">
+        {submitStatus === "success" && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
+              <div className="text-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-16 w-16 text-logoGreenColor mx-auto mb-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <h2 className="text-2xl font-normal text-white mb-2">
+                  Submission Successful! 🎉
+                </h2>
+                <p className="text-white/80 font-light px-[5%] mb-4">
+                  Thank you for reaching out! Our team will get back to you
+                  soon.😊
+                </p>
+                <button
+                  onClick={() => setSubmitStatus(null)}
+                  className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {submitStatus === "error" && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
+              <div className="text-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-16 w-16 text-red-500 mx-auto mb-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <h2 className="text-2xl font-normal text-white mb-2">
+                  Submission Failed! ❌
+                </h2>
+                <p className="text-white/80 font-light px-[5%] mb-4">
+                  There was an error submitting your application. Please try
+                  again later or contact us for assistance.
+                </p>
+                <button
+                  onClick={() => setSubmitStatus(null)}
+                  className="px-4 py-2 bg-red-500/90 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <section id="contact" className="mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl text-center text-headColor font-bold tracking-tighter mb-6">
+            Contact Us
+          </h1>
+          <div className="flex items-center justify-center md:float-right">
+            <div className="border rounded border-[#262626ac] p-3 flex  md:mt-[-40px] md:mr-4 lg:mr-8 mb-3">
+              <p className="text-white flex flex-row text-sm items-center pr-2 md:pr-4">
+                Stay Connected
               </p>
-              <button
-                onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-logoGreenColor/80 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
-              >
-                Close
-              </button>
+              <div className="flex space-x-2 md:space-x-4">
+                <a
+                  href="https://www.facebook.com/share/181A4ZPQmc/"
+                  target="_blank"
+                >
+                  {" "}
+                  <FaFacebook className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+                </a>
+                <a
+                  href="https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5"
+                  target="_blank"
+                >
+                  <FaInstagram className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/webortex-a08a93359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank"
+                >
+                  <FaLinkedin className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      {submitStatus === "error" && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-brandsBgColor p-6 rounded-lg shadow-lg max-w-md w-full">
-            <div className="text-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 text-red-500 mx-auto mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <h2 className="text-2xl font-normal text-white mb-2">
-                Submission Failed! ❌
-              </h2>
-              <p className="text-white/80 font-light px-[5%] mb-4">
-                There was an error submitting your application. Please try again
-                later or contact us for assistance.
-              </p>
-              <button
-                onClick={() => setSubmitStatus(null)}
-                className="px-4 py-2 bg-red-500/90 text-white rounded hover:bg-white/80 hover:text-brandsBgColor transition-all duration-300 ease-in-out my-2 w-[55%]"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+        </section>
 
-      <section id="contact" className="mb-4">
-        <h1 className="text-3xl md:text-4xl lg:text-6xl text-center text-headColor font-bold tracking-tighter mb-6">
-          Contact Us
-        </h1>
-        <div className="flex items-center justify-center md:float-right">
-          <div className="border rounded border-[#262626ac] p-3 flex  md:mt-[-40px] md:mr-4 lg:mr-8 mb-3">
-            <p className="text-white flex flex-row text-sm items-center pr-2 md:pr-4">
-              Stay Connected
-            </p>
-            <div className="flex space-x-2 md:space-x-4">
-              <a
-                href="https://www.facebook.com/share/181A4ZPQmc/"
-                target="_blank"
-              >
-                {" "}
-                <FaFacebook className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
-              </a>
-              <a
-                href="https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5"
-                target="_blank"
-              >
-                <FaInstagram className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/webortex-a08a93359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                target="_blank"
-              >
-                <FaLinkedin className="text-buttonBgColor h-8 w-8 p-2 bg-gradient-to-b from-[#2E2E2E] to-black rounded hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+        <hr className="border-t-2 border-[#2626267c] mb-8 clear-both" />
 
-      <hr className="border-t-2 border-[#2626267c] mb-8 clear-both" />
-
-      <form className="w-full mb-16 md:mb-0" onSubmit={handleSubmit} noValidate>
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div className="md:col-span-2 xl:col-span-3 space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <div className="w-full mb-6">
-                  <label
-                    className="block text-headColor font-semibold mb-2"
-                    htmlFor="fullName"
-                  >
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
-                      errors.fullName ? "border-red-500" : "border-[#363636]"
-                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
-                    placeholder="Type here"
-                  />
-                  {errors.fullName && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.fullName}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <div className="w-full mb-6">
-                  <label
-                    className="block text-headColor font-semibold mb-2"
-                    htmlFor="phone"
-                  >
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
-                      errors.phone ? "border-red-500" : "border-[#363636]"
-                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
-                    placeholder="Type here"
-                  />
-                  {errors.phone && (
-                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full bg-[#24242480] border border-[#262626] py-4 px-8 rounded-lg">
-              <h2 className="text-lg text-headColor font-bold mb-4">
-                Why are you contacting us?
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <CheckboxField
-                  label="Web Design"
-                  name="webDesign"
-                  checked={formData.interests.webDesign}
-                  onChange={handleCheckboxChange}
-                />
-                <CheckboxField
-                  label="MVP"
-                  name="mvp"
-                  checked={formData.interests.mvp}
-                  onChange={handleCheckboxChange}
-                />
-                <CheckboxField
-                  label="Mobile App Development"
-                  name="mobileApp"
-                  checked={formData.interests.mobileApp}
-                  onChange={handleCheckboxChange}
-                />
-                <CheckboxField
-                  label="Other"
-                  name="other"
-                  checked={formData.interests.other}
-                  onChange={handleCheckboxChange}
-                />
-              </div>
-              {errors.interests && (
-                <p className="text-red-500 text-sm mt-1">{errors.interests}</p>
-              )}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <div className="w-full mb-6">
-                  <label
-                    className="block text-headColor font-semibold mb-2"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
-                      errors.email ? "border-red-500" : "border-[#363636]"
-                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
-                    placeholder="Type here"
-                  />
-                  {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                  )}
-                </div>
-              </div>
-
-              <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
-                <div className="w-full mb-6">
-                  <label
-                    className="block text-headColor font-semibold mb-2"
-                    htmlFor="message"
-                  >
-                    Your Message
-                  </label>
-                  <input
-                    type="text"
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
-                      errors.message ? "border-red-500" : "border-[#363636]"
-                    } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
-                    placeholder="Type here"
-                  />
-                  {errors.message && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.message}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <button
-                type="submit"
-                className="bg-buttonBgColor hover:bg-textColor hover:text-backgroundColor text-textColor py-2 px-6 rounded w-full max-w-xs transition-all duration-500 ease-in-out mt-8 disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </button>
-
-              <p className="text-textColor text-xs mt-12">
-                Operating Days{" "}
-                <span className="bg-white bg-opacity-15 font-light rounded px-3 py-2 ml-2">
-                  Monday to Friday
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className="hidden md:block md:col-span-1 md:-ml-3 lg:-ml-0 mb-10 md:mb-0 mx-auto md:mx-0">
-            <div className="md:h-[20%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
-              <div className="md:flex">
-                <div className="flex bg-[#262626] bg-opacity-95 text-center justify-center py-2 px-6 md:px-4 lg:px-8 rounded-lg">
-                  <div className="flex items-center">
-                    <svg
-                      className="w-8 h-8 text-buttonBgColor"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
+        <form
+          className="w-full mb-16 md:mb-0"
+          onSubmit={handleSubmit}
+          noValidate
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="md:col-span-2 xl:col-span-3 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
+                  <div className="w-full mb-6">
+                    <label
+                      className="block text-headColor font-semibold mb-2"
+                      htmlFor="fullName"
                     >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"
-                      />
-                    </svg>
-                    <a
-                      href="tel:+917672024001"
-                      className="hover:underline text-textColor text-lg pl-3 font-outlet"
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                        errors.fullName ? "border-red-500" : "border-[#363636]"
+                      } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
+                      placeholder="Type here"
+                    />
+                    {errors.fullName && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.fullName}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
+                  <div className="w-full mb-6">
+                    <label
+                      className="block text-headColor font-semibold mb-2"
+                      htmlFor="phone"
                     >
-                      +91 7672024001
-                    </a>
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                        errors.phone ? "border-red-500" : "border-[#363636]"
+                      } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
+                      placeholder="Type here"
+                    />
+                    {errors.phone && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.phone}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
 
-              <div className="md:flex">
-                <div className="flex bg-[#262626] bg-opacity-95 text-center justify-center py-2 px-6 md:px-4 lg:px-8 rounded-lg">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-6 h-6 text-buttonBgColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              <div className="w-full bg-[#24242480] border border-[#262626] py-4 px-8 rounded-lg">
+                <h2 className="text-lg text-headColor font-bold mb-4">
+                  Why are you contacting us?
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <CheckboxField
+                    label="Web Design"
+                    name="webDesign"
+                    checked={formData.interests.webDesign}
+                    onChange={handleCheckboxChange}
+                  />
+                  <CheckboxField
+                    label="MVP"
+                    name="mvp"
+                    checked={formData.interests.mvp}
+                    onChange={handleCheckboxChange}
+                  />
+                  <CheckboxField
+                    label="Mobile App Development"
+                    name="mobileApp"
+                    checked={formData.interests.mobileApp}
+                    onChange={handleCheckboxChange}
+                  />
+                  <CheckboxField
+                    label="Other"
+                    name="other"
+                    checked={formData.interests.other}
+                    onChange={handleCheckboxChange}
+                  />
+                </div>
+                {errors.interests && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.interests}
+                  </p>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
+                  <div className="w-full mb-6">
+                    <label
+                      className="block text-headColor font-semibold mb-2"
+                      htmlFor="email"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                        errors.email ? "border-red-500" : "border-[#363636]"
+                      } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
+                      placeholder="Type here"
                     />
-                  </svg>
-                  <a
-                    href="mailto:webortex@gmail.com"
-                    className="hover:underline text-textColor pl-3 font-outlet"
-                  >
-                    webortex@gmail.com
-                  </a>
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.email}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="bg-[#24242480] border border-[#262626] pt-4 pb-1 px-8 rounded-lg">
+                  <div className="w-full mb-6">
+                    <label
+                      className="block text-headColor font-semibold mb-2"
+                      htmlFor="message"
+                    >
+                      Your Message
+                    </label>
+                    <input
+                      type="text"
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className={`block w-full py-2 text-sm text-gray-300 bg-transparent border-0 border-b-2 ${
+                        errors.message ? "border-red-500" : "border-[#363636]"
+                      } focus:outline-none focus:ring-0 focus:border-textColor/80 transition-colors`}
+                      placeholder="Type here"
+                    />
+                    {errors.message && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <button
+                  type="submit"
+                  className="bg-buttonBgColor hover:bg-textColor hover:text-backgroundColor text-textColor py-2 px-6 rounded w-full max-w-xs transition-all duration-500 ease-in-out mt-8 disabled:bg-logoBlueColor/40 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+
+                <p className="text-textColor text-xs mt-12">
+                  Operating Days{" "}
+                  <span className="bg-white bg-opacity-15 font-light rounded px-3 py-2 ml-2">
+                    Monday to Friday
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div className="hidden md:block md:col-span-1 md:-ml-3 lg:-ml-0 mb-10 md:mb-0 mx-auto md:mx-0">
+              <div className="md:h-[20%] flex flex-col justify-center md:justify-start gap-6 md:border-l-[6px] border-buttonBgColor pl-4 md:pl-2 lg:pl-4">
+                <div className="md:flex">
+                  <div className="flex bg-[#262626] bg-opacity-95 text-center justify-center py-2 px-6 md:px-4 lg:px-8 rounded-lg">
+                    <div className="flex items-center">
+                      <svg
+                        className="w-8 h-8 text-buttonBgColor"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"
+                        />
+                      </svg>
+                      <a
+                        href="tel:+917672024001"
+                        className="hover:underline text-textColor text-lg pl-3 font-outlet"
+                      >
+                        +91 7672024001
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="md:flex">
+                  <div className="flex bg-[#262626] bg-opacity-95 text-center justify-center py-2 px-6 md:px-4 lg:px-8 rounded-lg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-6 h-6 text-buttonBgColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                      />
+                    </svg>
+                    <a
+                      href="mailto:webortex@gmail.com"
+                      className="hover:underline text-textColor pl-3 font-outlet"
+                    >
+                      webortex@gmail.com
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </form>
-    </Container>
+        </form>
+      </Container>
+    </>
   );
 };
 

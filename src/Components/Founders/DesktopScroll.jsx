@@ -71,9 +71,9 @@ const DesktopScroll = () => {
               />
               <meta
                 name="keywords"
-                content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology, Software Development in Tirupati, Custom Software Development in Tirupati, E-commerce Web Development in Tirupati, Mobile App Development in Tirupati, UI/UX Design Services in Tirupati, Cloud Solutions in Tirupati, IT Consulting in Tirupati, Software Maintenance in Tirupati,Digital Transformation in Tirupati, Webortex Software Development Agency, Webortex Sisindri Singamsetti, Webortex, Webortex Founders, Webortex Team, Webortex Services, Webortex Projects, Webortex Tharun A, Webortex Jayadeep Reddy, Webortex Ashok P, Webortex Sai Sandeep, Sisindri Singamsetti Webortex, sisitarak, sisi-tarak, sisi-tarakk, Webortex Founders Team, Sisindri Singamsetti Webortex CEO, Tharun A Webortex COO, Jayadeep Reddy Webortex CTO, Ashok Pemeram Webortex CIO, Sai Sandeep Webortex CPO`}
+                content={`${activeFounder.name}, ${activeFounder.title}, Webortex, Web Development, Innovative Solutions, Digital Experiences, Technology, Software Development in Tirupati, Custom Software Development in Tirupati, E-commerce Web Development in Tirupati, Mobile App Development in Tirupati, UI/UX Design Services in Tirupati, Cloud Solutions in Tirupati, IT Consulting in Tirupati, Software Maintenance in Tirupati,Digital Transformation in Tirupati, Webortex Software Development Agency, Webortex Sisindri Singamsetti, Webortex, Webortex Founders, Webortex Team, Webortex Services, Webortex Projects, Webortex Tharun A, Webortex Jayadeep Reddy, Webortex Ashok P, Webortex Sai Sandeep, Sisindri Singamsetti Webortex, Webortex Founders Team, Sisindri Singamsetti Webortex CEO, Tharun A Webortex COO, Jayadeep Reddy Webortex CTO, Ashok Pemeram Webortex CIO, Sai Sandeep Webortex CPO`}
               />
-              a
+
               <meta name="author" content="Sisindri Singamsetti" />
               <meta
                 property="og:title"
@@ -85,10 +85,6 @@ const DesktopScroll = () => {
               />
               <meta property="og:type" content="profile" />
               <meta property="og:url" content={activeFounder.src} />
-              <meta
-                property="og:image"
-                content={`https://www.webortex.com/images/${activeFounder.image}.jpg`}
-              />
             </Helmet>
 
             <div ref={foundersSectionRef}>

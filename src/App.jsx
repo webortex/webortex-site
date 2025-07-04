@@ -15,11 +15,14 @@ import JoinUs from "./Components/JoinUs/JoinUs";
 import MVPForm from "./Components/Pricing/QuotationMVP";
 import AppForm from "./Components/Pricing/QuotationApp";
 import WebForm from "./Components/Pricing/QuotationWeb";
+import BusinessSchema from "./Components/BusinessSchema";
+import TirupatiLandingPage from "./Components/TirupatiLandingPage/TirupatiLandingPage";
 
 const Layout = ({ children }) => {
   return (
     <>
       <Navbar />
+      <BusinessSchema />
       {children}
       <Footer />
     </>
@@ -30,6 +33,7 @@ const Nav = ({ children }) => {
   return (
     <>
       <Navbar />
+      <BusinessSchema />
       {children}
     </>
   );
@@ -46,7 +50,6 @@ function App() {
     <Loader />
   ) : (
     <Provider>
-      {" "}
       <Router>
         <ScrollToTop />
         <Suspense fallback={<Loader />}>
@@ -118,6 +121,8 @@ function App() {
               path="/get-quote/mvp-quote-sy34rh32_dff84fgd"
               element={<MVPForm />}
             />
+
+            <Route exact path="/tirupati" element={<TirupatiLandingPage />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
