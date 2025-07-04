@@ -114,7 +114,7 @@ const MobileScroll = () => {
                                   <div className="group duration-500 hover:-skew-x-0 skew-x-6 hover:translate-x-2">
                                     <div className="group-hover:duration-400 relative rounded-xl w-20 h-12 xs:w-24 xs:h-14 md:w-28 md:h-16 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center before:-skew-x-12 before:rounded-xl before:absolute before:content[''] before:bg-neutral-700 before:right-2 md:before:right-3 before:top-0 before:w-20 before:h-10 xs:before:w-24 xs:before:h-12 md:before:w-28 md:before:h-14 before:-z-10">
                                       <span className="text-xs sm:text-sm font-medium xs:font-semibold">
-                                        Co
+                                        {index >= 3 ? "Co" : ""}
                                       </span>
                                       <p className="text-xs sm:text-sm font-medium xs:font-semibold">
                                         Founder
