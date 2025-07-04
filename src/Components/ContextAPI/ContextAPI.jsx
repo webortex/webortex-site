@@ -561,7 +561,7 @@ export class Provider extends Component {
         title: "Co-Founder & CPO, Webortex",
         quote:
           "Driven by creativity and technology, we transform ideas into seamless, scalable solutions. Our focus is on building intuitive experiences that not only meet expectations but redefine them—pushing boundaries, one innovation at a time.",
-        src: "https://github.com/Sandeep010-hub",
+        src: "https://www.linkedin.com/in/yaswanth-sai-sandeep-kalagatla-655416243 ",
       },
     ],
 
