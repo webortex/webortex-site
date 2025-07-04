@@ -83,7 +83,7 @@ const ServicePage = () => {
                               {banner.title}
                             </h2>
                             <p className="text-xs md:text-sm text-secondaryTextColor mt-2 md:mt-8">
-                              {banner.fullDescription}
+                              {banner.description}
                             </p>
                           </div>
                           <div className="flex items-center justify-center order-1 md:order-2">
