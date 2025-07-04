@@ -118,13 +118,13 @@ const Footer = () => {
                         <Facebook className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
                       </a>
                       <a
-                        href="https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5"
+                        href="https://www.instagram.com/webortex/"
                         target="_blank"
                       >
                         <Instagram className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
                       </a>
                       <a
-                        href="https://www.linkedin.com/in/webortex-a08a93359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        href="https://www.linkedin.com/company/webortexx/"
                         target="_blank"
                       >
                         <LinkedIn className="text-dimgray hover:text-navlinkHoverColor cursor-pointer transition-colors duration-300" />
