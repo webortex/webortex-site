@@ -5,8 +5,8 @@ const foundersImages = {
   tharun:
     "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/founders/Founders_Tharun.jpg",
   jaya: "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/founders/Founders_Jayadeep.jpg",
-  ashok:
-    "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/founders/Founders_Ashok.jpg",
+  // ashok:
+  //   "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/founders/Founders_Ashok.jpg",
   sandeep:
     "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/founders/Founders_Sandeep.jpg",
 };

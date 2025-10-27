@@ -528,15 +528,15 @@ export class Provider extends Component {
           "We drive innovative web and app development, delivering scalable, user-focused solutions. Passionate about blending technology and creativity to exceed expectations, we build the future, one pixel at a time!",
         src: "https://www.linkedin.com/in/tharunavula/",
       },
-      {
-        id: 3,
-        image: foundersImages.ashok,
-        name: "Ashok Pemeram",
-        title: "Founder & CIO, Webortex",
-        quote:
-          "We believe in crafting digital experiences that are powerful, user-centric, and built to scale. By blending innovation with strategy, we create solutions that don’t just function—they inspire and drive success.",
-        src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
-      },
+      // {
+      //   id: 3,
+      //   image: foundersImages.ashok,
+      //   name: "Ashok Pemeram",
+      //   title: "Founder & CIO, Webortex",
+      //   quote:
+      //     "We believe in crafting digital experiences that are powerful, user-centric, and built to scale. By blending innovation with strategy, we create solutions that don’t just function—they inspire and drive success.",
+      //   src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
+      // },
       {
         id: 4,
         image: foundersImages.jaya,
