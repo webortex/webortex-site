@@ -1,0 +1,220 @@
+/**
+ * Canonical audit action names.
+ *
+ * Centralised so the audit trail stays queryable: every administrative action
+ * uses one of these strings, and `ENTITY_TYPES` keeps the entity vocabulary
+ * closed. Free-text actions are rejected by the API tier.
+ */
+
+export const AUDIT_ACTIONS = {
+  // authentication
+  LOGIN_SUCCEEDED: "LOGIN_SUCCEEDED",
+  LOGIN_FAILED: "LOGIN_FAILED",
+  LOGOUT: "LOGOUT",
+  PASSWORD_CHANGED: "PASSWORD_CHANGED",
+  PASSWORD_RESET_REQUESTED: "PASSWORD_RESET_REQUESTED",
+  EMAIL_VERIFIED: "EMAIL_VERIFIED",
+  PHONE_VERIFIED: "PHONE_VERIFIED",
+  MFAT_ENROLLED: "MFAT_ENROLLED",
+
+  // identity & access
+  USER_ROLE_CHANGED: "USER_ROLE_CHANGED",
+  USER_SUSPENDED: "USER_SUSPENDED",
+  USER_REACTIVATED: "USER_REACTIVATED",
+
+  // advertisers
+  ADVERTISER_REGISTERED: "ADVERTISER_REGISTERED",
+  ADVERTISER_REVIEW_STARTED: "ADVERTISER_REVIEW_STARTED",
+  ADVERTISER_APPROVED: "ADVERTISER_APPROVED",
+  ADVERTISER_REJECTED: "ADVERTISER_REJECTED",
+  ADVERTISER_INFO_REQUESTED: "ADVERTISER_INFO_REQUESTED",
+  ADVERTISER_SUSPENDED: "ADVERTISER_SUSPENDED",
+  ADVERTISER_REACTIVATED: "ADVERTISER_REACTIVATED",
+  API_KEY_ISSUED: "API_KEY_ISSUED",
+  API_KEY_REVOKED: "API_KEY_REVOKED",
+
+  // campaigns
+  CAMPAIGN_CREATED: "CAMPAIGN_CREATED",
+  CAMPAIGN_UPDATED: "CAMPAIGN_UPDATED",
+  CAMPAIGN_SUBMITTED: "CAMPAIGN_SUBMITTED",
+  CAMPAIGN_APPROVED: "CAMPAIGN_APPROVED",
+  CAMPAIGN_REJECTED: "CAMPAIGN_REJECTED",
+  CAMPAIGN_SCHEDULED: "CAMPAIGN_SCHEDULED",
+  CAMPAIGN_STARTED: "CAMPAIGN_STARTED",
+  CAMPAIGN_PAUSED: "CAMPAIGN_PAUSED",
+  CAMPAIGN_RESUMED: "CAMPAIGN_RESUMED",
+  CAMPAIGN_COMPLETED: "CAMPAIGN_COMPLETED",
+  CAMPAIGN_CANCELLED: "CAMPAIGN_CANCELLED",
+  CAMPAIGN_STATUS_CHANGED: "CAMPAIGN_STATUS_CHANGED",
+  CAMPAIGN_CHANGES_REQUESTED: "CAMPAIGN_CHANGES_REQUESTED",
+  CAMPAIGN_SUSPENDED: "CAMPAIGN_SUSPENDED",
+
+  // creatives
+  CREATIVE_UPLOADED: "CREATIVE_UPLOADED",
+  CREATIVE_UPDATED: "CREATIVE_UPDATED",
+  CREATIVE_DUPLICATED: "CREATIVE_DUPLICATED",
+  CREATIVE_ARCHIVED: "CREATIVE_ARCHIVED",
+  CREATIVE_SUBMITTED: "CREATIVE_SUBMITTED",
+  CREATIVE_APPROVED: "CREATIVE_APPROVED",
+  CREATIVE_REJECTED: "CREATIVE_REJECTED",
+  CREATIVE_CHANGES_REQUESTED: "CREATIVE_CHANGES_REQUESTED",
+  CREATIVE_SUSPENDED: "CREATIVE_SUSPENDED",
+
+  // fleet
+  VEHICLE_CREATED: "VEHICLE_CREATED",
+  VEHICLE_UPDATED: "VEHICLE_UPDATED",
+  VEHICLE_VERIFIED: "VEHICLE_VERIFIED",
+  VEHICLE_STATUS_CHANGED: "VEHICLE_STATUS_CHANGED",
+  VEHICLE_RETIRED: "VEHICLE_RETIRED",
+  DRIVER_REGISTERED: "DRIVER_REGISTERED",
+  DRIVER_APPROVED: "DRIVER_APPROVED",
+  DRIVER_REJECTED: "DRIVER_REJECTED",
+  DRIVER_INFO_REQUESTED: "DRIVER_INFO_REQUESTED",
+  DRIVER_SUSPENDED: "DRIVER_SUSPENDED",
+  DRIVER_STATUS_CHANGED: "DRIVER_STATUS_CHANGED",
+  DOCUMENT_REVIEWED: "DOCUMENT_REVIEWED",
+  DOCUMENT_REJECTED: "DOCUMENT_REJECTED",
+
+  // devices
+  DEVICE_ENROLLED: "DEVICE_ENROLLED",
+  SCREEN_CREATED: "SCREEN_CREATED",
+  DEVICE_ASSIGNED: "DEVICE_ASSIGNED",
+  DEVICE_UNASSIGNED: "DEVICE_UNASSIGNED",
+  DEVICE_SECRET_ROTATED: "DEVICE_SECRET_ROTATED",
+  DEVICE_STATUS_CHANGED: "DEVICE_STATUS_CHANGED",
+  DEVICE_DECOMMISSIONED: "DEVICE_DECOMMISSIONED",
+  DEVICE_REMOTE_COMMAND_SENT: "DEVICE_REMOTE_COMMAND_SENT",
+
+  // network
+  LOCATION_CREATED: "LOCATION_CREATED",
+  LOCATION_UPDATED: "LOCATION_UPDATED",
+  INVENTORY_RESERVED: "INVENTORY_RESERVED",
+  INVENTORY_RELEASED: "INVENTORY_RELEASED",
+
+  // finance
+  TRANSACTION_VERIFIED: "TRANSACTION_VERIFIED",
+  TRANSACTION_FAILED: "TRANSACTION_FAILED",
+  TRANSACTION_REFUNDED: "TRANSACTION_REFUNDED",
+  WALLET_ADJUSTED: "WALLET_ADJUSTED",
+  TOPUP_ORDER_CREATED: "TOPUP_ORDER_CREATED",
+  WEBHOOK_REJECTED: "WEBHOOK_REJECTED",
+  PAYMENT_RECORDED: "PAYMENT_RECORDED",
+  PAYMENT_FAILED: "PAYMENT_FAILED",
+  PAYMENT_REFUNDED: "PAYMENT_REFUNDED",
+  PAYOUT_CREATED: "PAYOUT_CREATED",
+  CONVERSIONS_INGESTED: "CONVERSIONS_INGESTED",
+  INVOICE_ISSUED: "INVOICE_ISSUED",
+  INVOICE_VOIDED: "INVOICE_VOIDED",
+  PAYOUT_SCHEDULED: "PAYOUT_SCHEDULED",
+  PAYOUT_PROCESSED: "PAYOUT_PROCESSED",
+  PAYOUT_FAILED: "PAYOUT_FAILED",
+  PAYOUT_ON_HOLD: "PAYOUT_ON_HOLD",
+
+  // configuration
+  SETTINGS_UPDATED: "SETTINGS_UPDATED",
+  REVENUE_RULES_UPDATED: "REVENUE_RULES_UPDATED",
+  MODERATION_RULES_UPDATED: "MODERATION_RULES_UPDATED",
+
+  // support
+  TICKET_CREATED: "TICKET_CREATED",
+  TICKET_UPDATED: "TICKET_UPDATED",
+  TICKET_ASSIGNED: "TICKET_ASSIGNED",
+  TICKET_RESOLVED: "TICKET_RESOLVED",
+  TICKET_CLOSED: "TICKET_CLOSED",
+  SUPPORT_TICKET_CREATED: "SUPPORT_TICKET_CREATED",
+  SUPPORT_TICKET_ASSIGNED: "SUPPORT_TICKET_ASSIGNED",
+  SUPPORT_TICKET_STATUS_CHANGED: "SUPPORT_TICKET_STATUS_CHANGED",
+
+  // data lifecycle
+  DATA_EXPORT_REQUESTED: "DATA_EXPORT_REQUESTED",
+  DATA_ANONYMISED: "DATA_ANONYMISED",
+  RAW_EVENTS_PRUNED: "RAW_EVENTS_PRUNED",
+} as const;
+
+export type AuditAction = (typeof AUDIT_ACTIONS)[keyof typeof AUDIT_ACTIONS];
+
+const AUDIT_ACTION_SET: ReadonlySet<string> = new Set<string>(Object.values(AUDIT_ACTIONS));
+
+export function isAuditAction(value: string): value is AuditAction {
+  return AUDIT_ACTION_SET.has(value);
+}
+
+export const ENTITY_TYPES = [
+  "USER",
+  "ORGANIZATION",
+  "ADVERTISER",
+  "DRIVER",
+  "VEHICLE",
+  "SCREEN",
+  "DEVICE",
+  "CAMPAIGN",
+  "CREATIVE",
+  "DOCUMENT",
+  "LOCATION",
+  "TRANSACTION",
+  "INVOICE",
+  "PAYOUT",
+  "NOTIFICATION",
+  "SUPPORT_TICKET",
+  "SETTINGS",
+  "API_KEY",
+  "CONVERSION",
+  "INVENTORY",
+] as const;
+
+export type EntityType = (typeof ENTITY_TYPES)[number];
+
+const ENTITY_TYPE_SET: ReadonlySet<string> = new Set<string>(ENTITY_TYPES);
+
+export function isEntityType(value: string): value is EntityType {
+  return ENTITY_TYPE_SET.has(value);
+}
+
+/**
+ * Append-only collection names. Firestore security rules deny update and delete on
+ * every collection listed in `IMMUTABLE_COLLECTIONS`.
+ */
+export const COLLECTIONS = {
+  users: "mm_users",
+  organizations: "mm_organizations",
+  advertisers: "mm_advertisers",
+  drivers: "mm_drivers",
+  vehicles: "mm_vehicles",
+  screens: "mm_screens",
+  devices: "mm_devices",
+  campaigns: "mm_campaigns",
+  creatives: "mm_creatives",
+  locations: "mm_locations",
+  playbackEvents: "mm_playback_events",
+  engagementEvents: "mm_engagement_events",
+  conversions: "mm_conversions",
+  playbackDaily: "mm_agg_playback_daily",
+  playbackHourly: "mm_agg_playback_hourly",
+  engagementDaily: "mm_agg_engagement_daily",
+  conversionDaily: "mm_agg_conversion_daily",
+  transactions: "mm_transactions",
+  wallets: "mm_wallets",
+  invoices: "mm_invoices",
+  payouts: "mm_payouts",
+  payoutLedger: "mm_payout_ledger",
+  notifications: "mm_notifications",
+  auditLogs: "mm_audit_logs",
+  supportTickets: "mm_support_tickets",
+  settings: "mm_settings",
+  inventory: "mm_inventory",
+  deviceSecrets: "mm_device_secrets",
+  apiKeys: "mm_api_keys",
+  rateLimits: "mm_rate_limits",
+  idempotency: "mm_idempotency",
+  /** Gateway orders the server created, keyed by gateway order id. The webhook attributes payments from here. */
+  topupOrders: "mm_topup_orders",
+} as const;
+
+export const IMMUTABLE_COLLECTIONS: readonly string[] = [
+  COLLECTIONS.auditLogs,
+  COLLECTIONS.playbackEvents,
+  COLLECTIONS.engagementEvents,
+  COLLECTIONS.transactions,
+  COLLECTIONS.payoutLedger,
+  COLLECTIONS.conversions,
+];

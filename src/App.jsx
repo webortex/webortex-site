@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import Homepage from "./Components/Homepage/Homepage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
@@ -17,6 +17,14 @@ import AppForm from "./Components/Pricing/QuotationApp";
 import WebForm from "./Components/Pricing/QuotationWeb";
 import BusinessSchema from "./Components/BusinessSchema";
 import TirupatiLandingPage from "./Components/TirupatiLandingPage/TirupatiLandingPage";
+// The Mobility Media operations portal. Lazily loaded and mounted under
+// /mobility so the public site's first paint does not pull in MUI, charts or
+// Firebase auth. Declared ahead of the catch-all route below, which would
+// otherwise swallow every portal path.
+const MobilityApp = lazy(() => import("./mobility-media/MobilityApp"));
+const MobilityProviders = lazy(() => import("./mobility-media/Providers"));
+// The in-vehicle screen player: fullscreen, no site chrome, its own small chunk.
+const PlayerApp = lazy(() => import("./mobility-player/PlayerApp"));
 
 const Layout = ({ children }) => {
   return (
@@ -123,6 +131,28 @@ function App() {
             />
 
             <Route exact path="/tirupati" element={<TirupatiLandingPage />} />
+
+            {/* Mobility Media operations portal.
+                Its own provider stack, so the legacy site keeps its own context. */}
+            <Route
+              path="/mobility/*"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <MobilityProviders>
+                    <MobilityApp />
+                  </MobilityProviders>
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/player"
+              element={
+                <Suspense fallback={null}>
+                  <PlayerApp />
+                </Suspense>
+              }
+            />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

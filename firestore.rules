@@ -1,0 +1,146 @@
+rules_version = '2';
+
+/**
+ * Two very different access models live in this project, and this file is the
+ * boundary between them.
+ *
+ * 1. The new mobility-media platform. Every `mm_*` collection is API-only. The web
+ *    client never talks to Firestore directly; it calls the Cloud Functions API,
+ *    where tenancy, permission and field-level checks live in one audited place,
+ *    and the Admin SDK bypasses these rules. Denying clients wholesale is
+ *    deliberate: a bug in a route function is a bug, whereas a mistake in a rule
+ *    would silently leak a whole collection.
+ *
+ * 2. The legacy public web forms, which predate the API and write straight to
+ *    Firestore from the browser. Those are still shipping, so they are allowed
+ *    here - narrowly, and without any read access. See the sections below.
+ */
+service cloud.firestore {
+
+  function isSignedIn() {
+    return request.auth != null;
+  }
+
+  /**
+   * The public forms are unauthenticated, so the only meaningful constraints are
+   * about the shape of the payload. This rejects the two things a client can do
+   * that turn a contact form into a data-exfiltration or storage-abuse channel:
+   * writing an unbounded document, and setting fields that a downstream reader
+   * might mistake for something the server decided.
+   */
+  function isReasonableSubmission() {
+    return request.resource.data.keys().size() <= 50
+      && !request.resource.data.keys().hasAny([
+        'roles', 'permissions', 'isAdmin', 'admin', 'uid', 'userId',
+        'auth', 'claims', 'verified', 'approved', 'disabled'
+      ])
+      && noOversizedString(request.resource.data, 5000);
+  }
+
+  /**
+   * Walks one level into the payload. The forms only ever write a flat document,
+   * so a shallow check is enough to catch an accidentally pasted file or a
+   * base64 blob submitted as a "resume link".
+   */
+  function noOversizedString(data, max) {
+    return data.keys().all(function(k) {
+      let v = data[k];
+      return !(v is string) || v.size() <= max;
+    });
+  }
+
+  /**
+   * The forms stamp their own submission time with `new Date()`, which arrives as
+   * the browser's clock - so it cannot be compared for equality against
+   * `request.time`, which is the server's. Requiring the two to be near each other
+   * instead gives the useful half of the guarantee: the timestamp must be
+   * plausible, so a document cannot be backdated to dodge a date-based report,
+   * while ordinary clock skew and timezone differences still pass.
+   */
+  function isPlausibleTimestamp(field) {
+    return field is timestamp
+      && field > request.time - duration.value(1, 'h')
+      && field < request.time + duration.value(1, 'h');
+  }
+
+  match /databases/{database}/documents {
+
+    // ---------------------------------------------------------------------
+    // 1. The mobility-media platform: API-only.
+    // ---------------------------------------------------------------------
+
+    // The per-user notification feed. Read-only and scoped to the owner.
+    // A client must not be able to create a notification that appears to have
+    // come from the platform, and marking one read goes through the API so the
+    // mutation is audited.
+    match /mm_notifications/{notificationId} {
+      allow get, list: if isSignedIn()
+        && resource.data.userId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // Everything else under mm_ - vehicles, screens, campaigns, creatives,
+    // transactions, payouts, wallets, audit logs, settings, API keys, and every
+    // subcollection such as mm_advertisers/{id}/apiKeys and support-ticket
+    // messages. The Admin SDK in the Functions API is the only reader or writer.
+    match /mm_{document=**} {
+      allow read, write: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // 2. Legacy public web forms.
+    //
+    // These predate the API tier and write from the browser. They are kept
+    // working deliberately, but the rules are tighter than the code deserves.
+    // ---------------------------------------------------------------------
+
+    // Careers / "Join Us" applications. Field names are known, so they are
+    // validated individually rather than trusting an arbitrary payload.
+    match /applications/{applicationId} {
+      // Create is the normal path. Update is allowed so a candidate who
+      // resubmits with the same name is not rejected - see the note below on
+      // why that is a known, accepted weakness.
+      allow create, update: if isReasonableSubmission()
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 120
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 320
+        && request.resource.data.mobile is string
+        && request.resource.data.mobile.size() <= 32
+        && isPlausibleTimestamp(request.resource.data.submittedAt);
+      allow read, delete: if false;
+    }
+
+    // Quotation forms. The payload is a spread of whatever the multi-step form
+    // collected, so the fields cannot be enumerated here; only the generic
+    // shape checks in isReasonableSubmission apply.
+    match /app_quotation/{quotationId} {
+      allow create, update: if isReasonableSubmission()
+        && isPlausibleTimestamp(request.resource.data.timestamp);
+      allow read, delete: if false;
+    }
+
+    match /mvp_quotation/{quotationId} {
+      allow create, update: if isReasonableSubmission()
+        && isPlausibleTimestamp(request.resource.data.timestamp);
+      allow read, delete: if false;
+    }
+
+    match /web_quotation/{quotationId} {
+      allow create, update: if isReasonableSubmission()
+        && isPlausibleTimestamp(request.resource.data.timestamp);
+      allow read, delete: if false;
+    }
+
+    // ---------------------------------------------------------------------
+    // 3. Everything else, including any collection added later.
+    // ---------------------------------------------------------------------
+    //
+    // Default-deny. A new collection is closed until someone writes a rule for
+    // it, so shipping a feature cannot accidentally expose its data.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
