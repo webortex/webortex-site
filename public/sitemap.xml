@@ -3,23 +3,23 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 >
   <url>
-    <loc>https://www.webortex.com/</loc>
+    <loc>https://www.webortex.in/</loc>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://www.webortex.com/services/*</loc>
+    <loc>https://www.webortex.in/services/*</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://www.webortex.com/careers</loc>
+    <loc>https://www.webortex.in/careers</loc>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.webortex.com/join-us</loc>
+    <loc>https://www.webortex.in/join-us</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.webortex.com/lets-talk</loc>
+    <loc>https://www.webortex.in/lets-talk</loc>
     <priority>0.64</priority>
   </url>
   

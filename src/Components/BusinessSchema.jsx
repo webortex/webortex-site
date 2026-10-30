@@ -5,9 +5,9 @@ const BusinessSchema = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Webortex",
-    url: "https://www.webortex.com",
-    logo: "https://www.webortex.com/logo.png",
-    image: "https://www.webortex.com/logo2.png",
+    url: "https://www.webortex.in",
+    logo: "https://www.webortex.in/logo.png",
+    image: "https://www.webortex.in/logo2.png",
     description:
       "Webortex is a software development agency in Tirupati offering web, app, MVP development, SEO, and UI/UX design.",
     telephone: "+91-7672024001",
