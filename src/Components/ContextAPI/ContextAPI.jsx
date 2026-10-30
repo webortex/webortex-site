@@ -115,7 +115,7 @@ export class Provider extends Component {
           "Webortex is hiring talented web developers, UI/UX designers, and app developers. Join our innovative team and grow your career in tech.",
         pageKeywords:
           "tech jobs, web developer jobs, UI/UX design, app development, hiring, tech careers, Webortex careers,  webortex",
-        pageCanonical: "https://webortex.com/careers",
+        pageCanonical: "https://www.webortex.in/careers",
         pageImage:
           "https://pub-092f205255e44a92ba44af43d1f03019.r2.dev/chairMobile.png",
       },
@@ -213,7 +213,7 @@ export class Provider extends Component {
           "Best Web Development Company in Tirupati | Webortex, Andhra Pradesh",
         fullDescription:
           "Webortex offers expert web development services in Tirupati and Andhra Pradesh using React, Taileind CSs, Material UI, Node.js, Express Js and MongoDB.",
-        canonicalUrl: `https://www.webortex.com/services/web-development`,
+        canonicalUrl: `https://www.webortex.in/services/web-development`,
         keywords: `Web Development, Responsive Design, User Experience, Tirupati, Andhra Pradesh`,
       },
       {
@@ -265,7 +265,7 @@ export class Provider extends Component {
           "Best App Development Company in Tirupati and Andhra Pradesh | Webortex",
         fullDescription:
           "Webortex offers expert app development services in Tirupati and Andhra Pradesh, specializing in Flutter, React Native, Swift, Firebase, REST APIs to deliver cross-platform, scalable, and user-centric mobile apps.",
-        canonicalUrl: "https://www.webortex.com/services/app-development",
+        canonicalUrl: "https://www.webortex.in/services/app-development",
         keywords:
           "App Development, cross-platform apps, scalable mobile apps, user-centric mobile apps, Tirupati, Andhra Pradesh",
       },
@@ -315,7 +315,7 @@ export class Provider extends Component {
           "Best UI/UX Design Company in Tirupati and Andhra Pradesh | Webortex",
         fullDescription:
           "Webortex offers expert UI/UX design services in Tirupati and Andhra Pradesh, specializing in Figma, Adobe XD, HTML, CSS, and prototyping tools to deliver intuitive, creative, and human-centered digital experiences.",
-        canonicalUrl: "https://www.webortex.com/services/uiux-design",
+        canonicalUrl: "https://www.webortex.in/services/uiux-design",
         keywords:
           "UI/UX Design, creative interfaces, user experience design, digital product design, Tirupati, Andhra Pradesh",
       },
@@ -366,7 +366,7 @@ export class Provider extends Component {
         fullDescription:
           "Webortex helps startups and businesses rapidly build MVPs in Tirupati and Andhra Pradesh using Agile, React, Node.js, MongoDB, and prototyping tools to validate ideas and scale efficiently.",
         canonicalUrl:
-          "https://www.webortex.com/services/minimum-viable-product",
+          "https://www.webortex.in/services/minimum-viable-product",
         keywords:
           "MVP Development, agile MVP, minimum viable product, prototype development, Tirupati, Andhra Pradesh",
       },
@@ -418,7 +418,7 @@ export class Provider extends Component {
         fullDescription:
           "Webortex provides advanced SEO services in Tirupati and Andhra Pradesh using Google Analytics, SEMrush, and ethical link-building strategies to boost rankings, visibility, and organic traffic.",
         canonicalUrl:
-          "https://www.webortex.com/services/search-engine-optimization",
+          "https://www.webortex.in/services/search-engine-optimization",
         keywords:
           "SEO Services, on-page SEO, off-page SEO, search engine optimization, Tirupati, Andhra Pradesh",
       },
@@ -472,7 +472,7 @@ export class Provider extends Component {
         fullDescription:
           "Webortex delivers impactful social media campaigns in Tirupati and Andhra Pradesh using Meta Ads, Google Ads, and content marketing to drive brand engagement, leads, and digital growth.",
         canonicalUrl:
-          "https://www.webortex.com/services/social-media-marketing",
+          "https://www.webortex.in/services/social-media-marketing",
         keywords:
           "Social Media Marketing, Meta Ads, digital campaigns, brand engagement, Tirupati, Andhra Pradesh",
       },
@@ -519,24 +519,6 @@ export class Provider extends Component {
         ),
         src: "https://www.sisindrisingamsetti.com",
       },
-      {
-        id: 2,
-        image: foundersImages.tharun,
-        name: "Tharun Avula",
-        title: "Founder & COO, Webortex",
-        quote:
-          "We drive innovative web and app development, delivering scalable, user-focused solutions. Passionate about blending technology and creativity to exceed expectations, we build the future, one pixel at a time!",
-        src: "https://www.linkedin.com/in/tharunavula/",
-      },
-      // {
-      //   id: 3,
-      //   image: foundersImages.ashok,
-      //   name: "Ashok Pemeram",
-      //   title: "Founder & CIO, Webortex",
-      //   quote:
-      //     "We believe in crafting digital experiences that are powerful, user-centric, and built to scale. By blending innovation with strategy, we create solutions that don’t just function—they inspire and drive success.",
-      //   src: "http://www.linkedin.com/in/ashok-pemeram-1856721aa",
-      // },
       {
         id: 4,
         image: foundersImages.jaya,

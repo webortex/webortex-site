@@ -48,16 +48,16 @@ const TirupatiLandingPage = () => {
           name="keywords"
           content="Software Development Tirupati, Web Development Tirupati, App Development Tirupati, MVP Tirupati, UI/UX Design Tirupati"
         />
-        <link rel="canonical" href="https://www.webortex.com/tirupati" />
+        <link rel="canonical" href="https://www.webortex.in/tirupati" />
         <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "Webortex",
-              "url": "https://www.webortex.com",
-              "logo": "https://www.webortex.com/logo.png",
-               "image": "https://www.webortex.com/logo2.png",
+              "url": "https://www.webortex.in",
+              "logo": "https://www.webortex.in/logo.png",
+               "image": "https://www.webortex.in/logo2.png",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Tirupati",

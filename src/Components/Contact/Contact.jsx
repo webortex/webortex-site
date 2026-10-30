@@ -186,7 +186,7 @@ const Contact = () => {
           name="keywords"
           content="Contact Webortex, Web development support, App development contact, SEO consultation, Marketing services, Tirupati, Andhra Pradesh"
         />
-        <link rel="canonical" href="https://www.webortex.com/lets-talk" />
+        <link rel="canonical" href="https://www.webortex.in/lets-talk" />
         <meta
           property="og:title"
           content="Contact Webortex | Web & App Development Experts"
@@ -195,7 +195,7 @@ const Contact = () => {
           property="og:description"
           content="Reach out to Webortex for digital solutions including web development, mobile apps, and SEO."
         />
-        <meta property="og:url" content="https://www.webortex.com/lets-talk" />
+        <meta property="og:url" content="https://www.webortex.in/lets-talk" />
         <meta property="og:type" content="website" />
       </Helmet>
 
