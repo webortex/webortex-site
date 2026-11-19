@@ -90,21 +90,37 @@ const Cover = () => {
 
               <div className="bg-brandsBgColor w-full rounded-[22px] h-auto mt-6 xs:mt-8 sm:mt-10 md:mt-12 lg:mt-14 xl:mt-14 mb-4 sm:mb-6 md:mb-8 xl:mb-12 mx-auto">
                 <div className="flex justify-center items-center text-center gap-1 sm:gap-6 lg:gap-10 xl:gap-12 mx-10 xs:mx-12 sm:mx-14 lg:mx-20">
-                  {brands.map((brand) => (
-                    <Link
-                      key={brand.id}
-                      to={brand.link}
-                      className="flex justify-center items-center"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src={brand.image}
-                        alt={brand.title}
-                        className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px] py-2 sm:py-0"
-                      />
-                    </Link>
-                  ))}
+                  {brands.map((brand) =>
+                    brand.id !== 1 ? (
+                      <Link
+                        key={brand.id}
+                        to={brand.link}
+                        className="flex justify-center items-center"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={brand.image}
+                          alt={brand.title}
+                          className="w-[80%] xs:w-[70%] lg:w-[90%] 2xl:w-full max-w-[225px] max-h-[140px] py-2 sm:py-0"
+                        />
+                      </Link>
+                    ) : (
+                      <Link
+                        key={brand.id}
+                        to={brand.link}
+                        className="flex justify-center items-center"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={brand.image}
+                          alt={brand.title}
+                          className="w-[60%] xs:w-[50%] lg:w-[60%] 2xl:w-full max-w-[210px] max-h-[125px] py-2 sm:py-0"
+                        />
+                      </Link>
+                    ),
+                  )}
                 </div>
               </div>
             </Container>

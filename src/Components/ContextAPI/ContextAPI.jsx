@@ -122,12 +122,19 @@ export class Provider extends Component {
     ],
 
     brands: [
+      // {
+      //   id: 1,
+      //   title: "Team Garuda",
+      //   link: "https://teamgaruda.vercel.app/",
+      //   image:
+      //     "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/worked%20Logos/workedLogos_Teamgaruda.png",
+      // },
       {
         id: 1,
-        title: "Team Garuda",
-        link: "https://teamgaruda.vercel.app/",
+        title: "CX365",
+        link: "https://cx365group.com/",
         image:
-          "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/worked%20Logos/workedLogos_Teamgaruda.png",
+          "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/worked%20Logos/workedLogos_CX365Logo.png",
       },
       {
         id: 5,
@@ -149,13 +156,13 @@ export class Provider extends Component {
       //   link: "https://www.facebook.com/mygbitrhari/",
       //   image: mygbitrIcon,
       // },
-      {
-        id: 4,
-        title: "Garuda Creative Factory",
-        link: "https://www.instagram.com/garudacreativefactory9/",
-        image:
-          "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/worked%20Logos/workedLogos_garuda.png",
-      },
+      // {
+      //   id: 4,
+      //   title: "Garuda Creative Factory",
+      //   link: "https://www.instagram.com/garudacreativefactory9/",
+      //   image:
+      //     "https://pub-b0ac8c4ec5044408a53b737e2913c034.r2.dev/cloudflare/worked%20Logos/workedLogos_garuda.png",
+      // },
     ],
 
     services: [
@@ -515,7 +522,7 @@ export class Provider extends Component {
             <strong>Sisindri Singamsetti</strong> .
           </>
         ),
-        src: "https://www.sisindrisingamsetti.com",
+        src: "https://www.linkedin.com/in/sisitarak/",
       },
       {
         id: 4,

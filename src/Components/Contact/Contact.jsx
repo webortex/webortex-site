@@ -40,7 +40,7 @@ const Contact = () => {
 
     if (errors.interests) {
       const isAnyCheckboxSelected = Object.values(formData.interests).some(
-        (value) => value
+        (value) => value,
       );
       if (isAnyCheckboxSelected) {
         setErrors((prevErrors) => ({ ...prevErrors, interests: "" }));
@@ -78,7 +78,7 @@ const Contact = () => {
     }
 
     const isAnyCheckboxSelected = Object.values(formData.interests).some(
-      (value) => value
+      (value) => value,
     );
     if (!isAnyCheckboxSelected) {
       newErrors.interests = "Please select at least one interest";
@@ -527,10 +527,10 @@ const Contact = () => {
                       />
                     </svg>
                     <a
-                      href="mailto:webortex@gmail.com"
+                      href="mailto:contact@webortex.in"
                       className="hover:underline text-textColor pl-3 font-outlet"
                     >
-                      webortex@gmail.com
+                      contact@webortex.in
                     </a>
                   </div>
                 </div>
