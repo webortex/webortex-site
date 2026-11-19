@@ -90,10 +90,10 @@ const Footer = () => {
                     <div className="items-center mb-2 md:mb-4">
                       <Email className="md:mr-2" />
                       <a
-                        href="mailto:contact@webortex.com"
+                        href="mailto:contact@webortex.in"
                         className="hover:underline"
                       >
-                        contact@webortex.com
+                        contact@webortex.in
                       </a>
                     </div>
                     <div className="flex flex-col items-center mb-8 gap-y-2">

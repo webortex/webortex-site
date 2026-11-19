@@ -102,7 +102,7 @@ export class Provider extends Component {
           title: "Requirements",
           skills: ["Projects", "Git & GitHub", "Consistent"],
         },
-        contactEmail: "contact@webortex.com",
+        contactEmail: "contact@webortex.in",
         socialLinks: {
           instagram: "https://www.instagram.com/webortex?igsh=bDN2d3hucmxuMjd5",
           twitter: "https://x.com/webortex?t=p5A5wW138nP5vf9T2Z42OQ&s=09",
@@ -365,8 +365,7 @@ export class Provider extends Component {
           "Best MVP Product Development Company in Tirupati and Andhra Pradesh | Webortex",
         fullDescription:
           "Webortex helps startups and businesses rapidly build MVPs in Tirupati and Andhra Pradesh using Agile, React, Node.js, MongoDB, and prototyping tools to validate ideas and scale efficiently.",
-        canonicalUrl:
-          "https://www.webortex.in/services/minimum-viable-product",
+        canonicalUrl: "https://www.webortex.in/services/minimum-viable-product",
         keywords:
           "MVP Development, agile MVP, minimum viable product, prototype development, Tirupati, Andhra Pradesh",
       },
@@ -471,8 +470,7 @@ export class Provider extends Component {
           "Best Social Media Marketing Company in Tirupati and Andhra Pradesh | Webortex",
         fullDescription:
           "Webortex delivers impactful social media campaigns in Tirupati and Andhra Pradesh using Meta Ads, Google Ads, and content marketing to drive brand engagement, leads, and digital growth.",
-        canonicalUrl:
-          "https://www.webortex.in/services/social-media-marketing",
+        canonicalUrl: "https://www.webortex.in/services/social-media-marketing",
         keywords:
           "Social Media Marketing, Meta Ads, digital campaigns, brand engagement, Tirupati, Andhra Pradesh",
       },

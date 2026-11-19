@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import "boxicons";
 import ourWorksImages from "../../assets/works";
-// import workImg1 from "https://cdn.webortex.com/Founders/Gnana.jpg";
+// import workImg1 from "https://cdn.webortex.in/Founders/Gnana.jpg";
 // import workImg2 from "../../assets/OurWorks/64Framez.png";
 // import workImg3 from "../../assets/OurWorks/yestelugu.jpg";
 // import workImg4 from "../../assets/OurWorks/temple.png";
@@ -70,29 +70,29 @@ const Works = () => {
                 position === "center"
                   ? "z-30"
                   : position === "next1"
-                  ? "z-20"
-                  : position === "prev1"
-                  ? "z-20"
-                  : position === "next2"
-                  ? "z-10"
-                  : position === "prev2"
-                  ? "z-10"
-                  : "z-0"
+                    ? "z-20"
+                    : position === "prev1"
+                      ? "z-20"
+                      : position === "next2"
+                        ? "z-10"
+                        : position === "prev2"
+                          ? "z-10"
+                          : "z-0"
               }`}
               style={{
                 transform: isMobile
                   ? `translate3d(${(index - currentSlide) * 100}%, 0, 0)`
                   : position === "center"
-                  ? "translateX(0) scale(1.50)"
-                  : position === "next1"
-                  ? "translateX(60%) scale(0.85)"
-                  : position === "next2"
-                  ? "translateX(120%) scale(0.7)"
-                  : position === "prev1"
-                  ? "translateX(-60%) scale(0.85)"
-                  : position === "prev2"
-                  ? "translateX(-120%) scale(0.7)"
-                  : "scale(0)",
+                    ? "translateX(0) scale(1.50)"
+                    : position === "next1"
+                      ? "translateX(60%) scale(0.85)"
+                      : position === "next2"
+                        ? "translateX(120%) scale(0.7)"
+                        : position === "prev1"
+                          ? "translateX(-60%) scale(0.85)"
+                          : position === "prev2"
+                            ? "translateX(-120%) scale(0.7)"
+                            : "scale(0)",
                 width: isMobile ? "100%" : "40%",
                 filter:
                   !isMobile && position !== "center"
